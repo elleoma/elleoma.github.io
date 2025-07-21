@@ -1,0 +1,167 @@
+/* ===============================
+   Theme Variables
+   =============================== */
+:root {
+  --bg: #1a1a1a;
+  --fg: #e0e0e0;
+  --panel: #2d2d2d;
+  --border: #cccccc;
+  --link: #66d9ef;
+  --accent: #ffcc00;
+  --muted: #888888;
+}
+
+/* ===============================
+   Global Reset and Layout
+   =============================== */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
+  font-size: 16px;
+  font-family: 'Fira Code', monospace;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+/* ===============================
+   Typography and Links
+   =============================== */
+a {
+  text-decoration: none;
+  color: var(--link);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.post-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--link);
+}
+
+.post-title:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   Rainbow Animation
+   =============================== */
+.rainbow-text {
+  font-size: 1.2rem;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+  0% { background-position: 0%; }
+  100% { background-position: 100%; }
+}
+
+/* ===============================
+   Layout Containers
+   =============================== */
+.scroll-container {
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem 1rem;
+  margin: 0 auto;
+}
+
+.center-window {
+  background: var(--panel);
+  border: 3px double var(--border);
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/* ===============================
+   Header and Navigation
+   =============================== */
+header {
+  border-bottom: 2px dashed var(--border);
+  margin-bottom: 1rem;
+}
+
+header h1 {
+  margin: 0;
+  color: var(--accent);
+}
+
+nav a {
+  margin-right: 1rem;
+  color: var(--link);
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   Terminal Box and Markdown
+   =============================== */
+.terminal-box {
+  background: var(--bg);
+  border: 2px dashed var(--border);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-container {
+  background: var(--bg);
+  border: 2px dashed var(--border);
+  padding: 1rem;
+  margin-top: 1rem;
+  color: var(--fg);
+  overflow-wrap: break-word;
+}
+
+/* ===============================
+   Blog Post List
+   =============================== */
+.post-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.post-list li {
+  margin: 0.5em 0;
+}
+
+.post-date {
+  color: var(--muted);
+  margin-left: 0.5em;
+  font-size: 0.9em;
+}
+
+/* ===============================
+   Footer
+   =============================== */
+footer {
+  margin-top: 2rem;
+  border-top: 2px dashed var(--border);
+  padding-top: 1rem;
+  text-align: center;
+  color: var(--link);
+}

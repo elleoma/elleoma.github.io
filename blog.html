@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>elleoma@0day ~ > Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scroll-container">
+    <div class="center-window">
+      <header>
+        <h1>elleoma@0day ~ > ls</h1>
+        <nav>
+          <a href="index.html">./home</a>
+          <a href="projects.html">./projects</a>
+          <a href="about.html">./about</a>
+          <a href="blog.html">./blog</a>
+          <a href="contact.html">./contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="terminal-box">
+          <h2>Blog Posts</h2>
+          <ul class="post-list" id="postList">
+            <li>Loading blog posts...</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer>
+        <p><code>hosted on raspberry pi 5</code></p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const postListElement = document.getElementById('postList');
+
+    async function loadPosts() {
+      try {
+        const response = await fetch('/posts.json');
+        const posts = await response.json();
+
+        const sortedPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        postListElement.innerHTML = ''; // Clear loading message
+
+        sortedPosts.forEach(post => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = `/posts/${post.filename.replace('.md', '.html')}`;
+          a.textContent = post.title;
+
+          const date = document.createElement('span');
+          date.className = 'post-date';
+          date.textContent = `(${new Date(post.date).toLocaleDateString()})`;
+
+          li.appendChild(a);
+          li.appendChild(date);
+          postListElement.appendChild(li);
+        });
+
+      } catch (err) {
+        postListElement.innerHTML = `<li>Error loading posts: ${err.message}</li>`;
+      }
+    }
+
+    loadPosts();
+  </script>
+</body>
+</html>
