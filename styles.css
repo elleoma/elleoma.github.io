@@ -1,11 +1,11 @@
 :root {
-  --bg: #1a1a1a;
-  --fg: #e0e0e0;
-  --panel: #2d2d2d;
-  --border: #cccccc;
-  --link: #66d9ef;
-  --accent: #ffcc00;
-  --muted: #888888;
+  --bg: #282828; /* Gruvbox dark background */
+  --fg: #ebdbb2; /* Gruvbox light text */
+  --panel: #3c3836; /* Gruvbox dark panel */
+  --border: #665c54; /* Gruvbox gray */
+  --link: #83a598; /* Gruvbox blue */
+  --accent: #d79921; /* Gruvbox yellow */
+  --muted: #a89984; /* Gruvbox light gray */
 }
 
 html, body {
@@ -44,9 +44,18 @@ a:hover {
   text-decoration: underline;
 }
 
+.pfp {
+	position: relative;
+	float: right;
+	clear: both;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	border-radius: 30px;
+}
+
 .rainbow-text {
   font-size: 1.2rem;
-  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  background: linear-gradient(90deg, #fb4934, #fe8019, #fabd2f, #b8bb26, #83a598, #d3869b, #fb4934);
   background-size: 300%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -61,7 +70,7 @@ a:hover {
 
 .scroll-container {
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
   padding: 2rem 1rem;
   margin: 0 auto;
 }
@@ -131,10 +140,166 @@ nav a:hover {
   font-size: 0.9em;
 }
 
-footer {
-  margin-top: 2rem;
-  border-top: 2px dashed var(--border);
-  padding-top: 1rem;
-  text-align: center;
-  color: var(--link);
+/* Terminal Status Display - Gruvbox VHS Style */
+.terminal-container {
+  width: 85%;
+  background: linear-gradient(135deg, #1d2021, #282828);
+  border: 2px solid #d79921b0;
+  border-radius: 0;
+  box-shadow: 
+    0 0 20px #d7992150,
+    0 20px 20px #d7992130,
+    inset 0 0 10px rgba(215, 153, 33, 0.1);
+  overflow: hidden;
+  margin: 2rem auto 4rem;
+  position: relative;
+}
+
+.terminal-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(235, 219, 178, 0.03) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.terminal-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(235, 219, 178, 0.02);
+  animation: flicker 0.15s infinite linear alternate;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  100% { opacity: 0.98; }
+}
+
+/* .terminal-header { */
+/*   background: linear-gradient(135deg, #1d2021, #282828); */
+/*   padding: 0.9rem 1rem; */
+/*   border-bottom: 1px solid #d79921ee; */
+/*   font-size: 1rem; */
+/*   color: #d79921ee; */
+/*   text-transform: uppercase; */
+/*   letter-spacing: 1px; */
+/*   position: relative; */
+/*   z-index: 3; */
+/* } */
+
+/* .terminal-header::before { */
+/*   content: '● REC'; */
+/*   position: absolute; */
+/*   right: 1rem; */
+/*   top: 50%; */
+/*   transform: translateY(-50%); */
+/*   color: #fb4934; */
+/*   animation: blink-rec 2s infinite; */
+/*   font-weight: bold; */
+/* } */
+/**/
+/* @keyframes blink-rec { */
+/*   0%, 50% { opacity: 1; } */
+/*   51%, 100% { opacity: 0.3; } */
+/* } */
+
+/* .terminal-title { */
+/*   margin: 0; */
+/*   font-weight: bold; */
+/* } */
+
+.terminal-body {
+  padding: 1rem;
+  min-height: 280px;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  white-space: pre-wrap;
+  color: #ebdbb2;
+  position: relative;
+  z-index: 3;
+  overflow-x: auto;
+}
+
+.terminal-body::after {
+  content: '█';
+  color: #d79921;
+  display: inline;
+  animation: blink-cursor 1.2s infinite;
+  font-weight: bold;
+}
+
+.terminal-body.no-animation::after {
+  animation: none;
+}
+
+@keyframes blink-cursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.prompt {
+  color: #b8bb26; /* Gruvbox green */
+  font-weight: bold;
+}
+
+.status-active { 
+  color: #b8bb26; /* Gruvbox green */
+  text-shadow: 0 0 5px #b8bb26;
+}
+
+.status-loading { 
+  color: #fabd2f; /* Gruvbox yellow */
+  text-shadow: 0 0 5px #fabd2f;
+  animation: pulse-yellow 1.5s infinite;
+}
+
+.status-inactive { 
+  color: #928374; /* Gruvbox gray */
+}
+
+.status-error { 
+  color: #fb4934; /* Gruvbox red */
+  text-shadow: 0 0 5px #fb4934;
+}
+
+@keyframes pulse-yellow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.service-name { 
+  color: #83a598; /* Gruvbox blue */
+  font-weight: bold;
+}
+
+.service-url { 
+  color: #8ec07c; /* Gruvbox aqua */
+  font-style: italic;
+}
+
+.terminal-body {
+  text-shadow: 0 0 2px currentColor;
+}
+
+.terminal-body * {
+  text-shadow: inherit;
+}
+
+.terminal-container {
+  transform: perspective(300px) rotateX(8deg);
+  filter: contrast(1.1) brightness(1.05);
 }

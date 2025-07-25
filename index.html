@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>elleoma@0day ~ > ls</title>
+  <title>elleoma@logs ~ > ls</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,7 +13,7 @@
   <div class="scroll-container">
     <div class="center-window">
       <header>
-        <h1>elleoma@0day ~ > ls</h1>
+        <h1>elleoma@logs ~ > ls</h1>
         <nav>
           <a href="index.html">./home</a>
           <a href="projects.html">./projects</a>
@@ -26,6 +26,7 @@
       <main>
         <section class="terminal-box">
           <h2>whoami</h2>
+			    <img src="pfp.jpg" class="pfp" alt="elleoma" width="200" />
           <p>I'm a Ukrainian student and a unix/linux & open-source enthusiast, trying to get into cybersecurity, gain
             some practical skills.</p>
           <p>Check my blog post to see more...</p>
@@ -42,11 +43,18 @@
           </ul>
 
           <h3>Self-hosting</h3>
-          <p>I have a Raspberry Pi 5 (4GB RAM) and I'm currently hosting multiple services on it with Docker and
-            desec.io for DNS.</p>
+          <div class="terminal-container">
+            <div class="terminal-header">
+              <!-- <div class="terminal-title">SYSTEM MONITOR - RASPBERRY PI 5</div> -->
+            </div>
+            
+            <div class="terminal-body" id="main-terminal">elleoma@logs:~$ </div>
+          </div>
+
+          <p>I have a Raspberry Pi 5 (4GB RAM) and I'm currently hosting multiple services on it with Docker and desec.io for DNS.</p>
           <p dir="auto">
             <a target="_blank" rel="noopener noreferrer nofollow" href="../self-host.png">
-              <img src="../self-host.png" alt="My self-hosting setup" style="max-width: 100%;">
+              <img src="../self-host.png" alt="My self-hosting setup" style="max-width: 100%;" class="center">
             </a>
           </p>
 
@@ -64,6 +72,7 @@
       </footer>
     </div>
   </div>
+  <script src="terminal-status.js"></script>
 </body>
 
 </html>
