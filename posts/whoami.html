@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>elleoma@logs ~ > ls</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="styles-blog.css">
 </head>
 
 <body>
@@ -25,42 +25,40 @@
 
       <main>
         <section class="markdown-container">
-          <img src="../pfp.jpg" class="pfp" alt="elleoma" width="200" />
-          <h1>~ &gt; whoami</h1>
+          <img src="../pfp.jpg" class="align-to-right" alt="elleoma" width="200" />
           <p>I’m a Ukrainian student and a unix/linux & open-source enthusiast, trying to get into cybersecurity, gain
             some practical skills.</p>
 
-          <h2>My interests are:</h2>
+          <h2>My skills are:</h2>
           <ul>
             <li>Cybersecurity</li>
-            <li>Low-level programming: C, Rust, Zig, C++, Assembly</li>
-            <li>Reverse engineering (IDA, Ghidra, NinjaBinary)</li>
-            <li>Electrical engineering</li>
-            <li>PCB designing (KiCad — yet to try)</li>
+            <li>Penetration testing</li>
+            <li>Low-level programming: C, Rust, Assembly (RISC-V, x86-64), C++, Zig</li>
             <li>Self-hosting</li>
+            <li>Malware developmnet</li>
+            <li>Reverse engineering (IDA, Ghidra, NinjaBinary)</li>
             <li>A little bit of 3D</li>
             <li>A little bit of game development</li>
           </ul>
 
           <hr />
 
-          <h2>Self-hosting</h2>
-          <p>I have a Raspberry Pi 5 with 4GB of RAM running DietPi and nixpkgs (I hate outdated Debian packages).</p>
-          <p>Currently hosting a bunch of stuff on it via Docker containers with help of desec.io.</p>
-          <p dir="auto">
-            <a target="_blank" rel="noopener noreferrer nofollow" href="../self-host.png">
-              <img src="../self-host.png" alt="My self-hosting setup" style="max-width: 60%;" class="center">
-            </a>
-          </p>
-          <hr />
-
-          <h2>Some project I have</h2>
-          <h3><a class="post-title" href="https://git.forsen-cock.dedyn.io/elleoma/facinus">Facinus</a></h3>
+          <h2>Some projects I have</h2>
+          <h2><a class="post-title" href="https://github.com/elleoma/facinus" target="_blank">Facinus</a></h2>
           <p>Since our college switched from Windows to Ubuntu, I had a cool idea to remotely control my classroom PCs.
           </p>
-          <p>I discovered <code>gsocket.io</code> and started developing a tool that deploys a local web admin panel to
+          <p>I discovered <a href="https://gsocket.io/" target="_blank">gsocket.io</a> and started developing a tool that deploys a local web admin panel to
             collect logs from connected clients.</p>
           <p>I used an Ubuntu VM in QEMU and Bash scripted everything with some help of AI.</p>
+
+          <h3>OS-in-1000-lines</h3>
+          <p><a class="post-title" href="https://github.com/elleoma/os-in-1000-lines" target="_blank">OS Repo</a></h2>
+          <p>My implementation of <a href="https://operating-system-in-1000-lines.vercel.app/en">Operating System in 1000 lines</a> by <a href="https://www.shuwasystem.co.jp/author/a269003.html">Shinya Yanagita.</a></p>
+          <p>A small operating system written from scratch for RISC-V CPU architecture.</p>
+          <p>This project will have basic context switching, paging, user mode, a command-line shell, a disk device driver, and file read/write operations in C.</p>
+          <p>And also I'll try to add some more functionality to it.</p>
+          <p>Right now I'm still working on basic stuff before implementing something new.</p>
+          <p>I'm still learning C and Assembly, the RISC-V instruction set is new to me.</p>
 
           <hr />
 
@@ -72,16 +70,11 @@
           <p>I still have lots to learn, and I’d love to document all the tools and techniques I come across.</p>
 
           <h3>HackTheBox</h3>
-          <p>HTB gave me that initial hands-on boost I needed.As of right now I’ve solved more than 50 boxes (3 of them
+          <h4><a class="post-title" href="https://app.hackthebox.com/profile/1915061" target="_blank">My HTB profile</a></h4>
+          <p>HTB gave me that initial hands-on boost I needed. As of right now I’ve solved more than 50 boxes (3 of them
             “Insane”: DarkCorp, Mist, and MassGarden).</p>
           <p>Even though I sometimes rely on writeups and walkthroughs, I learn a lot from the infrastructure behind
             each box.</p>
-          <p>I’m not sure if using writeups spoils the learning, but for now it gives me clarity and saves time. I aim
-            to shift toward solving without spoilers in the future.</p>
-
-          <h3>Russian targets</h3>
-          <p>I’m Ukrainian, so I practice skills on real russian infrastructure. It’s morally right and beneficial,
-            especially in these times.</p>
 
           <hr />
 
@@ -94,30 +87,68 @@
 
           <hr />
 
+          <p dir="auto">
+            <a target="_blank" rel="noopener noreferrer nofollow" href="https://elleoma.github.io/self-host.png">
+              <img src="../self-host.png" alt="My self-hosting setup" style="width: 280px;" class="align-to-right">
+            </a>
+          </p>
+          <h2>Self-hosting</h2>
+          <p>I have a Raspberry Pi 5 with 4GB of RAM running DietPi and nixpkgs (I hate outdated Debian packages).</p>
+          <p>Currently hosting a bunch of stuff on it via Docker containers with help of desec.io.</p>
+
+          <hr />
+
+          <h2>Contact Me</h2>
+          <p>You can reach me via the following channels:</p>
+          <ul>
+            <li><strong>Email:</strong> <code>amoelle@proton.me | elleoma@forsen-cock.dedyn.io</code></li>
+            <li><strong>Matrix:</strong> <code>@elleoma:forsen-cock.dedyn.io</code></li>
+            <li><strong>Mastodon:</strong> <a href="https://soc.ua-fediland.de/@elleoma" target="_blank">@elleoma@soc.ua-fediland.de</a></li>
+            <li><strong>Twitter:</strong> <a href="https://x.com/0xAm03113" target="_blank">@0xAm03113</a></li>
+            <li><strong>My github:</strong> <a href="https://github.com/elleoma" target="_blank">https://github.com/elleoma</a></li>
+          </ul>
+
+          <hr />
+
           <h2>My setup</h2>
           <p>I use Arch Linux on a laptop — it just works and lets me get things done. I run Hyprland and use NVChad for
             Neovim.</p>
 
           <p>Here’s my <code>fastfetch</code> output:</p>
-          <pre><code>~/shit ❯ fastfetch
+          <div class="terminal-container">
 
-  OS : Arch Linux x86_64
-  Kernel : Linux 6.15.5-arch1-1
-  Display : 1920x1080 @ 144 Hz in 15" [Built-in]
-  Terminal : tmux 3.5a
-  
-  CPU : 12th Gen Intel(R) Core(TM) i7-12650H
-  GPU : GeForce RTX 4060 Max-Q / Mobile
-  GPU : UHD Graphics
-  GPU Driver : nvidia (proprietary) 575.64.03
-  GPU Driver : i915
-  OS Age : 182 days
-            </code></pre>
+            <div class="terminal-body" id="main-terminal">elleoma@logs ~/coolstuff &gt; fastfetch</div>
+                <pre><code class="terminal-body">
+                    ▄                         💻️ OS info:
+                   ▟█▙                     ┌────────────────────────────────┐
+                  ▟███▙                       OS: Arch Linux x86_64
+                 ▟█████▙                      Kernel: Linux 6.15.9-arch1-1
+                ▟███████▙                     Packages: 2103
+               ▂▔▀▜██████▙                    Display: 1920x1080@144 Hz
+              ▟██▅▂▝▜█████▙                   WM: Hyprland 0.50.1
+             ▟█████████████▙                  Terminal: tmux 3.5a
+            ▟███████████████▙              └────────────────────────────────┘
+           ▟█████████████████▙
+          ▟███████████████████▙               ⚙️ Hardware:
+         ▟█████████▛▀▀▜████████▙           ┌───────────────────────────────────┐
+        ▟████████▛      ▜███████▙             CPU: Intel Core i7-12650H
+       ▟█████████        ████████▙            GPU1: GeForce RTX 4060 / Mobile
+      ▟██████████        █████▆▅▄▃▂           GPU2: UHD Graphics
+     ▟██████████▛        ▜█████████▙          GPU1 Driver: nvidia
+    ▟██████▀▀▀              ▀▀██████▙         GPU2 Driver: i915
+   ▟███▀▘                       ▝▀███▙        Memory: 5.04 GiB / 15.32 GiB
+  ▟▛▀                               ▀▜▙   └────────────────────────────────────┘
+
+                </code></pre>
+
+            <div class="terminal-body" id="main-terminal">elleoma@logs ~/coolstuff &gt; </div>
+          </div>
 
           <p>My dotfiles are here: <a class="post-title"
               href="https://git.forsen-cock.dedyn.io/elleoma/dotfiles">dotfiles</a></p>
         </section>
       </main>
+
 
       <footer>
         <p><code>made with love ❤️</code></p>
