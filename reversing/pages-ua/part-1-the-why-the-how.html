@@ -2821,28 +2821,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-1---чому-як-">part 1 - чому, як ...</h2>
-<p>Це 2021 рік, і тут ми знову висвітлюємо новий курс інженера -зворотного інженера. Цей курс буде зосереджено на мові програмування C, на яку ми будемо статично змінювати складений бінарний ARM 32 elf, використовуючи налагоджувач Radare2 на мікроконтролері Raspberry Pio Pico.</p>
-<p>Що таке мікроконтролери? Серед інших пристроїв ми можемо знайти їх у транспортних засобах, роботах, офісних машинах, медичних пристроях, мобільних радіоприймачах, торгових автоматах та домашніх приладах. Вони є цілеспрямованими машинами, розробленими для управління невеликими ознаками більшого компонента, без складної передової операційної системи.</p>
-<p>Ми будемо писати дуже основні програми C, а потім повернути їх по одному в складі ARM 32.</p>
-<p>Я припускаю, що ви працюєте з дистрибуцією Ubuntu Linux ...</p>
-<p>Спочатку вам знадобиться Raspberry Pi Pico.</p>
-<p>Вам знадобиться Radare2 repo.</p>
+                                <h2 id="частина-1---чому-як">Частина 1 - Чому, Як...</h2>
+<p>2021 рік і знову ми починаємо новий курс зворотнього інжинірингу. Цей курс буде присвячений програмуванню на мові C, де ми статично зворотньо розіб'ємо скомпільований ARM 32 elf бінарний файл за допомогою Radare2 дебагера на мікроконтролері Raspberry Pi Pico.</p>
+<p>Що таке мікроконтролери? Їх можна знайти в транспортних засобах, роботах, офісних машинах, медичних приладах, мобільних радіотрансиверах, автоматидах і домашніх приладах тощо. Вони призначені для управління малими функціями більшого компонента, без складної передньої частини операційної системи.</p>
+<p>Ми будемо писати дуже прості програми на мові C і потім зворотньо розіб'ємо їх один за одним на ARM 32 збірці.</p>
+<p>Я припущу, що ви працюєте з дистрибутивом Ubuntu Linux...</p>
+<p>Вам спочатку потрібно мати Raspberry Pi Pico.</p>
+<p>Вам потрібно мати репозиторій Radare2.</p>
 <pre spellcheck="false">git clone https://github.com/radareorg/radare2.git
 cd radare2
-cd radare2&nbsp;sys/install.sh
+cd radare2&nbsp;sys/install.XyZ9PlH12ZuK8
 </pre>
 
-<p>Вам потрібно побудувати з джерела! Версії, які упаковуються в Ubuntu та Kali Linux, є старшими і не мають необхідних функцій для нашого рівня реверсування.</p>
-<p>Вам знадобиться Вім.</p>
+<p>Ви ЗАКОНЧЕНО ЗБУДОВАТИ З ІСТОРІЇ! Версії, які упаковані в Ubuntu і Kali Linux, старіші і не мають необхідних функцій для нашого рівня зворотнього інжинірингу.</p>
+<p>Вам потрібно мати VIM.</p>
 <pre spellcheck="false">sudo apt install vim
 </pre>
 
-<p>Вам потрібно буде оновити .VIMRC file.</p>
+<p>Вам потрібно оновити файл .vimrc file.</p>
 <pre spellcheck="false">vim ~/.vimrc
 </pre>
 
-<p>Тоді ...</p>
+<p>А потім...</p>
 <pre spellcheck="false">set number
 set tabstop=2 &nbsp; &nbsp;
 set shiftwidth=2
@@ -2851,7 +2851,7 @@ syntax on
 set syntax=c&nbsp;
 </pre>
 
-<p>Вам знадобиться Raspberry Pi Pico Repo.</p>
+<p>Вам потрібно мати репозиторій Raspberry Pi Pico.</p>
 <pre spellcheck="false">mkdir pico
 cd pico
 git clone -b master https://github.com/raspberrypi/pico-sdk.git
@@ -2863,7 +2863,7 @@ sudo apt update
 sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential&nbsp;
 </pre>
 
-<p>Давайте побудуємо програму Blink.</p>
+<p>Давайте побудуємо програму "блискавка".</p>
 <pre spellcheck="false">cd pico-examples
 mkdir build
 cd build
@@ -2873,9 +2873,9 @@ cd blink
 make
 </pre>
 
-<p>Скопіюйте <strong>blink.uf2 </strong>file у свій піко.</p>
-<p>Вітаємо, що ви отримали миготливу програму C!</p>
-<p>На нашому наступному уроці ми створимо просту програму "Привіт, Світ".</p>
+<p>Копіюйте файл <strong>blink.uf2 </strong>в свій Pico.</p>
+<p>Вітаємо! Ви створили блискучу програму на мові C!</p>
+<p>У наступному урокі ми створимо просту програму "Привіт, Світ!".</p>
 
                                 
                                 </section>
@@ -2919,7 +2919,7 @@ make
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 1 - The Why, The How...","level":"1.7.1","depth":2,"next":{"title":"Part 2 - Hello World","level":"1.7.2","depth":2,"path":"pages-ua/part-2-hello-world.md","ref":"pages-ua/part-2-hello-world.md","articles":[]},"previous":{"title":"Pico Hacking Course","level":"1.7","depth":1,"path":"pages-ua/pico-hacking-course.md","ref":"pages-ua/pico-hacking-course.md","articles":[{"title":"Part 1 - The Why, The How...","level":"1.7.1","depth":2,"path":"pages-ua/part-1-the-why-the-how.md","ref":"pages-ua/part-1-the-why-the-how.md","articles":[]},{"title":"Part 2 - Hello World","level":"1.7.2","depth":2,"path":"pages-ua/part-2-hello-world.md","ref":"pages-ua/part-2-hello-world.md","articles":[]},{"title":"Part 3 - Debugging Hello World","level":"1.7.3","depth":2,"path":"pages-ua/part-3-debugging-hello-world.md","ref":"pages-ua/part-3-debugging-hello-world.md","articles":[]},{"title":"Part 4 - Hacking Hello World","level":"1.7.4","depth":2,"path":"pages-ua/part-4-hacking-hello-world.md","ref":"pages-ua/part-4-hacking-hello-world.md","articles":[]},{"title":"Part 5 - char","level":"1.7.5","depth":2,"path":"pages-ua/part-5-char.md","ref":"pages-ua/part-5-char.md","articles":[]},{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"path":"pages-ua/part-6-debugging-char.md","ref":"pages-ua/part-6-debugging-char.md","articles":[]},{"title":"Part 7 - Hacking char","level":"1.7.7","depth":2,"path":"pages-ua/part-7-hacking-char.md","ref":"pages-ua/part-7-hacking-char.md","articles":[]},{"title":"Part 8 - int","level":"1.7.8","depth":2,"path":"pages-ua/part-8-int.md","ref":"pages-ua/part-8-int.md","articles":[]},{"title":"Part 9 - Debugging int","level":"1.7.9","depth":2,"path":"pages-ua/part-9-debugging-int.md","ref":"pages-ua/part-9-debugging-int.md","articles":[]},{"title":"Part 10 - Hacking int","level":"1.7.10","depth":2,"path":"pages-ua/part-10-hacking-int.md","ref":"pages-ua/part-10-hacking-int.md","articles":[]},{"title":"Part 11 - float","level":"1.7.11","depth":2,"path":"pages-ua/part-11-float.md","ref":"pages-ua/part-11-float.md","articles":[]},{"title":"Part 12 - Debugging float","level":"1.7.12","depth":2,"path":"pages-ua/part-12-debugging-float.md","ref":"pages-ua/part-12-debugging-float.md","articles":[]},{"title":"Part 13 - Hacking float","level":"1.7.13","depth":2,"path":"pages-ua/part-13-hacking-float.md","ref":"pages-ua/part-13-hacking-float.md","articles":[]},{"title":"Part 14 - double","level":"1.7.14","depth":2,"path":"pages-ua/part-14-double.md","ref":"pages-ua/part-14-double.md","articles":[]},{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"path":"pages-ua/part-15-debugging-double.md","ref":"pages-ua/part-15-debugging-double.md","articles":[]},{"title":"Part 16 - Hacking double","level":"1.7.16","depth":2,"path":"pages-ua/part-16-hacking-double.md","ref":"pages-ua/part-16-hacking-double.md","articles":[]},{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","ref":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","articles":[]},{"title":"Part 18 - \"FOR 800 YEARS HAVE I TRAINED JEDI!\", The FORCE That IS Input...","level":"1.7.18","depth":2,"path":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","ref":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","articles":[]},{"title":"Part 19 - Input","level":"1.7.19","depth":2,"path":"pages-ua/part-19-input.md","ref":"pages-ua/part-19-input.md","articles":[]},{"title":"Part 20 - Debugging Input","level":"1.7.20","depth":2,"path":"pages-ua/part-20-debugging-input.md","ref":"pages-ua/part-20-debugging-input.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-1-the-why-the-how.md","mtime":"2025-08-21T11:42:51.319Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 1 - The Why, The How...","level":"1.7.1","depth":2,"next":{"title":"Part 2 - Hello World","level":"1.7.2","depth":2,"path":"pages-ua/part-2-hello-world.md","ref":"pages-ua/part-2-hello-world.md","articles":[]},"previous":{"title":"Pico Hacking Course","level":"1.7","depth":1,"path":"pages-ua/pico-hacking-course.md","ref":"pages-ua/pico-hacking-course.md","articles":[{"title":"Part 1 - The Why, The How...","level":"1.7.1","depth":2,"path":"pages-ua/part-1-the-why-the-how.md","ref":"pages-ua/part-1-the-why-the-how.md","articles":[]},{"title":"Part 2 - Hello World","level":"1.7.2","depth":2,"path":"pages-ua/part-2-hello-world.md","ref":"pages-ua/part-2-hello-world.md","articles":[]},{"title":"Part 3 - Debugging Hello World","level":"1.7.3","depth":2,"path":"pages-ua/part-3-debugging-hello-world.md","ref":"pages-ua/part-3-debugging-hello-world.md","articles":[]},{"title":"Part 4 - Hacking Hello World","level":"1.7.4","depth":2,"path":"pages-ua/part-4-hacking-hello-world.md","ref":"pages-ua/part-4-hacking-hello-world.md","articles":[]},{"title":"Part 5 - char","level":"1.7.5","depth":2,"path":"pages-ua/part-5-char.md","ref":"pages-ua/part-5-char.md","articles":[]},{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"path":"pages-ua/part-6-debugging-char.md","ref":"pages-ua/part-6-debugging-char.md","articles":[]},{"title":"Part 7 - Hacking char","level":"1.7.7","depth":2,"path":"pages-ua/part-7-hacking-char.md","ref":"pages-ua/part-7-hacking-char.md","articles":[]},{"title":"Part 8 - int","level":"1.7.8","depth":2,"path":"pages-ua/part-8-int.md","ref":"pages-ua/part-8-int.md","articles":[]},{"title":"Part 9 - Debugging int","level":"1.7.9","depth":2,"path":"pages-ua/part-9-debugging-int.md","ref":"pages-ua/part-9-debugging-int.md","articles":[]},{"title":"Part 10 - Hacking int","level":"1.7.10","depth":2,"path":"pages-ua/part-10-hacking-int.md","ref":"pages-ua/part-10-hacking-int.md","articles":[]},{"title":"Part 11 - float","level":"1.7.11","depth":2,"path":"pages-ua/part-11-float.md","ref":"pages-ua/part-11-float.md","articles":[]},{"title":"Part 12 - Debugging float","level":"1.7.12","depth":2,"path":"pages-ua/part-12-debugging-float.md","ref":"pages-ua/part-12-debugging-float.md","articles":[]},{"title":"Part 13 - Hacking float","level":"1.7.13","depth":2,"path":"pages-ua/part-13-hacking-float.md","ref":"pages-ua/part-13-hacking-float.md","articles":[]},{"title":"Part 14 - double","level":"1.7.14","depth":2,"path":"pages-ua/part-14-double.md","ref":"pages-ua/part-14-double.md","articles":[]},{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"path":"pages-ua/part-15-debugging-double.md","ref":"pages-ua/part-15-debugging-double.md","articles":[]},{"title":"Part 16 - Hacking double","level":"1.7.16","depth":2,"path":"pages-ua/part-16-hacking-double.md","ref":"pages-ua/part-16-hacking-double.md","articles":[]},{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","ref":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","articles":[]},{"title":"Part 18 - \"FOR 800 YEARS HAVE I TRAINED JEDI!\", The FORCE That IS Input...","level":"1.7.18","depth":2,"path":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","ref":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","articles":[]},{"title":"Part 19 - Input","level":"1.7.19","depth":2,"path":"pages-ua/part-19-input.md","ref":"pages-ua/part-19-input.md","articles":[]},{"title":"Part 20 - Debugging Input","level":"1.7.20","depth":2,"path":"pages-ua/part-20-debugging-input.md","ref":"pages-ua/part-20-debugging-input.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-1-the-why-the-how.md","mtime":"2025-08-21T18:12:34.000Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

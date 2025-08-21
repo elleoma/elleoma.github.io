@@ -2821,64 +2821,63 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-8---хакерство-основного-вводувиводу">part 8 - хакерство основного вводу/виводу</h2>
-<p>Для повного змісту всіх уроків, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
-<p>Сьогодні ми зламаємо перевірку введення з нашого останнього уроку.</p>
-<p>Давайте розберемо radare2 в режимі запису.</p>
-<pre spellcheck="false">radare2 -w ./0x02_asm_64_basicio
+                                <p>Частина 8 - Хакінг базових I/O</p>
+<p>Для повного змісту змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
+<p>Сьогодні ми хакуємо валідацію вхідних даних з нашого останнього уроку.</p>
+<p>Давайте запустимо radare2 у режимі запису.</p>
+<pre spellcheck="false">XyZ9PlH1ZuK8 -w ./0x02_asm_64_basicio
 </pre>
 
-<p>Давайте автоматично проаналізуємо.</p>
+<p>Давайте зробимо аналіз автоматично.</p>
 <pre spellcheck="false">aaa
 </pre>
 
-<p>Прагнути до головного.</p>
+<p>Пошук до головної частини.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Переглянути демонстрацію.</p>
+<p>Переглянути розборку.</p>
 <pre spellcheck="false">v
 </pre>
 
-<p>Давайте повернемося до подання терміналу.</p>
+<p>Давайте повернемося до термінального перегляду.</p>
 <pre spellcheck="false">q
 </pre>
 
-<p>Давайте подивимось на візуальний графік і почнемо з першого <em>b.ne</em>, який за належних очікуваних умов він прийме лише дійсне ціле між <em>0</em> та <em>100</em>, як ми продемонстрували в останній лекції.</p>
-<p><em>B.ne</em> означає <em>branch, якщо не рівне</em>. Асамблея до того, як вона просто не має значення в цьому випадку, оскільки ми знаємо, якщо ми залишимо B.ne, як і вхідна перевірка буде в такті.</p>
-<p>Нам потрібно відключити цю перевірку введення, змінивши цю інструкцію на <em>b.eq</em> або <em>branch, якщо рівний</em>.</p>
-<p>Давайте розглянемо цей блок коду.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1607710722312.jpg"></img></div>
-
-<p>Ми бачимо, що якщо це правда, то це означає правильність, і у нас є ціле число між 0 і 100, ми будемо слідувати справжній зеленій лінії до наступної функції.</p>
-<p>Якщо ми не зможемо валідацію, ми будемо надсилати помилкову умову, щоб отримати новий вхід.</p>
-<p>Давайте Q до терміналу.</p>
+<p>Давайте подивимося візуальну графу і почнемо з першого <em>b.ne</em>, який під належними очікуваними умовами прийматиме лише справжній цілий рядок між <em>0</em> і <em>100</em>, як ми продемонстрували в останньому лекції.</p>
+<p><em>Б.н.е.</em> означає <em>галкнути якщо не рівно</em>. Ассемблер перед ним просто не має значення в цьому випадку, оскільки ми знаємо, що якщо залишити <em>б.н.е.</em> так, як воно, валідація вхідних даних залишиться ціла.</p>
+<p>Нам потрібно вимкнути цю валідацію вхідних даних, змінивши цю інструкцію на <em>б.рівно</em> або <em>галкнути якщо рівно</em>.</p>
+<p>Давайте подивимося цей блок коду.</p>
+<p><xyz9plh2zuk8 class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1607710722312.jpg"></img>&lt;/XyZ9PlH3ZuK8&gt;</xyz9plh2zuk8></p>
+<p>Ми бачимо, що якщо воно вірне, тобто валідація вірна і ми маємо ціле число між 0 і 100, ми слідуємо зеленій лінії до наступної функції.</p>
+<p>Якщо ми провалюємо валідацію, ми потрапимо до фальшивої умови, щоб отримати новий вхід.</p>
+<p>Давайте q до термінального запиту.</p>
 <pre spellcheck="false">qq
 </pre>
 
-<p>Давайте прагнемо до заяви, яку ми хочемо зламати.</p>
+<p>Давайте підійдемо до стану, який ми хочемо хакнути.</p>
 <pre spellcheck="false">[0x000010a4]&gt; s 0x000010c4
 </pre>
 
-<p>Давайте зараз зламаємо гілку, як обговорювалося.</p>
+<p>Давайте тепер хакнемо гілку, як було обговорено.</p>
 <pre spellcheck="false">[0x000010c4]&gt; wa b.eq 0x1214
 Written 4 byte(s) (b.eq 0x1214) = wx 800a0054
 [0x000010c4]&gt;
 </pre>
 
-<p>Давайте кинемо.</p>
+<p>Давайте вийдемо.</p>
 <pre spellcheck="false">q
 </pre>
 
-<p>Тепер, коли ми запустимо двійкову, він просто ігнорує будь -який вхід, не кажучи вже про перевірку введення та просто потрапить у потрібну точку.</p>
+<p>Тепер коли ми запустимо бінарний файл, він просто проігноруватиме будь-який вхід, навіть валідацію вхідних даних і просто досягне бажаного місця.</p>
 <pre spellcheck="false">kali@kali:~/Documents/0x02_asm_64_basicio$ ./0x02_asm_64_basicio
 Your are 0 years old, seems legit!
 kali@kali:~/Documents/0x02_asm_64_basicio$
 </pre>
 
-<p>Незважаючи на те, що 0 є дійсним, це просто нестабільне значення, яке сталося в одному з реєстрів, які, як очікується, буде належним чином призначена програма під час звичайного потоку програми. Тут нам вдалося назавжди змінити двійковий, щоб здійснити наш зло.</p>
-<p>Це дуже прості приклади, однак, коли ви поєднуєте їх під час прогресу, ви буквально зможете повернути інженер що завгодно.</p>
-<p>На нашому наступному уроці ми обговоримо тип даних Char примітивних даних.</p>
+<p>Хоча 0 є справжнім, він просто є нестабільним значенням, яке випадково знаходилося в одному з регістрів, який програма очікувала належним чином призначити під час нормальної програми потоку. Тут ми змогли змінити бінарний файл постійно, щоб здійснити наш хак.</p>
+<p>Ці приклади дуже прості, але коли ви поєднаєте їх, як ви прогресуєте, ви зможете фактично відшукати будь-яку річ.</p>
+<p>У нашому наступному уроку ми обговоримо примітивний тип даних char.</p>
 
                                 
                                 </section>
@@ -2922,7 +2921,7 @@ kali@kali:~/Documents/0x02_asm_64_basicio$
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 8 - Hacking Basic I/O","level":"1.6.8","depth":2,"next":{"title":"Part 9 - Character Primitive Datatype","level":"1.6.9","depth":2,"path":"pages-ua/part-9-character-primitive-datatype.md","ref":"pages-ua/part-9-character-primitive-datatype.md","articles":[]},"previous":{"title":"Part 7 - Debugging Basic I/O","level":"1.6.7","depth":2,"path":"pages-ua/part-7-debugging-basic-io.md","ref":"pages-ua/part-7-debugging-basic-io.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-8-hacking-basic-io.md","mtime":"2025-08-21T11:42:51.327Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 8 - Hacking Basic I/O","level":"1.6.8","depth":2,"next":{"title":"Part 9 - Character Primitive Datatype","level":"1.6.9","depth":2,"path":"pages-ua/part-9-character-primitive-datatype.md","ref":"pages-ua/part-9-character-primitive-datatype.md","articles":[]},"previous":{"title":"Part 7 - Debugging Basic I/O","level":"1.6.7","depth":2,"path":"pages-ua/part-7-debugging-basic-io.md","ref":"pages-ua/part-7-debugging-basic-io.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-8-hacking-basic-io.md","mtime":"2025-08-21T18:12:34.008Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

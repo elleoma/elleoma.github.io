@@ -2821,29 +2821,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-35---налагодження-asm-5--непряма-адреса-з-регістрами-">part 35 - налагодження ASM 5 \ [непряма адреса з регістрами ]</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>У нашій п'ятій програмі ми продемонстрували, як ми можемо маніпулювати непрямим зверненням до регістрів.</p>
+                                <h2 id="частина-35---дебагування-asm-5-indirect-addressing-зареєстрованими-регістрів">Частина 35 - Дебагування ASM 5 [Indirect Addressing Зареєстрованими регістрів]</h2>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>У нашому п'ятому програмі ми продемонстрували, як можна маніпулювати непрямою адресацією зареєстрованими регістрів.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520483251669.jpg"></img></div>
 
-<p>Я хочу почати з вирішення питання про те, чому я використовую синтаксис at&amp;t. На попередніх уроках я надав багато способів легко конвертувати між синтаксисом AT&amp;T та синтаксисом Intel.</p>
-<p>Я навмисно вибираю цей шлях, щоб він змусив вас бути комфортними з найскладнішою ароматом x86. Якщо ви плутаєте з цим синтаксисом, перегляньте попередні уроки, коли я переживаю відмінності між обома.</p>
-<p>Давайте резюме. Ми будемо використовувати objdump, щоб взяти складений бінар, такий як той, який ми склали на своєму останньому уроці, і показати, як ми можемо переглянути його вихідний код Intel.</p>
-<p><strong>objdump -d -M Intel непрямо \ <em>addressing \ </em> with \ _registers | grep \ _start.: -a24 </strong></p>
+<p>Я хочу почати з питання, чому я використовую синтаксис AT&amp;T. У попередніх лекціях я надав багато способів легко конвертувати між синтаксисом AT&amp;T та синтаксисом Intel.</p>
+<p>Я обрав цей шлях навмисно, щоб змусити вас відчувати себе комфортно з найбільш складною версією x86. Якщо ви заплуталися в цьому синтаксисі, будь ласка, перегляньте попередні уроки, оскільки я розповім про різниці між обома.</p>
+<p>Давайте підсумуємо. Ми використовуватимемо objdump, щоб взяти скомпільований байновий файл, такий як той вище, який ми скомпільували в нашій останній лекції, і показати, як можна переглянути його джерельний код Intel.</p>
+<p><strong>objdump -d -M intel indirect_addressing_with_registers | grep _start.: -A24 </strong></p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520148750030.jpg"></img></div>
 
-<p>Тепер поверніться до нашої регулярно запланованої програми.</p>
-<p>Давайте завантажимо двійкову в GDB і розірвемо на \ _start, крок кілька кроків і вивчимо 6 з 11 значень всередині етикетки Константи.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520145698959.jpg"></img></div>
-
-<p>Потім ми переміщуємо адресу пам'яті етикетки константів у edi і переміщуємо негайне значення 25 десятків у другий індекс нашого масиву. Це, по суті, хакер вихідного коду, оскільки ми змінюємо початкове значення від 8 до 25.</p>
-<p>Якщо ви вивчите вихідний код, ви бачите рядок 18, де ми завантажуємо значення 1 у edi. Майте на увазі, що це друге значення, оскільки масиви ґрунтуються на 0.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520241367735.jpg"></img></div>
-
-<p>Ви можете побачити, що ми змінили значення 8 десятків на 25, як пояснено.</p>
-<p>Це наше перше вступ до масивів на мові зборів. Важливо, щоб ви розуміли, як вони працюють так, як ви коли-небудь можете бути аналітиком зловмисного програмного забезпечення або інженером-зворотним, дивлячись на складену двійкову будь-яку кількість складених масивів вищого рівня.</p>
-<p>На нашому наступному уроці ми вручну зламаємо одну з значень у GDB. Майте на увазі, нам доведеться перезаписати вміст всередині фактичної адреси пам'яті з негайним значенням. Весело лише починається!</p>
-<p>Я з нетерпінням чекаю побачити вас на весь наступний тиждень, коли ми занурюємось у зламу нашої п'ятої програми Асамблеї!</p>
+<p>Тепер знову до нашого регулярного розкладу програми.</p>
+<p>Давайте завантажимо байновий файл у GDB і зупинімося на _start, крок кілька кроків і дослідимо 6 із 11 значень всередині метки констант.</p>
+<p><xyz9plh10zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520145698959.jpg"></img>&lt;/XyZ9PlH11ZuK8&gt;</xyz9plh10zuk8></p>
+<p>Далі ми перемістимо адресу пам'яті метки констант у edi і перемістимо безпосереднє значення 25 десятичне в другий індекс нашого масиву. Це насправді джерельний код хак, оскільки ми змінюємо оригінальне значення 8 на 25.</p>
+<p>Якщо ви перегляньте джерельний код, ви побачите рядок 18, де ми завантажуємо значення 1 у edi. Увага! Це друга значення, оскільки масиви починаються з 0.</p>
+<p><xyz9plh12zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520241367735.jpg"></img>&lt;/XyZ9PlH13ZuK8&gt;</xyz9plh12zuk8></p>
+<p>Ви бачите, що ми змінили значення 8 десятичне на 25, як пояснено.</p>
+<p>Це наш перший вступ до масивів у мові збірки. Важливо, щоб ви зрозуміли, як вони працюють, оскільки ви someday можуть стати фахівцем з боротьби з вірусами або фахівцем з відтворення, який розглядає скомпільований байновий файл будь-якої кількості вищих мов програмованих мов, скомпільованих масивів.</p>
+<p>У наступній лекції ми вручну змінимо одне з значень GDB. Увага! Ми повинні переписати вміст всередині справжньої адреси пам'яті з безпосереднім значенням. Веселі часи тільки починаються!</p>
+<p>Я чекаю на всіх вас наступної тижня, коли ми підемо до хакування нашого п'ятого програми збірки!</p>
+<p>Очікуйте мене наступної тижня, коли ми підемо до хакування нашого п'ятого програми збірки!</p>
 
                                 
                                 </section>
@@ -2887,7 +2886,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 35 - ASM Debugging 5 [Indirect Addressing With Registers]","level":"1.2.35","depth":2,"next":{"title":"Part 36 - ASM Hacking 5 [Indirect Addressing With Registers]","level":"1.2.36","depth":2,"path":"pages-ua/part-36-asm-hacking-5-indirect-addressing-with-registers.md","ref":"pages-ua/part-36-asm-hacking-5-indirect-addressing-with-registers.md","articles":[]},"previous":{"title":"Part 34 - ASM Program 5 [Indirect Addressing With Registers]","level":"1.2.34","depth":2,"path":"pages-ua/part-34-asm-program-5-indirect-addressing-with-registers.md","ref":"pages-ua/part-34-asm-program-5-indirect-addressing-with-registers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-35-asm-debugging-5-indirect-addressing-with-registers.md","mtime":"2025-08-21T11:42:51.325Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 35 - ASM Debugging 5 [Indirect Addressing With Registers]","level":"1.2.35","depth":2,"next":{"title":"Part 36 - ASM Hacking 5 [Indirect Addressing With Registers]","level":"1.2.36","depth":2,"path":"pages-ua/part-36-asm-hacking-5-indirect-addressing-with-registers.md","ref":"pages-ua/part-36-asm-hacking-5-indirect-addressing-with-registers.md","articles":[]},"previous":{"title":"Part 34 - ASM Program 5 [Indirect Addressing With Registers]","level":"1.2.34","depth":2,"path":"pages-ua/part-34-asm-program-5-indirect-addressing-with-registers.md","ref":"pages-ua/part-34-asm-program-5-indirect-addressing-with-registers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-35-asm-debugging-5-indirect-addressing-with-registers.md","mtime":"2025-08-21T18:12:34.006Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

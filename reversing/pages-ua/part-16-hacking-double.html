@@ -2821,87 +2821,34 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-16---хакерський-подвійний">part 16 - хакерський подвійний</h2>
-<p>Давайте переглянемо, що випливає, що випливає, що випливає</p>
-<pre spellcheck="false">#include &lt;stdio.h&gt;
-#include "pico/stdlib.h"
-
-int main()&nbsp;
-{
-&nbsp; stdio_init_all();
-
-&nbsp; while(1)&nbsp;
-&nbsp; {
-&nbsp; &nbsp; double x = 40.55555555555555555555;
-
-&nbsp; &nbsp; printf("%.16f\n", x)&nbsp;
-
-&nbsp; &nbsp; sleep_ms(1000);
-&nbsp; }
-
-&nbsp; return 0;
-}
-</pre>
-
-<p>Давайте розберемося в нашому налагоджувачі.</p>
-<pre spellcheck="false">radare2 -w arm -b 16 0x06_double.elf
-</pre>
-
-<p>Давайте автоматично проаналізуємо.</p>
-<pre spellcheck="false">aaaa
-</pre>
-
-<p>Давайте прагнемо до головного.</p>
-<pre spellcheck="false">s main
-</pre>
-
-<p>Перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp; і then&nbsp;<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого виду налагоджувача.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1620377345934.jpg"></img></div>
-
-<p>Наш мікроконтролер - це маленька ендіанська архітектура, як ми говорили раніше, тому, якщо ми збираємось змінити наше 40.5555555560000000 на 1,0, нам потрібно поставити це значення у зворотному порядку байтів, тому ...</p>
-<pre spellcheck="false">0x3ff00000
-</pre>
-
-<p>Потрібно бути ...</p>
-<pre spellcheck="false">0x0000f03f
-</pre>
-
-<p>Тому нам потрібно змінити значення на наступному.</p>
-<pre spellcheck="false">wx 0x0000f03f @ 0x00000344
-</pre>
-
-<p>Все, що нам потрібно зробити зараз, - це вийти та перетворити Ur&nbsp; <strong>. elf&nbsp;</strong>to&nbsp; <strong>. Uf2</strong>!</p>
-<pre spellcheck="false">./elf2uf2/elf2uf2 0x06_double.elf 0x06_double.uf2
-</pre>
-
-<p>Підключіть PICO і переконайтеся, що ви тримаєте завантаження або використовуєте налаштування, яку я надав у частині 2.</p>
-<pre spellcheck="false">cp 0x06_double.uf2 /Volumes/RPI-RP2
-</pre>
-
-<p>Давайте екранимо це!</p>
-<pre spellcheck="false">screen /dev/tty.usbmodem0000000000001
-</pre>
-
-<p>Ага так!</p>
-<pre spellcheck="false">1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-1.0000002380000000
-</pre>
-
-<p>Тепер ми повинні добре розуміти типи даних всередині С, щоб переглянути деякі трохи більші поняття.</p>
-<p>На нашому наступному уроці ми почнемо обговорювати вклад.</p>
+                                <h2 id="частина-16---хакінг-подвійного">Частина 16 - Хакінг подвійного</h2>
+<p>Давайте переглянемо <strong>0x06_double_MOD.c</strong>&nbsp;as.</p>
+<p>XyZ9PlH9ZуК8</p>
+<p>Давайте запустимо нашу відлагоджувальну систему.</p>
+<p>XyZ9PlH10ZуК8</p>
+<p>Давайте зробимо автоматичну аналітику.</p>
+<p>XyZ9PlH11ZуК8</p>
+<p>Давайте спробуємо потрапити до головної частини програми.</p>
+<p>XyZ9PlH12ZуК8</p>
+<p>Давайте перейдемо до візуального режиму, натиснувши <strong>V</strong> і потім <strong>p</strong> двічі, щоб потрапити до хорошого режиму відлагоджування.</p>
+<p>XyZ9PlH13ZуК8</p>
+<p>Наш мікроконтролер має малендійну архітектуру, як ми вже обговорювали раніше, тому якщо ми хочемо змінити свій 40.5555555560000000 на 1.0, нам потрібно помістити цю вартість у зворотньому порядку байтів, тому...</p>
+<p>XyZ9PlH14ZуК8</p>
+<p>Нам потрібно...</p>
+<p>XyZ9PlH15ZуК8</p>
+<p>Отже, нам потрібно змінити значення в наступному місці.</p>
+<p>XyZ9PlH16ZуК8</p>
+<p>Усі, чого ми маємо зробити зараз, це вийти і перетворити нашу <strong>.XyZ9PlH7ZуК8</strong> на <strong>.uf2</strong>!</p>
+<p>XyZ9PlH17ZуК8</p>
+<p>Під'єднайте Піко і переконайтеся, що ви тримаєте натиснутим BOOTSEL або використовуйте налаштування, які я надав у частині 2.</p>
+<p>XyZ9PlH18ZуК8</p>
+<p>Давайте побачимо!</p>
+<p>XyZ9PlH19ZуК8</p>
+<p>АХА, так!</p>
+<p>XyZ9PlH20ZуК8</p>
+<p>Тепер ми повинні мати хорошу розуміння даних типу в C, щоб переглянути деякі трохи більші концепції.</p>
+<p>У нашому наступному урокі ми почнемо обговорювати ввід.</p>
+<p>Український:.</p>
 
                                 
                                 </section>
@@ -2945,7 +2892,7 @@ int main()&nbsp;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 16 - Hacking double","level":"1.7.16","depth":2,"next":{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","ref":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","articles":[]},"previous":{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"path":"pages-ua/part-15-debugging-double.md","ref":"pages-ua/part-15-debugging-double.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-16-hacking-double.md","mtime":"2025-08-21T11:42:51.321Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 16 - Hacking double","level":"1.7.16","depth":2,"next":{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","ref":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","articles":[]},"previous":{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"path":"pages-ua/part-15-debugging-double.md","ref":"pages-ua/part-15-debugging-double.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-16-hacking-double.md","mtime":"2025-08-21T18:12:34.002Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

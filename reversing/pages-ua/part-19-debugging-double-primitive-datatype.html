@@ -2821,31 +2821,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-19---налагодження-подвійного-примітивного-типу-даних">part 19 - налагодження подвійного примітивного типу даних</h2>
-<p>Для повного змісту всіх уроків, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
-<p>Сьогодні ми збираємось налагодити наш дуже простий подвійний примітивний тип даних.</p>
-<p>Для початку давайте відкриємо наш двійковий у Radare2.</p>
-<pre spellcheck="false">radare2 ./0x06_asm64_double_primitive_datatype
+                                <h2 id="частина-19---дебагування-подвійної-примітивної-типової-даних">Частина 19 - Дебагування подвійної примітивної типової даних</h2>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
+<p>Сьогодні ми будемо дебагувати дуже просту подвійну примітивну типову дані.</p>
+<p>Для початку відкрийте нашу бінарну файл Radare2.</p>
+<pre spellcheck="false">XyZ9PlH1ZuK8 ./0x06_asm64_double_primitive_datatype
 </pre>
 
-<p>Давайте скористаємось функцією автоматичного аналізу Radare2.</p>
+<p>Давайте скористаємося функцією автоматичної аналізу Radare2.</p>
 <pre spellcheck="false">aaa
 </pre>
 
-<p>Наступне, що ми хочемо зробити логічно, - це розпалювати програму в режимі налагодження, щоб вона відображала сирий машинний код від диска до запущеного процесу.</p>
+<p>Наступним кроком буде логічно запустити програму в режимі дебагування, щоб вона відображала на диску в процесі виконання.</p>
 <pre spellcheck="false">ood
 </pre>
 
-<p>Тепер, коли у нас є екземпляр запуску, ми можемо прагнути до основної точки входу двійкового.</p>
+<p>Тепер, коли у нас є запущений екземпляр, ми можемо звернутися до головного вхідного пункту бінарного файлу.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Давайте пройдемо початкову експертизу, зробивши наступне.</p>
+<p>Давайте зробимо початкову експертизу, виконавши наступні дії.</p>
 <pre spellcheck="false">v
 </pre>
 
-<p>When dealing with double floating-point numbers in ARM64 we have to understand that we want to locate where the&nbsp;<em>fmov</em>&nbsp;instruction occurs where we take a value from our&nbsp;<em>w0</em>&nbsp;register and move it into the floating Point&nbsp;<em>d0</em>&nbsp;register. Ось де відбувається вся магія! Це так само, як наші номери з плаваючою комою, які мають справу з <em>S0</em>.</p>
-<p>Давайте визначимо точку розриву прямо під te&nbsp;<em>fmov</em>&nbsp;instruction. Пам'ятайте з ASLR, ваші адреси будуть різними, ніж цей приклад.</p>
+<p>При роботі з подвійними числами з плаваючою комою в ARM64 необхідно розуміти, що ми хочемо знайти місце виконання інструкції <em>fmov</em>, де ми беремо значення з нашого регістра <em>w0</em> і переміщаємо його в регістр плаваючої коми <em>d0</em>. Тут відбувається справжня магія! Це дуже подібно до нашої роботи з плаваючими комами, які працюють з <em>s0</em>.</p>
+<p>Давайте встановимо зупинку прямо нижче інструкції <em>fmov</em>. Пам'ятайте, що адреси в ASLR будуть різними від цього прикладу.</p>
 <pre spellcheck="false">[0x556bf809b4]&gt; db 0x556bf809c4
 [0x556bf809b4]&gt; dc
 hit breakpoint at: 0x556bf809c4
@@ -2853,15 +2853,16 @@ hit breakpoint at: 0x556bf809c4
 0x33333333
 </pre>
 
-<p>Ми переміщуємо Un&nbsp;<em>w0</em>&nbsp;register в <em>d0</em>, тому ми повинні змінити ці значення в <em>d0</em>&nbsp;, що відрізняється від нашого поплавця. Ми вивчимо це на наступному уроці.</p>
-<p>Давайте продовжувати показувати нашу цінність.</p>
+<p>Ми переміщаємо свій регістр <em>w0</em> в <em>d0</em>, тому ми обов'язково повинні змінити ці значення в <em>d0</em>, які відрізняються від нашого float. Ми розберемося в цьому в наступному уроку.</p>
+<p>Давайте продовжимо показувати нашу вартість.</p>
 <pre spellcheck="false">[0x556bf809c4]&gt; dc
 10.1
 (39979) Process exited with status=0x0
 [0x7fa37da0fc]&gt;
 </pre>
 
-<p>На нашому наступному уроці ми зламаємо цю цінність!</p>
+<p>У наступному урокі ми змінимо цю вартість!</p>
+<p>У наступному уроку ми зможемо змінити цю вартість!</p>
 
                                 
                                 </section>
@@ -2905,7 +2906,7 @@ hit breakpoint at: 0x556bf809c4
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 19 - Debugging Double Primitive Datatype","level":"1.6.19","depth":2,"next":{"title":"Part 20 - Hacking Double Primitive Datatype","level":"1.6.20","depth":2,"path":"pages-ua/part-20-hacking-double-primitive-datatype.md","ref":"pages-ua/part-20-hacking-double-primitive-datatype.md","articles":[]},"previous":{"title":"Part 18 - Double Primitive Datatype","level":"1.6.18","depth":2,"path":"pages-ua/part-18-double-primitive-datatype.md","ref":"pages-ua/part-18-double-primitive-datatype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-19-debugging-double-primitive-datatype.md","mtime":"2025-08-21T11:42:51.321Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 19 - Debugging Double Primitive Datatype","level":"1.6.19","depth":2,"next":{"title":"Part 20 - Hacking Double Primitive Datatype","level":"1.6.20","depth":2,"path":"pages-ua/part-20-hacking-double-primitive-datatype.md","ref":"pages-ua/part-20-hacking-double-primitive-datatype.md","articles":[]},"previous":{"title":"Part 18 - Double Primitive Datatype","level":"1.6.18","depth":2,"path":"pages-ua/part-18-double-primitive-datatype.md","ref":"pages-ua/part-18-double-primitive-datatype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-19-debugging-double-primitive-datatype.md","mtime":"2025-08-21T18:12:34.003Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

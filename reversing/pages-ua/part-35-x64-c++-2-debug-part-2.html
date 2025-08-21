@@ -2821,32 +2821,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-35---x64-c--2-налагодження--частина-2-">part 35 - x64 c ++ 2 налагодження \ [частина 2 ]</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Давайте розглянемо наш код:</p>
+                                <h2 id="частина-35---x64-c-2-дебаг-part-2">Частина 35 - x64 C++ 2 Дебаг [Part 2]</h2>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Давайте переглянемо свій код:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1561714810492.jpg"></img></div>
 
-<p>Компіляція:</p>
+<p>Компілюємо:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1561714836259.jpg"></img></div>
 
-<p>Бігати:</p>
+<p>Запускаємо:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1561714869555.jpg"></img></div>
 
-<p>Протягом буквально років я використовую GDB як налагоджувач вибору. Причина полягає в тому, що саме в кожній системі на основі Linux працює майже кожен IoT та сервер у світі. Крім того, є версії для Windows.</p>
-<p>Я з цим сильно боровся, але вирішив представити ще один налагоджувач на основі терміналу під назвою Radare 2. Причина, що мені так подобається Radare 2, полягає в тому, що він все ще є ще більш надійним на основі його функцій. Якщо ви запускаєте kali linux vm, як я тут, ви можете просто наведено нижче.</p>
-<p>Давайте відкриємо наш двійковий режим запису і просто проаналізуємо двійковий.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1561716186925.jpg"></img></div>
-
-<p>Гаразд, тут багато чого відбувається. Давайте розберемо його. Спочатку ми відкриваємо Radare 2 в режимі запису, ввівши '<strong>r2 -w ./1</strong>', а потім використовуємо команду '<strong>aaa</strong>' для аналізу двійкового. Потім ми використовуємо '<strong>s sym.main</strong>', щоб прагнути до основного рутини бінарного, який є нашою точкою входу. Тоді ми виконуємо команду '<strong>pdf</strong>', щоб розібрати двійкову.</p>
-<p>Ми бачимо, що ми називаємо прологом, де ми натискаємо <strong>rbp</strong> покажчик базового стека на стек. Потім ми переміщуємо <strong>RSP</strong> в <strong>RBP</strong> для безпечного зберігання, а потім залишаємо <strong>0x10</strong> HEX -байт або 16 десяткових байтів на стеку, щоб звільнити місце для нашої струни.</p>
-<p>Якщо нічого з цього не має сенсу, поверніться до початку підручника, щоб переглянути основні збори та регістри, як це критично, ви розумієте це, перш ніж ми рухаємось вперед.</p>
-<p>Ми можемо чітко побачити QWord '<strong>Hello World \ n</strong>' на адресі пам'яті <strong>0x2005</strong>, і тоді ми бачимо нашу бібліотеку C ++ call для вихідного потоку, який є <strong>cout </strong>то відображати наш рядок до терміналу.</p>
-<p>Давайте розглянемо <strong>0x2005</strong>, щоб переконатися, що наш рядок знаходиться в цьому місці:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1561715552920.jpg"></img></div>
-
-<p>Наступного тижня ми зламаємо значення та змінимо двійкову. Я настійно закликаю всіх вас встановити VirtualBox, який є безкоштовним, і отримати зображення VirtualBox Kali Linux та встановити VIM.</p>
-<p>У моїй попередній серії є навчальні посібники. Слідкуйте за злом наступного тижня!</p>
-
+<p>На мою думку, протягом багатьох років я використовував GDB як свій улюблений дебагер. Причина полягає в тому, що він знаходиться на кожному Linux-орієнтованому системі, яка працює майже на кожному IoT і сервері у світі. Крім того, існують версії для Windows.</p>
+<p>Я дуже важко працював над цим, але вирішив представити ще один термінальний дебагер під назвою Radare 2. Причина, чому я дуже люблю Radare 2, полягає в тому, що він ще й сьогодні є термінальним, але більш міцним за своїм функціональним набором. Якщо ви працюєте на віртуальній машині Kali Linux, як і я тут, ви можете просто виконати нижче.</p>
+<p>Давайте відкриємо свій байнері для запису та просто проаналізуємо байнері.</p>
+<p></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1561716186925.jpg"></img>&lt;/XyZ9PlH10ZuK8&gt;<p></p>
+<p>Ок, тут багато чого відбувається. Давайте розберемо це. Спочатку відкриємо Radare 2 у режимі запису, натиснувши '<strong>r2 -w ./1</strong>', а потім використаємо команду '<strong>aaa</strong>' для аналізу байнері. Потім використаємо команду '<strong>s sym.main</strong>' для звернення до головної частини байнері, яка є нашим вхідним точкою. Потім виконуватимемо команду '<strong>pdf</strong>' для розбору байнері.</p>
+<p>Ми бачимо, що називають прологом, де ми підкидаємо <strong>rbp</strong> вказівник стека на стік. Потім переміщаємо <strong>rsp</strong> в <strong>rbp</strong> для збереження та потім резервуємо <strong>0x10</strong> шістнадцяткові байти або 16 десяткові байти на стік, щоб звільнити місце для нашої строки.</p>
+<p>Якщо ніщо з цього не має сенсу, будь ласка, поверніться до початку навчальної серії, щоб переглянути основи збірки та регістрів, оскільки це КРИТИЧНО важливо, щоб ви зрозуміли це, перш ніж продовжувати далі.</p>
+<p>Ми дуже добре бачимо qword '<strong>Hello World\n</strong>' на адресі пам'яті <strong>0x2005</strong> і потім бачимо нашу бібліотеку C++ call для виведення потоку, який називається <strong>cout </strong> для виведення нашої строки в термінал.</p>
+<p>Давайте розглянемо <strong>0x2005</strong> для підтвердження того, що наша строка знаходиться саме там:</p>
+<p><xyz9plh11zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1561715552920.jpg"></img>&lt;/XyZ9PlH12ZuK8&gt;</xyz9plh11zuk8></p>
+<p>Наступна неділя ми змінимо значення та змінимо байнері. Я дуже рекомендую вам встановити VirtualBox, яке є вільним, та отримати віртуальну машину Kali Linux та встановити Vim також.</p>
+<p>Є навчальні матеріали щодо всього цього у моїй попередній серії. Підтримуйте мене наступної неділі!</p>
+<p>Давайте продовжимо далі наступної неділі!</p>
+</div>
                                 
                                 </section>
                             
@@ -2889,7 +2888,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 35 - x64 C++ 2 Debug [Part 2]","level":"1.5.35","depth":2,"next":{"title":"Part 36 - x64 C++ 3 Hacking [Part 3]","level":"1.5.36","depth":2,"path":"pages-ua/part-36-x64-c++-3-hacking-part-3.md","ref":"pages-ua/part-36-x64-c++-3-hacking-part-3.md","articles":[]},"previous":{"title":"Part 34 - x64 C++ 1 Code [Part 1]","level":"1.5.34","depth":2,"path":"pages-ua/part-34-x64-c++-1-code-part-1.md","ref":"pages-ua/part-34-x64-c++-1-code-part-1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-35-x64-c++-2-debug-part-2.md","mtime":"2025-08-21T11:42:51.325Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 35 - x64 C++ 2 Debug [Part 2]","level":"1.5.35","depth":2,"next":{"title":"Part 36 - x64 C++ 3 Hacking [Part 3]","level":"1.5.36","depth":2,"path":"pages-ua/part-36-x64-c++-3-hacking-part-3.md","ref":"pages-ua/part-36-x64-c++-3-hacking-part-3.md","articles":[]},"previous":{"title":"Part 34 - x64 C++ 1 Code [Part 1]","level":"1.5.34","depth":2,"path":"pages-ua/part-34-x64-c++-1-code-part-1.md","ref":"pages-ua/part-34-x64-c++-1-code-part-1.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-35-x64-c++-2-debug-part-2.md","mtime":"2025-08-21T18:12:34.006Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

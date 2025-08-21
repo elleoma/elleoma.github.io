@@ -2821,34 +2821,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-41---хакерські-змінні">part 41 - хакерські змінні!</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>У C у нас є кілька типів даних, до яких ми можемо створювати змінні. Я використаю кілька простих прикладів:</p>
+                                <h2 id="частина-41---хакінг-змінних">Частина 41 - Хакінг змінних!</h2>
+<p>Для повного змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>У C існує кілька типів даних, до яких ми можемо створювати змінні. Я використовуватиму кілька простих прикладів:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1566059490750.jpg"></img></div>
 
-<p>Давайте складемо і запустимо:</p>
+<p>Давайте скомпілюємо і запустимо:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1566059504696.jpg"></img></div>
 
-<p>Гаразд, як ми бачимо, у нас є персонаж ціле чи ціле подвійний. Це деякі з найосновніших типів даних у С, до яких ми створили ряд змінних, як показано вище.</p>
-<p>Давайте завантажимо двійкову в Радаре:</p>
+<p>Ок, як ми бачимо, ми маємо символ, ціле число і подвійне число. Це деякі з найбільш базових типів даних у C, до яких ми створили ряд змінних, як показано вище.</p>
+<p>Давайте завантажимо бінарний файл у Radare:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1566059659639.jpg"></img></div>
 
-<p>Давайте розібратися в Main:</p>
+<p>Давайте розіб'ємо на головній функції:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1566059725847.jpg"></img></div>
 
-<p>Гаразд, дуже просто ми бачимо 3 змінні декларації, визначені вгорі у зворотному порядку, оскільки вони <strong>local \ _1h </strong>, що є нашим <strong>Char A, </strong> <strong>LOCAL \ _8H</strong>, що є нашим <strong>int B</strong> і <strong>LOCAL \ _10H</strong>, що є нашим <strong>double C</strong>. Ви також можете побачити базовий вказівник <strong>RBP</strong> для розподілу місця для цих змінних. Це приємний псевдо -код, який налагоджувач показує вам вгорі.</p>
-<p>Гаразд, залишайся зі мною!</p>
-<p>В пам'яті на <strong>0x0000113d </strong> Ми бачимо інструкції <strong> -мови байт \ [local1 \ _h ], 0x61</strong>, що є в нашій таблиці ascii мала <strong>a '</strong>. Ми знаємо, що \ [local1 \ <em>h ] - це не реальний код Тому, якби ми зламали наш код на щось на зразок <strong>mov байт \ [rbp-0x1 ], 0x62 </strong> що ви думаєте? Дуже прості, ми знаємо, що насправді код за відображеною адресою пам'яті <strong>0x0000113d</strong> Що насправді відбувається, це <strong>-мові байт \ [rbp-0x1 ], 0x61</strong>. Просто те, що ми щойно зробили, - це зламати нашу цінність "<strong>a</strong>" до "<em>_b</em></em>". Це, сподіваємось, для вас має сенс.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1566060689050.jpg"></img></div>
-
-<p>Тепер давайте переглянемо наш двійковий:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1566060755864.jpg"></img></div>
-
-<p>Як ми чітко бачимо на адресі пам'яті <strong>0x0000113d </strong> Ми насправді див. <strong>B</strong> '. Ми успішно зламали цю порцію.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1566060872094.jpg"></img></div>
-
-<p>Ми виходимо з Radare і повторно запускаємо двійкову, і ми можемо побачити, що ми успішно зламали цінність.</p>
-<p>Час домашнього завдання! Я хочу, щоб ти з цими знаннями зараз зламала <strong>int</strong> та <strong>double</strong>. Я хочу, щоб ви поставили свої результати в розділах коментарів нижче. Дуже важливо, щоб ви набрали все це і фактично досліджували вправи, тому я з нетерпінням чекаю побачити ваші хаки в коментарях!</p>
+<p>Ок, дуже просто ми бачимо 3 декларації змінних визначені зверху в порядку зворотньому від того, яким вони були <strong>local_1h </strong>який є нашим <strong>char a,</strong> <strong>local_8h</strong> який є нашим <strong>int b</strong> і <strong>local_10h</strong> який є нашим <strong>double c</strong>. Ви також можете побачити <strong>rbp</strong> базовий вказівник, який виділяє місце для цих змінних. Це гарна псевдокод, який показує вам інструмент для відладки зверху.</p>
+<p>Ок, залишайтесь зі мною!</p>
+<p>У пам'яті на <strong>0x0000113d </strong> ми бачимо інструкції <strong>mov byte [local1_h], 0x61</strong> яка знаходиться в нашій таблиці ASCII нижній регістр '<strong>a'</strong>. Ми знаємо, що [local1_h] не справжній код, але що відбувається під капотом, це те, що ці змінні підхоплюються на стек в порядку зворотньому від того, яким вони були вище. Тому, якщо ми змінимо наш код на щось подібне <strong>mov byte [rbp-XyZ9PlH24ZuK8], 0x62 </strong>що відбувається? Вельми просто, ми знаємо, що насправді код на відображеній адресі пам'яті <strong>0x0000113d</strong> відбувається <strong>mov byte [rbp-XyZ9PlH26ZuK8], 0x61</strong>. Вельми просто, що ми зробили, це змінили значення нашого '<strong>a</strong>' на '<strong>b</strong>'. Це, надіяюся, повинно бути зрозуміло для вас.</p>
+<p><xyz9plh10zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1566060689050.jpg"></img>&lt;/XyZ9PlH11ZuK8&gt;</xyz9plh10zuk8></p>
+<p>Тепер давайте знову розглянемо наш бінарний файл:</p>
+<p><xyz9plh12zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1566060755864.jpg"></img>&lt;/XyZ9PlH13ZuK8&gt;</xyz9plh12zuk8></p>
+<p>Як ми можемо побачити на адресі пам'яті <strong>0x0000113d </strong> ми насправді бачимо '<strong>b</strong>'. Ми успішно змінили цю частину.</p>
+<p><xyz9plh14zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1566060872094.jpg"></img>&lt;/XyZ9PlH15ZuK8&gt;</xyz9plh14zuk8></p>
+<p>Ми виходимо з Radare і знову запускаємо бінарний файл і бачимо, що ми успішно змінили значення.</p>
+<p>Час для домашньої роботи! Я хочу, щоб ви використовуючи цю інформацію тепер змінили <strong>int</strong> і <strong>double</strong>. Я хочу, щоб ви розмістили свої результати в секції коментарів нижче. Важливо, щоб ви написали все це і фактично дослідили завдання, тому я чекаю побачити ваші зміни в коментарях!</p>
 
                                 
                                 </section>
@@ -2892,7 +2889,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 41 - Hacking Variables!","level":"1.5.41","depth":2,"next":{"title":"Part 42 - Hacking Branches!","level":"1.5.42","depth":2,"path":"pages-ua/part-42-hacking-branches!.md","ref":"pages-ua/part-42-hacking-branches!.md","articles":[]},"previous":{"title":"Part 40 - Hacking Hello World!","level":"1.5.40","depth":2,"path":"pages-ua/part-40-hacking-hello-world!.md","ref":"pages-ua/part-40-hacking-hello-world!.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-41-hacking-variables!.md","mtime":"2025-08-21T11:42:51.326Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 41 - Hacking Variables!","level":"1.5.41","depth":2,"next":{"title":"Part 42 - Hacking Branches!","level":"1.5.42","depth":2,"path":"pages-ua/part-42-hacking-branches!.md","ref":"pages-ua/part-42-hacking-branches!.md","articles":[]},"previous":{"title":"Part 40 - Hacking Hello World!","level":"1.5.40","depth":2,"path":"pages-ua/part-40-hacking-hello-world!.md","ref":"pages-ua/part-40-hacking-hello-world!.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-41-hacking-variables!.md","mtime":"2025-08-21T18:12:34.007Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2821,21 +2821,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-8---int">part 8 - int</h2>
-<p>Сьогодні ми будемо працювати з типом даних int, який є не що інше, як цілі цифри. Вони також можуть бути підписані або непідписані.</p>
-<p>Давайте попрацюємо з простим прикладом. <strong>0x04 \ _int.c</strong> наступним чином.</p>
+                                <h2 id="частина-8---int">Частина 8 - int</h2>
+<p>Сьогодні ми працюємо з типом даних int, які нічим не відрізняються від цілочисельних значень. Вони можуть бути підписаними або несписаними.</p>
+<p>Давайте розглянемо простий приклад. <strong>0x04_int.c</strong> виглядає так.</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include "pico/stdlib.h"
 
-int main()&nbsp;
+XyZ9PlH6ZuK8 main()&nbsp;
 {
 &nbsp; stdio_init_all();
 
 &nbsp; while(1)&nbsp;
 &nbsp; {
-&nbsp; &nbsp; int x = 40;&nbsp;
+&nbsp; &nbsp; XyZ9PlH7ZuK8 x = 40;&nbsp;
 
-&nbsp; &nbsp; printf("%d\n", x);&nbsp;
+&nbsp; &nbsp; XyZ9PlH0ZuK8("%d\n", x);&nbsp;
 
 &nbsp; &nbsp; sleep_ms(1000);
 &nbsp; }
@@ -2844,8 +2844,8 @@ int main()&nbsp;
 }
 </pre>
 
-<p>Тут ми просто маємо нашу стандартну функцію IO, а потім наша нескінченна петля. Ми просто призначаємо <em>40</em> типу даних int <em>X</em> та роздрукуємо його за допомогою модифікатора формату <em>%D</em> і спите для <em>1</em> секунди.</p>
-<p>Давайте зробимо новий dir&nbsp;<strong>0x04 \ _int</strong>&nbsp;and додайте ur&nbsp;<strong>cmakelists.txt</strong>&nbsp;file в ньому.</p>
+<p>У цьому випадку ми просто використовуємо наш стандартний функціонал IO, який слідує за нашою нескінченною петлею. Ми просто присвоюємо <em>40</em> типу даних int змінній <em>x</em> і друкуємо її за допомогою формату <em>%d</em> і спляємо протягом <em>1</em> секунди.</p>
+<p>Давайте створимо новий каталог <strong>0x04_int</strong>&nbsp;and і додамо наш <strong>CMakeLists.txt</strong> file в нього.</p>
 <pre spellcheck="false">cmake_minimum_required(VERSION 3.13)
 
 include(pico_sdk_import.cmake)
@@ -2866,11 +2866,11 @@ pico_add_extra_outputs(0x04_int)
 target_link_libraries(0x04_int pico_stdlib)
 </pre>
 
-<p>Далі нам потрібно скопіювати the&nbsp;<strong>pico \ _sdk \ _import.cmake</strong>&nbsp;file із зовнішньої папки в the&nbsp;<strong>pico-sdk</strong>&nbsp;installation tot to the&nbsp;<strong>0x04 \ _int</strong>&nbsp;project.</p>
+<p>Далі нам потрібно скопіювати <strong>pico_sdk_import.cmake</strong>&nbsp;file з зовнішнього каталогу в інсталяцію <strong>pico-sdk</strong> в каталог <strong>0x04_int</strong>&nbsp;project.</p>
 <pre spellcheck="false">cp ../pico-sdk/external/pico_sdk_import.cmake .
 </pre>
 
-<p>Нарешті ми готові до будівництва.</p>
+<p>Нарешті, ми готові до будівництва.</p>
 <pre spellcheck="false">mkdir build
 cd build
 export PICO_SDK_PATH=../../pico-sdk
@@ -2878,19 +2878,19 @@ cmake ..
 make
 </pre>
 
-<p>Потім просто скопіюйте the&nbsp; <strong>. Uf2</strong>&nbsp;file на привід.</p>
+<p>Далі просто скопіюйте файл <em>.uf2_</em> file в диск.</p>
 <pre spellcheck="false">cp 0x04_int.uf2 /Volumes/RPI-RP2
 </pre>
 
-<p>Тоді нам потрібно знайти USB -накопичувач, щоб ви могли зробити наступне.</p>
+<p>Далі нам потрібно знайти зовнішній диск, щоб ви могли виконати наступні дії.</p>
 <pre spellcheck="false">ls /dev/tty.
 </pre>
 
-<p>Натисніть вкладку, щоб знайти накопичувач, а потім у моєму випадку я буду використовуватикси9plh29zuk8<strong>screen</strong>&nbsp;to Connect.</p>
+<p>Натисніть табуляцію, щоб знайти диск, а потім у моїй ситуації я використовую <strong>screen</strong> для підключення.</p>
 <pre spellcheck="false">screen /dev/tty.usbmodem0000000000001
 </pre>
 
-<p>Ви повинні бачити, як <em>40</em> надрукується щосекунди.</p>
+<p>Ви повинні побачити, що <em>40</em> друкується кожну секунду.</p>
 <pre spellcheck="false">40
 40
 40
@@ -2905,7 +2905,7 @@ make
 40
 </pre>
 
-<p>На нашому наступному уроці ми будемо налагодити.</p>
+<p>У наступній лекції ми навчимося відлагоджувати.</p>
 
                                 
                                 </section>
@@ -2949,7 +2949,7 @@ make
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 8 - int","level":"1.7.8","depth":2,"next":{"title":"Part 9 - Debugging int","level":"1.7.9","depth":2,"path":"pages-ua/part-9-debugging-int.md","ref":"pages-ua/part-9-debugging-int.md","articles":[]},"previous":{"title":"Part 7 - Hacking char","level":"1.7.7","depth":2,"path":"pages-ua/part-7-hacking-char.md","ref":"pages-ua/part-7-hacking-char.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-8-int.md","mtime":"2025-08-21T11:42:51.327Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 8 - int","level":"1.7.8","depth":2,"next":{"title":"Part 9 - Debugging int","level":"1.7.9","depth":2,"path":"pages-ua/part-9-debugging-int.md","ref":"pages-ua/part-9-debugging-int.md","articles":[]},"previous":{"title":"Part 7 - Hacking char","level":"1.7.7","depth":2,"path":"pages-ua/part-7-hacking-char.md","ref":"pages-ua/part-7-hacking-char.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-8-int.md","mtime":"2025-08-21T18:12:34.009Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2821,21 +2821,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-27---налагодження-цілих-змінних">part 27 - налагодження цілих змінних</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Давайте розглянемо наш код.&nbsp;i знову хоче включити інформацію нижче з уроку минулого тижня, щоб підкреслити, що відбувається щодо цілих чисел.</p>
-<p>32-бітний реєстр може зберігати 2^32 різні значення. Діапазон цілих значень, які можна зберігати в 32 бітах, залежить від використання цілого представлення. З двома найпоширенішими уявленнями, діапазон становить від 0 до 4,294,967,295 (2^32 - 1) для представлення як (неподписаного) бінарного числа та −2,147,483,648 (−2^31) через 2,147,483,647 (2^31 - 1) для представлення як два доповнення.</p>
-<p>Майте на увазі 32-бітні адреси пам'яті, ви можете безпосередньо отримати доступ до максимуму 4 ГБ пам'яті, що відповідає байтом.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520217390524.jpg"></img></div>
-
-<p>Давайте налагоджуємо!</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520233314454.jpg"></img></div>
-
-<p>Ми бачимо на <strong>main+12 </strong> Адреса за адресою <strong>0x10730 </strong> Завантаження даних у <strong>R3 </strong>. &nbsp;LET's уважніше подивився.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520192010424.jpg"></img></div>
-
-<p>Коли ми вивчаємо дані всередині <strong>0x10730</strong>, ми чітко бачимо ціле число <strong>7777 </strong>777 <strong>echoce назад до терміналу, який має сенс, коли ми використовуємо функцію </strong>cout__ в C ++. \ #ReverseNegineering</p>
-<p>Наступного тижня ми зануримось у зламати цілі змінні.</p>
+                                <h2 id="частина-27-–-дебагування-цілих-змінних">Частина 27 – Дебагування цілих змінних</h2>
+<p>Для повного змісту змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Давайте переглянемо свій код. <xyz9plh1zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520217390524.jpg"></img>&lt;/XyZ9PlH2ZuK8&gt;</xyz9plh1zuk8></p>
+<p>Я знову хочу включити нижченаведену інформацію з попереднього тижневого уроку, щоб підкреслити, що відбувається щодо цілих чисел.</p>
+<p>32-бітний регістр може зберігати 2^32 різні значення. Варіант цілих чисел, які можна зберігати в 32 бітах, залежить від використовуваної представлення цілих чисел. З двох найбільш поширених представлень діапазон становить 0 до 4 294 967 295 (2^32 − 1) для представлення як не підписаного бінарного числа, а від −2 147 483 648 (−2^31) до 2 147 483 647 (2^31 − 1) для представлення як двійкового доповнення.</p>
+<p>Увага! З 32-бітними адресами пам'яті можна безпосередньо звертатися до максимально можливої кількості 4 ГБ адресованих байтами пам'яті.</p>
+<p><xyz9plh3zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520233314454.jpg"></img>&lt;/XyZ9PlH4ZuK8&gt;</xyz9plh3zuk8></p>
+<p>Давайте дебагуємо!</p>
+<p><xyz9plh5zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520192010424.jpg"></img>&lt;/XyZ9PlH6ZuK8&gt;</xyz9plh5zuk8></p>
+<p>Ми бачимо в <strong>main+12 </strong>адресу <strong>0x10730 </strong>завантажує дані в <strong>r3</strong>. Давайте взглянемо на це більш детально.</p>
+<p>#linux</p>
+<p>При огляді даних всередині <strong>0x10730</strong> ми чітко бачимо ціле число <strong>777</strong>. Коли ми продовжимо, ми побачимо <strong>777 </strong>відповідь знову в терміналі, що має сенс, оскільки ми використовували функцію <strong>cout</strong> в c++. #arm #asm #cplusplus #reverseengineering</p>
+<p>Наступного тижня ми вийдемо в Хакінг цілих змінних.</p>
 
                                 
                                 </section>
@@ -2879,7 +2877,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 27 – Debugging Integer Variables","level":"1.4.27","depth":2,"next":{"title":"Part 28 – Hacking Integer Variables","level":"1.4.28","depth":2,"path":"pages-ua/part-28-hacking-integer-variables.md","ref":"pages-ua/part-28-hacking-integer-variables.md","articles":[]},"previous":{"title":"Part 26 – Integer Variables","level":"1.4.26","depth":2,"path":"pages-ua/part-26-integer-variables.md","ref":"pages-ua/part-26-integer-variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-27-debugging-integer-variables.md","mtime":"2025-08-21T11:42:51.323Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 27 – Debugging Integer Variables","level":"1.4.27","depth":2,"next":{"title":"Part 28 – Hacking Integer Variables","level":"1.4.28","depth":2,"path":"pages-ua/part-28-hacking-integer-variables.md","ref":"pages-ua/part-28-hacking-integer-variables.md","articles":[]},"previous":{"title":"Part 26 – Integer Variables","level":"1.4.26","depth":2,"path":"pages-ua/part-26-integer-variables.md","ref":"pages-ua/part-26-integer-variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-27-debugging-integer-variables.md","mtime":"2025-08-21T18:12:34.005Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

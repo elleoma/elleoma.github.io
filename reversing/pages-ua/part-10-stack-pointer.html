@@ -2821,51 +2821,44 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-10---вказівник-стека">part 10 - вказівник стека</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Стек - це абстрактний тип даних, до якого є LIFO (останнє в спочатку) .&nbsp;, коли ми відштовхуємо значення на стек, який він переходить у вказівник стека і коли він вискакує зі стека, він вискакує значення зі стека і в реєстр обраних.</p>
-<p>Код часу! Знову ж таки, не відлякуйте, якщо ви не розумієте все в прикладі коду тут.&nbsp;it стане зрозумілим протягом наступних кількох уроків.</p>
+                                <p>Частина 10 - Стековий вказівник</p>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Стек - це абстрактний тип даних, який є LIFO (Last In First Out). Коли ми надсилаємо значення на стек, воно потрапляє в стековий вказівник, а коли воно видаляється з стека, воно видаляється зі стека і потрапляє в регістр, який ви оберігаєте.</p>
+<p>Код часу! Опять же, не розчаровуйтеся, якщо ви не розумієте всього в прикладі коду тут. Воно стане ясним протягом наступних кількох уроків.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520149187367.jpg"></img></div>
 
-<p>Компілювати:</p>
+<p>Для компіляції:</p>
 <pre spellcheck="false">as -o sp_demo.o sp_demo.s
 
 ld -o sp_demo sp_demo.o
 </pre>
 
-<p>Ще раз дозволяє завантажити двійкову в GDB, щоб побачити, що відбувається.</p>
+<p>Ще раз завантажуємо бінарний файл в GDB, щоб побачити, що відбувається.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520209893418.jpg"></img></div>
 
-<p>Давайте вступити в один раз.</p>
+<p>Давайте крок за кроком увійдемо один раз.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520232603248.jpg"></img></div>
 
-<p>Ми бачимо, що <strong>hex 30</strong> або <strong>48 Decimal</strong> перейшов у <strong>R7 </strong>. &nbsp;LETS знову вступає.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520238832288.jpg"></img></div>
-
-<p>Ми бачимо значення <strong>sp</strong> зміна від <strong>0x7efff3a0</strong> до <strong>0xefff39c </strong>. &nbsp;that - це рух назад <strong>4 байт </strong>.</p>
-<p>Відповідь обертається тим, що стек росте <strong> вниз </strong>. &nbsp;, коли ми говоримо, що верхня частина стека ви можете уявити серію табличок, що розміщуються <strong>beneath</strong> один одного.</p>
-<p>Спочатку <strong>sp</strong> був на <strong>0x7efff3a0</strong>.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520218097215.jpg"></img></div>
-
-<p>Коли ми натиснули <strong>R7</strong> на стек, нова цінність покажчика <strong>Stack</strong> зараз <strong>0x7efff39c</strong>, щоб ми могли бачити, як стек справді зростає <strong>downward</strong> в пам'яті.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520239285552.jpg"></img></div>
-
-<p>Тепер давайте знову вступити.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520143279567.jpg"></img></div>
-
-<p>Ми можемо побачити значення <strong>hex 10</strong> або <strong>decimal 16</strong> переміщено в <strong>r7 </strong>. &nbsp;notice <strong>sp</strong> не змінився.</p>
-<p>Перш ніж ми знову вступимо, давайте подивимось на значення всередині <strong>SP</strong>.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520216970660.jpg"></img></div>
-
-<p>Давайте знову вступити.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520233070958.jpg"></img></div>
-
-<p>Ми бачимо, що цінність у стеку була вискакувана зі стека і повернулася назад у <strong>R7</strong>, тому значення <strong>HEX 30</strong> повертається в <strong>R7</strong>, а також <strong>SP</strong> повернеться на <strong>0x73fff3a0</strong>.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520232081853.jpg"></img></div>
-
-<p>Будь ласка, знайдіть час, щоб ввести код, компілювати та зв’язати його, а потім перейти через двійковий у GDB.&nbsp;STACK Операції є критично важливими для розуміння зворотного інженерного та зловмисного аналізу, а також будь -якої налагодження.</p>
-<p>Наступного тижня ми зануримось у процедури завантаження мікропрограмного забезпечення ARM.</p>
-
+<p>Ми бачимо <strong>hex 30</strong> або <strong>48 десятичний</strong> переміщений в <strong>r7</strong>. Давайте крок за кроком увійдемо знову.</p>
+<p></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520238832288.jpg"></img>&lt;/XyZ9PlH10ZuK8&gt;<p></p>
+<p>Ми бачимо зміну значення <strong>sp</strong> від <strong>0x7efff3a0</strong> до <strong>0xefff39c</strong>. Це зміна на <strong>4 байти</strong> назад. Чому стековий вказівник рухається назад, ви можете запитати!</p>
+<p>Відповідь полягає в тому, що стек зростає <strong>НИЗКАРОКУ</strong>. Коли ми кажемо, що верхня частина стека, ви можете уявити собі ряд тарілок, які розміщені <strong>НИЖЧЕ</strong> одна від іншої.</p>
+<p>Оригінально <strong>sp</strong> був у <strong>0x7efff3a0</strong>.</p>
+<p><xyz9plh11zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520218097215.jpg"></img>&lt;/XyZ9PlH12ZuK8&gt;</xyz9plh11zuk8></p>
+<p>Коли ми надіслали <strong>r7</strong> на стек, нове значення <strong>Стековий вказівник</strong> тепер <strong>0x7efff39c</strong>, тому ми бачимо, що Стек справжньо зростає <strong>НИЗКАРОКУ</strong> в пам'яті.</p>
+<p><xyz9plh13zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520239285552.jpg"></img>&lt;/XyZ9PlH14ZuK8&gt;</xyz9plh13zuk8></p>
+<p>Давайте крок за кроком увійдемо знову.</p>
+<p><xyz9plh15zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520143279567.jpg"></img>&lt;/XyZ9PlH16ZuK8&gt;</xyz9plh15zuk8></p>
+<p>Ми бачимо значення <strong>hex 10</strong> або <strong>16 десятичний</strong> переміщений в <strong>r7</strong>. Зверніть увагу, що <strong>sp</strong> не змінився.</p>
+<p>До того, як крок за кроком увійти знову, давайте подивимося на значення всередині <strong>sp</strong>.</p>
+<p><xyz9plh17zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520216970660.jpg"></img>&lt;/XyZ9PlH18ZuK8&gt;</xyz9plh17zuk8></p>
+<p>Давайте крок за кроком увійдемо знову.</p>
+<p><xyz9plh19zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520233070958.jpg"></img>&lt;/XyZ9PlH20ZuK8&gt;</xyz9plh19zuk8></p>
+<p>Ми бачимо, що значення в стеку було виведено зі стека і повернуто в <strong>r7</strong>, тому значення <strong>hex 30</strong> знову знаходиться в <strong>r7</strong>, а також <strong>sp</strong> знову знаходиться в <strong>0x73fff3a0</strong>.</p>
+<p><xyz9plh21zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520232081853.jpg"></img>&lt;/XyZ9PlH22ZuK8&gt;</xyz9plh21zuk8></p>
+<p>Будь ласка, візьміть час, щоб набрати код, скомпільувати і зв'язати його, а потім крок за кроком пройдіть бінарний файл в GDB. Стекові операції критичні для розуміння відтворення інженерії і аналізу шкідливого програмного забезпечення, а також будь-якої відладки будь-якого типу.</p>
+<p>Наступного тижня ми вийдемо в ARM Фірмові процедури завантаження.</p>
+</div>
                                 
                                 </section>
                             
@@ -2908,7 +2901,7 @@ ld -o sp_demo sp_demo.o
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 10 - Stack Pointer","level":"1.3.10","depth":2,"next":{"title":"Part 11 - ARM Firmware Boot Procedures","level":"1.3.11","depth":2,"path":"pages-ua/part-11-arm-firmware-boot-procedures.md","ref":"pages-ua/part-11-arm-firmware-boot-procedures.md","articles":[]},"previous":{"title":"Part 9 - Link Register","level":"1.3.9","depth":2,"path":"pages-ua/part-9-link-register.md","ref":"pages-ua/part-9-link-register.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-10-stack-pointer.md","mtime":"2025-08-21T11:42:51.319Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 10 - Stack Pointer","level":"1.3.10","depth":2,"next":{"title":"Part 11 - ARM Firmware Boot Procedures","level":"1.3.11","depth":2,"path":"pages-ua/part-11-arm-firmware-boot-procedures.md","ref":"pages-ua/part-11-arm-firmware-boot-procedures.md","articles":[]},"previous":{"title":"Part 9 - Link Register","level":"1.3.9","depth":2,"path":"pages-ua/part-9-link-register.md","ref":"pages-ua/part-9-link-register.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-10-stack-pointer.md","mtime":"2025-08-21T18:12:34.000Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

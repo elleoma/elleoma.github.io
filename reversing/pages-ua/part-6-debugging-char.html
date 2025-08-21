@@ -2821,8 +2821,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-6---налагодження-char">part 6 - налагодження char</h2>
-<p>Сьогодні ми налагоджуємо програму CHAR. Давайте розглянемо код.</p>
+                                <p>Частина 6 - Дебагування char</p>
+<p>Сьогодні ми дебагуємо програму char. Давайте переглянемо код.</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include "pico/stdlib.h"
 
@@ -2843,70 +2843,70 @@ int main()&nbsp;
 }
 </pre>
 
-<p>Давайте розберемо наш налагоджувач.</p>
-<pre spellcheck="false">radare2 -w arm -b 16 0x03_char.elf
+<p>Давайте запустимо наш дебагер.</p>
+<pre spellcheck="false">radare2 -w arm -b 16 0x03_char.XyZ9PlH10ZuK8
 </pre>
 
-<p>Давайте автоматично проаналізуємо.</p>
+<p>Давайте зробимо автоматичну аналітику.</p>
 <pre spellcheck="false">aaaa
 </pre>
 
-<p>Давайте прагнемо до головного.</p>
+<p>Давайте перейдемо до головної частини програми.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Давайте перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp;and then&nbsp;<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого виду налагоджувача.</p>
+<p>Давайте перейдемо в візуальний режим, натиснувши <strong>V</strong> і потім <strong>p</strong> двічі, щоб потрапити до хорошого дебагерського перегляду.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1616704139039.jpg"></img></div>
 
-<p>Ми починаємо з налаштування нашого основного значення повернення.</p>
+<p>Ми починаємо встановлювати значення повернення головної частини програми.</p>
 <pre spellcheck="false">push {r4, lr}
 </pre>
 
-<p>Ми call стандартний init init.</p>
-<pre spellcheck="false">bl sym.stdio_init_all
+<p>Ми викликаємо стандартну ініціалізацію I/O.</p>
+<pre spellcheck="false">XyZ9PlH11ZuK8 sym.stdio_init_all
 </pre>
 
-<p>Потім ми завантажуємо наш модифікатор формату %C в <em>R4</em>.</p>
+<p>Далі ми завантажуємо форматний модифікатор %c у <em>r4</em>.</p>
 <pre spellcheck="false">ldr r4, [0x0000033c]
 </pre>
 
-<p>Ми можемо це довести.</p>
+<p>Ми можемо перевірити це.</p>
 <pre spellcheck="false">:&gt; psz @ [0x0000033c]
 %c
 </pre>
 
-<p>Потім ми завантажуємо наш char <em>'x'</em> в <em>r1</em>.</p>
+<p>Далі ми завантажуємо символ char <em>'x'</em> у <em>r1</em>.</p>
 <pre spellcheck="false">movs r1, 0x78
 </pre>
 
 <p><a href="https://www.asciitable.com" target="_blank">https://www.asciitable.com</a></p>
-<p>Ви можете перевірити вище, що 0x78 HEX - це <em>'x'</em>.</p>
-<p>Потім ми переміщуємо модифікатор формату в <em>R0</em>.</p>
+<p>Ви можете перевірити це на сайті, що 0x78 в шістнадцятковій системі числення є <em>'x'</em>.</p>
+<p>Далі ми переміщаємо форматний модифікатор у <em>r0</em>.</p>
 <pre spellcheck="false">movs r0, r4&nbsp;
 </pre>
 
-<p>Потім ми розгалужуємось довго до обгортки printf та call it.</p>
-<pre spellcheck="false">bl sym.__wrap_printf
+<p>Далі ми здійснюємо стрибок на довгу відстань до printf обгортки і виконуємо її.</p>
+<pre spellcheck="false">XyZ9PlH12ZuK8 sym.__wrap_printf
 
 </pre>
 
-<p>Потім ми переміщуємо 250 десяткових або 0xfa HEX в <em>R0</em>.</p>
+<p>Далі ми переміщаємо 250 у десятковій системі числення або 0xfa у шістнадцятковій системі числення у <em>r0</em>.</p>
 <pre spellcheck="false">movs r0, 0xfa
 </pre>
 
-<p>Потім ми переміщуємо 250 десятків, що знаємо, коли логічний зсув двічі буде 1000 десяткових або 0xfa HEX у <em>R0</em>.</p>
+<p>Далі ми переміщаємо 250 у десятковій системі числення, яке ми знаємо, що після логічного зміщення вліво двічі буде 1,000 у десятковій системі числення або 0xfa у шістнадцятковій системі числення у <em>r0</em>.</p>
 <pre spellcheck="false">lsls r0, r0, 2
 </pre>
 
-<p>Тоді ми call функція sleep \ _ms.</p>
-<pre spellcheck="false">bl sym.sleep_ms
+<p>Далі ми викликаємо функцію sleep_ms.</p>
+<pre spellcheck="false">XyZ9PlH13ZuK8 sym.sleep_ms
 </pre>
 
-<p>Потім ми продовжуємо весь петлю нескінченно.</p>
+<p>Далі ми продовжуємо цикл while нескінченно.</p>
 <pre spellcheck="false">b 0x328
 </pre>
 
-<p>На нашому наступному уроці ми зламаємо тип даних CHAR.</p>
+<p>У наступному урокі ми навчимося хакувати тип даних char.</p>
 
                                 
                                 </section>
@@ -2950,7 +2950,7 @@ int main()&nbsp;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"next":{"title":"Part 7 - Hacking char","level":"1.7.7","depth":2,"path":"pages-ua/part-7-hacking-char.md","ref":"pages-ua/part-7-hacking-char.md","articles":[]},"previous":{"title":"Part 5 - char","level":"1.7.5","depth":2,"path":"pages-ua/part-5-char.md","ref":"pages-ua/part-5-char.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-6-debugging-char.md","mtime":"2025-08-21T11:42:51.327Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"next":{"title":"Part 7 - Hacking char","level":"1.7.7","depth":2,"path":"pages-ua/part-7-hacking-char.md","ref":"pages-ua/part-7-hacking-char.md","articles":[]},"previous":{"title":"Part 5 - char","level":"1.7.5","depth":2,"path":"pages-ua/part-5-char.md","ref":"pages-ua/part-5-char.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-6-debugging-char.md","mtime":"2025-08-21T18:12:34.008Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

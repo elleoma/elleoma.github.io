@@ -2821,14 +2821,13 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-18---протягом-800-років-я-тренував-джедаї-сила-яка-вводить-">part 18 - "Протягом 800 років я тренував джедаї!", Сила, яка вводить ...</h2>
-<p>"Рік - 2021 та сім місяців, середня ціна галона газу в межах США становить 7,51 долара за галон. Четверо інших американських трубопроводів були порушені з викупом, а п’ять очей виявили порушену мережу в одному з запасів води в межах великого мегаполісу США".</p>
-<p>"Джерела розвідки розмістив штаб -квартиру організації" темних очей "за атаками зловмисного програмного забезпечення та використовують мікроконтролер PICO як контролер всередині безпілотника, який готується вдарити цей об'єкт та вибити їх комунікації, щоб уникнути нападу на наше водопостачання".</p>
-<p>"Координати атаки - '61 .013693050912785, 99.19670587477269", до якого входить оператор безпілотника, 61 .013693050912785, 9e.19670587477269 " 61.</p>
-<p>"Паніка виникає, однак, DHS змогла забезпечити мережу водопостачання, перш ніж Ransomware змогла шифрувати свою мережу, і протягом дванадцяти годин мережа була повністю захищена."</p>
-<p>Гаразд ...</p>
-<p>Я хотів витратити час, щоб по -справжньому показати абсолютну критичність розробки програмного забезпечення з належною обробкою введення. Використання 'scanf' або інших методик, які не належним чином обробляють кожен клавішу, може призвести до такої ситуації, як описана вище.</p>
-<p>Давайте розглянемо нашу функцію введення ...</p>
+                                <p>Частина 18 - "Я ВИДУЧУ СЕДЬМИ РОКИ ДЖЕДАЇ!", СИЛА, ЯКА ВВІДУЄ...</p>
+<p>"Рік 2021 і сім місяців, середня ціна галона бензину в Сполучених Штатах становить 7,51 долар за галон. Чотири інші трубопроводи США були компрометовані з використанням шантажної програми і п'ять очей відкрили компрометований мережу всередині однієї з водних джерел в одному з великих міст Сполучених Штатів."</p>
+<p>"Джерела інформації розташували штаб-квартиру організації 'Темні очі' за підтримкою атак з використанням вірусу і використовують мікроконтролер Pico як керуючий механізм всередині дрон, який готується завдати удару цій установі і вивести їх зв'язок, щоб уникнути нападу на нашу водну систему."</p>
+<p>"Координати нападу - '61.013693050912785, 99.19670587477269', яким Дрон-оператор вводить '61.013693050912785, 9e.19670587477269', яке є 'Мірські шахти, Росія'. Вони запускають дрон і він вибухає в '61.013693050912785, 9.19670587477269', яке є 'Муніципалітет Норд-Аурдал, Норвегія'."</p>
+<p>"Паніка виникла, але Департамент внутрішньої безпеки зміг забезпечити мережу водної системи до того, як шантажна програма змогла зашифрувати їх мережу, і протягом дванадцяти годин мережа була повністю забезпечена."</p>
+<p>Хочу взяти час, щоб показати абсолютну КРИТИЧНІСТЬ розробки програмного забезпечення з належним обробленням вхідних даних. Використання 'scanf' або інших технік, які не належним чином обробляють кожне натиснення клавіш, може привести до ситуації, подібної тієї, яку описано вище.</p>
+<p>Давайте переглянемо нашу функцію вхідних даних...</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 #include "pico/stdlib.h"
@@ -2841,7 +2840,7 @@
 #define BACKSPACE 0x08
 #define DEL 0x7f
 
-void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_USB_STRING_SIZE)
+void input_proc(char type, char* p_usb_char, char* p_usb_string, const XyZ9PlH16ZuK8* p_USB_STRING_SIZE)
 {
   *p_usb_char = '\0';
   *p_usb_char = getchar_timeout_us(0);
@@ -2850,8 +2849,8 @@ void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_US
     if(p_usb_string[0] != '\0')
     {
       printf("\b");
-      printf(" ");
-      printf("\b");
+      XyZ9PlH10ZuK8(" ");
+      XyZ9PlH11ZuK8("\b");
       p_usb_string[strlen(p_usb_string)-1] = '\0';
     }
   }
@@ -2902,25 +2901,25 @@ void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_US
 }
 </pre>
 
-<p>Сьогодні ми будемо переглянути саме те, що насправді робить ця функція.</p>
-<pre spellcheck="false">void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_USB_STRING_SIZE)
+<p>Сьогодні ми навчимося точно вивчати цю функцію.</p>
+<pre spellcheck="false">void input_proc(char type, char* p_usb_char, char* p_usb_string, const XyZ9PlH17ZuK8* p_USB_STRING_SIZE)
 </pre>
 
-<p>Починаємо з заголовка функції. Спочатку ми приймаємо <em>Char</em> <em>type</em>, де в нашому прикладі ми будемо використовувати <em>'f'</em> для обробки номерів з плаваючою комою. Потім у нас є <em>char *</em> (вказівник) <em>p \ _USB \ _Char</em>, який буде init to <em> '\ 0'</em> в <strong>main.c</strong>. Потім у нас є char * p \ <em>usb \ _string, який ми будемо init to </em> '\ 0'<em> in <strong>main.c</strong>. Потім у нас є _const int *</em> <em>p \ _usb \ _string \ _size</em>, який буде init to <em>100</em> в <strong>main.c</strong>.</p>
-<p>Потім ми створюємо логіку, щоб правильно обробляти кнопку видалення або зворотний простір.</p>
+<p>Ми починаємо з заголовка функції. Перше, ми приймаємо <em>char</em> <em>типу</em>, де в нашому прикладі ми використовуємо <em>'f'</em> для обробки чисел з плаваючою точкою. Потім ми маємо <em>char*</em> (покажчик)<em> _p_usb_char</em>, який буде ініціалізований <em>'\0'</em> в <strong>main.c</strong>. Потім ми маємо <em>char* p_usb_string, який буде ініціалізований </em>'\0'<em> в <strong>main.c</strong>. Потім ми маємо _const int*</em> <em>p_USB_STRING_SIZE</em>, який буде ініціалізований <em>100</em> в <strong>main.c</strong>.</p>
+<p>Ми створюємо логіку для належного оброблення кнопки видалення або кнопки назад.</p>
 <pre spellcheck="false">  if(*p_usb_char == BACKSPACE || *p_usb_char == DEL)
   {
     if(p_usb_string[0] != '\0')
     {
-      printf("\b");
-      printf(" ");
-      printf("\b");
+      XyZ9PlH12ZuK8("\b");
+      XyZ9PlH13ZuK8(" ");
+      XyZ9PlH14ZuK8("\b");
       p_usb_string[strlen(p_usb_string)-1] = '\0';
     }
   }
 </pre>
 
-<p>Потім ми створюємо логіку для обробки, якщо програма Main.c очікує лише номерів з плаваючою комою, як у нашій історії вище, якби було реалізовано, безпілотник не пропустив би їх ціль.</p>
+<p>Ми створюємо логіку для оброблення, якщо програма main.c очікує тільки чисел з плаваючою точкою, як у нашій історії вище, якщо б було виконано, дрон не зміг би потрапити у свій мітку.</p>
 <pre spellcheck="false">  if(type == 'f')
   { 
     char* period;
@@ -2943,9 +2942,9 @@ void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_US
   }
 </pre>
 
-<p>Ми бачимо, що якщо хтось вводить щось інше, ніж <em>zero</em> через <em>nine</em> або <em>period, </em> вхід просто буде відхилено!</p>
-<p>Ви також бачите, що якщо введено <em>period</em>, не вдалося ввести ні злісно, ​​ні випадково. Ми також обробляємо кількість введення менше, ніж <em>100</em> належним чином. Потім ми правильно будуємо свою струну з кожного належним чином очищеного клавіші.</p>
-<p>Подібні логічні ручки, якщо ви маєте справу з десятками або strings.</p>
+<p>Ми бачимо, що якщо хто-небудь вводить щось інше, ніж <em>НУЛЬ</em> до <em>ДЕВ'ЯТИ</em> або <em>ПЕРЕДНІЙ КРІВКА,</em> вхід буде просто відкинуто!</p>
+<p>Також ми бачимо, що якщо була введена <em>ПЕРЕДНІЙ КРІВКА,</em> друга не могла бути введена ні з метою шахрайства, ні випадково. Ми також обробляємо кількість вхідних даних менше <em>100</em> належним чином. Потім ми належним чином будуємо нашу строку з кожного належним чином очищеного натиснення клавіш.</p>
+<p>Аналогічна логіка обробляє випадки з дробами або іншими випадками.</p>
 <pre spellcheck="false">  else if(type == 'd')
   { 
     while(*p_usb_char &gt;= ZERO &amp;&amp; *p_usb_char &lt;= NINE)
@@ -2972,7 +2971,7 @@ void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_US
   }
 </pre>
 
-<p>На нашому наступному уроці ми реалізуємо це в нашому мікроконтролері PICO.</p>
+<p>У наступному урокі ми імплементуватимемо цю функцію в нашому мікроконтролері Pico.</p>
 
                                 
                                 </section>
@@ -3016,7 +3015,7 @@ void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_US
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 18 - \"FOR 800 YEARS HAVE I TRAINED JEDI!\", The FORCE That IS Input...","level":"1.7.18","depth":2,"next":{"title":"Part 19 - Input","level":"1.7.19","depth":2,"path":"pages-ua/part-19-input.md","ref":"pages-ua/part-19-input.md","articles":[]},"previous":{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","ref":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","mtime":"2025-08-21T11:42:51.321Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 18 - \"FOR 800 YEARS HAVE I TRAINED JEDI!\", The FORCE That IS Input...","level":"1.7.18","depth":2,"next":{"title":"Part 19 - Input","level":"1.7.19","depth":2,"path":"pages-ua/part-19-input.md","ref":"pages-ua/part-19-input.md","articles":[]},"previous":{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","ref":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","mtime":"2025-08-21T18:12:34.002Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

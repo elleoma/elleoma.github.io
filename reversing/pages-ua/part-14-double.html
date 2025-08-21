@@ -2821,13 +2821,13 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-14---подвійний">part 14 - подвійний</h2>
-<p>Сьогодні ми збираємось обробляти подвійний тип даних. Як ми обговорювали, у Піко не існує коопроцесор, який би обробляв числа з плаваючою комою, оскільки це обробляється через ряд функціональних можливостей за допомогою програмного забезпечення в API. Це те ж саме з подвійною точністю.</p>
-<p>Давайте попрацюємо з простим прикладом.&nbsp;<strong>0x06 \ _double.c</strong>&nbsp;as.</p>
+                                <p>Частина 14 - подвійний</p>
+<p>Сьогодні ми будемо працювати з подвійним типом даних. Як ми вже обговорювали, в Піко немає співпроцесора для обробки чисел з плаваючою точкою, оскільки це обробляється через серію функцій через програмне забезпечення в API. Це те саме стосується подвійної точності.</p>
+<p>Давайте працюємо зі простим прикладом. <strong>0x06_double.c</strong>&nbsp;as слідує.</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include "pico/stdlib.h"
 
-int main()&nbsp;
+XyZ9PlH4ZuK8 main()&nbsp;
 {
 &nbsp; stdio_init_all();
 
@@ -2835,7 +2835,7 @@ int main()&nbsp;
 &nbsp; {
 &nbsp; &nbsp; double x = 40.5;
 
-&nbsp; &nbsp; printf("%f\n", x);&nbsp;
+&nbsp; &nbsp; XyZ9PlH0ZuK8("%f\n", x);&nbsp;
 
 &nbsp; &nbsp; sleep_ms(1000);
 &nbsp; }
@@ -2844,8 +2844,8 @@ int main()&nbsp;
 }
 </pre>
 
-<p>Дуже просто ми призначаємо поплавок Of&nbsp;<em>40.5</em>&nbsp;into&nbsp;<em>x</em>&nbsp;and надрукувати його за допомогою модифікатора The&nbsp;<em>%f&nbsp;</em> for&nbsp;<em>1</em>&nbsp;second.</p>
-<p>Давайте зробимо новий dir&nbsp;<strong>0x06 \ _double</strong>&nbsp; і додайте ur&nbsp;<strong>cmakelists.txt</strong>&nbsp;file в ньому.</p>
+<p>Дуже просто ми присвоюємо float <em>40.5</em> змінній <em>x</em> і друкуємо її з форматним модифікатором <em>%f</em> і потім спимося на <em>1</em> секунду.</p>
+<p>Давайте створимо нову папку <strong>0x06_double</strong>&nbsp;and і додамо наш <strong>CMakeLists.txt</strong> file в неї.</p>
 <pre spellcheck="false">cmake_minimum_required(VERSION 3.13)
 
 include(pico_sdk_import.cmake)
@@ -2866,7 +2866,7 @@ pico_add_extra_outputs(0x056_double)
 target_link_libraries(0x06_double pico_stdlib)
 </pre>
 
-<p>Далі нам потрібно скопіювати the&nbsp;<strong>pico \ _sdk \ _import.cmake</strong>&nbsp;file із зовнішньої папки в the&nbsp;<strong>pico-sdk</strong>&nbsp;installation tos the&nbsp;<strong>0x06 \ _double</strong>&nbsp;project.</p>
+<p>Далі нам потрібно скопіювати <strong>pico_sdk_import.cmake</strong>&nbsp;file з зовнішньої папки в папці <strong>pico-sdk</strong> встановлення в папку <strong>0x06_double</strong>&nbsp;project.</p>
 <pre spellcheck="false">cp ../pico-sdk/external/pico_sdk_import.cmake .
 </pre>
 
@@ -2878,19 +2878,19 @@ cmake ..
 make
 </pre>
 
-<p>Потім просто скопіюйте the&nbsp; <strong>. Uf2</strong>&nbsp;file на привід.</p>
+<p>Далі просто скопіюйте <strong>.uf2</strong> file в диск.</p>
 <pre spellcheck="false">cp 0x06_double.uf2 /Volumes/RPI-RP2
 </pre>
 
-<p>Тоді нам потрібно знайти USB -накопичувач, щоб ви могли зробити наступне.</p>
+<p>Далі нам потрібно знайти зовнішній диск, щоб ви могли виконати наступні дії.</p>
 <pre spellcheck="false">ls /dev/tty.
 </pre>
 
-<p>Натисніть на вкладку, щоб знайти накопичувач, а потім у моєму випадку я буду використовуватикси9plh35zuk8<strong>screen</strong>&nbsp;to Connect.</p>
+<p>Натисніть таб, щоб знайти диск, а потім у моїй ситуації я використовую <strong>screen</strong> для підключення.</p>
 <pre spellcheck="false">screen /dev/tty.usbmodem0000000000001
 </pre>
 
-<p>Ви повинні побачити Anchyz9plh37zuk8<em>40.5</em>&nbsp;being надруковано щосекунди.</p>
+<p>Ви повинні побачити, що <em>40.5</em> друкується кожну секунду.</p>
 <pre spellcheck="false">40.500000
 40.500000
 40.500000
@@ -2916,7 +2916,7 @@ make
 40.500000
 </pre>
 
-<p>На нашому наступному уроці ми будемо налагодити.</p>
+<p>У наступному урокі ми навчимося відлагоджувати.</p>
 
                                 
                                 </section>
@@ -2960,7 +2960,7 @@ make
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 14 - double","level":"1.7.14","depth":2,"next":{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"path":"pages-ua/part-15-debugging-double.md","ref":"pages-ua/part-15-debugging-double.md","articles":[]},"previous":{"title":"Part 13 - Hacking float","level":"1.7.13","depth":2,"path":"pages-ua/part-13-hacking-float.md","ref":"pages-ua/part-13-hacking-float.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-14-double.md","mtime":"2025-08-21T11:42:51.320Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 14 - double","level":"1.7.14","depth":2,"next":{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"path":"pages-ua/part-15-debugging-double.md","ref":"pages-ua/part-15-debugging-double.md","articles":[]},"previous":{"title":"Part 13 - Hacking float","level":"1.7.13","depth":2,"path":"pages-ua/part-13-hacking-float.md","ref":"pages-ua/part-13-hacking-float.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-14-double.md","mtime":"2025-08-21T18:12:34.001Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

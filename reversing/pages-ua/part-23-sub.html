@@ -2821,20 +2821,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-23---sub">part 23 - SUB</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Віднімання в ARM має чотири інструкції, які є SUB, SBC, RSB та RSC. Ми розпочнемо сьогодні з SUB.</p>
-<p>Будь ласка, майте на увазі, коли ви додасте суфікс S на кінці кожного, наприклад, Subs, SBC, RSB, RSC, це вплине на прапори. На попередніх уроках ми витратили достатньо часу на прапори, щоб ви зараз мали на увазі це.</p>
+                                <h2 id="частина-23-–-sub">Частина 23 – SUB</h2>
+<p>Для повного змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Віднімання в ARM має чотири інструкції, які є SUB, SBC, RSB та RSC. Сьогодні ми почнемо з SUB.</p>
+<p>Будь ласка, зверніть увагу, коли ви додаєте суфікс S на кінець кожного, наприклад SUBS, SBCS, RSBS, RSCS, це вплине на прапори. Ми вже витратили досить часу на прапори в попередніх уроках, тому тепер ви повинні мати міцну уяву про це.</p>
 <p>Давайте розглянемо приклад SUB:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520194165815.jpg"></img></div>
-
-<p>Компілювати:</p>
+<p><xyz9plh10zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520194165815.jpg"></img>&lt;/XyZ9PlH11ZuK8&gt;</xyz9plh10zuk8></p>
+<p>Для компіляції:</p>
 <pre spellcheck="false">as -o sub.o sub.s
 ld -o sub sub.o
 </pre>
 
-<p>Ми просто приймаємо <strong>67 Decimal</strong> і переходимо до <strong>R1</strong> та <strong>53 Decimal</strong> і переходимо до <strong>R2</strong> і віднімають R1 - r2 і ставимо результат <strong>r0</strong>.</p>
-<p>Наступного тижня ми занурюємось у налагодження SUB.</p>
+<p>Ми просто беремо <strong>67 десятичне</strong> і переміщаємо його в <strong>r1</strong> і <strong>53 десятичне</strong> і переміщаємо його в <strong>r2</strong> і віднімаємо r1 – r2 і розміщаємо результат в <strong>r0</strong>.</p>
+<p>Наступна неділя ми вийдемо на тему SUB відладки.</p>
 
                                 
                                 </section>
@@ -2878,7 +2877,7 @@ ld -o sub sub.o
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 23 – SUB","level":"1.3.23","depth":2,"next":{"title":"Part 24 – Debugging SUB","level":"1.3.24","depth":2,"path":"pages-ua/part-24-debugging-sub.md","ref":"pages-ua/part-24-debugging-sub.md","articles":[]},"previous":{"title":"Part 22 – Hacking ADC","level":"1.3.22","depth":2,"path":"pages-ua/part-22-hacking-adc.md","ref":"pages-ua/part-22-hacking-adc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-23-sub.md","mtime":"2025-08-21T11:42:51.323Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 23 – SUB","level":"1.3.23","depth":2,"next":{"title":"Part 24 – Debugging SUB","level":"1.3.24","depth":2,"path":"pages-ua/part-24-debugging-sub.md","ref":"pages-ua/part-24-debugging-sub.md","articles":[]},"previous":{"title":"Part 22 – Hacking ADC","level":"1.3.22","depth":2,"path":"pages-ua/part-22-hacking-adc.md","ref":"pages-ua/part-22-hacking-adc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-23-sub.md","mtime":"2025-08-21T18:12:34.004Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2821,55 +2821,17 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-30---налагодження-змінних-поплавків">part 30 - налагодження змінних поплавків</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Давайте переглянемо наш код.</p>
-<pre spellcheck="false">#include &lt;iostream&gt;
-
-&nbsp;
-
-int main(void) {
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; float myNumber = 1337.1;
-
-&nbsp;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; std::cout &lt;&lt; myNumber &lt;&lt; std::endl;
-
-&nbsp;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;
-
-}
-</pre>
-
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521196070985.jpg"></img></div>
-
-<p>Давайте налагоджуємо!</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521196099167.jpg"></img></div>
-
-<p>Давайте розійдемося на <strong> -мейн+20</strong> і продовжимо до цього моменту.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521196123405.jpg"></img></div>
-
-<p>Давайте вивчимо, яка цінність знаходиться всередині <strong>R11-8 </strong>. &nbsp;we чітко бачимо, що це <strong>13337.09998</strong>, що наближає наше значення в нашому первісному c ++ code.&nbsp;, що ми не маємо, що ми не бачимо, що ми не пам’ятаємо. Forward.&nbsp;</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521196151522.jpg"></img></div>
-
-<p>Ми також можемо побачити це значення у високій пам'яті.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521196178255.jpg"></img></div>
-
-<p>Давайте розлучимося на <strong> -мейн+28</strong> і продовжимо.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521196203419.jpg"></img></div>
-
-<p>Ми бачимо нову інструкцію.&nbsp;we див. <strong>Vldr</strong> та значення в межах <strong>r11, #8</strong> переміщується в <strong> s0 </strong>. &nbsp;so Що таке <strong>s0 </strong>? &nbsp;we, що має математику, який має серію додаткових регістерів, які працюють з математикою, або флотуючим, що має низку. числа.&nbsp;here ми бачимо приклад такого, до якого значення <strong>1337.09998 </strong> є переміщеним у <strong>s0 </strong>. &nbsp;.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521196373197.jpg"></img></div>
-
-<p>Ми можемо бачити ці спеціальні регістри лише в тому випадку, якщо ми робимо інформацію про те, як ми виконуємо всі, як ми робимо нижче.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521196414932.jpg"></img></div>
-
-<p>Нижче ми бачимо, що значення зараз переміщується в <strong>S0</strong>.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521196439893.jpg"></img></div>
-
-<p>Наступного тижня ми зануримось у зламати змінні поплавця.</p>
+                                <p>Частина 30 – Дебагування змінних типу Float</p>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті.</p>
+<p>Давайте знову розглянемо наш код.</p>
+<p>Давайте зупинимося на <strong>main+20</strong> і продовжимо до цього місця.</p>
+<p>Давайте побачимо, яку вартість знаходиться всередині <strong>r11-8</strong>.  Вже дуже чітко бачимо, що це <strong>1337.09998</strong>, яка наближається до нашої вартості в нашому оригінальному коді C++.  Увага: плаваюча точка має близько 7 цифр після коми точності, тому ми не бачимо <strong>1337.1</strong>.  Будьте пам'ятливі про це, коли продовжуватимемо.</p>
+<p>Давайте побачимо цю вартість в високій пам'яті.</p>
+<p>Давайте зупинимося на <strong>main+28</strong> і продовжимо.</p>
+<p>Давайте побачимо цю дивну нову інструкцію.  Давайте побачимо <strong>vldr</strong> і значення всередині <strong>r11, #8</strong>, яке переміщується в<strong> s0</strong>.  А що таке <strong>s0</strong>?  У нас є математичний процесор, який має серію додаткових регістрів, які працюють з десятковими або плаваючими-цілочисельними числами.  Тут ми бачимо приклад такого, до якого значення <strong>1337.09998 </strong>переміщується в <strong>s0</strong>.  Інструкція <strong>vldr</strong> завантажує константне значення в кожний елемент однобайтового або подвійнобайтового регістра, наприклад <strong>s0</strong>.</p>
+<p>Давайте побачимо ці спеціальні регістри тільки тоді, коли ми зробимо команду info registers all, як ми робимо нижче.</p>
+<p>Нижче ми бачимо значення, яке тепер переміщується в <strong>s0</strong>.</p>
+<p>Наступна неділя ми вийдемо на тему Хакінгу змінних типу Float.</p>
 
                                 
                                 </section>
@@ -2913,7 +2875,7 @@ int main(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 30 – Debugging Float Variables","level":"1.4.30","depth":2,"next":{"title":"Part 31 – Hacking Float Variables","level":"1.4.31","depth":2,"path":"pages-ua/part-31-hacking-float-variables.md","ref":"pages-ua/part-31-hacking-float-variables.md","articles":[]},"previous":{"title":"Part 29 – Float Variables","level":"1.4.29","depth":2,"path":"pages-ua/part-29-float-variables.md","ref":"pages-ua/part-29-float-variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-30-debugging-float-variables.md","mtime":"2025-08-21T11:42:51.324Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 30 – Debugging Float Variables","level":"1.4.30","depth":2,"next":{"title":"Part 31 – Hacking Float Variables","level":"1.4.31","depth":2,"path":"pages-ua/part-31-hacking-float-variables.md","ref":"pages-ua/part-31-hacking-float-variables.md","articles":[]},"previous":{"title":"Part 29 – Float Variables","level":"1.4.29","depth":2,"path":"pages-ua/part-29-float-variables.md","ref":"pages-ua/part-29-float-variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-30-debugging-float-variables.md","mtime":"2025-08-21T18:12:34.005Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

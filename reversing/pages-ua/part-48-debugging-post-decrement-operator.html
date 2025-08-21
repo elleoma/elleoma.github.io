@@ -2821,9 +2821,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-48-налагодження-оператора-після-декреції">PART 48-Налагодження оператора після декреції</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Давайте переглянемо наш код.</p>
+                                <h2 id="частина-48-–-дебагування-оператора-після-зменшення">Частина 48 – Дебагування оператора після зменшення</h2>
+<p>Для повного змісту змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Давайте знову розглянемо наш код.</p>
 <pre spellcheck="false">#include &lt;iostream&gt;
 
 int main(void) {
@@ -2837,17 +2837,18 @@ int main(void) {
 }
 </pre>
 
-<p>Ми бачимо наш дуже простий код C ++ вище, до якого ми не робимо нічого іншого, як присвоювати число у змінну, до якої ми ініціюємо ще одну змінну int та присвоюємо початкову змінну, до якої вона після оцінки. Потім ми виводимо кожне значення до терміналу.</p>
-<p>Давайте налагоджуємо.</p>
+<p>Ми бачимо дуже простий наш код на C++, до якого ми нічого більше робимо, ніж присвоюємо число змінній, до якої ми ініціалізовуємо ще одну змінну int і присвоюємо оригінальну змінну, до якої вона піддеінкрементується. Потім ми виводимо кожну вартість у термінал.</p>
+<p>Давайте дебагуємо.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1532085310684.jpg"></img></div>
 
-<p>Зрозуміло, що значення для оператора після декреції завантажується в <strong>R1</strong> на <strong>main+68 </strong>sо, давайте розірвемося на <strong>main+72</strong>.</p>
+<p>Вже ясно, що значення для оператора після зменшення завантажується в <strong>r1</strong> на <strong>main+68 </strong>так що давайте зупинимося на <strong>main+72</strong>.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1532085326445.jpg"></img></div>
 
-<p>Ми чітко бачимо, що <strong>R1 </strong>Does насправді має значення <strong>15</strong>, до якого було зменшено від нашої первісної цінності.</p>
+<p>Ми можемо чітко побачити, що <strong>r1 </strong>насправді містить значення <strong>15</strong>, до якого було зменшено з нашої початкової вартості.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1532085443370.jpg"></img></div>
 
-<p>Наступного тижня ми занурюємось у злом оператора після декреції.</p>
+<p>Наступна неділя ми вийдемо на хакінг оператора після зменшення.</p>
+<p>Навчання продовжується далі.</p>
 
                                 
                                 </section>
@@ -2891,7 +2892,7 @@ int main(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 48 – Debugging Post-Decrement Operator","level":"1.4.48","depth":2,"next":{"title":"Part 49 – Hacking Post-Decrement Operator","level":"1.4.49","depth":2,"path":"pages-ua/part-49-hacking-post-decrement-operator.md","ref":"pages-ua/part-49-hacking-post-decrement-operator.md","articles":[]},"previous":{"title":"Part 47 – Post-Decrement Operator","level":"1.4.47","depth":2,"path":"pages-ua/part-47-post-decrement-operator.md","ref":"pages-ua/part-47-post-decrement-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-48-debugging-post-decrement-operator.md","mtime":"2025-08-21T11:42:51.326Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 48 – Debugging Post-Decrement Operator","level":"1.4.48","depth":2,"next":{"title":"Part 49 – Hacking Post-Decrement Operator","level":"1.4.49","depth":2,"path":"pages-ua/part-49-hacking-post-decrement-operator.md","ref":"pages-ua/part-49-hacking-post-decrement-operator.md","articles":[]},"previous":{"title":"Part 47 – Post-Decrement Operator","level":"1.4.47","depth":2,"path":"pages-ua/part-47-post-decrement-operator.md","ref":"pages-ua/part-47-post-decrement-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-48-debugging-post-decrement-operator.md","mtime":"2025-08-21T18:12:34.007Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2821,40 +2821,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-36---x64-c--3-хакерство--частина-3-">part 36 - x64 c ++ 3 хакерство \ [частина 3 ]</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Давайте розглянемо наш код:</p>
+                                <h2 id="частина-36---x64-c-3-хакінг-part-3">Частина 36 - x64 C++ 3 Хакінг [Part 3]</h2>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Давайте переглянемо свій код:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564757193950.jpg"></img></div>
 
-<p>Компіляція:</p>
+<p>Компілюємо:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564758303402.jpg"></img></div>
 
-<p>Бігати:</p>
+<p>Запускаємо:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564757239511.jpg"></img></div>
 
-<p>Згадаймо цей рядок вище, коли ми порівнюємо з нашим зламаним двійковим.</p>
-<p>Давайте відкриємо наш двійковий режим запису і просто проаналізуємо двійковий.</p>
+<p>Давайте згадаємо цю лінію вище, коли ми порівняємо її зі зміненим байном.</p>
+<p>Давайте відкриємо свій байн для запису та просто проаналізуємо байн.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564757311281.jpg"></img></div>
 
-<p>Гаразд, тут багато чого відбувається. Давайте розберемо його. Спочатку ми відкриваємо Radare 2 в режимі запису, ввівши '<strong>r2 -w ./1</strong>', а потім використовуємо команду '<strong>aaa</strong>' для аналізу двійкового. Потім ми використовуємо '<strong>s sym.main</strong>', щоб прагнути до основного рутини бінарного, який є нашою точкою входу. Тоді ми виконуємо команду '<strong>pdf</strong>', щоб розібрати двійкову.</p>
-<p>Ми бачимо, що ми називаємо прологом, де ми push&nbsp;<strong>rbp</strong>&nbsp; stack базовий вказівник на стек. Потім ми переміщуємокси9plh30zuk8<strong>rsp</strong>&nbsp;into&nbsp;<strong>rbp</strong>&nbsp; для безпечного зберігання, а потім ми заповідниках9plh34zuk8<strong>x10</strong>&nbsp;Hex або 16 Decimal</p>
-<p>Якщо нічого з цього не має сенсу, поверніться до початку підручника, щоб переглянути основні збори та регістри, як це критично, ви розумієте це, перш ніж ми рухаємось вперед.</p>
-<p>Ми можемо чітко побачити QWord '<strong>Hello World \ n</strong>' на пам'яті адреса&nbsp;<strong>0x2005</strong>&nbsp; і тоді ми бачимо наш C ++ бібліотека call для вихідного потоку, який is&nbsp;<strong>cout</strong>&nbsp;topeance toeartal</p>
-<p>Давайте вивчаємо Excie&nbsp;<strong>0x2005</strong>&nbsp;, щоб перевірити, що наша рядок знаходиться в цьому місці:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564757423920.jpg"></img></div>
-
-<p>Тепер час на хак!</p>
-<p>Давайте зламаємо цінність для чогось подібного:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564757454631.jpg"></img></div>
-
-<p>Тепер давайте подивимось, що зараз всередині значення пам'яті @ <strong>0x2005</strong>!</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564757528202.jpg"></img></div>
-
-<p>Бум! Як ми бачимо, ми зламали значення, і коли ми кинемо Радаре 2, він напише його і змінює наш двійковий як такий.,</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564757568026.jpg"></img></div>
-
-<p>Як ви бачите, ми зламали двійкову! Це дуже основне, але тепер у вас є елементарний рівень розуміння зворотної інженерії бінарного C ++.</p>
-<p>Наступного тижня ми продовжимо нашу подорож у C та покрокову інженерну інженерію.</p>
+<p>Ок, тут багато чого відбувається. Давайте розберемо це. Спочатку відкриємо Radare 2 у режимі запису, натиснувши '<strong>r2 -w ./1</strong>', а потім використаємо команду '<strong>aaa</strong>' для аналізу байна. Потім використаємо команду '<strong>s sym.main</strong>' для пошуку головної частини байна, яка є нашим вхідним точкою. Потім ми виконувємо команду '<strong>pdf</strong>' для розбору байна.</p>
+<p>Ми бачимо, що називають прологом, де ми піднімаємо <strong>rbp</strong> вказівник стека на стік. Потім ми переміщаємо <strong>rsp</strong> в <strong>rbp</strong> для збереження та потім резервуємо <strong>0x10</strong> хекс-байти або 16 десятичних байтів на стік, щоб звільнити місце для нашої рядка.</p>
+<p>Якщо нічого цього не зрозуміло, будь ласка, поверніться до початку навчальної серії, щоб переглянути основи збірки та регістрів, оскільки це КРИТИЧНО важливо, щоб зрозуміти це, перш ніж продовжувати.</p>
+<p>Ми можемо чітко побачити qword '<strong>Hello World\n</strong>' в пам'яті адреси <strong>0x2005</strong> і потім бачимо нашу бібліотеку C++ call для виведення потоку, який є <strong>cout</strong> для виведення нашої рядки в термінал.</p>
+<p>Давайте розглянемо <strong>0x2005</strong> для підтвердження того, що наша рядка знаходиться в цьому місці:</p>
+<p><xyz9plh10zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564757423920.jpg"></img>&lt;/XyZ9PlH11ZuK8&gt;</xyz9plh10zuk8></p>
+<p>ТЕПЕР ЧАС НА ХАК!</p>
+<p>Давайте змінимо значення на щось подібне:</p>
+<p><xyz9plh12zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564757454631.jpg"></img>&lt;/XyZ9PlH13ZuK8&gt;</xyz9plh12zuk8></p>
+<p>Тепер давайте побачимо, що тепер знаходиться в пам'яті значення @ <strong>0x2005</strong>!</p>
+<p><xyz9plh14zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564757528202.jpg"></img>&lt;/XyZ9PlH15ZuK8&gt;</xyz9plh14zuk8></p>
+<p>БОМ! Як ми бачимо, ми змінили значення і коли ми вийдемо з Radare 2, воно буде записано і змінено наш байн відповідно.</p>
+<p><xyz9plh16zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1564757568026.jpg"></img>&lt;/XyZ9PlH17ZuK8&gt;</xyz9plh16zuk8></p>
+<p>Як ви бачите, ми змінили байн! Це дуже базове, але тепер ви маєте примітивний рівень розуміння відтворення інженерії C++ байна.</p>
+<p>Наступна неділя ми продовжимо наш шлях у C і крок за кроком відтворюємо інженерію.</p>
+<p>XyZ9PlH30ZuK8.</p>
 
                                 
                                 </section>
@@ -2898,7 +2895,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 36 - x64 C++ 3 Hacking [Part 3]","level":"1.5.36","depth":2,"next":{"title":"Part 37 - x64 C & Genesis Of Life","level":"1.5.37","depth":2,"path":"pages-ua/part-37-x64-c-amp;-genesis-of-life.md","ref":"pages-ua/part-37-x64-c-amp;-genesis-of-life.md","articles":[]},"previous":{"title":"Part 35 - x64 C++ 2 Debug [Part 2]","level":"1.5.35","depth":2,"path":"pages-ua/part-35-x64-c++-2-debug-part-2.md","ref":"pages-ua/part-35-x64-c++-2-debug-part-2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-36-x64-c++-3-hacking-part-3.md","mtime":"2025-08-21T11:42:51.325Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 36 - x64 C++ 3 Hacking [Part 3]","level":"1.5.36","depth":2,"next":{"title":"Part 37 - x64 C & Genesis Of Life","level":"1.5.37","depth":2,"path":"pages-ua/part-37-x64-c-amp;-genesis-of-life.md","ref":"pages-ua/part-37-x64-c-amp;-genesis-of-life.md","articles":[]},"previous":{"title":"Part 35 - x64 C++ 2 Debug [Part 2]","level":"1.5.35","depth":2,"path":"pages-ua/part-35-x64-c++-2-debug-part-2.md","ref":"pages-ua/part-35-x64-c++-2-debug-part-2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-36-x64-c++-3-hacking-part-3.md","mtime":"2025-08-21T18:12:34.006Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

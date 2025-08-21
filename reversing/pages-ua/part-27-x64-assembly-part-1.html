@@ -2821,32 +2821,26 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-27---x64-асамблея--частина-1-">part 27 - x64 Асамблея \ [Частина 1 ]</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Сьогодні ми починаємо наші фактичні основи коду x64. Протягом наступних кількох тижнів я створять дуже прості приклади, тому ми зрозуміємо архітектуру x64. Почнемо з базового блоку коду:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1550227269983.jpg"></img></div>
-
-<p>Ми починаємо з оголошення розділу <strong>. Data</strong>, до якого є всі наші глобальні дані. Якби у нас був рядок або якась інша форма жорстких кодованих даних, вона б надійшла в цей блок. У нашому прикладі ми залишимо його порожнім.</p>
-<p>У розділі <strong>. Text</strong> оголошує, де в нашому випадку розпочнеться точка входу в нашому випадку, ми використовуємо <strong> \ _ start</strong> або ви можете використовувати <strong>main</strong>.</p>
-<p>Ми просто переміщуємо значення Decimal 16 або Hex 10 в 64-бітний реєстр RAX. Ми побачимо через мить, що процесор використовуватиме лише нижній EAX, коли ми налагоджуємо в GDB.</p>
-<p>Останній твір - це просто простий розпорядок виходу, який ми переміщуємо 60 у RAX, а потім syscall. Він просто повертає операцію назад до ОС.</p>
-<p>Давайте складемо та посилання:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1550227507149.jpg"></img></div>
-
-<p>Давайте налагоджуємо в GDB:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1550227529034.jpg"></img></div>
-
-<p>Встановимо налагоджувач для синтаксису Intel і встановимо перерву на початку:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1550227565697.jpg"></img></div>
-
-<p>Як ми бачимо 16 десятків, або Hex 10 збирається перенести в EAX, але, як ми бачимо, він не був завершений, поки ми не крокуємо вперед.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1550227619555.jpg"></img></div>
-
+                                <h2 id="частина-27---x64-збірка-part-1">Частина 27 - x64 Збірка [Part 1]</h2>
+<p>Для повного змісту змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Сьогодні ми починаємо вивчати справжні x64 основи кодування. У наступні кілька тижнів я створу дуже прості приклади, щоб ви могли зрозуміти x64 архітектуру. Почнемо з базового блоку коду:</p>
+<p><xyz9plh11zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1550227269983.jpg"></img>&lt;/XyZ9PlH12ZuK8&gt;</xyz9plh11zuk8></p>
+<p>Ми починаємо з оголошення ділянки <strong>.data</strong>, на якій зберігаються всі наші глобальні дані. Якщо ми мали рядок або будь-яку іншу форму закодованої даних, вони потрапили б у цей блок. У нашому прикладі ми залишимо його порожнім.</p>
+<p>Ділянка <strong>.text</strong> оголошує місце початку програми. У нашому випадку ми використовуємо <strong>_start</strong> або можна використовувати <strong>main</strong>.</p>
+<p>Ми просто переміщаємо значення десяткове 16 або шістнадцяткове 10 у 64-бітовий RAX регістр. У майбутньому ми побачимо, що процесор використовує лише нижній EAX під час відлагодження в GDB.</p>
+<p>Останній шматок — це простий виходний рутин, який ми переміщаємо 60 у RAX і потім syscall. Він просто повертає операцію назад в ОС.</p>
+<p>Давайте скомпілюємо і зв'яжемо:</p>
+<p><xyz9plh13zuk8 class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1550227507149.jpg"></img>&lt;/XyZ9PlH14ZuK8&gt;</xyz9plh13zuk8></p>
+<p>Давайте відлагодимо в GDB:</p>
+<p><xyz9plh15zuk8 class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1550227529034.jpg"></img>&lt;/XyZ9PlH16ZuK8&gt;</xyz9plh15zuk8></p>
+<p>Давайте встановимо відлагоджувач для інтелектуальної мови і встановимо зупинку на початку:</p>
+<p><xyz9plh17zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1550227565697.jpg"></img>&lt;/XyZ9PlH18ZuK8&gt;</xyz9plh17zuk8></p>
+<p>Як ми бачимо, десяткове 16 або шістнадцяткове 10 майже готується бути переміщено у EAX, але як ми бачимо, воно ще не було виконано, поки ми не крокуємо вперед.</p>
+<p><xyz9plh19zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1550227619555.jpg"></img>&lt;/XyZ9PlH20ZuK8&gt;</xyz9plh19zuk8></p>
 <p>Тепер ми можемо переглянути наші регістри.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1550227646545.jpg"></img></div>
-
-<p>Ми можемо бачити, що RAX успішно проводить десятковий знак 16 або Hex 10.</p>
-<p>Ми проведемо кілька тижнів на цих простих прикладах, щоб ви могли комфортно працювати з тим, як працює процесор та його внутрішні роботи.</p>
+<p><xyz9plh21zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1550227646545.jpg"></img>&lt;/XyZ9PlH22ZuK8&gt;</xyz9plh21zuk8></p>
+<p>Ми бачимо, що RAX успішно зберігає десяткове 16 або шістнадцяткове 10.</p>
+<p>Ми витратимо кілька тижнів на ці прості приклади, щоб ви могли відчувати себе комфортно з тим, як працює процесор і його внутрішні механізми.</p>
 
                                 
                                 </section>
@@ -2890,7 +2884,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 27 - x64 Assembly [Part 1]","level":"1.5.27","depth":2,"next":{"title":"Part 28 - x64 Assembly [Part 2]","level":"1.5.28","depth":2,"path":"pages-ua/part-28-x64-assembly-part-2.md","ref":"pages-ua/part-28-x64-assembly-part-2.md","articles":[]},"previous":{"title":"Part 26 - Boot Sector Basics [Part 9]","level":"1.5.26","depth":2,"path":"pages-ua/part-26-boot-sector-basics-part-9.md","ref":"pages-ua/part-26-boot-sector-basics-part-9.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-27-x64-assembly-part-1.md","mtime":"2025-08-21T11:42:51.323Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 27 - x64 Assembly [Part 1]","level":"1.5.27","depth":2,"next":{"title":"Part 28 - x64 Assembly [Part 2]","level":"1.5.28","depth":2,"path":"pages-ua/part-28-x64-assembly-part-2.md","ref":"pages-ua/part-28-x64-assembly-part-2.md","articles":[]},"previous":{"title":"Part 26 - Boot Sector Basics [Part 9]","level":"1.5.26","depth":2,"path":"pages-ua/part-26-boot-sector-basics-part-9.md","ref":"pages-ua/part-26-boot-sector-basics-part-9.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-27-x64-assembly-part-1.md","mtime":"2025-08-21T18:12:34.005Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

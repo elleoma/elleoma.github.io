@@ -2821,12 +2821,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-17---абсолютна-потужність-пошкоджує-абсолютно-трагічна-казка-про-вхід-">part 17 - "Абсолютна потужність пошкоджує абсолютно!", Трагічна казка про вхід ...</h2>
-<p>"Але я просто тут, щоб вивчити зворотну інженерну інженерію, я насправді не зацікавлений у несексичній частині кодування, я просто хочу, щоб зворотна інженерна виклик і бути суперзіркою!"</p>
-<p>Ах, наївність не-джідів. Для багато чого вони повинні вчитися чи, можливо, навчитися дійсно вчитися!</p>
-<p>Я не знімаю книги та курси програмування, які вчать, як захоплювати stdin у користувачів спрощено, як "scanf", проте я скоріше закликаю вас розглянути належний підхід.</p>
-<p>Ми маємо справу з мікроконтролером. Це ціль авторів викупу, державних агентів та всіляких недоброзичливих сторін. Спочатку ми повинні зайняти час, щоб зрозуміти, як правильно обробляти вхід щодо мікроконтролера.</p>
-<p>Я взяв свободу, щоб побудувати належну функцію введення для вашого експертизи.</p>
+                                <h2 id="частина-17---повновластність-знищує-повність-трагічна-історія-введення">Частина 17 - "ПОВНОВЛАСТНІСТЬ ЗНИЩУЄ ПОВНІСТЬ!", Трагічна історія Введення...</h2>
+<p>"Але я тільки тут, щоб вивчити Інженерію зворотнього зв'язку. Я справді не цікавлюся не-сексуальною частиною програмування, я тільки хочу викликати Інженерію зворотнього зв'язку і стати суперзіркою!"</p>
+<p>Ах, наївність тих, хто не є Джедаєм. Для них багато чого потрібно вивчити або, може бути, вивчити знову, щоб дійсно вивчити!</p>
+<p>Я не роблю жодної спроби підірвати програми та курси, які вчать, як захоплювати STDIN від користувачів у простому вигляді, наприклад, 'scanf', але я бажаю викликати вас, щоб розглянути належний підхід.</p>
+<p>Ми маємо справу з мікроконтролером. Він є ВИБРАНОЮ мішенню авторів Рansomware, державних агентів та всіх інших неприємних осіб. НАМУ СПОРОМНО потрібно взяти час, щоб зрозуміти, як належним чином обробляти вхідні дані щодо мікроконтролера.</p>
+<p>Я взяв на себе свободу побудувати належну функцію введення для вашої оцінки.</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 #include "pico/stdlib.h"
@@ -2839,7 +2839,7 @@
 #define BACKSPACE 0x08
 #define DEL 0x7f
 
-void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_USB_STRING_SIZE)
+void input_proc(char type, char* p_usb_char, char* p_usb_string, const XyZ9PlH8ZuK8* p_USB_STRING_SIZE)
 {
   *p_usb_char = '\0';
   *p_usb_char = getchar_timeout_us(0);
@@ -2847,10 +2847,10 @@ void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_US
   {
     if(p_usb_string[0] != '\0')
     {
-      printf("\b");
-      printf(" ");
-      printf("\b");
-      p_usb_string[strlen(p_usb_string)-1] = '\0';
+      XyZ9PlH4ZuK8("\b");
+      XyZ9PlH5ZuK8(" ");
+      XyZ9PlH6ZuK8("\b");
+      p_usb_string[XyZ9PlH0ZuK8(p_usb_string)-1] = '\0';
     }
   }
   if(type == 'f')
@@ -2862,7 +2862,7 @@ void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_US
         period = strchr(p_usb_string, '.');
       if(period == NULL) 
       {
-        if(strlen(p_usb_string) &lt; *p_USB_STRING_SIZE)
+        if(XyZ9PlH1ZuK8(p_usb_string) &lt; *p_USB_STRING_SIZE)
         {
           putchar(*p_usb_char);
           strncat(p_usb_string, p_usb_char, 1);
@@ -2877,7 +2877,7 @@ void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_US
   { 
     while(*p_usb_char &gt;= ZERO &amp;&amp; *p_usb_char &lt;= NINE)
     {
-      if(strlen(p_usb_string) &lt; *p_USB_STRING_SIZE)
+      if(XyZ9PlH2ZuK8(p_usb_string) &lt; *p_USB_STRING_SIZE)
       {
         putchar(*p_usb_char);
         strncat(p_usb_string, p_usb_char, 1);
@@ -2889,7 +2889,7 @@ void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_US
   { 
     while(*p_usb_char &gt;= CAPITAL_A &amp;&amp; *p_usb_char &lt;= LOWER_CASE_Z)
     {
-      if(strlen(p_usb_string) &lt; *p_USB_STRING_SIZE)
+      if(XyZ9PlH3ZuK8(p_usb_string) &lt; *p_USB_STRING_SIZE)
       {
         putchar(*p_usb_char);
         strncat(p_usb_string, p_usb_char, 1);
@@ -2900,9 +2900,9 @@ void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_US
 }
 </pre>
 
-<p>"Вау, я думав, що ми сприймаємо це повільно!" Настав час належним чином почати розуміти, як бути джедатом при розробці ефективного програмного забезпечення. Настав час, щоб зайняти час, щоб правильно перетравити реальну функцію перевірки введення.</p>
-<p>Я хочу, щоб ви витратили час і перетравлюють цю функцію, щоб ми могли переглянути її на наступному уроці.</p>
-<p>На нашому наступному уроці ми належним чином розбиємо цю роботу генія, щоб правильно зрозуміти та ремесло і в кінцевому рахунку повернути інженера в нашому майбутньому!</p>
+<p>"Ох, я подумав, що ми йшли повільно!" Тепер настало час належним чином розпочати розуміти, як бути Джедаєм при розробці ефективного програмного забезпечення. Тепер настало час взяти час, щоб належним чином засвоювати справжню функцію перевірки входу.</p>
+<p>Я хочу, щоб ви взяли час і засвоїли цю функцію, щоб ми могли її переглянути у наступному урокі.</p>
+<p>У наступному урокі ми належним чином розберемо цю роботу генієві, щоб належним чином зрозуміти і створити, а в кінцевому підсумку Інженерувати зворотньо у майбутньому!</p>
 
                                 
                                 </section>
@@ -2946,7 +2946,7 @@ void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_US
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"next":{"title":"Part 18 - \"FOR 800 YEARS HAVE I TRAINED JEDI!\", The FORCE That IS Input...","level":"1.7.18","depth":2,"path":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","ref":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","articles":[]},"previous":{"title":"Part 16 - Hacking double","level":"1.7.16","depth":2,"path":"pages-ua/part-16-hacking-double.md","ref":"pages-ua/part-16-hacking-double.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","mtime":"2025-08-21T11:42:51.321Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"next":{"title":"Part 18 - \"FOR 800 YEARS HAVE I TRAINED JEDI!\", The FORCE That IS Input...","level":"1.7.18","depth":2,"path":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","ref":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","articles":[]},"previous":{"title":"Part 16 - Hacking double","level":"1.7.16","depth":2,"path":"pages-ua/part-16-hacking-double.md","ref":"pages-ua/part-16-hacking-double.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","mtime":"2025-08-21T18:12:34.002Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

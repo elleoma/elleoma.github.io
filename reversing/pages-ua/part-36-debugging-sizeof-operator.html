@@ -2821,47 +2821,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-36---налагодження-оператора-sizeof">PART 36 - Налагодження оператора Sizeof</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Давайте переглянемо наш код.</p>
-<pre spellcheck="false">#include &lt;iostream&gt;
-
-&nbsp;
-
-int main(void) {
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int myNumber = 16;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int myNumberSize = sizeof(myNumber);
-
-&nbsp;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; std::cout &lt;&lt; myNumberSize &lt;&lt; std::endl;
-
-&nbsp;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;
-
-}
-</pre>
-
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1524823603695.jpg"></img></div>
-
-<p>Пам'ятайте, що ми створюємо змінну <strong>mynumber = 16</strong>, до якої ми створюємо ще одну змінну <strong>mynumbersize</strong>, яка містить значення розміру <strong>mynumber </strong>. &nbsp;we бачимо, що коли ми виконуємо наш код, він показує 4, тому ми бачимо, що оператор Sizeof вказує на ціле двобайки широко.</p>
-<p>Давайте налагоджуємо і розірвемося на Майн.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1524823663114.jpg"></img></div>
-
-<p>Давайте розірвемося на <strong>main+20</strong>, як ми бачимо, що значення <strong>4</strong> переміщується в <strong>r3</strong>.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1524823735285.jpg"></img></div>
-
-<p>Давайте розглянемо, що відбувається в <strong>main+16</strong>, як ми бачимо, що ми зберігаємо значення <strong> $ r11-8</strong> того, що існує в <strong>r3</strong>, що в нашому випадку <strong>16 </strong>. &nbsp;. <strong>16 </strong>. &nbsp;WE бачимо це тут, коли ми вивчаємо значення всередині <strong> $ r11-8</strong>.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1524823766343.jpg"></img></div>
-
-<p>Як ми бачимо вище значення всередині <strong> $ r11-12</strong> IS<strong> 4</strong>, оскільки це представляє значення, яке <strong>SizeOf</strong> повертається як ціле число <strong>16 </strong>, насправді 4 байти широко.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1524823791885.jpg"></img></div>
-
-<p>Нарешті, коли ми продовжуємо виконання, ми насправді бачимо значення <strong>4</strong> перегукується з терміналом.</p>
-<p>На наступному тижні ми зануримось у оператор Hacking Sizeof.</p>
+                                <p>Частина 36 – Дебагування оператора SizeOf</p>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті.</p>
+<p>Давайте знову розглянемо наш код.</p>
+<p>Ми створюємо змінну <strong>myNumber = 16</strong> до якої створюємо ще одну змінну <strong>myNumberSize</strong> яка зберігає значення розміру <strong>myNumber</strong>.  Ми бачимо, що коли ми виконуємо наш код, воно показує 4, тому ми бачимо, що оператор SizeOf вказує, що ціле число має ширину 4 байти.</p>
+<p>Давайте дебагуємо і зупиняємося на головній.</p>
+<p>Давайте зупинимося на <strong>main+20</strong> оскільки ми бачимо значення <strong>4</strong> яке переміщується в <strong>r3</strong>.</p>
+<p>Давайте розглянемо, що відбувається на <strong>main+16</strong> оскільки ми бачимо, що зберігаємо значення в <strong>$r11-8</strong> яке існує в <strong>r3</strong> яке в нашому випадку є <strong>16</strong>.  Це має сенс, оскільки коли ми розглядаємо наш початковий код, значення <strong>myNumber</strong> насправді було <strong>16</strong>.  Ми бачимо це тут коли ми розглядаємо значення всередині <strong>$r11-8</strong>.</p>
+<p>Як ми бачимо вище, значення всередині <strong>$r11-12</strong> є <strong>4</strong> оскільки воно представляє значення, яке повертає <strong>SizeOf</strong> як ціле число <strong>16</strong> насправді має ширину 4 байти.</p>
+<p>Останнім часом, коли ми продовжимо виконання, насправді побачимо значення <strong>4</strong> відображене в терміналі.</p>
+<p>Наступна неділя ми вийдемо на хакінг оператора SizeOf.</p>
 
                                 
                                 </section>
@@ -2905,7 +2874,7 @@ int main(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 36 – Debugging SizeOf Operator","level":"1.4.36","depth":2,"next":{"title":"Part 37 – Hacking SizeOf Operator","level":"1.4.37","depth":2,"path":"pages-ua/part-37-hacking-sizeof-operator.md","ref":"pages-ua/part-37-hacking-sizeof-operator.md","articles":[]},"previous":{"title":"Part 35 – SizeOf Operator","level":"1.4.35","depth":2,"path":"pages-ua/part-35-sizeof-operator.md","ref":"pages-ua/part-35-sizeof-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-36-debugging-sizeof-operator.md","mtime":"2025-08-21T11:42:51.325Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 36 – Debugging SizeOf Operator","level":"1.4.36","depth":2,"next":{"title":"Part 37 – Hacking SizeOf Operator","level":"1.4.37","depth":2,"path":"pages-ua/part-37-hacking-sizeof-operator.md","ref":"pages-ua/part-37-hacking-sizeof-operator.md","articles":[]},"previous":{"title":"Part 35 – SizeOf Operator","level":"1.4.35","depth":2,"path":"pages-ua/part-35-sizeof-operator.md","ref":"pages-ua/part-35-sizeof-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-36-debugging-sizeof-operator.md","mtime":"2025-08-21T18:12:34.006Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

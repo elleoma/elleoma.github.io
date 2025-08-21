@@ -2821,9 +2821,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-31---змінні-зламали-плаваючі-змінні">PART 31 - Змінні зламали плаваючі змінні</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Давайте переглянемо наш код.</p>
+                                <h2 id="частина-31-–-хакінг-змінних-float">Частина 31 – Хакінг змінних Float</h2>
+<p>Для повного змісту змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Давайте знову переглянемо наш код.</p>
 <pre spellcheck="false">#include &lt;iostream&gt;
 
 &nbsp;
@@ -2845,43 +2845,34 @@ int main(void) {
 
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799049547.jpg"></img></div>
 
-<p>Давайте розглянемо підручник минулого тижня.</p>
+<p>Давайте переглянемо попередній урок.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799097861.jpg"></img></div>
 
-<p>Давайте розійдемося на <strong> -мейн+20</strong> і продовжимо до цього моменту.</p>
+<p>Давайте зупинимося на <strong>main+20</strong> і продовжимо на цьому місці.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799125882.jpg"></img></div>
 
-<p>Давайте вивчимо, яка цінність знаходиться всередині <strong>R11-8 </strong>. &nbsp;WE чітко бачимо, що це <strong>1337.09998</strong>, що наближає наше значення в нашому первісному коді C ++.&nbsp;</p>
+<p>Давайте побачимо, яку вартість знаходиться всередині <strong>r11-8</strong>.  Вже дуже добре бачимо, що це <strong>1337.09998</strong>, яка наближається до нашої вартості в нашому оригінальному коді C++.  Увага: плаваючий має близько 7 цифр десятичної точності, тому ми не бачимо <strong>1337.1</strong>.  Будьте пам'ятні цьому, оскільки ми йдемо далі.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799166328.jpg"></img></div>
 
-<p>Ми також можемо побачити це значення у високій пам'яті.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799204709.jpg"></img></div>
-
-<p>Давайте розлучимося на <strong> -мейн+28</strong> і продовжимо.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799242840.jpg"></img></div>
-
-<p>We see a strange new instruction.&nbsp;We see <strong>vldr</strong> and the value within <strong>r11, #8</strong> being moved into<strong> s0</strong>.&nbsp;So what is <strong>s0</strong>?&nbsp;We have a math co-processor which has a series of additional registers that work with decimal or floating-point числа.&nbsp;here ми бачимо приклад такого, до якого значення <strong>1337.09998 </strong> є переміщеним у <strong>s0 </strong>. &nbsp;the <strong>vldr</strong> інструкція завантажує постійну цінність у кожен елемент одноточного або подвійного реєстрації, такого, такого, такого, такого S0__.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799279756.jpg"></img></div>
-
-<p>Ми можемо бачити ці спеціальні регістри лише в тому випадку, якщо ми робимо інформацію про те, як ми виконуємо всі, як ми робимо нижче.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799307421.jpg"></img></div>
-
-<p>Нижче ми бачимо, що значення зараз переміщується в <strong>S0</strong>.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799331767.jpg"></img></div>
-
-<p>Давайте хакемо!</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799362535.jpg"></img></div>
-
-<p>Давайте тепер подивимось на регістри і подивимось, що сталося.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799386349.jpg"></img></div>
-
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799407513.jpg"></img></div>
-
-<p>Як ви бачите, ми зламали значення (менше точній проблемі змінної Float точні до 6 десяткових місць)!</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799441419.jpg"></img></div>
-
-<p>Нарешті, коли ми продовжуємо, ми бачимо, що наше зламане значення перегукується з терміналом, коли виконується C ++ <strong>cout </strong>function.</p>
-<p>Наступного тижня ми зануримося у подвійні змінні.</p>
+<p>Ми також бачимо цю вартість в високій пам'яті.</p>
+<p><xyz9plh10zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799204709.jpg"></img>&lt;/XyZ9PlH11ZuK8&gt;</xyz9plh10zuk8></p>
+<p>Давайте зупинимося на <strong>main+28</strong> і продовжимо.</p>
+<p><xyz9plh12zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799242840.jpg"></img>&lt;/XyZ9PlH13ZuK8&gt;</xyz9plh12zuk8></p>
+<p>Ми бачимо дивну нову інструкцію.  Ми бачимо <strong>vldr</strong> і значення всередині <strong>r11, #8</strong> переміщується в<strong> s0</strong>.  А що таке <strong>s0</strong>?  Ми маємо математичний процесор, який має серію додаткових регістрів, які працюють з десятковими або плаваючими-цілочисельними числами.  Тут ми бачимо приклад такого, до якого значення <strong>1337.09998 </strong>переміщується в <strong>s0</strong>.  Інструкція <strong>vldr</strong> завантажує константне значення в кожний елемент однобайтової або подвійної точності регістра, наприклад <strong>s0</strong>.</p>
+<p><xyz9plh14zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799279756.jpg"></img>&lt;/XyZ9PlH15ZuK8&gt;</xyz9plh14zuk8></p>
+<p>Ми можемо побачити ці спеціальні регістри тільки якщо ми зробимо команду info registers all, як ми робимо нижче.</p>
+<p><xyz9plh16zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799307421.jpg"></img>&lt;/XyZ9PlH17ZuK8&gt;</xyz9plh16zuk8></p>
+<p>Нижче ми бачимо значення, яке тепер переміщується в <strong>s0</strong>.</p>
+<p><xyz9plh18zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799331767.jpg"></img>&lt;/XyZ9PlH19ZuK8&gt;</xyz9plh18zuk8></p>
+<p>Давайте хакнемо!</p>
+<p><xyz9plh20zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799362535.jpg"></img>&lt;/XyZ9PlH21ZuK8&gt;</xyz9plh20zuk8></p>
+<p>Давайте тепер подивимося на регістри і побачимо, що відбулося.</p>
+<p><xyz9plh22zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799386349.jpg"></img>&lt;/XyZ9PlH23ZuK8&gt;</xyz9plh22zuk8></p>
+<p><xyz9plh24zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799407513.jpg"></img>&lt;/XyZ9PlH25ZuK8&gt;</xyz9plh24zuk8></p>
+<p>Як бачите, ми вже хакнули значення (з урахуванням проблеми точності змінної float, яка відповідає 6 десятичним місцям).</p>
+<p><xyz9plh26zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1521799441419.jpg"></img>&lt;/XyZ9PlH27ZuK8&gt;</xyz9plh26zuk8></p>
+<p>Нарешті, продовжуючи, ми бачимо наш хакований вміст відбитий знову на терміналі, коли функція C++ <strong>cout </strong> виконує.</p>
+<p>Наступна неділя ми вийдемо на подвійні змінні.</p>
 
                                 
                                 </section>
@@ -2925,7 +2916,7 @@ int main(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 31 – Hacking Float Variables","level":"1.4.31","depth":2,"next":{"title":"Part 32 – Double Variables","level":"1.4.32","depth":2,"path":"pages-ua/part-32-double-variables.md","ref":"pages-ua/part-32-double-variables.md","articles":[]},"previous":{"title":"Part 30 – Debugging Float Variables","level":"1.4.30","depth":2,"path":"pages-ua/part-30-debugging-float-variables.md","ref":"pages-ua/part-30-debugging-float-variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-31-hacking-float-variables.md","mtime":"2025-08-21T11:42:51.324Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 31 – Hacking Float Variables","level":"1.4.31","depth":2,"next":{"title":"Part 32 – Double Variables","level":"1.4.32","depth":2,"path":"pages-ua/part-32-double-variables.md","ref":"pages-ua/part-32-double-variables.md","articles":[]},"previous":{"title":"Part 30 – Debugging Float Variables","level":"1.4.30","depth":2,"path":"pages-ua/part-30-debugging-float-variables.md","ref":"pages-ua/part-30-debugging-float-variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-31-hacking-float-variables.md","mtime":"2025-08-21T18:12:34.005Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

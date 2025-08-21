@@ -2821,33 +2821,32 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-23---налагодження-asm-1--переміщення-негайних-даних-">part 23 - налагодження ASM 1 \ [переміщення негайних даних ]</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Почнемо з завантаження двійкового в GDB.</p>
-<p>Завантажити в GDB тип:</p>
-<p><strong>gdb -q переміщення \ _immediate \ _dat</strong></p>
+                                <h2 id="частина-23---дебагування-asm-1-moving-наступна-інформація">Частина 23 - Дебагування ASM 1 [Moving Наступна інформація</h2>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Давайте почнемо завантажувати бінарний файл у GDB.</p>
+<p>Для завантаження у GDB натисніть:</p>
+<p><strong>gdb -q moving_immediate_dat</strong></p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520242394717.jpg"></img></div>
 
-<p>Давайте спочатку встановимо точку перерви на запуск, ввівши B \ _start.</p>
-<p>Потім ми можемо запустити програму, ввівши <strong>R</strong>.</p>
-<p>Щоб потім розпочати розбирання, ми просто вводимо <strong>disas</strong>.</p>
-<p>Ми кодували <strong>NOP</strong>, що означає жодної операції або 0x90 з точки зору опкоду для належних цілей налагодження, які належним чином потрапила в точка переривання. Це хороша практика при створенні програм Асамблеї.</p>
+<p>Давайте спочатку встановимо зупинку на початку, натиснувши b _start.</p>
+<p>Далі ми можемо запустити програму, натиснувши <strong>r</strong>.</p>
+<p>Для початку розбору ми просто натискаємо <strong>disas</strong>.</p>
+<p>Ми написали <strong>nop</strong>, що означає ні операції або 0x90 з точки зору OPCODE для належних цілей дебагування, які зупинилися на місці. Це добра практика при створенні програми-асемблера.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520193761435.jpg"></img></div>
 
-<p>Рідний синтаксис, як я вже багато разів заявляв, є синтаксисом at&amp;t, який ви бачите вище. Я болісно повертаюся вперед і вперед, щоб ви мали комфорт у кожному, проте йдучи вперед, я буду дотримуватися синтаксису AT&amp;T, однак хотів показати вам кілька прикладів обох. Я знову заявляю, що якщо ви коли-небудь захочете побачити синтаксис Intel, просто введіть Intel Set-DiseSembly Alrabl, і у вас буде те, що шукаєте.</p>
-<p>Спочатку ми використовуємо команду si, що означає ступінчасте, щоб перейти до наступної інструкції. Те, що ми бачимо тут на <strong> \ _ start+0</strong>, ви переміщуєте значення шестигранного значення <strong>0x64</strong> в <strong>eax</strong>. Це просто переміщення десяткового <strong>100</strong> або, як його бачить комп'ютер, HEX <strong>0x64</strong> в <strong>EAX</strong>, що демонструє переміщення негайного значення в реєстр.</p>
+<p>Натива syntax, як я вже багато разів вказував, це AT&amp;T syntax, яку ви бачите вище. Я з великими труднощами повертаюся і вперед, щоб ви мали відчуття кожного, але далі я буду дотримуватися AT&amp;T syntax, хоча хотів показати кілька прикладів обох. Я знову підтверджую, що якщо ви коли-небудь бажаєте побачити Intel syntax, просто натисніть set-дизасемблювання-flavor intel і ви побачите те, чого бажаєте.</p>
+<p>У першому випадку ми використовуємо команду si, яка означає step-into, щоб просунутися далі на інструкцію. Що ми бачимо тут <strong>_start+0</strong>, ви переміщаєтеся в бінарному вигляді <strong>0x64</strong> в <strong>EAX</strong>. Це просто переміщення десяткової <strong>100</strong> або як комп'ютер бачить його, бінарний <strong>0x64</strong> в <strong>EAX</strong>, що демонструє переміщення миттєвої величини в регістр.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520144825193.jpg"></img></div>
 
-<p>Ми знову ступимо, а потім використовуємо команду, яку я маю на увазі, має простір між ними, щоб надати нам інформацію про стан процесора регістрів.&nbsp;we може побачити EAX тепер має значення 0x64 hex або 100 десятків.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520492698882.jpg"></img></div>
-
-<p>Після того, як ми знову ступінчите і зробимо <strong>disas</strong>, ми бачимо, що потім перемістили значення <strong>0x50</strong> на етикетку <strong>buffer</strong>, як це може повернутися до вихідного коду минулого тижня.</p>
-<p>Розглядаючи дані, що не реєструють, ми можемо використовувати команду друку вище, коли ми вводимо <strong>print /x buffer</strong>, і це чітко показує нам, що значення всередині буфера <strong>0x50</strong>. Позначення <strong>/X</strong> означає показати нам цінність у HEX.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520492696905.jpg"></img></div>
-
-<p>Отже, ви можете переглянути слайд 2 цього підручника вище, який ви бачите на <strong> \ _ запуску+5</strong> негайне значення <strong>0x50</strong>, завантаженого в <strong>buffer</strong> мітку, або в цьому випадку адреса <strong>buffer</strong>, яка є <strong>0x804909</strong>, і ми можемо його вивчити, використовуючи інструкцію, введеному <strong>x/xb 0x8049090<em>__</em></strong>, що є на виписці <strong>X який дає </strong>0x50 .__</p>
-<p>Ми будемо робити це з кожним прикладом програми, щоб ми могли зануритися в процес налагодження. Якщо є якісь питання, будь ласка, залиште їх нижче в коментарях.</p>
-<p>Я з нетерпінням чекаю зустрічі з вами на наступному тижні, коли ми занурюємось у створення нашого першого залучення Асамблеї!</p>
+<p>Ми знову крокуємо далі і потім використовуємо команду i r, яка має на увазі між ними пробіл, щоб отримати інформацію про стан регістрів ЦП.  Ми бачимо EAX тепер має значення 0x64 бінарного або 100 десяткових.</p>
+<p><xyz9plh10zuk8 class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520492698882.jpg"></img>&lt;/XyZ9PlH11ZuK8&gt;</xyz9plh10zuk8></p>
+<p>Після кроку далі і виконання <strong>disas</strong>, ми бачимо, що ми тоді перемістили значення <strong>0x50</strong> в метку <strong>buffer</strong> як можна звернутися до джерельного коду з останньої неділі, щоб побачити.</p>
+<p>При роботі з не-регістровою інформацією ми можемо використовувати команду друку вище, як ми друкуємо <strong>print /x buffer</strong> і воно явно показує нам, що значення всередині buffer є <strong>0x50</strong>.  /x__ позначення означає показати нам значення в бінарному вигляді.</p>
+<p><xyz9plh12zuk8 class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520492696905.jpg"></img>&lt;/XyZ9PlH13ZuK8&gt;</xyz9plh12zuk8></p>
+<p>Слідуючи цьому ви можете переглянути дію 2 цього навчального матеріалу ви бачите в <strong>_start+5</strong> миттєву величину <strong>0x50</strong> завантажену в метку <strong>buffer</strong> або в цьому випадку адресу <strong>buffer</strong> яка є <strong>0x8049090</strong> і ми можемо дослідити його, використовуючи інструкцію досліджувати, натиснувши <strong>x/xb 0x8049090</strong> яке показує нам один бінарний байт в цьому місці яке дає <strong>0x50.</strong></p>
+<p>Ми зробимо це з кожним прикладом програми, щоб глибше вивчити процес дебагування. Якщо є якісь питання, будь ласка, залиште їх нижче в коментарях.</p>
+<p>Я чекаю на побачення всіх наступної неділі коли ми глибше вивчитимо створення нашого першого збірника-асемблера!</p>
+<p>Очікуйте мене наступної неділі!</p>
 
                                 
                                 </section>
@@ -2891,7 +2890,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 23 - ASM Debugging 1 [Moving Immediate Data]","level":"1.2.23","depth":2,"next":{"title":"Part 24 - ASM Hacking 1 [Moving Immediate Data]","level":"1.2.24","depth":2,"path":"pages-ua/part-24-asm-hacking-1-moving-immediate-data.md","ref":"pages-ua/part-24-asm-hacking-1-moving-immediate-data.md","articles":[]},"previous":{"title":"Part 22 - ASM Program 1 [Moving Immediate Data]","level":"1.2.22","depth":2,"path":"pages-ua/part-22-asm-program-1-moving-immediate-data.md","ref":"pages-ua/part-22-asm-program-1-moving-immediate-data.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-23-asm-debugging-1-moving-immediate-data.md","mtime":"2025-08-21T11:42:51.323Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 23 - ASM Debugging 1 [Moving Immediate Data]","level":"1.2.23","depth":2,"next":{"title":"Part 24 - ASM Hacking 1 [Moving Immediate Data]","level":"1.2.24","depth":2,"path":"pages-ua/part-24-asm-hacking-1-moving-immediate-data.md","ref":"pages-ua/part-24-asm-hacking-1-moving-immediate-data.md","articles":[]},"previous":{"title":"Part 22 - ASM Program 1 [Moving Immediate Data]","level":"1.2.22","depth":2,"path":"pages-ua/part-22-asm-program-1-moving-immediate-data.md","ref":"pages-ua/part-22-asm-program-1-moving-immediate-data.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-23-asm-debugging-1-moving-immediate-data.md","mtime":"2025-08-21T18:12:34.004Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

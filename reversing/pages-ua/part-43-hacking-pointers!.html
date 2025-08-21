@@ -2821,61 +2821,48 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-43---хакерські-покажчики">PART 43 - Хакерські покажчики!</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Ми в кінці дороги. Це остаточне відео в серії x64. Заключна тема - це покажчики.</p>
-<p>Що таке покажчики? Почнемо з прикладу.</p>
+                                <h2 id="частина-43---хакінг-пойнтерів">Частина 43 - Хакінг Пойнтерів!</h2>
+<p>Для повного змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Ми дійшли кінця шляху. Це останній відео в серії x64. Остання тема стосується вказівників.</p>
+<p>Що таке вказівники? Давайте почнемо з прикладу.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567286671465.jpg"></img></div>
 
-<p>Покажчик - це не що інше, як адреса пам'яті. Коли ми компілюємо, ми чітко побачимо, де лотерея \ _number живе в відображеній пам’яті (це запущений приклад на відміну від наших прикладів RADARE беззастережних).</p>
+<p>Вказівник нічого не більше ніж адреса пам'яті. Коли ми компілюємо, ми побачимо, де живе lottery_number в мапованій пам'яті (це є діючим прикладом, як наше не маповане Radare приклади).</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567286745307.jpg"></img></div>
 
-<p>Додамо справжній вказівник до прикладу:</p>
+<p>Давайте додамо справжній вказівник до прикладу:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567287725406.jpg"></img></div>
 
-<p>Ми бачимо те саме значення:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567287787090.jpg"></img></div>
-
-<p>Давайте експериментуємо більше:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567288396508.jpg"></img></div>
-
-<p>Ми бачимо вказівку вказівника на нову адресу:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567288456995.jpg"></img></div>
-
-<p>Пам'ятайте покажчики - це адреси пам'яті інших змінних. Давайте подивимось на це іншим способом:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567289354121.jpg"></img></div>
-
-<p>Давайте складемо:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567289368216.jpg"></img></div>
-
-<p>Ми поважаємо, роблячи наступне:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567289646596.jpg"></img></div>
-
-<p>Тоді ми складаємо:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567289657671.jpg"></img></div>
-
-<p>Ми можемо побачити, що вказівник на повагу дорівнює 777.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567290644015.jpg"></img></div>
-
-<p>Ми можемо побачити приклад із масивом:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567290665083.jpg"></img></div>
-
-<p>Давайте налагоджуємо:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567290786481.jpg"></img></div>
-
-<p>Тоді ми розбираємо:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567290800965.jpg"></img></div>
-
-<p>Давайте хакемо!</p>
-<p>div</p>
-<p>Давайте переглянемо двійкове:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567292311387.jpg"></img></div>
-
-<p>Ми бачимо, що ми зламали значення 3 з 6.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567292376880.jpg"></img></div>
-
-<p>Ми можемо бачити, що ми зробили успішний хак.</p>
-<p>Я сподіваюся, що протягом багатьох років через буквальні сотні x86, ARM та x64 у вас є основні знання про те, як зробити добро, щоб захистити критичні інфраструктури від шкідливих рук, розуміючи, як ворог працює. Ідіть і зробіть гарну роботу!</p>
+<p>Ми бачимо той же значення:</p>
+<p><xyz9plh10zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567287787090.jpg"></img>&lt;/XyZ9PlH11ZuK8&gt;</xyz9plh10zuk8></p>
+<p>Давайте експериментуватимемо більше:</p>
+<p><xyz9plh12zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567288396508.jpg"></img>&lt;/XyZ9PlH13ZuK8&gt;</xyz9plh12zuk8></p>
+<p>Ми бачимо, що адреса вказівника вказує на нову адресу:</p>
+<p><xyz9plh14zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567288456995.jpg"></img>&lt;/XyZ9PlH15ZuK8&gt;</xyz9plh14zuk8></p>
+<p>Пам'ятайте, вказівники є адресами пам'яті інших змінних. Давайте розглянемо це інакше:</p>
+<p><xyz9plh16zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567289354121.jpg"></img>&lt;/XyZ9PlH17ZuK8&gt;</xyz9plh16zuk8></p>
+<p>Давайте компілюємо:</p>
+<p><xyz9plh18zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567289368216.jpg"></img>&lt;/XyZ9PlH19ZuK8&gt;</xyz9plh18zuk8></p>
+<p>Ми віддераціюємо, роблячи наступне:</p>
+<p><xyz9plh20zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567289646596.jpg"></img>&lt;/XyZ9PlH21ZuK8&gt;</xyz9plh20zuk8></p>
+<p>Далі ми компілюємо:</p>
+<p><xyz9plh22zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567289657671.jpg"></img>&lt;/XyZ9PlH23ZuK8&gt;</xyz9plh22zuk8></p>
+<p>Ми бачимо, що віддераційований вказівник рівний 777.</p>
+<p><xyz9plh24zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567290644015.jpg"></img>&lt;/XyZ9PlH25ZuK8&gt;</xyz9plh24zuk8></p>
+<p>Ми бачимо приклад з масивом:</p>
+<p><xyz9plh26zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567290665083.jpg"></img>&lt;/XyZ9PlH27ZuK8&gt;</xyz9plh26zuk8></p>
+<p>Давайте відлагодимо:</p>
+<p><xyz9plh28zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567290786481.jpg"></img>&lt;/XyZ9PlH29ZuK8&gt;</xyz9plh28zuk8></p>
+<p>Далі ми розіб'ємо:</p>
+<p><xyz9plh30zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567290800965.jpg"></img>&lt;/XyZ9PlH31ZuK8&gt;</xyz9plh30zuk8></p>
+<p>Давайте хакнемо!</p>
+<p><xyz9plh32zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567292294462.jpg"></img>&lt;/XyZ9PlH33ZuK8&gt;</xyz9plh32zuk8></p>
+<p>Давайте знову розглянемо байновий файл:</p>
+<p><xyz9plh34zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567292311387.jpg"></img>&lt;/XyZ9PlH35ZuK8&gt;</xyz9plh34zuk8></p>
+<p>Ми бачимо, що ми хакнули значення 3 на 6.</p>
+<p><xyz9plh36zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1567292376880.jpg"></img>&lt;/XyZ9PlH37ZuK8&gt;</xyz9plh36zuk8></p>
+<p>Ми бачимо, що ми здійснили успішний хак.</p>
+<p>Я сподіваюся, що протягом багатьох років через кілька сотень x86, ARM і x64 уроків ви маєте базову знання, як зробити ХОРОШО, щоб захистити критичні інфраструктури від зловмисних рук, розуміючи, як працює ворог. Ідіть і робіть ХОРОШО роботу</p>
 
                                 
                                 </section>
@@ -2919,7 +2906,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 43 - Hacking Pointers!","level":"1.5.43","depth":2,"next":{"title":"ARM-64 Course","level":"1.6","depth":1,"path":"pages-ua/arm-64-course.md","ref":"pages-ua/arm-64-course.md","articles":[{"title":"Part 1 - The Meaning Of Life","level":"1.6.1","depth":2,"path":"pages-ua/part-1-the-meaning-of-life.md","ref":"pages-ua/part-1-the-meaning-of-life.md","articles":[]},{"title":"Part 2 - Development Setup","level":"1.6.2","depth":2,"path":"pages-ua/part-2-development-setup.md","ref":"pages-ua/part-2-development-setup.md","articles":[]},{"title":"Part 3 - \"Hello World\"","level":"1.6.3","depth":2,"path":"pages-ua/part-3-hello-world.md","ref":"pages-ua/part-3-hello-world.md","articles":[]},{"title":"Part 4 - Debugging \"Hello World\"","level":"1.6.4","depth":2,"path":"pages-ua/part-4-debugging-hello-world.md","ref":"pages-ua/part-4-debugging-hello-world.md","articles":[]},{"title":"Part 5 - Hacking \"Hello World\"","level":"1.6.5","depth":2,"path":"pages-ua/part-5-hacking-hello-world.md","ref":"pages-ua/part-5-hacking-hello-world.md","articles":[]},{"title":"Part 6 - Basic I/O","level":"1.6.6","depth":2,"path":"pages-ua/part-6-basic-io.md","ref":"pages-ua/part-6-basic-io.md","articles":[]},{"title":"Part 7 - Debugging Basic I/O","level":"1.6.7","depth":2,"path":"pages-ua/part-7-debugging-basic-io.md","ref":"pages-ua/part-7-debugging-basic-io.md","articles":[]},{"title":"Part 8 - Hacking Basic I/O","level":"1.6.8","depth":2,"path":"pages-ua/part-8-hacking-basic-io.md","ref":"pages-ua/part-8-hacking-basic-io.md","articles":[]},{"title":"Part 9 - Character Primitive Datatype","level":"1.6.9","depth":2,"path":"pages-ua/part-9-character-primitive-datatype.md","ref":"pages-ua/part-9-character-primitive-datatype.md","articles":[]},{"title":"Part 10 - Debugging Character Primitive Datatype","level":"1.6.10","depth":2,"path":"pages-ua/part-10-debugging-character-primitive-datatype.md","ref":"pages-ua/part-10-debugging-character-primitive-datatype.md","articles":[]},{"title":"Part 11 - Hacking Character Primitive Datatype","level":"1.6.11","depth":2,"path":"pages-ua/part-11-hacking-character-primitive-datatype.md","ref":"pages-ua/part-11-hacking-character-primitive-datatype.md","articles":[]},{"title":"Part 12 - Boolean Primitive Datatype","level":"1.6.12","depth":2,"path":"pages-ua/part-12-boolean-primitive-datatype.md","ref":"pages-ua/part-12-boolean-primitive-datatype.md","articles":[]},{"title":"Part 13 - Debugging Boolean Primitive Datatype","level":"1.6.13","depth":2,"path":"pages-ua/part-13-debugging-boolean-primitive-datatype.md","ref":"pages-ua/part-13-debugging-boolean-primitive-datatype.md","articles":[]},{"title":"Part 14 - Hacking Boolean Primitive Datatype","level":"1.6.14","depth":2,"path":"pages-ua/part-14-hacking-boolean-primitive-datatype.md","ref":"pages-ua/part-14-hacking-boolean-primitive-datatype.md","articles":[]},{"title":"Part 15 - Float Primitive Datatype","level":"1.6.15","depth":2,"path":"pages-ua/part-15-float-primitive-datatype.md","ref":"pages-ua/part-15-float-primitive-datatype.md","articles":[]},{"title":"Part 16 - Debugging Float Primitive Datatype","level":"1.6.16","depth":2,"path":"pages-ua/part-16-debugging-float-primitive-datatype.md","ref":"pages-ua/part-16-debugging-float-primitive-datatype.md","articles":[]},{"title":"Part 17 - Hacking Float Primitive Datatype","level":"1.6.17","depth":2,"path":"pages-ua/part-17-hacking-float-primitive-datatype.md","ref":"pages-ua/part-17-hacking-float-primitive-datatype.md","articles":[]},{"title":"Part 18 - Double Primitive Datatype","level":"1.6.18","depth":2,"path":"pages-ua/part-18-double-primitive-datatype.md","ref":"pages-ua/part-18-double-primitive-datatype.md","articles":[]},{"title":"Part 19 - Debugging Double Primitive Datatype","level":"1.6.19","depth":2,"path":"pages-ua/part-19-debugging-double-primitive-datatype.md","ref":"pages-ua/part-19-debugging-double-primitive-datatype.md","articles":[]},{"title":"Part 20 - Hacking Double Primitive Datatype","level":"1.6.20","depth":2,"path":"pages-ua/part-20-hacking-double-primitive-datatype.md","ref":"pages-ua/part-20-hacking-double-primitive-datatype.md","articles":[]}]},"previous":{"title":"Part 42 - Hacking Branches!","level":"1.5.42","depth":2,"path":"pages-ua/part-42-hacking-branches!.md","ref":"pages-ua/part-42-hacking-branches!.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-43-hacking-pointers!.md","mtime":"2025-08-21T11:42:51.326Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 43 - Hacking Pointers!","level":"1.5.43","depth":2,"next":{"title":"ARM-64 Course","level":"1.6","depth":1,"path":"pages-ua/arm-64-course.md","ref":"pages-ua/arm-64-course.md","articles":[{"title":"Part 1 - The Meaning Of Life","level":"1.6.1","depth":2,"path":"pages-ua/part-1-the-meaning-of-life.md","ref":"pages-ua/part-1-the-meaning-of-life.md","articles":[]},{"title":"Part 2 - Development Setup","level":"1.6.2","depth":2,"path":"pages-ua/part-2-development-setup.md","ref":"pages-ua/part-2-development-setup.md","articles":[]},{"title":"Part 3 - \"Hello World\"","level":"1.6.3","depth":2,"path":"pages-ua/part-3-hello-world.md","ref":"pages-ua/part-3-hello-world.md","articles":[]},{"title":"Part 4 - Debugging \"Hello World\"","level":"1.6.4","depth":2,"path":"pages-ua/part-4-debugging-hello-world.md","ref":"pages-ua/part-4-debugging-hello-world.md","articles":[]},{"title":"Part 5 - Hacking \"Hello World\"","level":"1.6.5","depth":2,"path":"pages-ua/part-5-hacking-hello-world.md","ref":"pages-ua/part-5-hacking-hello-world.md","articles":[]},{"title":"Part 6 - Basic I/O","level":"1.6.6","depth":2,"path":"pages-ua/part-6-basic-io.md","ref":"pages-ua/part-6-basic-io.md","articles":[]},{"title":"Part 7 - Debugging Basic I/O","level":"1.6.7","depth":2,"path":"pages-ua/part-7-debugging-basic-io.md","ref":"pages-ua/part-7-debugging-basic-io.md","articles":[]},{"title":"Part 8 - Hacking Basic I/O","level":"1.6.8","depth":2,"path":"pages-ua/part-8-hacking-basic-io.md","ref":"pages-ua/part-8-hacking-basic-io.md","articles":[]},{"title":"Part 9 - Character Primitive Datatype","level":"1.6.9","depth":2,"path":"pages-ua/part-9-character-primitive-datatype.md","ref":"pages-ua/part-9-character-primitive-datatype.md","articles":[]},{"title":"Part 10 - Debugging Character Primitive Datatype","level":"1.6.10","depth":2,"path":"pages-ua/part-10-debugging-character-primitive-datatype.md","ref":"pages-ua/part-10-debugging-character-primitive-datatype.md","articles":[]},{"title":"Part 11 - Hacking Character Primitive Datatype","level":"1.6.11","depth":2,"path":"pages-ua/part-11-hacking-character-primitive-datatype.md","ref":"pages-ua/part-11-hacking-character-primitive-datatype.md","articles":[]},{"title":"Part 12 - Boolean Primitive Datatype","level":"1.6.12","depth":2,"path":"pages-ua/part-12-boolean-primitive-datatype.md","ref":"pages-ua/part-12-boolean-primitive-datatype.md","articles":[]},{"title":"Part 13 - Debugging Boolean Primitive Datatype","level":"1.6.13","depth":2,"path":"pages-ua/part-13-debugging-boolean-primitive-datatype.md","ref":"pages-ua/part-13-debugging-boolean-primitive-datatype.md","articles":[]},{"title":"Part 14 - Hacking Boolean Primitive Datatype","level":"1.6.14","depth":2,"path":"pages-ua/part-14-hacking-boolean-primitive-datatype.md","ref":"pages-ua/part-14-hacking-boolean-primitive-datatype.md","articles":[]},{"title":"Part 15 - Float Primitive Datatype","level":"1.6.15","depth":2,"path":"pages-ua/part-15-float-primitive-datatype.md","ref":"pages-ua/part-15-float-primitive-datatype.md","articles":[]},{"title":"Part 16 - Debugging Float Primitive Datatype","level":"1.6.16","depth":2,"path":"pages-ua/part-16-debugging-float-primitive-datatype.md","ref":"pages-ua/part-16-debugging-float-primitive-datatype.md","articles":[]},{"title":"Part 17 - Hacking Float Primitive Datatype","level":"1.6.17","depth":2,"path":"pages-ua/part-17-hacking-float-primitive-datatype.md","ref":"pages-ua/part-17-hacking-float-primitive-datatype.md","articles":[]},{"title":"Part 18 - Double Primitive Datatype","level":"1.6.18","depth":2,"path":"pages-ua/part-18-double-primitive-datatype.md","ref":"pages-ua/part-18-double-primitive-datatype.md","articles":[]},{"title":"Part 19 - Debugging Double Primitive Datatype","level":"1.6.19","depth":2,"path":"pages-ua/part-19-debugging-double-primitive-datatype.md","ref":"pages-ua/part-19-debugging-double-primitive-datatype.md","articles":[]},{"title":"Part 20 - Hacking Double Primitive Datatype","level":"1.6.20","depth":2,"path":"pages-ua/part-20-hacking-double-primitive-datatype.md","ref":"pages-ua/part-20-hacking-double-primitive-datatype.md","articles":[]}]},"previous":{"title":"Part 42 - Hacking Branches!","level":"1.5.42","depth":2,"path":"pages-ua/part-42-hacking-branches!.md","ref":"pages-ua/part-42-hacking-branches!.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-43-hacking-pointers!.md","mtime":"2025-08-21T18:12:34.007Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

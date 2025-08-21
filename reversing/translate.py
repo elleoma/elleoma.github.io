@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Robust HonKit Markdown Translation Script for Ukrainian
-Uses multiple placeholder strategies and extensive debugging
-Usage: python robust_translate.py [directory]
+HonKit Markdown Translation Script for Ukrainian
+Supports multiple translation APIs with fallbacks and optimization
+Usage: python enhanced_translate.py [directory]
 """
 
 import os
@@ -11,19 +11,121 @@ import json
 import time
 import argparse
 import frontmatter
+import requests
 from pathlib import Path
-from deep_translator import DeeplTranslator, GoogleTranslator
+from typing import Optional, Dict, Any
 
-class RobustHonKitTranslator:
-    def __init__(self, use_deepl=True, debug=True):
-        self.debug = debug
+# Translation API classes
+class LibreTranslateAPI:
+    def __init__(self, url="http://localhost:5000"):
+        self.url = url.rstrip('/')
+        self.session = requests.Session()
+    
+    def translate(self, text: str) -> str:
+        try:
+            response = self.session.post(f"{self.url}/translate", json={
+                "q": text,
+                "source": "en",
+                "target": "uk"
+            })
+            if response.status_code == 200:
+                return response.json()["translatedText"]
+            else:
+                raise Exception(f"LibreTranslate error: {response.status_code}")
+        except Exception as e:
+            raise Exception(f"LibreTranslate failed: {e}")
+
+class GoogleTranslateAPI:
+    def __init__(self, api_key: str):
+        self.api_key = api_key
+        self.base_url = "https://translation.googleapis.com/language/translate/v2"
+    
+    def translate(self, text: str) -> str:
+        try:
+            response = requests.post(self.base_url, {
+                'key': self.api_key,
+                'q': text,
+                'source': 'en',
+                'target': 'uk'
+            })
+            if response.status_code == 200:
+                return response.json()['data']['translations'][0]['translatedText']
+            else:
+                raise Exception(f"Google Translate error: {response.status_code}")
+        except Exception as e:
+            raise Exception(f"Google Translate failed: {e}")
+
+class AzureTranslatorAPI:
+    def __init__(self, api_key: str, region: str = "global"):
+        self.api_key = api_key
+        self.region = region
+        self.base_url = "https://api.cognitive.microsofttranslator.com/translate"
+    
+    def translate(self, text: str) -> str:
+        try:
+            headers = {
+                'Ocp-Apim-Subscription-Key': self.api_key,
+                'Ocp-Apim-Subscription-Region': self.region,
+                'Content-Type': 'application/json'
+            }
+            response = requests.post(
+                f"{self.base_url}?api-version=3.0&from=en&to=uk",
+                headers=headers,
+                json=[{'text': text}]
+            )
+            if response.status_code == 200:
+                return response.json()[0]['translations'][0]['text']
+            else:
+                raise Exception(f"Azure Translator error: {response.status_code}")
+        except Exception as e:
+            raise Exception(f"Azure Translator failed: {e}")
+
+class DeepLAPI:
+    def __init__(self, api_key: str):
+        self.api_key = api_key
+        self.base_url = "https://api-free.deepl.com/v2/translate"
+    
+    def translate(self, text: str) -> str:
+        try:
+            response = requests.post(self.base_url, {
+                'auth_key': self.api_key,
+                'text': text,
+                'source_lang': 'EN',
+                'target_lang': 'UK'
+            })
+            if response.status_code == 200:
+                return response.json()['translations'][0]['text']
+            else:
+                raise Exception(f"DeepL error: {response.status_code}")
+        except Exception as e:
+            raise Exception(f"DeepL failed: {e}")
+
+# Fallback using deep-translator for Google Translate
+try:
+    from deep_translator import GoogleTranslator
+    class FallbackGoogleAPI:
+        def __init__(self):
+            self.translator = GoogleTranslator(source='en', target='uk')
+        
+        def translate(self, text: str) -> str:
+            return self.translator.translate(text)
+except ImportError:
+    class FallbackGoogleAPI:
+        def translate(self, text: str) -> str:
+            raise Exception("deep-translator not available")
+
+class EnhancedHonKitTranslator:
+    def __init__(self, config: Dict[str, Any]):
+        self.config = config
+        self.debug = config.get('debug', True)
         
         # Technical terms that should NOT be translated
         self.protected_terms = {
             # Assembly instructions
-            'mov', 'pop', 'jmp', 'call', 'ret', 'sub', 'mul', 'div',
+            'mov', 'pop', 'jmp', 'call', 'ret', 'sub', 'mul', 'div', 
             'cmp', 'lea', 'xor', 'shl', 'shr', 'inc', 'dec',
             'nop', 'int', 'syscall', 'cpuid', 'rdtsc', 'hlt', 'cli', 'sti',
+            'neg', 'rol', 'ror', 'rcl', 'rcr',
             
             # Registers (x86/x64)
             'eax', 'ebx', 'ecx', 'edx', 'esi', 'edi', 'esp', 'ebp', 'eip',
@@ -36,7 +138,7 @@ class RobustHonKitTranslator:
             # Tools and technologies
             'gdb', 'lldb', 'radare2', 'r2', 'ida', 'ida pro', 'ghidra',
             'objdump', 'readelf', 'nm', 'strings', 'file', 'hexdump', 'xxd',
-            'strace', 'ltrace', 'valgrind', 'perf',
+            'strace', 'ltrace', 'valgrind', 'perf', 'wireshark',
             'python', 'perl', 'bash', 'sh', 'powershell', 'cmd',
             
             # Architectures and formats
@@ -44,42 +146,57 @@ class RobustHonKitTranslator:
             'arm', 'arm64', 'aarch64', 'armv7', 'armv8',
             'mips', 'mips64', 'powerpc', 'ppc', 'sparc',
             'elf', 'pe', 'coff', 'macho', 'a.out',
-            'plt', 'aslr', 'dep', 'nx', 'pie', 'relro',
+            'plt', 'got', 'aslr', 'dep', 'nx', 'pie', 'relro',
+            '.data', '.text',
             
             # Libraries and APIs
             'libc', 'glibc', 'musl', 'msvcrt', 'ucrtbase',
             'kernel32', 'ntdll', 'user32', 'advapi32',
             'malloc', 'printf', 'scanf', 'strcpy', 'strlen',
             'memcpy', 'memset', 'mmap', 'mprotect', 'execve',
+            
+            # Common programming terms
+            # 'buffer', 'stack', 'heap', 'pointer', 'offset',
+            'opcode', 'shellcode', 'rop', 'jop',
         }
         
-        # Ukrainian terminology mapping
-        # self.terminology_map = {
-        #     'instruction pointer register': 'реєстр вказівника інструкцій',
-        #     'instruction pointer': 'вказівник інструкцій',
-        #     'reverse engineering': 'зворотна інженерія',
-        #     'assembly language': 'мова асемблера',
-        #     'debugging': 'налагодження',
-        #     'debugger': 'налагоджувач',
-        #     'register': 'регістр',
-        #     'pointer': 'вказівник',
-        #     'compile': 'компілювати',
-        #     'compiled': 'скомпільований',
-        #     'hijack': 'перехопити',
-        #     'trace': 'відстежити',
-        #     'architecture': 'архітектура',
-        #     'control registers': 'регістри керування',
-        # }
+        # Ukrainian terminology mapping for better technical translation
+        self.terminology_map = {
+            'reverse engineering': 'реверс-інженерія',
+            'assembly language': 'мова асемблера',
+            'assembly': 'асемблер',
+            'debugging': 'налагодження',
+            'debugger': 'налагоджувач',
+            'disassembly': 'дизасемблювання',
+            'disassemble': 'дизасемблювати',
+            'instruction pointer': 'вказівник інструкцій',
+            'register': 'регістр',
+            'memory address': 'адреса пам\'яті',
+            'binary analysis': 'аналіз бінарного коду',
+            'static analysis': 'статичний аналіз',
+            'dynamic analysis': 'динамічний аналіз',
+            'control flow': 'потік керування',
+            'call stack': 'стек викликів',
+            'stack frame': 'кадр стеку',
+            'function prologue': 'пролог функції',
+            'function epilogue': 'епілог функції',
+            'buffer overflow': 'переповнення буфера',
+            'return address': 'адреса повернення',
+            'exploit': 'експлойт',
+            'vulnerability': 'вразливість',
+            'payload': 'корисне навантаження',
+            'shellcode': 'шелл-код',
+            'gadget': 'гаджет',
+            'code injection': 'ін\'єкція коду',
+            'return-oriented programming': 'програмування орієнтоване на повернення',
+            'jump-oriented programming': 'програмування орієнтоване на стрибки',
+
+            'table of contents': 'зміст',
+        }
         
-        # Initialize translator
-        try:
-            if use_deepl:
-                self.translator = DeeplTranslator(source='en', target='uk')
-            else:
-                raise Exception("Using Google Translate as fallback")
-        except:
-            self.log("DeepL not available, using Google Translate...")
-            self.translator = GoogleTranslator(source='en', target='uk')
+        # Initialize translation APIs
+        self.apis = []
+        self._setup_apis()
         
         # Use multiple placeholder strategies
         self.placeholders = {}
@@ -87,9 +204,65 @@ class RobustHonKitTranslator:
         self.placeholder_counter = 0
         
         # Use a very unique pattern that won't be modified by translators
-        # Using mixed case, numbers, and special chars
         self.placeholder_pattern = "XyZ9PlH{}ZuK8"
+    
+    def _setup_apis(self):
+        """Setup translation APIs based on configuration"""
         
+        # 1. LibreTranslate (if available)
+        if self.config.get('libretranslate_url'):
+            try:
+                api = LibreTranslateAPI(self.config['libretranslate_url'])
+                # Test if it's working
+                api.translate("test")
+                self.apis.append(('LibreTranslate', api))
+                self.log("LibreTranslate API initialized")
+            except Exception as e:
+                self.log(f"LibreTranslate not available: {e}")
+        
+        # 2. DeepL (if API key provided)
+        if self.config.get('deepl_api_key'):
+            try:
+                api = DeepLAPI(self.config['deepl_api_key'])
+                self.apis.append(('DeepL', api))
+                self.log("DeepL API initialized")
+            except Exception as e:
+                self.log(f"DeepL setup failed: {e}")
+        
+        # 3. Azure Translator (if API key provided)
+        if self.config.get('azure_api_key'):
+            try:
+                api = AzureTranslatorAPI(
+                    self.config['azure_api_key'],
+                    self.config.get('azure_region', 'global')
+                )
+                self.apis.append(('Azure', api))
+                self.log("Azure Translator API initialized")
+            except Exception as e:
+                self.log(f"Azure Translator setup failed: {e}")
+        
+        # 4. Google Translate (if API key provided)
+        if self.config.get('google_api_key'):
+            try:
+                api = GoogleTranslateAPI(self.config['google_api_key'])
+                self.apis.append(('Google', api))
+                self.log("Google Translate API initialized")
+            except Exception as e:
+                self.log(f"Google Translate API setup failed: {e}")
+        
+        # 5. Fallback Google Translate (using deep-translator)
+        try:
+            api = FallbackGoogleAPI()
+            self.apis.append(('Google Fallback', api))
+            self.log("Google Fallback API initialized")
+        except Exception as e:
+            self.log(f"Google Fallback not available: {e}")
+        
+        if not self.apis:
+            raise Exception("No translation APIs available! Please configure at least one API.")
+        
+        self.log(f"Initialized {len(self.apis)} translation APIs")
+    
     def log(self, message):
         if self.debug:
             print(f"[DEBUG] {message}")
@@ -115,70 +288,56 @@ class RobustHonKitTranslator:
         self.log(f"Created placeholder: {placeholder} for content: {repr(content[:50])}...")
         return placeholder
     
-    def protect_content_comprehensive(self, text):
-        """Comprehensive protection using multiple strategies"""
+    def protect_content(self, text):
+        """Protect technical content from translation"""
         
-        # Strategy 1: Protect exact technical terms first
+        # 1. Protect technical terms
         for term in sorted(self.protected_terms, key=len, reverse=True):
-            # Use very specific patterns to avoid over-matching
-            if term.startswith('.') or term.startswith('0x'):
-                pattern = re.escape(term)
-            else:
-                pattern = r'\b' + re.escape(term) + r'\b'
+            pattern = r'\b' + re.escape(term) + r'\b'
             
-            def replace_match(match):
-                placeholder = self.create_placeholder(match.group(0))
-                return placeholder
+            def replace_term(match):
+                return self.create_placeholder(match.group(0))
             
-            text = re.sub(pattern, replace_match, text, flags=re.IGNORECASE)
+            text = re.sub(pattern, replace_term, text, flags=re.IGNORECASE)
         
-        # Strategy 2: Protect markdown and HTML structures
+        # 2. Protect various content types
         patterns_to_protect = [
             # Frontmatter
             (r'^---\n.*?\n---\n', re.DOTALL | re.MULTILINE),
-            # HTML tags with content
-            (r'<[^>]+>.*?</[^>]+>', re.DOTALL),
-            # Self-closing HTML tags
-            (r'<[^>]+/>', 0),
-            # Simple HTML tags
-            (r'<[^>]+>', 0),
-            # Images
-            (r'!\[[^\]]*\]\([^\)]+\)', 0),
             # Code blocks
             (r'```[\s\S]*?```', 0),
             # Inline code
             (r'`[^`\n]+`', 0),
+            # HTML tags
+            (r'<[^>]+>.*?</[^>]+>', re.DOTALL),
+            (r'<[^>]+/>', 0),
+            (r'<[^>]+>', 0),
             # URLs
             (r'https?://[^\s\)\]\}]+', 0),
-            # Hex addresses
+            # Images
+            (r'!\[[^\]]*\]\([^\)]+\)', 0),
+            # Hex addresses and numbers
             (r'\b0x[0-9a-fA-F]+\b', 0),
-            # Email addresses
-            (r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', 0),
-            # HTML entities
-            (r'&[a-zA-Z0-9]+;', 0),
             # Assembly references like main+17
             (r'\b[a-zA-Z_][a-zA-Z0-9_]*[\+\-]\d+\b', 0),
             # Function calls
             (r'\b[a-zA-Z_][a-zA-Z0-9_]*\(\)', 0),
-            # Headers (markdown)
-            (r'^(#{1,6})\s*', re.MULTILINE),
-            # Lists
-            (r'^(\d+\.|\*|\+|\-)\s', re.MULTILINE),
-            # Blockquotes
-            (r'^(>+)\s?', re.MULTILINE),
+            # File paths
+            (r'[a-zA-Z]?:?[/\\][^\s\)\]\}\n]+', 0),
+            # Email addresses
+            (r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', 0),
         ]
         
         for pattern, flags in patterns_to_protect:
             def replace_match(match):
-                placeholder = self.create_placeholder(match.group(0))
-                return placeholder
+                return self.create_placeholder(match.group(0))
             
             if flags:
                 text = re.sub(pattern, replace_match, text, flags=flags)
             else:
                 text = re.sub(pattern, replace_match, text)
         
-        # Strategy 3: Handle links specially - protect URL but allow text translation
+        # 3. Handle links specially - protect URL but allow text translation
         def protect_link_url(match):
             link_text = match.group(1)
             link_url = match.group(2)
@@ -189,137 +348,77 @@ class RobustHonKitTranslator:
         
         return text
     
-    def restore_placeholders_robust(self, text):
-        """Robust placeholder restoration with multiple strategies"""
-        
-        self.log(f"Starting restoration with {len(self.placeholders)} placeholders")
-        self.log(f"Text length: {len(text)}")
-        
-        original_text = text
-        
-        # Strategy 1: Direct replacement (exact matches)
-        sorted_placeholders = sorted(self.placeholders.items(), key=lambda x: len(x[0]), reverse=True)
-        
-        for placeholder, original in sorted_placeholders:
-            if placeholder in text:
-                text = text.replace(placeholder, original)
-                self.log(f"Restored: {placeholder}")
-        
-        # Strategy 2: Case-insensitive search for mangled placeholders
-        # Look for patterns that might be our placeholders with modified case
-        placeholder_pattern_regex = r'xyz9plh(\d+)zuk8'
-        
-        def restore_mangled(match):
-            # Extract the number and reconstruct the original placeholder
-            number = match.group(1)
-            possible_patterns = [
-                f"XyZ9PlH{number}ZuK8",
-                f"xyz9plh{number}zuk8", 
-                f"XYZ9PLH{number}ZUK8",
-            ]
-            
-            for pattern in possible_patterns:
-                if pattern in self.placeholders:
-                    self.log(f"Restored mangled placeholder: {match.group(0)} -> {pattern}")
-                    return self.placeholders[pattern]
-            
-            # If not found, return as-is
-            self.log(f"Could not restore mangled placeholder: {match.group(0)}")
-            return match.group(0)
-        
-        text = re.sub(placeholder_pattern_regex, restore_mangled, text, flags=re.IGNORECASE)
-        
-        # Strategy 3: Find any remaining placeholder-like patterns and try to restore them
-        remaining_patterns = re.findall(r'[a-zA-Z]*placeholder[a-zA-Z0-9_]*', text, re.IGNORECASE)
-        
-        if remaining_patterns:
-            self.log(f"Found {len(remaining_patterns)} remaining placeholder-like patterns:")
-            for pattern in remaining_patterns[:5]:  # Show first 5
-                self.log(f"  {pattern}")
-        
-        # Final check - look for any of our placeholder components
-        if 'placeholder' in text.lower():
-            self.log("WARNING: Text still contains placeholder-like content!")
-            
-        restoration_success = len(original_text) != len(text) or original_text != text
-        if restoration_success:
-            self.log("Restoration made changes to text")
-        else:
-            self.log("No restorations performed - this might indicate a problem")
-            
+    def restore_placeholders(self, text):
+        """Restore protected content"""
+        for placeholder, original in sorted(self.placeholders.items(), key=lambda x: len(x[0]), reverse=True):
+            text = text.replace(placeholder, original)
         return text
     
-    # def apply_terminology_mapping(self, text):
-    #     """Apply custom Ukrainian terminology"""
-    #     for english, ukrainian in sorted(self.terminology_map.items(), key=lambda x: len(x[0]), reverse=True):
-    #         pattern = r'\b' + re.escape(english) + r'\b'
-    #         text = re.sub(pattern, ukrainian, text, flags=re.IGNORECASE)
-    #     return text
+    def apply_terminology_mapping(self, text):
+        """Apply custom Ukrainian terminology"""
+        for english, ukrainian in sorted(self.terminology_map.items(), key=lambda x: len(x[0]), reverse=True):
+            pattern = r'\b' + re.escape(english) + r'\b'
+            text = re.sub(pattern, ukrainian, text, flags=re.IGNORECASE)
+        return text
     
-    def translate_text_chunk(self, text, max_length=3000):
-        """Translate text with debugging"""
+    def translate_with_fallback(self, text: str, max_length: int = 3000) -> str:
+        """Translate text using available APIs with fallback"""
         if not text.strip():
             return text
         
-        self.log(f"Translating chunk of {len(text)} characters")
-        
-        # Show what we're about to translate
-        if self.debug:
-            sample = text[:200].replace('\n', '\\n')
-            self.log(f"Sample text to translate: {sample}...")
-        
-        try:
-            if len(text) <= max_length:
-                result = self.translator.translate(text)
-                self.log(f"Translation completed, result length: {len(result) if result else 0}")
-                return result if result else text
-            else:
-                # Split by sentences
-                sentences = re.split(r'(?<=[.!?])\s+', text)
-                chunks = []
-                current_chunk = ""
-                
-                for sentence in sentences:
-                    test_chunk = current_chunk + (" " if current_chunk else "") + sentence
-                    if len(test_chunk) > max_length:
-                        if current_chunk:
-                            chunks.append(current_chunk.strip())
-                            current_chunk = sentence
-                        else:
-                            chunks.append(sentence)
+        # Split text if too long
+        if len(text) > max_length:
+            sentences = re.split(r'(?<=[.!?])\s+', text)
+            chunks = []
+            current_chunk = ""
+            
+            for sentence in sentences:
+                test_chunk = current_chunk + (" " if current_chunk else "") + sentence
+                if len(test_chunk) > max_length:
+                    if current_chunk:
+                        chunks.append(current_chunk.strip())
+                        current_chunk = sentence
                     else:
-                        current_chunk = test_chunk
-                
-                if current_chunk:
-                    chunks.append(current_chunk.strip())
-                
-                self.log(f"Split into {len(chunks)} chunks")
-                
-                translated_chunks = []
-                for i, chunk in enumerate(chunks):
-                    self.log(f"Translating chunk {i+1}/{len(chunks)}")
-                    try:
-                        translated = self.translator.translate(chunk)
-                        translated_chunks.append(translated if translated else chunk)
-                        time.sleep(1)  # Rate limiting
-                    except Exception as e:
-                        self.log(f"Error translating chunk {i+1}: {e}")
-                        translated_chunks.append(chunk)
-                
-                return ' '.join(translated_chunks)
-                
-        except Exception as e:
-            self.log(f"Translation error: {e}")
-            return text
+                        chunks.append(sentence)
+                else:
+                    current_chunk = test_chunk
+            
+            if current_chunk:
+                chunks.append(current_chunk.strip())
+            
+            translated_chunks = []
+            for i, chunk in enumerate(chunks):
+                self.log(f"Translating chunk {i+1}/{len(chunks)}")
+                translated = self.translate_with_fallback(chunk, max_length)
+                translated_chunks.append(translated)
+                time.sleep(0.5)  # Rate limiting
+            
+            return ' '.join(translated_chunks)
+        
+        # Try each API in order
+        for api_name, api in self.apis:
+            try:
+                self.log(f"Trying {api_name} for translation...")
+                result = api.translate(text)
+                if result and result.strip():
+                    self.log(f"Success with {api_name}")
+                    return result
+                else:
+                    self.log(f"{api_name} returned empty result")
+            except Exception as e:
+                self.log(f"{api_name} failed: {e}")
+                continue
+        
+        # If all APIs failed
+        self.log("All translation APIs failed, returning original text")
+        return text
     
-    def translate_content(self, text):
-        """Main translation function with comprehensive debugging"""
+    def translate_content(self, text: str) -> str:
+        """Main translation function"""
         if not text or not text.strip():
             return text
 
-        self.log("="*60)
-        self.log("STARTING TRANSLATION PROCESS")
-        self.log("="*60)
+        self.log("Starting translation process")
         
         # Reset placeholders
         self.placeholders = {}
@@ -327,86 +426,33 @@ class RobustHonKitTranslator:
         self.placeholder_counter = 0
 
         try:
-            self.log(f"Original text length: {len(text)} characters")
-            
             # Step 1: Protect content
-            self.log("STEP 1: Protecting content...")
-            protected_text = self.protect_content_comprehensive(text)
-            self.log(f"After protection: {len(protected_text)} characters")
-            self.log(f"Created {len(self.placeholders)} unique placeholders")
-            
-            # Show sample of protected text
-            if self.debug:
-                sample = protected_text[:300].replace('\n', '\\n')
-                self.log(f"Sample protected text: {sample}...")
+            self.log("Protecting technical content...")
+            protected_text = self.protect_content(text)
+            self.log(f"Created {len(self.placeholders)} placeholders")
             
             # Step 2: Translate
-            self.log("STEP 2: Translating...")
-            translated_text = self.translate_text_chunk(protected_text)
-            
-            if not translated_text:
-                self.log("Translation returned empty result!")
-                return text
-            
-            self.log(f"After translation: {len(translated_text)} characters")
-            
-            # Show sample of translated text (with placeholders)
-            if self.debug:
-                sample = translated_text[:300].replace('\n', '\\n')
-                self.log(f"Sample translated text: {sample}...")
+            self.log("Translating...")
+            translated_text = self.translate_with_fallback(protected_text)
             
             # Step 3: Restore placeholders
-            self.log("STEP 3: Restoring placeholders...")
-            restored_text = self.restore_placeholders_robust(translated_text)
-            self.log(f"After restoration: {len(restored_text)} characters")
+            self.log("Restoring protected content...")
+            restored_text = self.restore_placeholders(translated_text)
             
-            # Step 4: Apply terminology
-            # self.log("STEP 4: Applying terminology mapping...")
-            # final_text = self.apply_terminology_mapping(restored_text)
-            # self.log(f"Final text length: {len(final_text)} characters")
-            final_text = restored_text
+            # Step 4: Apply terminology mapping
+            self.log("Applying terminology mapping...")
+            final_text = self.apply_terminology_mapping(restored_text)
             
-            # Final validation
-            remaining_placeholders = []
-            for placeholder in self.placeholders.keys():
-                if placeholder.lower() in final_text.lower():
-                    remaining_placeholders.append(placeholder)
-            
-            if remaining_placeholders:
-                self.log(f"WARNING: {len(remaining_placeholders)} placeholders not restored!")
-                for ph in remaining_placeholders[:3]:
-                    self.log(f"  Remaining: {ph}")
-                    
-                # Try emergency restoration
-                for ph in remaining_placeholders:
-                    if ph in self.placeholders:
-                        final_text = final_text.replace(ph, self.placeholders[ph])
-                        final_text = final_text.replace(ph.lower(), self.placeholders[ph])
-                        final_text = final_text.replace(ph.upper(), self.placeholders[ph])
-            else:
-                self.log("SUCCESS: All placeholders restored!")
-            
-            self.log("TRANSLATION PROCESS COMPLETED")
-            self.log("="*60)
-            
+            self.log("Translation completed successfully")
             return final_text
 
         except Exception as e:
-            self.log(f"CRITICAL ERROR during translation: {e}")
-            import traceback
-            traceback.print_exc()
-            
-            # Emergency restoration attempt
-            try:
-                return self.restore_placeholders_robust(text)
-            except:
-                return text
-
-    def process_markdown_file(self, file_path, backup=True):
-        """Process a single markdown file with extensive logging"""
-        print(f"\n{'='*80}")
-        print(f"PROCESSING FILE: {file_path}")
-        print(f"{'='*80}")
+            self.log(f"Error during translation: {e}")
+            return text
+    
+    def process_markdown_file(self, file_path: Path, backup: bool = True):
+        """Process a single markdown file"""
+        print(f"\nProcessing: {file_path}")
         
         # Create backup
         if backup:
@@ -414,44 +460,35 @@ class RobustHonKitTranslator:
             if not backup_path.exists():
                 import shutil
                 shutil.copy2(file_path, backup_path)
-                print(f"Backup created: {backup_path}")
         
         try:
             # Read file
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
             
-            print(f"Original file size: {len(content)} characters")
-            
             # Handle frontmatter
-            has_frontmatter = content.startswith('---')
-            if has_frontmatter:
+            if content.startswith('---'):
                 try:
                     post = frontmatter.loads(content)
-                    print("Frontmatter detected and parsed")
+                    has_frontmatter = True
                 except:
                     post = type('Post', (), {'content': content, 'metadata': {}})()
                     has_frontmatter = False
-                    print("Frontmatter parsing failed, treating as regular content")
             else:
                 post = type('Post', (), {'content': content, 'metadata': {}})()
+                has_frontmatter = False
             
             # Translate main content
             if post.content.strip():
-                print("Translating main content...")
                 translated_content = self.translate_content(post.content)
-                print(f"Translated content size: {len(translated_content)} characters")
             else:
                 translated_content = post.content
-                print("No content to translate")
             
             # Translate frontmatter
             translated_metadata = {}
             if has_frontmatter and hasattr(post, 'metadata') and post.metadata:
-                print("Translating frontmatter...")
                 for key, value in post.metadata.items():
                     if isinstance(value, str) and key in ['title', 'description', 'summary']:
-                        print(f"  Translating {key}: {repr(value[:50])}...")
                         translated_metadata[key] = self.translate_content(value)
                     else:
                         translated_metadata[key] = value
@@ -467,26 +504,61 @@ class RobustHonKitTranslator:
                 else:
                     f.write(translated_content)
             
-            print(f"✅ SUCCESS: File processed and saved")
+            print(f"✅ Success: {file_path}")
             
         except Exception as e:
-            print(f"❌ ERROR processing {file_path}: {e}")
-            import traceback
-            traceback.print_exc()
+            print(f"❌ Error processing {file_path}: {e}")
+
+def load_config():
+    """Load configuration from file or environment variables"""
+    config = {
+        'debug': True,
+        'libretranslate_url': os.getenv('LIBRETRANSLATE_URL'),
+        'deepl_api_key': os.getenv('DEEPL_API_KEY'),
+        'google_api_key': os.getenv('GOOGLE_API_KEY'),
+        'azure_api_key': os.getenv('AZURE_API_KEY'),
+        'azure_region': os.getenv('AZURE_REGION', 'global'),
+    }
+    
+    # Try to load from config file
+    config_file = Path('translation_config.json')
+    if config_file.exists():
+        try:
+            with open(config_file, 'r') as f:
+                file_config = json.load(f)
+                config.update(file_config)
+        except Exception as e:
+            print(f"Warning: Could not load config file: {e}")
+    
+    return config
 
 def main():
-    parser = argparse.ArgumentParser(description="Robust HonKit Ukrainian translator")
+    parser = argparse.ArgumentParser(description="Enhanced HonKit Ukrainian translator")
     parser.add_argument('directory', nargs='?', default='.', help='Directory path')
-    parser.add_argument('--use-google', action='store_true', help='Use Google Translate')
     parser.add_argument('--no-debug', action='store_true', help='Disable debug output')
     parser.add_argument('--test-file', help='Test single file')
+    parser.add_argument('--config', help='Config file path')
     
     args = parser.parse_args()
     
-    translator = RobustHonKitTranslator(
-        use_deepl=not args.use_google,
-        debug=not args.no_debug
-    )
+    # Load configuration
+    config = load_config()
+    if args.config:
+        try:
+            with open(args.config, 'r') as f:
+                config.update(json.load(f))
+        except Exception as e:
+            print(f"Error loading config: {e}")
+            return
+    
+    config['debug'] = not args.no_debug
+    
+    # Create translator
+    try:
+        translator = EnhancedHonKitTranslator(config)
+    except Exception as e:
+        print(f"Error initializing translator: {e}")
+        return
     
     if args.test_file:
         # Test single file
@@ -504,9 +576,11 @@ def main():
         print(f"Found {len(md_files)} markdown files to process")
         
         for i, md_file in enumerate(md_files, 1):
-            print(f"\n[{i}/{len(md_files)}] Processing: {md_file.relative_to(root_path)}")
+            print(f"\n[{i}/{len(md_files)}] {md_file.relative_to(root_path)}")
             translator.process_markdown_file(md_file)
-            time.sleep(2)  # Rate limiting
+            time.sleep(1)  # Rate limiting
 
 if __name__ == "__main__":
     main()
+
+

@@ -22,11 +22,33 @@ mkdir -p backups
 mkdir -p scripts
 mkdir -p translation_assets
 
+echo "Installing pyenv..."
+# Install dependencies
+sudo pacman -S --needed base-devel git curl rust
+# Install pyenv
+curl https://pyenv.run | bash
+echo "pyenv installed successfully."
+
+echo "Installing Python 3.10.18..."
+pyenv install 3.10.18
+pyenv local 3.10.18
+
 echo "🐍 Installing Python dependencies..."
-# pip3 install --user deep-translator beautifulsoup4 python-frontmatter gitpython requests
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install torch beautifulsoup4 frontmatter libretranslate gitpython requests
+
+# TODO: Should be optional
+git clone https://github.com/LibreTranslate/LTEngine --recursive
+cd LTEngine
+cargo build --features cuda --release
+mkdir models && cd models
+wget https://huggingface.co/bartowski/Meta-Llama-3.1-8B-Instruct-GGUF/resolve/main/Meta-Llama-2.1-8B-Instruct-Q6_K.gguf?download=true -O Meta-Llama-3.1-8B-Instruct-Q6_K.gguf
+#./target/release/ltengine --model-file models/Meta-Llama-3.1-8B-Instruct-Q6_K.gguf --port 5001
 
 echo "📝 Creating configuration files..."
 
+cd ../../
 # Create book.json for Ukrainian
 cat > book.json << 'EOF'
 {
@@ -87,29 +109,25 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '20.18.1'
 
     - name: Install HonKit
       run: |
         npm install honkit --save-dev
         npx honkit --version
 
-    - name: Install HonKit plugins
+    - name: Build HonKit book
       run: |
-        npx honkit install
+        npm run build
 
-    - name: Build HonKit Book
-      run: |
-        npx honkit build . _book
-
-    - name: Deploy to GitHub Pages
+    - name: Deploy into main site
       uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/ukrainian-translation'
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        external_repository: elleoma/elleoma.github.io
         publish_dir: ./_book
-        publish_branch: gh-pages
-        # cname: your-domain.com  # Uncomment if using custom domain
+        destination_dir: reversing
+        publish_branch: main
 EOF
 
 # Create quality assurance checklist

@@ -1,0 +1,5 @@
+{
+  "libretranslate_url": "http://localhost:5000",
+  "deepl_api_key": "your_deepl_key_here",
+  "debug": true
+}

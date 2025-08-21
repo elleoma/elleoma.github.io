@@ -2821,14 +2821,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-41-оператор-після-інвентації">PART 41-Оператор після інвентації</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Давайте зануримось у наш код.</p>
+                                <p>Частина 41 – Оператор післяінкременту</p>
+<p>Для повного змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Давайте підійдемо до нашого коду.</p>
 <pre spellcheck="false">#include &lt;iostream&gt;
 
-int main(void) {
-&nbsp;&nbsp; &nbsp;int myNumber = 16;
-&nbsp;&nbsp; &nbsp;int myNewNumber = ++myNumber;
+XyZ9PlH0ZuK8 main(void) {
+&nbsp;&nbsp; &nbsp;XyZ9PlH1ZuK8 myNumber = 16;
+&nbsp;&nbsp; &nbsp;XyZ9PlH2ZuK8 myNewNumber = ++myNumber;
 
 &nbsp;&nbsp; &nbsp;std::cout &lt;&lt; myNewNumber &lt;&lt; std::endl;
 
@@ -2836,18 +2836,16 @@ int main(void) {
 }
 </pre>
 
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1527849027049.jpg"></img></div>
-
-<p>Щоб скласти це, ми просто вводимо:</p>
-<p>g ++ example10.cpp -o example10</p>
+<p><xyz9plh3zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1527849027049.jpg"></img>&lt;/XyZ9PlH4ZuK8&gt;</xyz9plh3zuk8></p>
+<p>Щоб скомпільувати цей код, ми просто набираємо:</p>
+<p>g++ example10.cpp -o example10</p>
 <p>./example10</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1527849063244.jpg"></img></div>
-
-<p>Ми бачимо 16 та 17 надрукованих на екран.</p>
-<p>Давайте розберемо його:</p>
-<p>We create a variable <strong>myNumber = 16</strong> to which we create another variable <strong>myNewNumber</strong> which post-increments the value of <strong>myNumber</strong>.&nbsp;We see that when we execute our code it shows <strong>16</strong> as the value of <strong>myNewNumber</strong> and <strong>17</strong> as the value of <strong>myNumber </strong>as <strong>myNewNumber</strong> does not get incremented as only <strong>mynumber</strong> збільшується, оскільки це пост -оператор.</p>
-<p>Коли ми після запровадження значення змінної збільшується після призначення її іншій змінній.&nbsp; для прикладу <strong>mynumber</strong> є <strong>16</strong>, тому він збільшується після того, як його призначають <strong>mynewnumbum</strong>, тому ми отримуємо <strong>17</strong>.</p>
-<p>Наступного тижня ми зануримося в налагодження оператора після інвентації.</p>
+<p><xyz9plh5zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1527849063244.jpg"></img>&lt;/XyZ9PlH6ZuK8&gt;</xyz9plh5zuk8></p>
+<p>Ми бачимо 16 і 17 виведені на екран.</p>
+<p>Давайте розберемо це:</p>
+<p>Ми створюємо змінну <strong>myNumber = 16</strong> до якої створюємо ще одну змінну <strong>myNewNumber</strong> яка післяінкрементує значення змінної <strong>myNumber</strong>.  Бачимо, що коли ми виконуватимемо наш код, воно показуватиме <strong>16</strong> як значення змінної <strong>myNewNumber</strong> і <strong>17</strong> як значення змінної <strong>myNumber</strong> оскільки змінна <strong>myNewNumber</strong> не збільшується, оскільки тільки змінна <strong>myNumber</strong> збільшується, оскільки вона є післяоператором.</p>
+<p>Коли ми післяінкрементуємо значення змінної, воно збільшується після призначення йому іншої змінної.  Наприклад, змінна <strong>myNumber</strong> має значення <strong>16</strong>, тому вона збільшується після призначення їй змінної <strong>myNewNumber</strong>, тому ми отримуємо <strong>17</strong>.</p>
+<p>Наступна неділя ми підійдемо до Розробки Оператора післяінкременту.</p>
 
                                 
                                 </section>
@@ -2891,7 +2889,7 @@ int main(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 41 – Post-Increment Operator","level":"1.4.41","depth":2,"next":{"title":"Part 42 – Debugging Post-Increment Operator","level":"1.4.42","depth":2,"path":"pages-ua/part-42-debugging-post-increment-operator.md","ref":"pages-ua/part-42-debugging-post-increment-operator.md","articles":[]},"previous":{"title":"Part 40 – Hacking Pre-Increment Operator","level":"1.4.40","depth":2,"path":"pages-ua/part-40-hacking-pre-increment-operator.md","ref":"pages-ua/part-40-hacking-pre-increment-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-41-post-increment-operator.md","mtime":"2025-08-21T11:42:51.326Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 41 – Post-Increment Operator","level":"1.4.41","depth":2,"next":{"title":"Part 42 – Debugging Post-Increment Operator","level":"1.4.42","depth":2,"path":"pages-ua/part-42-debugging-post-increment-operator.md","ref":"pages-ua/part-42-debugging-post-increment-operator.md","articles":[]},"previous":{"title":"Part 40 – Hacking Pre-Increment Operator","level":"1.4.40","depth":2,"path":"pages-ua/part-40-hacking-pre-increment-operator.md","ref":"pages-ua/part-40-hacking-pre-increment-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-41-post-increment-operator.md","mtime":"2025-08-21T18:12:34.007Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
