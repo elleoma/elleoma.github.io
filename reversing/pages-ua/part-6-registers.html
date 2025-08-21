@@ -2822,34 +2822,42 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="part-6---реєстри">PART 6 - Реєстри</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-підручник" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-підручник</a></p>
-<p>У нашому мікропроцесорі ARM є внутрішнє зберігання, яке робить будь -яку операцію, повинна швидше, оскільки зовнішнього доступу до пам’яті не потрібен. Існує два режими, користувач and Палець. Ми будемо зосереджуватись на режимі користувача, оскільки в кінцевому рахунку орієнтовані на розробку для системи на мікросхемі в межах ОС Linux, а не на голій метальній програмі, що краще підходить на пристрій мікроконтролера.</p>
-<p>У режимі користувача у нас є 16 реєстрів and реєстр CPSR, до якого є довжина слова, що становить 32-ти, кожен or 8 байт кожен.</p>
-<p>Реєстри R0 до R12-це багатоцільові регістри, до яких R13-R15 має унікальну мету, а також CPSR. Давайте подивимось на просту таблицю, щоб проілюструвати.</p>
-<pre spellcheck="false">R0 GPR (General-Purpose регістр)
-R1 GPR (General-Purpose регістр)
-R2 GPR (General-Purpose регістр)
-R3 GPR (General-Purpose регістр)
-R4 GPR (General-Purpose регістр)
-R5 GPR (General-Purpose регістр)
-R6 GPR (General-Purpose регістр)
-R7 GPR (General-Purpose регістр)
-R8 GPR (General-Purpose регістр)
-R9 GPR (General-Purpose регістр)
-R10 GPR (General-Purpose регістр)
-R11 GPR (General-Purpose регістр)
-R12 GPR (General-Purpose регістр)
-R13 Stack вказівник
-R14 Link регістр
-R15 програма Counter
-CPSR Current програма Status регістр
+<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>У нашому мікропроцесорі ARM є внутрішнє сховище, яке робить будь -яку операцію, повинна швидше, оскільки зовнішнього доступу до пам'яті не потрібен. Є два режими, користувач і великий палець. Ми будемо зосереджуватись на режимі користувача, оскільки в кінцевому рахунку орієнтовані на розробку для системи на мікросхемі в межах ОС Linux, а не на голій метальній програмі, що краще підходить на пристрій мікроконтролера.</p>
+<p>У режимі користувача у нас є 16 реєстрів та реєстр CPSR, який має довжину слова, кожен, що становить 32-бітні або 8 байт кожен.</p>
+<p>Реєстри R0 до R12-це багатоцільові регістри, до яких R13-R15 мають унікальну мету, а також CPSR. Давайте подивимось на просту таблицю, щоб проілюструвати.</p>
+<pre spellcheck="false">R0 GPR (General-Purpose Register)
+R1 GPR (General-Purpose Register)
+R2 GPR (General-Purpose Register)
+R3 GPR (General-Purpose Register)
+R4 GPR (General-Purpose Register)
+R5 GPR (General-Purpose Register)
+R6 GPR (General-Purpose Register)
+R7 GPR (General-Purpose Register)
+R8 GPR (General-Purpose Register)
+R9 GPR (General-Purpose Register)
+R10 GPR (General-Purpose Register)
+R11 GPR (General-Purpose Register)
+R12 GPR (General-Purpose Register)
+R13 Stack Pointer
+R14 Link Register
+R15 Program Counter
+CPSR Current Program Status Register
 </pre>
 
-<p>Важливо, щоб ми розуміли регістри дуже детально. At this point we understand R0 – R12 are general purpose and will be used to manipulate data as we build our programs and additionally when you are hacking apart or зворотна інженерія binaries from a hex dump on a cell phone or other Пристрій ARM, незалежно від того, в якій мові високого рівня він записується, він повинен в кінцевому рахунку перейти до складання, яку вам потрібно зрозуміти реєстри and, як вони працюють над тим, щоб зрозуміти and, розуміючи будь-яку таку вигоди, що вищезгадує.</p>
-<p>Чіп, з якою ми працюємо, відомий як вантажний автомобіль and. Це означає, що ми завантажуємо регістр із вмістом реєстру or розташування пам'яті and. Наприклад:</p>
-<p>nbsp</p>
-<p>@ Просто вказує на компілятора, що те, що слідує за ним у заданому рядку, - це коментар and, який слід ігнорувати.</p>
-<p>Наступні кілька тижнів ми проведемо свій час and подивіться на кожен із реєстрів спеціального призначення, щоб ви чудово розуміли, що вони роблять.</p>
+<p>Важливо, щоб ми розуміли регістри дуже детально. На даний момент ми розуміємо, що R0-R12 є загальним призначенням і буде використовуватися для маніпулювання даними, коли ми будуємо наші програми та додатково, коли ви зламаєте або зворотні інженерні бінарні бінарні з шестигранного сміттєзвалища на мобільному телефоні чи іншому ARM Будь -яка така вищезгадана операція.</p>
+<p>Чіп, з яким ми працюємо, відомий як машина для завантаження та зберігання. Це означає, що ми завантажуємо регістр із вмістом регістра або місця пам'яті, і ми можемо зберігати регістр із вмістом пам'яті або реєстрації. Наприклад:</p>
+<pre spellcheck="false">ldr, r4, [r10] @ 
+&nbsp;&nbsp;&nbsp; load r4 with the contents of r10, if r10 had the decimal value of 
+&nbsp;&nbsp;&nbsp; say 22, 22 would go to r4
+
+str, r9, [r4] @ 
+&nbsp;&nbsp;&nbsp; store r9 contents into location in r4, if r9 had 0x02 hex, 
+&nbsp;&nbsp;&nbsp; 0x02 would be stored into location r4
+</pre>
+
+<p>@ Просто вказує на компілятора, що те, що слідує за ним у заданому рядку, є коментарем і ігнорувати.</p>
+<p>Наступні кілька тижнів ми знайдемо свій час і подивимось на кожну з реєстрів спеціального призначення, щоб ви чудово розуміли, що вони роблять.</p>
 <p>Наступного тижня ми зануримося в додаткову інформацію про лічильник програми! Залишайтеся в курсі!</p>
 
                                 
@@ -2894,7 +2902,7 @@ CPSR Current програма Status регістр
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 6 - Registers","level":"1.3.6","depth":2,"next":{"title":"Part 7 - Program Counter","level":"1.3.7","depth":2,"path":"pages-ua/part-7-program-counter.md","ref":"pages-ua/part-7-program-counter.md","articles":[]},"previous":{"title":"Part 5 - Word Lengths","level":"1.3.5","depth":2,"path":"pages-ua/part-5-word-lengths.md","ref":"pages-ua/part-5-word-lengths.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-6-registers.md","mtime":"2025-08-21T10:37:21.778Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 6 - Registers","level":"1.3.6","depth":2,"next":{"title":"Part 7 - Program Counter","level":"1.3.7","depth":2,"path":"pages-ua/part-7-program-counter.md","ref":"pages-ua/part-7-program-counter.md","articles":[]},"previous":{"title":"Part 5 - Word Lengths","level":"1.3.5","depth":2,"path":"pages-ua/part-5-word-lengths.md","ref":"pages-ua/part-5-word-lengths.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-6-registers.md","mtime":"2025-08-21T11:42:51.327Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2821,9 +2821,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-5---hacking-hello-world">part 5 - Hacking "Hello World"</h2>
+                                <h2 id="part-5---хакерство-привіт-світ">part 5 - хакерство "привіт світ"</h2>
 <p>Для повного змісту всіх уроків, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
-<p>На останньому уроці ми витратили багато часу, дійсно розуміючи, що відбувається всередині нашого бінарного. Це заклав основу для легкого hack.</p>
+<p>На останньому уроці ми витратили багато часу, дійсно розуміючи, що відбувається всередині нашого бінарного. Це закладе основу для легкого злому.</p>
 <p>Давайте розберемо radare2 в режимі запису.</p>
 <pre spellcheck="false">radare2 -w ./0x01_asm_64_helloworld
 </pre>
@@ -2832,15 +2832,15 @@
 <pre spellcheck="false">aaa
 </pre>
 
-<p>Прагнути до main.</p>
+<p>Прагнути до головного.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Переглянути disassembly.</p>
+<p>Переглянути демонстрацію.</p>
 <pre spellcheck="false">v
 </pre>
 
-<p>Ми бачимо адреси пам’яті, як вони на диску, оскільки ми not, що працює на двійковому, як ми говорили на останньому уроці.</p>
+<p>Ми бачимо адреси пам'яті, як вони на диску, оскільки ми не запускаємо двійкову, як ми говорили на останньому уроці.</p>
 <p>Ми бачимо, що в <strong>0xB48</strong> ми дуже легко знаходимо свою рядок.</p>
 <p>Давайте повернемося до подання терміналу.</p>
 <pre spellcheck="false">q
@@ -2853,11 +2853,11 @@ Hello World!
 
 </pre>
 
-<p>Давайте hack рядок.</p>
+<p>Давайте зламаємо рядок.</p>
 <pre spellcheck="false">[0x000009e4]&gt; w Hacked World @0xb48
 </pre>
 
-<p>Давайте перевіримо hack.</p>
+<p>Давайте перевіримо хак.</p>
 <pre spellcheck="false">[0x000009e4]&gt; ps @0xb48
 Hacked World
 [0x000009e4]&gt;
@@ -2872,7 +2872,7 @@ Hacked World
 Hacked World
 </pre>
 
-<p>Ми бачимо, що ми дуже легко зламали двійковий. Ці уроки допоможуть вам зрозуміти, як зловмисник створює робочий процес, щоб ви могли навчитися передбачити and кращого реверс -інженера.</p>
+<p>Ми бачимо, що ми дуже легко зламали двійковий. Ці уроки допоможуть вам зрозуміти, як зловмисник створює робочий процес, щоб ви могли навчитися передбачити та краще зворотного інженера.</p>
 <p>На нашому наступному уроці ми будемо працювати з простим введенням/виводом.</p>
 
                                 
@@ -2917,7 +2917,7 @@ Hacked World
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 5 - Hacking \"Hello World\"","level":"1.6.5","depth":2,"next":{"title":"Part 6 - Basic I/O","level":"1.6.6","depth":2,"path":"pages-ua/part-6-basic-io.md","ref":"pages-ua/part-6-basic-io.md","articles":[]},"previous":{"title":"Part 4 - Debugging \"Hello World\"","level":"1.6.4","depth":2,"path":"pages-ua/part-4-debugging-hello-world.md","ref":"pages-ua/part-4-debugging-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-5-hacking-hello-world.md","mtime":"2025-08-21T10:37:21.777Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 5 - Hacking \"Hello World\"","level":"1.6.5","depth":2,"next":{"title":"Part 6 - Basic I/O","level":"1.6.6","depth":2,"path":"pages-ua/part-6-basic-io.md","ref":"pages-ua/part-6-basic-io.md","articles":[]},"previous":{"title":"Part 4 - Debugging \"Hello World\"","level":"1.6.4","depth":2,"path":"pages-ua/part-4-debugging-hello-world.md","ref":"pages-ua/part-4-debugging-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-5-hacking-hello-world.md","mtime":"2025-08-21T11:42:51.326Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

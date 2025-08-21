@@ -21,8 +21,8 @@ class RobustHonKitTranslator:
         # Technical terms that should NOT be translated
         self.protected_terms = {
             # Assembly instructions
-            'mov', 'push', 'pop', 'jmp', 'call', 'ret', 'add', 'sub', 'mul', 'div',
-            'cmp', 'test', 'lea', 'xor', 'and', 'or', 'not', 'shl', 'shr', 'inc', 'dec',
+            'mov', 'pop', 'jmp', 'call', 'ret', 'sub', 'mul', 'div',
+            'cmp', 'lea', 'xor', 'shl', 'shr', 'inc', 'dec',
             'nop', 'int', 'syscall', 'cpuid', 'rdtsc', 'hlt', 'cli', 'sti',
             
             # Registers (x86/x64)
@@ -44,78 +44,32 @@ class RobustHonKitTranslator:
             'arm', 'arm64', 'aarch64', 'armv7', 'armv8',
             'mips', 'mips64', 'powerpc', 'ppc', 'sparc',
             'elf', 'pe', 'coff', 'macho', 'a.out',
-            'got', 'plt', 'aslr', 'dep', 'nx', 'pie', 'relro',
+            'plt', 'aslr', 'dep', 'nx', 'pie', 'relro',
             
             # Libraries and APIs
             'libc', 'glibc', 'musl', 'msvcrt', 'ucrtbase',
             'kernel32', 'ntdll', 'user32', 'advapi32',
-            'malloc', 'free', 'printf', 'scanf', 'strcpy', 'strlen',
+            'malloc', 'printf', 'scanf', 'strcpy', 'strlen',
             'memcpy', 'memset', 'mmap', 'mprotect', 'execve',
-            
-            # Additional RE-specific terms
-            'main', 'unreachablefunction', 'hello world', 'ia32', 'ia-32',
-            'breakpoint', 'nbsp', 'exit', 'debugger', 'disassemble',
-            'disassembly', 'console', 'tutorial', 'hack', 'hacking',
         }
         
         # Ukrainian terminology mapping
-        self.terminology_map = {
-            'instruction pointer register': 'реєстр вказівника інструкцій',
-            'instruction pointer': 'вказівник інструкцій',
-            'reverse engineering': 'зворотна інженерія',
-            'assembly language': 'мова асемблера',
-            'debugging': 'налагодження',
-            'debugger': 'налагоджувач',
-            'function': 'функція',
-            'register': 'регістр',
-            'instruction': 'інструкція',
-            'program': 'програма',
-            'application': 'програма',
-            'code': 'код',
-            'memory': 'пам\'ять',
-            'address': 'адреса',
-            'pointer': 'вказівник',
-            'control': 'контроль',
-            'execute': 'виконувати',
-            'execution': 'виконання',
-            'complete control': 'повний контроль',
-            'next instruction': 'наступна інструкція',
-            'jump': 'перехід',
-            'area': 'область',
-            'table of contents': 'зміст',
-            'lesson': 'урок',
-            'lessons': 'уроки',
-            'tutorial': 'підручник',
-            'tutorial series': 'серія підручників',
-            'example': 'приклад',
-            'simple': 'простий',
-            'detail': 'деталь',
-            'functionality': 'функціональність',
-            'called': 'називається',
-            'never called': 'ніколи не викликається',
-            'compile': 'компілювати',
-            'compiled': 'скомпільований',
-            'run': 'запускати',
-            'running': 'виконання',
-            'set': 'встановити',
-            'examine': 'дослідити',
-            'write down': 'записати',
-            'step': 'крок',
-            'next step': 'наступний крок',
-            'continue': 'продовжити',
-            'advantage': 'перевага',
-            'hard work': 'наполеглива робота',
-            'pay off': 'окупитися',
-            'learn': 'вивчати',
-            'hijack': 'перехопити',
-            'disable': 'відключити',
-            'trace': 'відстежити',
-            'potential': 'потенційний',
-            'originated': 'походити',
-            'discussion': 'обговорення',
-            'architecture': 'архітектура',
-            'control registers': 'регістри керування',
-        }
+        # self.terminology_map = {
+        #     'instruction pointer register': 'реєстр вказівника інструкцій',
+        #     'instruction pointer': 'вказівник інструкцій',
+        #     'reverse engineering': 'зворотна інженерія',
+        #     'assembly language': 'мова асемблера',
+        #     'debugging': 'налагодження',
+        #     'debugger': 'налагоджувач',
+        #     'register': 'регістр',
+        #     'pointer': 'вказівник',
+        #     'compile': 'компілювати',
+        #     'compiled': 'скомпільований',
+        #     'hijack': 'перехопити',
+        #     'trace': 'відстежити',
+        #     'architecture': 'архітектура',
+        #     'control registers': 'регістри керування',
+        # }
         
         # Initialize translator
         try:
@@ -295,12 +249,12 @@ class RobustHonKitTranslator:
             
         return text
     
-    def apply_terminology_mapping(self, text):
-        """Apply custom Ukrainian terminology"""
-        for english, ukrainian in sorted(self.terminology_map.items(), key=lambda x: len(x[0]), reverse=True):
-            pattern = r'\b' + re.escape(english) + r'\b'
-            text = re.sub(pattern, ukrainian, text, flags=re.IGNORECASE)
-        return text
+    # def apply_terminology_mapping(self, text):
+    #     """Apply custom Ukrainian terminology"""
+    #     for english, ukrainian in sorted(self.terminology_map.items(), key=lambda x: len(x[0]), reverse=True):
+    #         pattern = r'\b' + re.escape(english) + r'\b'
+    #         text = re.sub(pattern, ukrainian, text, flags=re.IGNORECASE)
+    #     return text
     
     def translate_text_chunk(self, text, max_length=3000):
         """Translate text with debugging"""
@@ -407,9 +361,10 @@ class RobustHonKitTranslator:
             self.log(f"After restoration: {len(restored_text)} characters")
             
             # Step 4: Apply terminology
-            self.log("STEP 4: Applying terminology mapping...")
-            final_text = self.apply_terminology_mapping(restored_text)
-            self.log(f"Final text length: {len(final_text)} characters")
+            # self.log("STEP 4: Applying terminology mapping...")
+            # final_text = self.apply_terminology_mapping(restored_text)
+            # self.log(f"Final text length: {len(final_text)} characters")
+            final_text = restored_text
             
             # Final validation
             remaining_placeholders = []

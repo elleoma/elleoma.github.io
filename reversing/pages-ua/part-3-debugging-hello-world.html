@@ -2821,8 +2821,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>debuggerpart 3 - налагодження Hello World</p>
-<p>Сьогодні ми зануримося в налагодження нашої дуже простої "Hello world!", Програма.</p>
+                                <h2 id="part-3---налагодження-hello-world">part 3 - налагодження Hello World</h2>
+<p>Сьогодні ми зануримося в налагодження нашого дуже простого "Привіт Світ!", Програма.</p>
 <p>Давайте розглянемо наш код.</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include "pico/stdlib.h"
@@ -2865,27 +2865,27 @@ commit: 510ddab0e523bed173b3954e5f61abf395812f7d build: 2021-03-21__05:40:51
 <pre spellcheck="false">aaaa
 </pre>
 
-<p>Давайте прагнемо main.</p>
+<p>Давайте прагнемо до головного.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Перейдемо у візуальний режим, ввівши <strong>v</strong> and, потім <strong>P</strong> Двічі, щоб дістатися до хорошого виду налагоджувач.</p>
+<p>Давайте перейдемо у візуальний режим, ввівши <strong>v</strong>, а потім двічі <strong>p</strong>, щоб дістатися до хорошого подання налагоджувача.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1616343654275.jpg"></img></div>
 
 <p>Давайте розберемо цю дуже просту програму.</p>
 <pre spellcheck="false">push {r4, lr}
 </pre>
 
-<p>Ми просто налаштовуємо наші аргументи функції, де ми натискаємо на значення <em>r4</em> and <em>lr</em> (регістр посилання) на стек.</p>
-<p>Потім ми bl (гілка довгою) до <em>sym.stdio \ _init \ _all</em> функція, яка виводить стандартний вхід and.</p>
+<p>Ми просто налаштовуємо наші аргументи функції, де ми натискаємо на значення <em>R4</em> та <em>LR</em> (Реєстр посилань) на стек.</p>
+<p>Потім ми bl (гілка довгою) до <em>sym.stdio \ _init \ _all</em> функція, яка стандартний вхід і вихід INIT.</p>
 <pre spellcheck="false">bl sym.stdio_init_all
 </pre>
 
-<p>Потім ми завантажуємо значення в розташуванні <em>0x00000338</em> в регістр <em>r4</em>. Ось де живе <strong> "Hello world!" </strong> живе.</p>
+<p>Потім ми завантажуємо значення в розташуванні <em>0x00000338</em> в регістр <em>r4</em>. Ось де живе, __ "Привіт світ!"</p>
 <pre spellcheck="false">ldr r4, [0x00000338]
 </pre>
 
-<p>Щоб довести це, ми можемо зробити наступне, натиснувши: всередині поточного візуального режиму and, а потім ввівши наступне.</p>
+<p>Щоб довести це, ми можемо зробити наступне, натиснувши: всередині поточного візуального режиму, а потім набравши наступне.</p>
 <pre spellcheck="false">:&gt; psz @ [0x00000338]
 Hello world!
 :&gt; psz @ 0x00004cf8
@@ -2893,11 +2893,11 @@ Hello world!
 </pre>
 
 <p>Як ви чітко бачите значення всередині <em>0x00000338 </em> є значенням на <em>0x0004cf8</em>.</p>
-<p>Потім ми переміщуємо and, встановивши прапори (це <em>s</em> в <em>movs</em>) вміст <em>r4</em> в <em>r0</em>.</p>
+<p>Потім ми переміщуємо і встановлюємо прапори (це <em>s</em> в <em>movs</em>) вміст <em>r4</em> в <em>r0</em>.</p>
 <pre spellcheck="false">movs r0, r4
 </pre>
 
-<p>Потім ми розгалужуємось довго до обгортки. налагоджувач перетворив нашу _printf _function у нашому коді на цю функцію обгортки.</p>
+<p>Потім ми розгалужуємось довго до обгортки. Налагоджувач перетворив нашу _printf _function у нашому коді на цю функцію обгортки.</p>
 <pre spellcheck="false">bl sym.__wrap_puts
 </pre>
 
@@ -2905,14 +2905,16 @@ Hello world!
 <pre spellcheck="false">movs r0, 0xfa
 </pre>
 
-<p>Потім ми логічно змикаємо ліворуч, 2, and встановили прапори. Це, звичайно, помножує наше 250 значення на 2 and, а потім знову на 2, що займає 250 десяткових до 1000 десятків, що є нашим мілісекундним затримкою and, що 1000 десяткове значення в <em>r0</em>.</p>
+<p>Потім ми логічно перемикаємо ліворуч, 2, і встановлюємо прапори. Це, звичайно, помножує наше 250 значення на 2, а потім знову на 2, що займає 250 десяткових до 1000 десяткових знаків, що є нашою мілісекундною затримкою і розміщує це 1000 десяткове значення в <em>R0</em>.</p>
 <pre spellcheck="false">lsls r0, r0, 2
 </pre>
 
-<p>Якщо ви not, знайомий з ARM 32 Інструкції з монтажу, зверніться до цієї чудової таблиці, наданої Keil.</p>
-<p><a href="https://developer.arm.com/documentation/ddi0210/c/Introduction/інструкція-встановити-summary/ARM-інструкція-summary?lang=en" target="_blank">https://developer.arm.com/documentation/ddi0210/c/Introduction/інструкція-встановити-summary/ARM-інструкція-summary?lang=en</a></p>
+<p>Якщо ви не знайомі з ARM 32 інструкціями збірки, зверніться до цієї чудової таблиці, наданої Keil.</p>
+<p><a href="https://developer.arm.com/documentation/ddi0210/c/Introduction/Instruction-set-summary/ARM-instruction-summary?lang=en" target="_blank">https://developer.arm.com/documentation/ddi0210/c/Introduction/Instruction-set-summary/ARM-instruction-summary?lang=en</a></p>
 <p>Потім ми розгалужуємось довго до нашої функції <em>sleep \ _ms</em>.</p>
-<p>налагоджувач</p>
+<pre spellcheck="false">bl sym.sleep_ms
+</pre>
+
 <p>Потім ми розгалужуємо безумовну назад до <em>0x328</em>, що є нашим циклом.</p>
 <pre spellcheck="false">b 0x328
 </pre>
@@ -2921,7 +2923,7 @@ Hello world!
 <div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1616345144033.jpg"></img></div>
 
 <p>Це прекрасний спосіб простежити більш досконалий код. Я хотів показати вам все це, оскільки ви можете використовувати цей рух вперед, коли ви робите більший аналіз.</p>
-<p>На нашому наступному уроці ми будемо hack наша проста програма and перетворює її назад у <strong>. Uf2</strong> and re-flash до піко.</p>
+<p>На нашому наступному уроці ми зламаємо нашу просту програму та перетворимо її на <strong>. UF2</strong> та повторно розгортається в Піко.</p>
 
                                 
                                 </section>
@@ -2965,7 +2967,7 @@ Hello world!
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 3 - Debugging Hello World","level":"1.7.3","depth":2,"next":{"title":"Part 4 - Hacking Hello World","level":"1.7.4","depth":2,"path":"pages-ua/part-4-hacking-hello-world.md","ref":"pages-ua/part-4-hacking-hello-world.md","articles":[]},"previous":{"title":"Part 2 - Hello World","level":"1.7.2","depth":2,"path":"pages-ua/part-2-hello-world.md","ref":"pages-ua/part-2-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-3-debugging-hello-world.md","mtime":"2025-08-21T10:37:21.775Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 3 - Debugging Hello World","level":"1.7.3","depth":2,"next":{"title":"Part 4 - Hacking Hello World","level":"1.7.4","depth":2,"path":"pages-ua/part-4-hacking-hello-world.md","ref":"pages-ua/part-4-hacking-hello-world.md","articles":[]},"previous":{"title":"Part 2 - Hello World","level":"1.7.2","depth":2,"path":"pages-ua/part-2-hello-world.md","ref":"pages-ua/part-2-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-3-debugging-hello-world.md","mtime":"2025-08-21T11:42:51.324Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

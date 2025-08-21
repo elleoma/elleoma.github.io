@@ -2836,13 +2836,13 @@
 <p>&nbsp; return 0;
 }
 &lt;/pre&gt;</p>
-<p>Давайте розберемося в нашому налагоджувач. </p><pre spellcheck="false">radare2 -w arm -b 16 0x06_double.elf
+<p>Давайте розберемося в нашому налагоджувачі. </p><pre spellcheck="false">radare2 -w arm -b 16 0x06_double.elf
 </pre><p></p>
 <p>Давайте автоматично проаналізуємо. </p><pre spellcheck="false">aaaa
 </pre><p></p>
-<p>Давайте прагнемо main. </p><pre spellcheck="false">s main
+<p>Давайте прагнемо до головного. </p><pre spellcheck="false">s main
 </pre><p></p>
-<p>Перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp;and then&nbsp;<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого налагоджувач виду. </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1618860188501.jpg"></img></div><p></p>
+<p>Перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp;and then&nbsp;<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого виду налагоджувача. </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1618860188501.jpg"></img></div><p></p>
 <p>Ми бачимо специфікатор формату in&nbsp; <em> \ [0x0000033c ] .</em></p>
 <pre spellcheck="false">:&gt; psz @ [0x0000033c]
 %f
@@ -2865,7 +2865,7 @@
 <p>&nbsp; return 0;
 }
 &lt;/pre&gt;</p>
-<p>Коли ми збираємо and запускаємо цю програму, ми отримуємо наступне. </p><pre spellcheck="false">40.5555555560000000
+<p>Коли ми складаємо та запускаємо цю програму, ми отримуємо наступне. </p><pre spellcheck="false">40.5555555560000000
 40.5555555560000000
 40.5555555560000000
 40.5555555560000000
@@ -2874,12 +2874,12 @@
 40.5555555560000000
 40.5555555560000000
 </pre><p></p>
-<p>Добре добре ... це виглядає інакше. Давайте вперше в цьому курсі розглянемо динамічний аналіз зворотного інженерії в GDB. Тут nbsp критично, що ви запускаєте цей printf все це в GDB, оскільки існує велика кількість кроків на додаток до іншого піко, необхідного в конфігурації, наприклад, нижче. </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1618861896464.jpg"></img></div><p></p>
-<p>Обсяг цього курсу полягає в тому, щоб зрозуміти статичну зворотну інженерну інженерію, проте я хотів відійти and показати вам, що GDB показує нам із цим новим двійковим. Це NOT, необхідний для використання динамічної зворотної інженерії, якщо ви не маєте справу з ситуацією, коли у вас є упакований двійковий, який вам доведеться динамічно завантажувати and виписати код. Це полегшує речі, коли ви використовуєте динамічну зворотну інженерію, проте я хочу показати вам, що статична зворотна інженерія може отримати вам все необхідне, не встановлюючи віддалений процес, щоб фактично запустити двійковий. Якщо ви виявили необхідне спробувати це, вам потрібно спочатку встановити Repo OpenOCD у папку PICO, яку ми створили на початку цього курсу. Ви можете знайти деталі за посиланням нижче and, перейдіть до <strong>5.1 Встановлення OpenoCD</strong> у таблиці. <a href="https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf" target="_blank">https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf</a></p>
-<p>Потім вам потрібно буде відвідати сторінку нижче and завантажити UF2, розташований за адресою <strong>debugging, використовуючи інший Raspberry Pi Pico </strong> та прошивати перший піко з UF2. <a href="https://www.raspberrypi.org/documentation/rp2040/getting-started/\#board-specifications" target="_blank">https://www.raspberrypi.org/documentation/rp2040/getting-started/\#board-specifications</a></p>
-<p><strong>TRINAL 1</strong>: Потім вам потрібно буде встановити перший термінал, щоб перейти в папку OpenOCD and запустити наступне. </p><pre spellcheck="false">src/openocd -f interface/picoprobe.cfg -f target/rp2040.cfg -s tcl
+<p>Добре добре ... це виглядає інакше. Давайте вперше в цьому курсі розглянемо динамічний аналіз зворотного інженерії в GDB. Тут не важливо, що ви запускаєте це і встановили все це в GDB, оскільки є багато кроків на додаток до іншого піко, необхідного в конфігурації, наприклад, нижче. </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1618861896464.jpg"></img></div><p></p>
+<p>Обсяг цього курсу полягає в тому, щоб зрозуміти статичну зворотну інженерію, проте я хотів відійти і показати вам, що GDB показує нам цей новий двійковий. Не потрібно використовувати динамічну зворотну інженерію, якщо ви не маєте справу з ситуацією, коли у вас є упакований двійковий, який вам доведеться динамічно завантажувати та виписати код. Це полегшує речі, коли ви використовуєте динамічну зворотну інженерію, проте я хочу показати вам, що статична зворотна інженерія може отримати вам все необхідне, не встановлюючи віддалений процес, щоб фактично запустити двійковий. Якщо ви виявили необхідне спробувати це, вам потрібно спочатку встановити Repo OpenOCD у папку PICO, яку ми створили на початку цього курсу. Ви можете знайти деталі за посиланням нижче та перейти до <strong>5.1 Встановлення OpenOCD</strong> у таблиці. <a href="https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf" target="_blank">https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf</a></p>
+<p>Потім вам потрібно буде відвідати сторінку нижче та завантажити UF2, розташований за адресою <strong>debugging, використовуючи інший Raspberry Pi Pico </strong> і потім прошивати перший піко з UF2. <a href="https://www.raspberrypi.org/documentation/rp2040/getting-started/\#board-specifications" target="_blank">https://www.raspberrypi.org/documentation/rp2040/getting-started/\#board-specifications</a></p>
+<p><strong>TRINAL 1</strong>: Потім вам потрібно буде встановити перший термінал, щоб перейти в папку OpenOCD і запустити наступне. </p><pre spellcheck="false">src/openocd -f interface/picoprobe.cfg -f target/rp2040.cfg -s tcl
 </pre><p></p>
-<p><strong>TRINAL 2</strong>: Вам потрібно буде зайти в папку "Будівля" вашого проекту and запустити наступне. </p><pre spellcheck="false">arm-none-eabi-gdb 0x06_double.elf
+<p><strong>TRINAL 2</strong>: Вам потрібно буде зайти в папку "Будівля свого проекту" і запустити наступне. </p><pre spellcheck="false">arm-none-eabi-gdb 0x06_double.elf
 target extended-remote localhost:3333
 load
 monitor reset init
@@ -2889,7 +2889,7 @@ c
 <p><strong>TRINAL 3</strong>: Вам потрібно буде запустити емулятор екрана, який почнеться з блискучого курсору. </p><pre spellcheck="false">screen /dev/tty.usbmodem14101 115200
 </pre><p></p>
 <p>Тим не менш, з цим коротким поясненням, давайте динамічно переглянути це в GDB. </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1618862002127.jpg"></img></div><p></p>
-<p>Ми бачимо два значення на <em>0x10000340</em> and <em>0x10000344</em>. Давайте видалимо всі точки перерви and перерва прямо перед call до обгортки printf. </p><pre spellcheck="false">d
+<p>Ми бачимо два значення на <em>0x10000340</em> та <em>0x10000344</em>. Давайте видалимо всі точки перерви і розірвемося безпосередньо перед call до обгортки printf. </p><pre spellcheck="false">d
 b *0x1000032e
 c
 </pre><p></p>
@@ -2908,12 +2908,12 @@ c
 40.5555555560000000
 40.5555555560000000
 </pre><p></p>
-<p>Що відбувається, це те, що ці значення зараз знаходяться в R2 and R3 відповідно. </p><pre spellcheck="false">p/x $r2
+<p>Що відбувається, це те, що ці значення зараз знаходяться у R2 та R3 відповідно. </p><pre spellcheck="false">p/x $r2
 0x71c71c72<p></p>
 <p>p/x $r3
 0x4044471c
 &lt;/pre&gt;</p>
-<p>У складі ARM 32 Аргументи функцій передаються в R0-R3 and, якщо вам потрібно більше аргументів, вони ставляться на стек. У нашому випадку R0 має наш модифікатор формату. </p><pre spellcheck="false">x/s $r0
+<p>У складі ARM 32 аргументи до функцій передаються в R0-R3, і якщо вам потрібно більше аргументів, вони розміщені на стеку. У нашому випадку R0 має наш модифікатор формату. </p><pre spellcheck="false">x/s $r0
 0x10007070:    "%.16f\n"
 </pre><p></p>
 <p>Ми бачимо в R1 значення, що вказує на стек. </p><pre spellcheck="false">x/w $r1
@@ -2921,7 +2921,7 @@ c
 <p>p/x *0x20041f00
 0xa
 &lt;/pre&gt;</p>
-<p>Це ще один твір, що надходить у обгортку printf, щоб правильно роздрукувати рядок до STDOUT. На нашому наступному уроці ми будемо статично hack.</p>
+<p>Це ще один твір, що надходить у обгортку printf, щоб правильно роздрукувати рядок до STDOUT. На нашому наступному уроці ми зламаємо статично.</p>
 </pre></pre></pre></pre></pre>
                                 
                                 </section>
@@ -2965,7 +2965,7 @@ c
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"next":{"title":"Part 16 - Hacking double","level":"1.7.16","depth":2,"path":"pages-ua/part-16-hacking-double.md","ref":"pages-ua/part-16-hacking-double.md","articles":[]},"previous":{"title":"Part 14 - double","level":"1.7.14","depth":2,"path":"pages-ua/part-14-double.md","ref":"pages-ua/part-14-double.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-15-debugging-double.md","mtime":"2025-08-21T10:37:21.771Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"next":{"title":"Part 16 - Hacking double","level":"1.7.16","depth":2,"path":"pages-ua/part-16-hacking-double.md","ref":"pages-ua/part-16-hacking-double.md","articles":[]},"previous":{"title":"Part 14 - double","level":"1.7.14","depth":2,"path":"pages-ua/part-14-double.md","ref":"pages-ua/part-14-double.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-15-debugging-double.md","mtime":"2025-08-21T11:42:51.320Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2822,9 +2822,29 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="part-39-налагодження-оператора-попереднього-інкрементації">PART 39-Налагодження оператора попереднього інкрементації</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-підручник" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-підручник</a></p>
+<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
 <p>Давайте переглянемо наш код.</p>
-<p>nbsp</p>
+<pre spellcheck="false">#include &lt;iostream&gt;
+
+&nbsp;
+
+int main(void) {
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int myNumber = 16;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int myNewNumber = ++myNumber;
+
+&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; std::cout &lt;&lt; myNewNumber &lt;&lt; std::endl;
+
+&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;
+
+}
+</pre>
+
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1526639245794.jpg"></img></div>
 
 <p>Щоб скласти це, ми просто вводимо:</p>
@@ -2834,21 +2854,21 @@
 
 <p>Ми бачимо 17 надрукованих на екран.</p>
 <p>Давайте розберемо його:</p>
-<p>Ми створюємо змінну <strong>mynumber = 16</strong>, до якої ми створюємо іншу змінну <strong>mynewnumber</strong>, що попередньо запроваджує значення <strong>mynumber </strong>. &nbsp;we це бачимо, коли ми виконуємо наш код, він показує 17.</p>
+<p>Ми створюємо змінну <strong>mynumber = 16</strong>, до якої ми створюємо іншу змінну <strong>mynewnumber</strong>, що попередньо запроваджує значення <strong>mynumber </strong>. &nbsp;we це бачимо, коли виконуємо наш код, він показує 17.</p>
 <p>Коли ми заздалегідь запроваджуємо, значення змінної збільшується перед тим, як призначити її іншій змінній.&nbsp; для прикладу <strong>mynumber</strong> є <strong>16</strong>, тому він збільшується перед тим, як бути призначеним до <strong>mynewnumbum</strong>, тому ми отримуємо <strong>17</strong>.</p>
 <p>Давайте налагоджуємо.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1526639315124.jpg"></img></div>
 
-<p>Ми проводимо звичайний старт у gdb and Break на main.nbsptake примітка в <strong>main+24</strong> Ми переміщуємо значення <strong>1</strong> в <strong>r3 </strong>. На що ми встановимо breakpoint and Продовження.</p>
+<p>Ми робимо звичайний старт у gdb і розриваємо на main.&nbsp;take примітка в <strong>main+24</strong> Ми переміщуємо значення <strong>1</strong> в <strong>r3 </strong>. &nbsp;we, а потім бачимо <strong>main+28</strong>, ми продовжуємо це значення <strong>r11-8</strong>, що ми встановимо.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1526639338414.jpg"></img></div>
 
-<p>Коли ми оцінюємо цінність у <strong>R3</strong> на цьому етапі, ми бачимо <strong>17 </strong>. &nbsp;REMEMBER ще в нашому первісному коді, що значення в <strong>Mynumber</strong> змінна була <strong>16 </strong>. nbspWE може побачити, що оператор попереднього інтенсивності був успішним для збільшення значення <strong>__1</strong>, щоб дати нам <strong>17</strong>.</p>
+<p>Коли ми оцінюємо значення в <strong>R3</strong> на цьому етапі, ми бачимо <strong>17 </strong>. &nbsp;REMEMBER ще в нашому первісному коді, що значення в <strong>Mynumber</strong> змінна була <strong>16 </strong>. &nbsp;WE бачить, що оператор попереднього інкрементації був успішним для збільшення значення <strong>__1</strong>, щоб дати нам <strong>__17</strong>.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1526639366619.jpg"></img></div>
 
 <p>Ми бачимо, що коли ми продовжуємо код, значення <strong>17</strong> успішно перегукується до терміналу, як очікувалося.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1526639388837.jpg"></img></div>
 
-<p>На наступному тижні ми зануримось у Hacking Налагодження попереднього інтекментаційного оператора.</p>
+<p>Наступного тижня ми зануримося в зламу налагодження оператора попереднього інтекції.</p>
 
                                 
                                 </section>
@@ -2892,7 +2912,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 39 – Debugging Pre-Increment Operator","level":"1.4.39","depth":2,"next":{"title":"Part 40 – Hacking Pre-Increment Operator","level":"1.4.40","depth":2,"path":"pages-ua/part-40-hacking-pre-increment-operator.md","ref":"pages-ua/part-40-hacking-pre-increment-operator.md","articles":[]},"previous":{"title":"Part 38 – Pre-Increment Operator","level":"1.4.38","depth":2,"path":"pages-ua/part-38-pre-increment-operator.md","ref":"pages-ua/part-38-pre-increment-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-39-debugging-pre-increment-operator.md","mtime":"2025-08-21T10:37:21.776Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 39 – Debugging Pre-Increment Operator","level":"1.4.39","depth":2,"next":{"title":"Part 40 – Hacking Pre-Increment Operator","level":"1.4.40","depth":2,"path":"pages-ua/part-40-hacking-pre-increment-operator.md","ref":"pages-ua/part-40-hacking-pre-increment-operator.md","articles":[]},"previous":{"title":"Part 38 – Pre-Increment Operator","level":"1.4.38","depth":2,"path":"pages-ua/part-38-pre-increment-operator.md","ref":"pages-ua/part-38-pre-increment-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-39-debugging-pre-increment-operator.md","mtime":"2025-08-21T11:42:51.325Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

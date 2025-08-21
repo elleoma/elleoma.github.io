@@ -2821,7 +2821,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-10---налагодження-персонажів-первісний-тип-даних">PART 10 - Налагодження персонажів Первісний тип даних</h2>
+                                <h2 id="part-10---налагодження-персонажів-примітивного-типу-даних">PART 10 - Налагодження персонажів примітивного типу даних</h2>
 <p>Для повного змісту всіх уроків, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
 <p>Сьогодні ми збираємось налагодити наш дуже простий тип даних, що первісного характеру.</p>
 <p>Для початку давайте відкриємо наш двійковий у Radare2.</p>
@@ -2836,7 +2836,7 @@
 <pre spellcheck="false">ood
 </pre>
 
-<p>Тепер, коли у нас є екземпляр запуску, ми можемо прагнути до main вхідної точки двійкової.</p>
+<p>Тепер, коли у нас є екземпляр запуску, ми можемо прагнути до основної точки входу двійкового.</p>
 <pre spellcheck="false">s main
 </pre>
 
@@ -2844,8 +2844,8 @@
 <pre spellcheck="false">v
 </pre>
 
-<p>Ми можемо побачити, що в <em>0x5576bff9ec</em> ми рухаємося <em>0x63</em> or ascii <em>'c'</em> в регістр <em>w0</em>. Пам'ятайте, що ваша адреса буде різною через ASLR.</p>
-<p>Встановимо breakpoint AT&nbsp;<em>0X5576BFF9EC</em>&nbsp;and Перевірте вміст.</p>
+<p>Ми можемо побачити, що на <em>0x5576bff9ec</em> ми рухаємося <em>0x63</em> або ascii <em>'c'</em> в регістрі <em>w0</em>. Пам'ятайте, що ваша адреса буде різною через ASLR.</p>
+<p>Встановимо точку перерви at&nbsp;<em>0x5576bff9ec</em>&nbsp; і перевірити вміст.</p>
 <pre spellcheck="false">[0x5576bff9e4]&gt; db 0x5576bff9ec
 [0x5576bff9e4]&gt; dc
 hit breakpoint at: 0x5576bff9ec
@@ -2858,8 +2858,8 @@ hit breakpoint at: 0x5576bff9ec
 
 </pre>
 
-<p>Це дуже просто, але давайте розберемо його. Ми встановили наш breakpoint and Продовження. Ми заглянули всередину реєстру W0 and, що значення - 0x01.</p>
-<p>Потім ми ступили, як тільки and знову подивився, щоб побачити, що 0x63 успішно перемістився в W0, як зараз ми бачимо, що він насправді містить 0x63.</p>
+<p>Це дуже просто, але давайте розберемо його. Ми встановили свою точку перерви і продовжили. Ми заглянули всередину реєстру W0 і побачили, що значення - 0x01.</p>
+<p>Потім ми ступили один раз і знову подивилися, щоб побачити, що 0x63 успішно перемістився на W0, як зараз ми бачимо, що він насправді містить 0x63.</p>
 <p>Якщо ми знову DC, ми бачимо, що це перегукується з stdout, як очікувалося.</p>
 <pre spellcheck="false">[0x5576bff9ec]&gt; dc
 c
@@ -2867,7 +2867,7 @@ c
 [0x7f9727503c]&gt;
 </pre>
 
-<p>На нашому наступному уроці ми будемо hack char до іншого значення на наш вибір.</p>
+<p>На нашому наступному уроці ми зламаємо чар на іншу цінність на наш вибір.</p>
 
                                 
                                 </section>
@@ -2911,7 +2911,7 @@ c
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 10 - Debugging Character Primitive Datatype","level":"1.6.10","depth":2,"next":{"title":"Part 11 - Hacking Character Primitive Datatype","level":"1.6.11","depth":2,"path":"pages-ua/part-11-hacking-character-primitive-datatype.md","ref":"pages-ua/part-11-hacking-character-primitive-datatype.md","articles":[]},"previous":{"title":"Part 9 - Character Primitive Datatype","level":"1.6.9","depth":2,"path":"pages-ua/part-9-character-primitive-datatype.md","ref":"pages-ua/part-9-character-primitive-datatype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-10-debugging-character-primitive-datatype.md","mtime":"2025-08-21T10:37:21.770Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 10 - Debugging Character Primitive Datatype","level":"1.6.10","depth":2,"next":{"title":"Part 11 - Hacking Character Primitive Datatype","level":"1.6.11","depth":2,"path":"pages-ua/part-11-hacking-character-primitive-datatype.md","ref":"pages-ua/part-11-hacking-character-primitive-datatype.md","articles":[]},"previous":{"title":"Part 9 - Character Primitive Datatype","level":"1.6.9","depth":2,"path":"pages-ua/part-9-character-primitive-datatype.md","ref":"pages-ua/part-9-character-primitive-datatype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-10-debugging-character-primitive-datatype.md","mtime":"2025-08-21T11:42:51.319Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2821,7 +2821,7 @@
                                 
                                 <h2 id="part-20---налагодження-введення">part 20 - налагодження введення</h2>
 <p>Сьогодні ми будемо налагодити нашу функцію введення. Давайте розглянемо наш код.</p>
-<p>Review&nbsp;<strong>input.c</strong>&nbsp;as наступає.</p>
+<p>Review&nbsp;<strong>input.c</strong>&nbsp;as випливає.</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 #include "pico/stdlib.h"
@@ -2946,7 +2946,7 @@ int main()
 }
 </pre>
 
-<p>Давайте розберемося в нашому налагоджувач.</p>
+<p>Давайте розберемося в нашому налагоджувачі.</p>
 <pre spellcheck="false">radare2 -w arm -b 16 main.elf
 </pre>
 
@@ -2954,30 +2954,31 @@ int main()
 <pre spellcheck="false">aaaa
 </pre>
 
-<p>Давайте прагнемо main.</p>
+<p>Давайте прагнемо до головного.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp;and then&nbsp;<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого налагоджувач.</p>
+<p>Перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp;and then&nbsp;<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого виду налагоджувача.</p>
 <p>Спочатку ми оглядаємо <em>main</em>.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622836839312.jpg"></img></div>
 
-<p>Ми бачимо наш <em>stdio \ _init \ _all</em> call, який налаштовує io and, ми бачимо a <em>0x64</em> в <em>r3</em>, що є нашим кроком 100 десятків, щоб встановити <em>usb \ _string \ </em> -<em>siz and init to _0</em> and нарешті <em>usb \ _string</em> and init to <em>0</em>.</p>
+<p>Ми бачимо <em>stdio \ _init \ _all</em> call, який налаштовує io, і ми бачимо <em>0x64</em> в <em>r3</em>, що є нашим переміщенням 100 десятків, щоб встановити <em>USB \ _String \ _Size _and ми встановлюємо наш _USB \ _Char</em> raue <em>0</em>, і ми встановимо <em>USB \ _Char</em> ralue <em>0_0 _0 _0 _0_0 </em> і init to <em>0</em>.</p>
 <p>Давайте подивимось на нашу функцію <em>print \ _proc</em>.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837104639.jpg"></img></div>
 
-<p>Спочатку перевіряємо, чи наш вказівник на USB \ <em>Char or _P \ _USB \ _Char</em> дорівнює <em>Return</em> Key or <em>0XD</em> and, якщо це гілка.</p>
-<p>Потім ми повторюємо <em>p \ _USB \ _string</em>, поки не натиснемо Null Terminator and, тоді call Наш _Printf _Function, який, як ми бачимо тут, є обгорткою для функції C printf.</p>
+<p>Спочатку ми перевіряємо, чи наш вказівник на USB \ <em>Char або _P \ _USB \ _Char</em> дорівнює клавіші <em>return</em> або <em>0xd</em> і якщо так.</p>
+<p>Потім ми повторюємо <em>p \ _USB \ _string</em>, поки не натиснемо на Null Terminator, а потім call наш _printf _function, який, як ми бачимо тут, є обгорткою для функції c printf.</p>
 <p>Нарешті <em>flush \ _input</em>.</p>
 <p>Наша функція <em>input \ _proc</em> трохи складніша.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837449377.jpg"></img></div>
 
-<p>Тут ми використовуємо G<em>ETCHAR \ _TimeOut \ _US</em> Функція and Ручка <em>BackSpace</em> and <em>delete</em> клавіш.</p>
+<p>Тут ми використовуємо функцію g<em>etchar \ _timeout \ _us</em> і обробляємо клавіші <em>backspace</em> та <em>delete</em>.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837675957.jpg"></img></div>
 
-<p>Тоді ми call наш <em>putchar _wrapper проти</em> 0<em> and _9</em> and перевіряйте <em>strlen</em> and належним чином побудуємо нашу рядок з <em>strncat</em>.</p>
-<p>nbsp</p>
-<p>Потім ми правильно обробляємо нашу логіку <em>period</em>, щоб забезпечити лише один _period _IS, введений як номер плаваючої точки, може NOT ручки 2 періоди.</p>
+<p>Тоді ми call наш <em>putchar _wrapper проти</em> 0<em> та _9</em> і перевіряємо <em>strlen</em> і правильно створюємо наш рядок за допомогою <em>strncat</em>.</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837760991.jpg"></img></div>
+
+<p>Потім ми правильно обробляємо нашу логіку <em>period</em>, щоб переконатися, що лише один _period _IS, введений як номер плаваючої точки, не може обробляти 2 періоди.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837842045.jpg"></img></div>
 
 <p>Потім ми правильно обробляємо свою петлю.</p>
@@ -2985,8 +2986,8 @@ int main()
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837919869.jpg"></img></div>
 
 <p>Тут ми просто промиваємо вхідний буфер, встановивши <em>p \ _USB \ _string</em> на нульовий char.</p>
-<p>Це була більша сесія налагодження, тому, будь ласка, знайдіть свій час and Порівняйте збірку з джерелом, щоб ви могли дійсно зрозуміти кожен абзац, коли я його тут висвітлюю.</p>
-<p>Це підводить нас до кінця нашої початкової навчальної подорожі. У цій подорожі ми зробили 197 кроків разом через кілька різних архітектур. Настав ваша черга, щоб перенести цю підготовку на практиці and робити великі речі!</p>
+<p>Це була більша сесія налагодження, тому, будь ласка, знайдіть свій час і порівняйте Асамблею з джерелом, щоб ви могли дійсно зрозуміти кожен абзац, коли я його тут висвітлюю.</p>
+<p>Це підводить нас до кінця нашої початкової навчальної подорожі. У цій подорожі ми зробили 197 кроків разом через кілька різних архітектур. Настає ваша черга, щоб здійснити цю підготовку на практиці і робити чудові справи!</p>
 <p>Ця книга буде вашим довідником, коли ви стикаєтесь з викликами, проте немає нічого, що ви не можете досягти!</p>
 
                                 
@@ -3027,7 +3028,7 @@ int main()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 20 - Debugging Input","level":"1.7.20","depth":2,"previous":{"title":"Part 19 - Input","level":"1.7.19","depth":2,"path":"pages-ua/part-19-input.md","ref":"pages-ua/part-19-input.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-20-debugging-input.md","mtime":"2025-08-21T10:37:21.773Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 20 - Debugging Input","level":"1.7.20","depth":2,"previous":{"title":"Part 19 - Input","level":"1.7.19","depth":2,"path":"pages-ua/part-19-input.md","ref":"pages-ua/part-19-input.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-20-debugging-input.md","mtime":"2025-08-21T11:42:51.322Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

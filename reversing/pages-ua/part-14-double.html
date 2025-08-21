@@ -2844,15 +2844,15 @@ int main()&nbsp;
 }
 </pre>
 
-<p>Дуже просто ми призначаємо поплавок of&nbsp;<em>40.5</em>&nbsp;into&nbsp;<em>x</em>&nbsp;and друкувати його за допомогою the&nbsp;<em>%f&nbsp;_formatiifior modifior and потім сплять for&nbsp;_1</em>&nbsp;second.</p>
-<p>Давайте зробимо новий dir&nbsp;<strong>0x06 \ _double</strong>&nbsp;and add ur&nbsp;<strong>cmakelists.txt</strong>&nbsp;file.</p>
+<p>Дуже просто ми призначаємо поплавок Of&nbsp;<em>40.5</em>&nbsp;into&nbsp;<em>x</em>&nbsp;and надрукувати його за допомогою модифікатора The&nbsp;<em>%f&nbsp;</em> for&nbsp;<em>1</em>&nbsp;second.</p>
+<p>Давайте зробимо новий dir&nbsp;<strong>0x06 \ _double</strong>&nbsp; і додайте ur&nbsp;<strong>cmakelists.txt</strong>&nbsp;file в ньому.</p>
 <pre spellcheck="false">cmake_minimum_required(VERSION 3.13)
 
 include(pico_sdk_import.cmake)
 
 project(test_project C CXX ASM)
-встановити(CMAKE_C_STANDARD 11)&nbsp;
-встановити(CMAKE_CXX_STANDARD 17)&nbsp;
+set(CMAKE_C_STANDARD 11)&nbsp;
+set(CMAKE_CXX_STANDARD 17)&nbsp;
 pico_sdk_init()
 
 add_executable(0x06_double
@@ -2866,7 +2866,7 @@ pico_add_extra_outputs(0x056_double)
 target_link_libraries(0x06_double pico_stdlib)
 </pre>
 
-<p>Далі нам потрібно скопіювати the&nbsp;<strong>pico \ _sdk \ _import.cmake</strong>nbspfile із зовнішньої папки в the&nbsp;<strong>pico-sdk</strong>&nbsp;Installation to the&nbsp;<strong>0x06 \ _double</strong>&nbsp;project.</p>
+<p>Далі нам потрібно скопіювати the&nbsp;<strong>pico \ _sdk \ _import.cmake</strong>&nbsp;file із зовнішньої папки в the&nbsp;<strong>pico-sdk</strong>&nbsp;installation tos the&nbsp;<strong>0x06 \ _double</strong>&nbsp;project.</p>
 <pre spellcheck="false">cp ../pico-sdk/external/pico_sdk_import.cmake .
 </pre>
 
@@ -2886,11 +2886,11 @@ make
 <pre spellcheck="false">ls /dev/tty.
 </pre>
 
-<p>Натисніть вкладку, щоб знайти привід and, а потім у моєму випадку я буду use&nbsp;<strong>screen</strong>&nbsp;to connect.</p>
+<p>Натисніть на вкладку, щоб знайти накопичувач, а потім у моєму випадку я буду використовуватикси9plh35zuk8<strong>screen</strong>&nbsp;to Connect.</p>
 <pre spellcheck="false">screen /dev/tty.usbmodem0000000000001
 </pre>
 
-<p>Ви повинні побачити Anchyz9plh86zuk8<em>40.5</em>&nbsp;being надруковано щосекунди.</p>
+<p>Ви повинні побачити Anchyz9plh37zuk8<em>40.5</em>&nbsp;being надруковано щосекунди.</p>
 <pre spellcheck="false">40.500000
 40.500000
 40.500000
@@ -2960,7 +2960,7 @@ make
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 14 - double","level":"1.7.14","depth":2,"next":{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"path":"pages-ua/part-15-debugging-double.md","ref":"pages-ua/part-15-debugging-double.md","articles":[]},"previous":{"title":"Part 13 - Hacking float","level":"1.7.13","depth":2,"path":"pages-ua/part-13-hacking-float.md","ref":"pages-ua/part-13-hacking-float.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-14-double.md","mtime":"2025-08-21T10:37:21.771Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 14 - double","level":"1.7.14","depth":2,"next":{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"path":"pages-ua/part-15-debugging-double.md","ref":"pages-ua/part-15-debugging-double.md","articles":[]},"previous":{"title":"Part 13 - Hacking float","level":"1.7.13","depth":2,"path":"pages-ua/part-13-hacking-float.md","ref":"pages-ua/part-13-hacking-float.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-14-double.md","mtime":"2025-08-21T11:42:51.320Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

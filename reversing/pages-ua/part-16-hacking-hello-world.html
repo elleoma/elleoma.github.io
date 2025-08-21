@@ -2821,30 +2821,30 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-16---hacking-hello-world">part 16 - Hacking Hello World</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-підручник" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-підручник</a></p>
+                                <h2 id="part-16---хакерство-hello-world">part 16 - хакерство Hello World</h2>
+<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
 <p>Давайте розглянемо наш код з двох тижнів тому.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520191330889.jpg"></img></div>
 
 <p>Давайте ще раз налагодити.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520233045514.jpg"></img></div>
 
-<p>Давайте ще раз вивчимо вміст рядка за адресою пам'яті <strong>0x10750</strong> and продовжуйте виконання програми.</p>
+<p>Давайте ще раз вивчимо вміст рядка за адресою пам'яті <strong>0x10750</strong> і продовжимо виконання програми.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520200292099.jpg"></img></div>
 
-<p>Як ви бачите, він має "<strong>Hello World! </strong>" String and, коли ми продовжуємо через нього Ехо назад до терміналу як такого.</p>
-<p>Давайте hack! &nbsp;LET зараз перепишіть значення всередині адреси пам'яті зі рядком, "<strong>HACKED World! </strong>" and Продовжуйте виконання.</p>
+<p>Як ви бачите, він тримає рядок "<strong>Hello World! </strong>", і коли ми продовжуємо через нього Ехо назад до терміналу як такого.</p>
+<p>Давайте зламаємо! &nbsp;LET тепер перезапишіть значення всередині адреси пам'яті з рядком, "<strong>HAcked World! </strong>" і продовжуємо виконання.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520148428152.jpg"></img></div>
 
-<p>Woohoo! &nbsp;our Перший hack! &nbsp;as ви можете бачити, як ви розумієте, що ви маєте абсолютний контроль над усім бінарним, незалежно від того, в якій мові він написаний. nbspin Цей дуже простий приклад ми змогли до hack. виконано, що це перегукувалося: "<strong> -хакерський світ! </strong>" до стандартного випуску терміналу or.</p>
-<p>Давайте знову запустимо двійковий and, зробимо disassembly.</p>
+<p>Woohoo! &nbsp;ourther first hack! &nbsp;as ви можете побачити, як ви розумієте, що ви маєте абсолютний контроль над усім двійковим, незалежно від того, в якій мові написано. &nbsp;in Цей дуже простий приклад, який ми змогли зламати значення в межах пам'яті <strong>0x10750</strong>, до якого виконали, що - до " клем або стандартний вихід.</p>
+<p>Давайте знову запустимо двійковий і зробимо розбирання.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520230658310.jpg"></img></div>
 
-<p>Давайте зараз зробимо ту саму процедуру, проте давайте <strong>si</strong> 3x and вивчити рядок всередині <strong>r1 </strong>. nbspwe бачимо, що він містить: "<strong>hello World! </strong>", як це було успішно <strong>ldr </strong> (навантаження з пам'яті в реєстр) на <strong>main+12</strong>.</p>
-<p>Тепер встановимо R1 на "<strong>hacked World! </strong>" and продовжити виконання.&nbsp;as ви можете побачити такі шляхи.&nbsp;</p>
+<p>Давайте зараз зробимо ту саму процедуру, проте давайте <strong>si</strong> 3x і вивчимо рядок всередині <strong>r1 </strong>. &nbsp;we бачимо, що він містить: "<strong>hello World! </strong>", як це було успішно <strong>ldr </strong> (навантаження з пам'яті в реєстр) в <strong>main+12</strong>.</p>
+<p>Тепер встановити r1 на "<strong>hacked World! </strong>" і продовжимо виконання.&nbsp;as ви можете побачити, що ми зараз зламали його, що виходить з реєстру, а не в memory.&nbsp; Ви можете чітко почати бачити ряд способів зламати що завгодно, і ось простий приклад двох таких шляхів.&nbsp;</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520231520333.jpg"></img></div>
 
-<p>Зворотна інженерія - це все про розуміння того, як програма виконує and викрадення потоку виконання and Зміна значень відповідно до нашої мети! nbspTODAY Ви зробили свій перший крок у цю дивовижну подорож!</p>
+<p>Зворотна інженерія - це все про розуміння того, як програма виконує та викрадає потік виконання та зміну значень відповідно до нашої мети! &nbsp;today ви зробили свій перший крок у цю дивовижну подорож!</p>
 <p>Наступного тижня ми зануримося в константи.</p>
 
                                 
@@ -2889,7 +2889,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 16 - Hacking Hello World","level":"1.4.16","depth":2,"next":{"title":"Part 17 - Constants","level":"1.4.17","depth":2,"path":"pages-ua/part-17-constants.md","ref":"pages-ua/part-17-constants.md","articles":[]},"previous":{"title":"Part 15 - Debugging Hello World","level":"1.4.15","depth":2,"path":"pages-ua/part-15-debugging-hello-world.md","ref":"pages-ua/part-15-debugging-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-16-hacking-hello-world.md","mtime":"2025-08-21T10:37:21.771Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 16 - Hacking Hello World","level":"1.4.16","depth":2,"next":{"title":"Part 17 - Constants","level":"1.4.17","depth":2,"path":"pages-ua/part-17-constants.md","ref":"pages-ua/part-17-constants.md","articles":[]},"previous":{"title":"Part 15 - Debugging Hello World","level":"1.4.15","depth":2,"path":"pages-ua/part-15-debugging-hello-world.md","ref":"pages-ua/part-15-debugging-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-16-hacking-hello-world.md","mtime":"2025-08-21T11:42:51.321Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

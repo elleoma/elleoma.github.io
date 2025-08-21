@@ -2822,31 +2822,31 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="part-37---програма-asm-6--cmov-інструкції-">PART 37 - Програма ASM 6 \ [CMOV Інструкції ]</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;JMP</p>
-<p>У нашій шостій програмі ми продемонструємо, як ми можемо працювати з інструкціями CMOV. Перш ніж зануритися в якийсь код, давайте поговоримо про CMOV. CMOV може запобігти процесору використовувати інструкції JMP and прискорює відповідний бінар. Існують непідписані інструкції CMOV, такі як:</p>
-<p>Cmova or cmovnbe = вище \ [переносити прапор or нульовий прапор = 0 ]</p>
-<p>Cmovae or cmovnb = вище Or рівний \ [переносити прапор = 0 ]</p>
-<p>Cmovnc = Not носити \ [переносити прапор = 0 ]</p>
-<p>Cmovb or cmovnae = нижче \ [переносити прапор = 1 ]</p>
+<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>У нашій шостій програмі ми продемонструємо, як ми можемо працювати з інструкціями CMOV. Перш ніж зануритися в якийсь код, давайте поговоримо про CMOV. CMOV може запобігти процесору використовувати інструкції JMP і прискорює відповідний бінар. Існують непідписані інструкції CMOV, такі як:</p>
+<p>Cmova або cmovnbe = вище \ [переносити прапор або нульовий прапор = 0 ]</p>
+<p>Cmovae або cmovnb = вище або рівний \ [переносити прапор = 0 ]</p>
+<p>Cmovnc = не переносити \ [переносити прапор = 0 ]</p>
+<p>Cmovb або cmovnae = нижче \ [переносити прапор = 1 ]</p>
 <p>Cmovc = носити \ [переносити прапор = 1 ]</p>
-<p>Cmovbe or cmovna = нижче Or equal \ [переносити прапор or нульовий прапор = 1 ]</p>
-<p>Cmove or cmovz = рівний \ [нульовий прапор = 1 ]</p>
-<p>Cmovne or cmovnz = Not рівний \ [нульовий прапор = 0 ]</p>
-<p>Cmovp or cmovpe = паритет \ [Прапор паритету = 1 ]</p>
-<p>Cmovnp or cmovpo = Not parity \ [Прапор паритету = 0 ]</p>
+<p>Cmovbe або cmovna = нижче або рівний \ [переносити прапор або нульовий прапор = 1 ]</p>
+<p>Cmove або cmovz = рівний \ [нульовий прапор = 1 ]</p>
+<p>Cmovne або cmovnz = не рівний \ [нульовий прапор = 0 ]</p>
+<p>Cmovp або cmovpe = паритет \ [прапор паритету = 1 ]</p>
+<p>Cmovnp або cmovpo = не парність \ [Прапор паритету = 0 ]</p>
 <p>Також є підписані інструкції CMOV, такі як:</p>
-<p>Cmovge or cmovnl = більший Or equal \ [прапор xor revflow flag = 0 ]</p>
-<p>Cmovl or cmovnge = менше \ [Прапор знаку xor vell flag = 1 ]</p>
-<p>Cmovle or cmovng = менше Or equal \ [прапор xor revflow flag or zf = 1 ]</p>
+<p>Cmovge або cmovnl = більший або рівний \ [Прапор знаку xor revlow flag = 0 ]</p>
+<p>Cmovl або cmovnge = менше \ [Прапор знаку xor refflow flag = 1 ]</p>
+<p>Cmovle або cmovng = менший або рівний \ [прапор xor vell або zf = 1 ]</p>
 <p>Cmovo = переповнення \ [переповнення прапора = 1 ]</p>
-<p>Cmovno = Not refflow \ [prevlow flag = 0 ]</p>
+<p>Cmovno = не переповнення \ [revelt flag = 0 ]</p>
 <p>Cmovs = підписати негативний \ [Прапор знак = 1 ]</p>
-<p>Cmovns = Not знак Позитивний \ [Прапор знак = 0 ]</p>
-<p>Майте на увазі, щоб переглянути взаємозв'язки між підписаними операціями and. Не підписані інструкції використовують CF, ZF and PF, щоб визначити різницю між двома операндами, де підписані інструкції використовують SF and, щоб вказати умову порівняння між оперантами. Якщо вам потрібна оновлення на прапорі, перегляньте частину 14 на прапорах цієї серії. Інструкції CMOV покладаються на математичну інструкцію, яка встановлює регістр EFLAGS для роботи and, тому зберігає програміста для використання заяви JMP після оператора порівняння. Давайте вивчимо якийсь вихідний код. </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520240921769.jpg"></img></div><p></p>
-<p>Гаразд, почнемо з рядків 21 and 22. Це нічого нового, що ми пережили, оскільки ми просто переміщаємо масив у ebx. У рядку 24 ми бачимо функцію Find \ <em>Smallest \ <em>Value, де ми проходимо кругообігу через масив and, використовуючи CMOVB, щоб знайти найнижче значення в кінцевому рахунку. Ми бачимо __cmp %ebx, %eax</em></em>, до якого cmp віднімає перший операнд з другого and, встановлює реєстр eflags належним чином. У цей момент CMOVB використовується для заміни значення в ebx зі значенням у eax, якщо значення менше, ніж те, що було спочатку в реєстрі ebx. Після того, як ми exit цикл ми бачимо три набори sys \ _writes, щоб спочатку відобразити наше повідомлення, друге, щоб відобразити наше перетворене ціле число до ascii value and, нарешті, період and. Майте на увазі, щоб зібрати ми вводимо:</p>
+<p>Cmovns = не підписуйте позитивний \ [прапор значок = 0 ]</p>
+<p>Майте на увазі, щоб переглянути взаємозв'язки між непідписаними та підписаними операціями. Непідписані інструкції використовують CF, ZF та PF, щоб визначити різницю між двома операндами, де підписані інструкції використовують SF, і для вказівки умови порівняння між операндами. Якщо вам потрібна оновлення на прапорі, перегляньте частину 14 на прапорах цієї серії. Інструкції CMOV покладаються на математичну інструкцію, яка встановлює регістр EFLAGS для роботи, а отже, зберігає програміста для використання заяв JMP після заяви порівняння. Давайте вивчимо якийсь вихідний код. </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520240921769.jpg"></img></div><p></p>
+<p>Гаразд, почнемо з рядків 21 і 22. Це не нова, яку ми пережили, оскільки ми просто переміщаємо масив у ebx. У рядку 24 ми бачимо функцію Find \ <em>Smallest \ </em> <em>Value, де ми проходимо велосипед через масив і використовуємо CMOVB, щоб знайти найменше значення в кінцевому рахунку. Ми бачимо <em>_cmp %ebx, %eax</em></em>, до якого cmp віднімає перший операнд з другого і встановлює реєстр eflags належним чином. У цей момент CMOVB використовується для заміни значення в ebx зі значенням у eax, якщо значення менше, ніж те, що було спочатку в реєстрі ebx. Після виходу з циклу ми бачимо три набори SYS \ _Writes, щоб спочатку відобразити наше повідомлення, по -друге, щоб відобразити наше перетворене ціле число до значення ASCII, а потім нарешті періоду та подачі рядків. Майте на увазі, щоб зібрати ми вводимо:</p>
 <p><strong>AS –32 -o cmov \ _instructions.o cmov \ _instructions.s</strong></p>
 <p>Щоб зв’язати об’єкт file, ми вводимо:</p>
-<p><strong>LD -M elf \ <em>I386 -O CMOV \ </em>інструкції cmov \ _instructions.o </strong></p>
+<p><strong>LD -M elf \ <em>I386 -O CMOV \ </em>інструкації cmov \ _instructions.o </strong></p>
 <p>Я з нетерпінням чекаю зустрічі з вами на наступному тижні, коли ми занурюємось у налагодження нашої шостої програми Асамблеї!</p>
 
                                 
@@ -2891,7 +2891,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 37 - ASM Program 6 [CMOV Instructions]","level":"1.2.37","depth":2,"next":{"title":"Part 38 - ASM Debugging 6 [CMOV Instructions]","level":"1.2.38","depth":2,"path":"pages-ua/part-38-asm-debugging-6-cmov-instructions.md","ref":"pages-ua/part-38-asm-debugging-6-cmov-instructions.md","articles":[]},"previous":{"title":"Part 36 - ASM Hacking 5 [Indirect Addressing With Registers]","level":"1.2.36","depth":2,"path":"pages-ua/part-36-asm-hacking-5-indirect-addressing-with-registers.md","ref":"pages-ua/part-36-asm-hacking-5-indirect-addressing-with-registers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-37-asm-program-6-cmov-instructions.md","mtime":"2025-08-21T10:37:21.776Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 37 - ASM Program 6 [CMOV Instructions]","level":"1.2.37","depth":2,"next":{"title":"Part 38 - ASM Debugging 6 [CMOV Instructions]","level":"1.2.38","depth":2,"path":"pages-ua/part-38-asm-debugging-6-cmov-instructions.md","ref":"pages-ua/part-38-asm-debugging-6-cmov-instructions.md","articles":[]},"previous":{"title":"Part 36 - ASM Hacking 5 [Indirect Addressing With Registers]","level":"1.2.36","depth":2,"path":"pages-ua/part-36-asm-hacking-5-indirect-addressing-with-registers.md","ref":"pages-ua/part-36-asm-hacking-5-indirect-addressing-with-registers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-37-asm-program-6-cmov-instructions.md","mtime":"2025-08-21T11:42:51.325Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

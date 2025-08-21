@@ -2821,7 +2821,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>Hello Worldpart 4 - налагодження "Hello World"</p>
+                                <h2 id="part-4---налагодження-привіт-світ">part 4 - налагодження "привіт світ"</h2>
 <p>Для повного змісту всіх уроків, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
 <p>Сьогодні ми збираємось налагодити нашу першу програму, використовуючи нашу розробку Radare2. Для початку давайте відкриємо наш двійковий у Radare2. </p><pre spellcheck="false">radare2 ./0x01_asm_64_helloworld
 </pre><p></p>
@@ -2829,45 +2829,46 @@
 </pre><p></p>
 <p>Наступне, що ми хочемо зробити логічно, - це розпалювати програму в режимі налагодження, щоб вона відображала сирий машинний код від диска до запущеного процесу. </p><pre spellcheck="false">ood
 </pre><p></p>
-<p>Тепер, коли у нас є екземпляр запуску, ми можемо прагнути до main вхідної точки двійкової. </p><pre spellcheck="false">s main
+<p>Тепер, коли у нас є екземпляр запуску, ми можемо прагнути до основної точки входу двійкового. </p><pre spellcheck="false">s main
 </pre><p></p>
 <p>Давайте пройдемо початкову експертизу, зробивши наступне. </p><pre spellcheck="false">v
 </pre><p></p>
-<p>Вихід з Radare2 є занадто великим, щоб відобразити в цьому курсі, однак, коли ви слідуєте за власними умовами, ви зможете дотримуватися. Ми будемо зберігати цю конвенцію протягом усього курсу для кращої читабельності документа. Пам'ятайте, що існує різниця між виконуваним файлом на диску and, що знаходиться при цьому, коли він відображається. Коли він знаходиться на диску, його називають беззастережним. Ми розглянемо це в кінці уроку. Наразі ми дивимось на відображену версію, як ви бачите, що це зміщення відображеного коду, який ми розглянемо пізніше. Ви помічаєте, що оскільки значення вашої картової пам'яті відрізняються від мого? Це через ALSR. Рандомізація макета адреси (ASLR) - це техніка безпеки, що використовується в операційних системах, спочатку впроваджена в 2001 році. Поточні версії всіх основних операційних систем (iOS, Android, Windows, MacOS, and Linux) мають захист ASLR. ASLR в основному використовується для захисту від атак переповнення буфера. У переповненні буфера зловмисники живлять функцію стільки ж неядних даних, скільки можуть обробляти, а потім шкідливе корисне навантаження. Ми помічаємо в моїй картографічній пам'яті, що за адресою <em>0x55629cab48</em> ми бачимо наш String<em> "Hello World!" </em>. У вас буде інше зміщення, як ми обговорювали, але знайдемо той самий результат. Повернемося до вікна console, зробивши наступне. </p><pre spellcheck="false">q
+<p>Вихід з Radare2 є занадто великим, щоб відобразити цей курс, однак, коли ви слідуєте за власними умовами, ви зможете дотримуватися. Ми будемо зберігати цю конвенцію протягом усього курсу для кращої читабельності документа. Пам'ятайте, що існує різниця між виконуваним файлом на диску і тим, що знаходиться, коли він відображається. Коли він знаходиться на диску, його називають беззастережним. Ми розглянемо це в кінці уроку. Наразі ми дивимось на відображену версію, як ви бачите, що це зміщення відображеного коду, який ми розглянемо пізніше. Ви помічаєте, що оскільки значення вашої картової пам'яті відрізняються від мого? Це через ALSR. Рандомізація макета адреси (ASLR) - це техніка безпеки, що використовується в операційних системах, спочатку впроваджена в 2001 році. Поточні версії всіх основних операційних систем (iOS, Android, Windows, MacOS та Linux) мають захист ASLR. ASLR в основному використовується для захисту від атак переповнення буфера. У переповненні буфера зловмисники живлять функцію стільки ж неядних даних, скільки можуть обробляти, а потім шкідливе корисне навантаження. Ми помічаємо в моїй картографічній пам'яті, що за адресою <em>0x55629cab48</em> ми бачимо наш String<em> Hello World! "</em>. У вас буде інше зміщення, як ми обговорювали, але знайдемо той самий результат. Повернемося до вікна консолі, зробивши наступне. </p><pre spellcheck="false">q
 </pre><p></p>
 <p>Давайте перевіримо наш початковий аналіз. </p><pre spellcheck="false">[0x55629ca9e4]&gt; ps @0x55629cab48
 Hello World!
 [0x55629ca9e4]&gt;
 </pre><p></p>
-<p>Ми можемо бачити, що насправді правда, що за відображеною адресою пам'яті <em>0x55629cab48</em> ми бачимо рядок <em> "Hello World!" </em>. Давайте також подивимось на шестигранний вигляд, щоб ми могли побачити and краще зрозуміти, що відбувається на рівні машинного коду. </p><pre spellcheck="false">px @0x55629cab48
+<p>Ми можемо бачити, що насправді правда, що за відображеною адресою пам'яті <em>0x55629cab48</em> ми бачимо рядок <em> "привіт світ!" </em>. Давайте також подивимось на шестигранний вигляд, щоб ми могли бачити і краще зрозуміти, що відбувається на рівні машинного коду. </p><pre spellcheck="false">px @0x55629cab48
 </pre><p></p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1606325962588.jpg"></img></div>
 
-<p>Ми бачимо наш "Hello World!" Рядок and Ми знову можемо побачити, що він існує, починаючи з відображеної адреси пам'яті 0x55629cab48. Ми бачимо, що наші інструкції з коду машин-це 16 байт довжиною or 64-BITS, поки ми можемо побачити перший запуск стовпця на <em>48</em> and кінець з <em>00</em>. Дуже важливо ми розуміємо кілька ключових речей. По-перше, це той факт, що одна шістнадцяткова цифра має 4-біт ширину or NIBLS or половину байта. У нашому випадку <em>4</em> - це половина байта and <em>8</em> - інша половина байта. Разом вони утворюють байт and у нашому випадку дійсне код ascii. Давайте відвідаємо онлайн -таблицю ASCII. <a href="http://www.asciitable.com" target="_blank">http://www.asciitable.com</a></p>
-<p>По -друге, нам потрібно зрозуміти, до чого перекладається машинний код. Давайте розглянемо, що таке <em>48</em> у шестигранні. Ми бачимо, що це столиця "H". Це карта ідеально, як ви бачите у правій стовпці зображення вище, ми бачимо 0 and під ним букву H. Очевидно, <em>65</em> hex є <strong><em> 'e' </em></strong> and, так що and так далі. Ви можете екстраполювати решту для себе тепер, коли ви маєте основне розуміння того, що ви дивитесь. Тепер визначимо breakpoint на main and виконати цей двійковий, щоб перевірити, що, коли ми продовжимо від main, він друкує <em> "Hello World" </em> до stdout. </p><pre spellcheck="false">[0x55629ca9e4]&gt; db 0x55629ca9e4
+<p>Ми бачимо наш "привіт світ!" рядок, і ми знову можемо побачити, що він існує, починаючи з відображеної адреси пам'яті 0x55629cab48. Ми бачимо, що наші інструкції з коду машини мають довгі 16 байт або 64-біт, якщо ми можемо побачити перший запуск стовпця на <em>48</em> і закінчити <em>00</em>. Дуже важливо ми розуміємо кілька ключових речей. По-перше, це той факт, що одна шістнадцяткова цифра шириною 4-біт або куска або половина байта. У нашому випадку <em>4</em> - це половина байта, а <em>8</em> - інша половина байта. Разом вони утворюють байт і в нашому випадку дійсне код ascii. Давайте відвідаємо онлайн -таблицю ASCII. <a href="http://www.asciitable.com" target="_blank">http://www.asciitable.com</a></p>
+<p>По -друге, нам потрібно зрозуміти, до чого перекладається машинний код. Давайте розглянемо, що таке <em>48</em> у шестигранні. Ми бачимо, що це столиця "H". Це карта ідеально, як ви бачите у правій стовпці зображення вище, ми бачимо 0, а під ним буква H. Очевидно <em>65</em> шестигранник <strong><em> 'e' </em></strong> і так далі і так далі. Ви можете екстраполювати решту для себе тепер, коли ви маєте основне розуміння того, що ви дивитесь. Давайте тепер визначимо точку перерви на Main і виконаємо цей двійковий, щоб перевірити, що коли ми продовжимо від Main, він надрукує <em> "привіт світ" </em> до stdout. </p><pre spellcheck="false">[0x55629ca9e4]&gt; db 0x55629ca9e4
 [0x55629ca9e4]&gt;
 </pre><p></p>
-<p>Продовжуємо and Перевірте нашу гіпотезу. Спочатку ми продовжуємо and Break на main. </p><pre spellcheck="false">[0x55629ca9e4]&gt; dc
+<p>Давайте продовжуємо та перевіримо нашу гіпотезу. Спочатку ми продовжуємо і ламаємося на Майн. </p><pre spellcheck="false">[0x55629ca9e4]&gt; dc
 hit breakpoint at: 0x55629ca9e4
 [0x55629ca9e4]&gt;
 </pre><p></p>
-<p>Тепер ми знову крокуємо and, оскільки немає інших точок перерви, ми закінчимо виконання and перевірити наш результат у stdout. </p><pre spellcheck="false">[0x55629ca9e4]&gt; dc
+<p>Тепер ми знову крокуємо, і оскільки немає інших точок перерви, ми завершимо виконання та перевіримо наш результат у stdout. </p><pre spellcheck="false">[0x55629ca9e4]&gt; dc
 Hello World!
 (59575) Process exited with status=0x0
 [0x7fb146cb8c]&gt;
 </pre><p></p>
-<p>Давайте exit Radare2. </p><pre spellcheck="false">q
+<p>Давайте вийдемо Radare2. </p><pre spellcheck="false">q
 y
 y
 </pre><p></p>
-<p>Давайте переглянемо Radare2 Знову and цього разу not запускайте двійковий and, просто подивіться на незаможений бінар, що знаходиться на диску. </p><pre spellcheck="false">radare2 ./0x01_asm_64_helloworld
+<p>Давайте знову повторно Radare2, і цього разу не запустить двійкову і просто подивимось на беззастережну двійку, яка знаходиться на диску. </p><pre spellcheck="false">radare2 ./0x01_asm_64_helloworld
 </pre><p></p>
 <p>Давайте автоматично проаналізуємо. </p><pre spellcheck="false">aaa
 </pre><p></p>
-<p>Давайте прагнемо main. Hello World</p>
+<p>Давайте прагнемо до головного. </p><pre spellcheck="false">s main
+</pre><p></p>
 <p>Потім переглянути. </p><pre spellcheck="false">v
 </pre><p></p>
-<p>Зауважте, що у нас є <em> "Hello World!" </em> Цього разу за адресою пам'яті, що не змінюється, <em>0xb48</em>. Ви помічаєте, що коли ви пробігаєте двійковий, виконуваний файл мав компенсацію цього значення, але LSB був <em>48</em> шістнадцятковим. Я сподіваюся, що цей урок допоможе вам зрозуміти основи 64-бітного ARM Асамблеї and Як правильно його змінити. На нашому наступному уроці ми будемо hack цінність.</p>
+<p>Зауважте, що у нас є <em> "Привіт світ!" Ви помічаєте, що коли ви пробігаєте двійковий, виконуваний файл мав компенсацію цього значення, але LSB був _48</em> шістнадцятковим. Я сподіваюся, що цей урок допоможе вам зрозуміти основи 64-бітної складання ARM та як правильно змінити його. На нашому наступному уроці ми зламаємо цінність.</p>
 
                                 
                                 </section>
@@ -2911,7 +2912,7 @@ y
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 4 - Debugging \"Hello World\"","level":"1.6.4","depth":2,"next":{"title":"Part 5 - Hacking \"Hello World\"","level":"1.6.5","depth":2,"path":"pages-ua/part-5-hacking-hello-world.md","ref":"pages-ua/part-5-hacking-hello-world.md","articles":[]},"previous":{"title":"Part 3 - \"Hello World\"","level":"1.6.3","depth":2,"path":"pages-ua/part-3-hello-world.md","ref":"pages-ua/part-3-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-4-debugging-hello-world.md","mtime":"2025-08-21T10:37:21.776Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 4 - Debugging \"Hello World\"","level":"1.6.4","depth":2,"next":{"title":"Part 5 - Hacking \"Hello World\"","level":"1.6.5","depth":2,"path":"pages-ua/part-5-hacking-hello-world.md","ref":"pages-ua/part-5-hacking-hello-world.md","articles":[]},"previous":{"title":"Part 3 - \"Hello World\"","level":"1.6.3","depth":2,"path":"pages-ua/part-3-hello-world.md","ref":"pages-ua/part-3-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-4-debugging-hello-world.md","mtime":"2025-08-21T11:42:51.325Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

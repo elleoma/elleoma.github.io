@@ -2821,25 +2821,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-18---протягом-800-років-я-тренував-джедаї-сила-яка-вводить--рік---2021-and-семінях-місяців-середня-ціна-галона-газу-в-межах-сполучених-штатів-становить-751-дол-вода-поставляється-у-великому-столичному-місті-сша-">part 18 - "Протягом 800 років я тренував джедаї!", Сила, яка вводить ... "Рік - 2021 and СЕМІНЯХ МІСЯЦІВ, Середня ціна галона газу в межах Сполучених Штатів становить 7,51 дол. Вода поставляється у великому столичному місті США ".</h2>
-<p>"Джерела розвідки розташували штаб -квартиру" Темні очі ", що стоять за нападами зловмисного програмного забезпечення and, використовують мікроконтролер Pico як контролер всередині безпілотника, який готується, щоб вдарити цей об'єкт and, вибиває їхні комунікації, щоб уникнути нападу на постачання води".</p>
-<p>"Координати нападу - '61 .013693050912785, 99.19670587477269 ', до якого входить оператор безпілотника, '61 .013693050912785, 9e.19670587477269' детонації в, 61.</p>
-<p>"Паніка виникає, однак, DHS зміг закріпити мережу водопостачання, перш ніж Ransomware змогла шифрувати свою мережу and протягом дванадцяти годин, мережа була повністю захищена."</p>
-<p>Гаразд ... Я хотів витратити час, щоб по -справжньому показати абсолютну критичність проектування програмного забезпечення з належною обробкою введення. Використання 'scanf' or інших методик, які виконують not, належним чином обробляються кожною клавішею, може призвести до такої ситуації, як описана вище. Давайте розглянемо нашу функцію введення ... </p><pre spellcheck="false">#include &lt;stdio.h&gt;<p></p>
-<h1 id="include-stringh">include &lt;string.h&gt;</h1>
-<h1 id="include-picostdlibh">include "pico/stdlib.h"</h1>
-<h1 id="define-zero-0x30">define ZERO 0x30</h1>
-<h1 id="define-nine-0x39">define NINE 0x39</h1>
-<h1 id="define-period-0x2e">define PERIOD 0x2e</h1>
-<h1 id="define-capitala-0x41">define CAPITAL_A 0x41</h1>
-<h1 id="define-lowercasez-0x7a">define LOWER_CASE_Z 0x7a</h1>
-<h1 id="define-backspace-0x08">define BACKSPACE 0x08</h1>
-<h1 id="define-del-0x7f">define DEL 0x7f</h1>
-<p>void input_proc(char type, char<em> p_usb_char, char</em> p_usb_string, const int<em> p_USB_STRING_SIZE)
+                                <h2 id="part-18---протягом-800-років-я-тренував-джедаї-сила-яка-вводить-">part 18 - "Протягом 800 років я тренував джедаї!", Сила, яка вводить ...</h2>
+<p>"Рік - 2021 та сім місяців, середня ціна галона газу в межах США становить 7,51 долара за галон. Четверо інших американських трубопроводів були порушені з викупом, а п’ять очей виявили порушену мережу в одному з запасів води в межах великого мегаполісу США".</p>
+<p>"Джерела розвідки розмістив штаб -квартиру організації" темних очей "за атаками зловмисного програмного забезпечення та використовують мікроконтролер PICO як контролер всередині безпілотника, який готується вдарити цей об'єкт та вибити їх комунікації, щоб уникнути нападу на наше водопостачання".</p>
+<p>"Координати атаки - '61 .013693050912785, 99.19670587477269", до якого входить оператор безпілотника, 61 .013693050912785, 9e.19670587477269 " 61.</p>
+<p>"Паніка виникає, однак, DHS змогла забезпечити мережу водопостачання, перш ніж Ransomware змогла шифрувати свою мережу, і протягом дванадцяти годин мережа була повністю захищена."</p>
+<p>Гаразд ...</p>
+<p>Я хотів витратити час, щоб по -справжньому показати абсолютну критичність розробки програмного забезпечення з належною обробкою введення. Використання 'scanf' або інших методик, які не належним чином обробляють кожен клавішу, може призвести до такої ситуації, як описана вище.</p>
+<p>Давайте розглянемо нашу функцію введення ...</p>
+<pre spellcheck="false">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include "pico/stdlib.h"
+
+#define ZERO 0x30
+#define NINE 0x39
+#define PERIOD 0x2e
+#define CAPITAL_A 0x41
+#define LOWER_CASE_Z 0x7a
+#define BACKSPACE 0x08
+#define DEL 0x7f
+
+void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_USB_STRING_SIZE)
 {
-  </em>p_usb_char = '\0';
-  <em>p_usb_char = getchar_timeout_us(0);
-  if(</em>p_usb_char == BACKSPACE || <em>p_usb_char == DEL)
+  *p_usb_char = '\0';
+  *p_usb_char = getchar_timeout_us(0);
+  if(*p_usb_char == BACKSPACE || *p_usb_char == DEL)
   {
     if(p_usb_string[0] != '\0')
     {
@@ -2850,65 +2856,6 @@
     }
   }
   if(type == 'f')
-  { 
-    char</em> period;
-    while((<em>p_usb_char &gt;= ZERO &amp;&amp; </em>p_usb_char &lt;= NINE) || <em>p_usb_char == PERIOD)
-    {
-      if(</em>p_usb_char == PERIOD)
-        period = strchr(p_usb_string, '.');
-      if(period == NULL) 
-      {
-        if(strlen(p_usb_string) &lt; <em>p_USB_STRING_SIZE)
-        {
-          putchar(</em>p_usb_char);
-          strncat(p_usb_string, p_usb_char, 1);
-        }
-        <em>p_usb_char = '\0';
-      }
-      else
-        break;
-    }
-  }
-  else if(type == 'd')
-  { 
-    while(</em>p_usb_char &gt;= ZERO &amp;&amp; <em>p_usb_char &lt;= NINE)
-    {
-      if(strlen(p_usb_string) &lt; </em>p_USB_STRING_SIZE)
-      {
-        putchar(<em>p_usb_char);
-        strncat(p_usb_string, p_usb_char, 1);
-      }
-      </em>p_usb_char = '\0';
-    }
-  }
-  else if(type == 's')
-  { 
-    while(<em>p_usb_char &gt;= CAPITAL_A &amp;&amp; </em>p_usb_char &lt;= LOWER_CASE_Z)
-    {
-      if(strlen(p_usb_string) &lt; <em>p_USB_STRING_SIZE)
-      {
-        putchar(</em>p_usb_char);
-        strncat(p_usb_string, p_usb_char, 1);
-      }
-      *p_usb_char = '\0';
-    }
-  }
-}
-&lt;/pre&gt;</p>
-<p>Сьогодні ми будемо переглянути саме те, що насправді робить ця функція. </p><pre spellcheck="false">void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_USB_STRING_SIZE)
-</pre><p></p>
-<p>Починаємо з заголовка функції. Спочатку ми приймаємо <em>Char</em> <em>type</em>, де в нашому прикладі ми будемо використовувати <em>'f'</em> для обробки номерів з плаваючою комою. Потім у нас є <em>char *</em> (вказівник) <em>p \ _USB \ _Char</em>, який буде init to <em> '\ 0'</em> в <strong>main.c</strong>. Потім у нас є char * p \ <em>usb \ _string, який ми будемо init to </em> '\ 0'<em> in <strong>main.c</strong>. Потім у нас є _const int *</em> <em>p \ _usb \ _string \ _size</em>, який буде init to <em>100</em> в <strong>main.c</strong>. Потім ми створюємо логіку, щоб правильно обробляти кнопку Backspace or. </p><pre spellcheck="false">  if(*p_usb_char == BACKSPACE || *p_usb_char == DEL)
-  {
-    if(p_usb_string[0] != '\0')
-    {
-      printf("\b");
-      printf(" ");
-      printf("\b");
-      p_usb_string[strlen(p_usb_string)-1] = '\0';
-    }
-  }
-</pre><p></p>
-<p>Потім ми створюємо логіку для обробки, якщо програма main.C очікує лише номерів з плаваючою комою, як у нашій історії вище, якби було реалізовано, безпілотник би not пропустив свою ціль. </p><pre spellcheck="false">  if(type == 'f')
   { 
     char* period;
     while((*p_usb_char &gt;= ZERO &amp;&amp; *p_usb_char &lt;= NINE) || *p_usb_char == PERIOD)
@@ -2928,8 +2875,7 @@
         break;
     }
   }
-</pre><p></p>
-<p>Ми бачимо, що якщо хтось вводить щось інше, ніж <em>zero</em> через <em>nine</em> or a <em>period, </em> вхід просто буде відхилено! Ви також бачите, що якщо введено <em>period</em>, який може бути введений not або зловмисно or випадково. Ми також обробляємо кількість введення менше, ніж <em>100</em> належним чином. Потім ми правильно будуємо свою струну з кожного належним чином очищеного клавіші. Подібні логічні ручки, якщо ви маєте справу з десятками or strings. </p><pre spellcheck="false">  else if(type == 'd')
+  else if(type == 'd')
   { 
     while(*p_usb_char &gt;= ZERO &amp;&amp; *p_usb_char &lt;= NINE)
     {
@@ -2953,9 +2899,81 @@
       *p_usb_char = '\0';
     }
   }
-</pre><p></p>
-<p>На нашому наступному уроці ми реалізуємо це в нашому мікроконтролері PICO.</p>
+}
 </pre>
+
+<p>Сьогодні ми будемо переглянути саме те, що насправді робить ця функція.</p>
+<pre spellcheck="false">void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_USB_STRING_SIZE)
+</pre>
+
+<p>Починаємо з заголовка функції. Спочатку ми приймаємо <em>Char</em> <em>type</em>, де в нашому прикладі ми будемо використовувати <em>'f'</em> для обробки номерів з плаваючою комою. Потім у нас є <em>char *</em> (вказівник) <em>p \ _USB \ _Char</em>, який буде init to <em> '\ 0'</em> в <strong>main.c</strong>. Потім у нас є char * p \ <em>usb \ _string, який ми будемо init to </em> '\ 0'<em> in <strong>main.c</strong>. Потім у нас є _const int *</em> <em>p \ _usb \ _string \ _size</em>, який буде init to <em>100</em> в <strong>main.c</strong>.</p>
+<p>Потім ми створюємо логіку, щоб правильно обробляти кнопку видалення або зворотний простір.</p>
+<pre spellcheck="false">  if(*p_usb_char == BACKSPACE || *p_usb_char == DEL)
+  {
+    if(p_usb_string[0] != '\0')
+    {
+      printf("\b");
+      printf(" ");
+      printf("\b");
+      p_usb_string[strlen(p_usb_string)-1] = '\0';
+    }
+  }
+</pre>
+
+<p>Потім ми створюємо логіку для обробки, якщо програма Main.c очікує лише номерів з плаваючою комою, як у нашій історії вище, якби було реалізовано, безпілотник не пропустив би їх ціль.</p>
+<pre spellcheck="false">  if(type == 'f')
+  { 
+    char* period;
+    while((*p_usb_char &gt;= ZERO &amp;&amp; *p_usb_char &lt;= NINE) || *p_usb_char == PERIOD)
+    {
+      if(*p_usb_char == PERIOD)
+        period = strchr(p_usb_string, '.');
+      if(period == NULL) 
+      {
+        if(strlen(p_usb_string) &lt; *p_USB_STRING_SIZE)
+        {
+          putchar(*p_usb_char);
+          strncat(p_usb_string, p_usb_char, 1);
+        }
+        *p_usb_char = '\0';
+      }
+      else
+        break;
+    }
+  }
+</pre>
+
+<p>Ми бачимо, що якщо хтось вводить щось інше, ніж <em>zero</em> через <em>nine</em> або <em>period, </em> вхід просто буде відхилено!</p>
+<p>Ви також бачите, що якщо введено <em>period</em>, не вдалося ввести ні злісно, ​​ні випадково. Ми також обробляємо кількість введення менше, ніж <em>100</em> належним чином. Потім ми правильно будуємо свою струну з кожного належним чином очищеного клавіші.</p>
+<p>Подібні логічні ручки, якщо ви маєте справу з десятками або strings.</p>
+<pre spellcheck="false">  else if(type == 'd')
+  { 
+    while(*p_usb_char &gt;= ZERO &amp;&amp; *p_usb_char &lt;= NINE)
+    {
+      if(strlen(p_usb_string) &lt; *p_USB_STRING_SIZE)
+      {
+        putchar(*p_usb_char);
+        strncat(p_usb_string, p_usb_char, 1);
+      }
+      *p_usb_char = '\0';
+    }
+  }
+  else if(type == 's')
+  { 
+    while(*p_usb_char &gt;= CAPITAL_A &amp;&amp; *p_usb_char &lt;= LOWER_CASE_Z)
+    {
+      if(strlen(p_usb_string) &lt; *p_USB_STRING_SIZE)
+      {
+        putchar(*p_usb_char);
+        strncat(p_usb_string, p_usb_char, 1);
+      }
+      *p_usb_char = '\0';
+    }
+  }
+</pre>
+
+<p>На нашому наступному уроці ми реалізуємо це в нашому мікроконтролері PICO.</p>
+
                                 
                                 </section>
                             
@@ -2998,7 +3016,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 18 - \"FOR 800 YEARS HAVE I TRAINED JEDI!\", The FORCE That IS Input...","level":"1.7.18","depth":2,"next":{"title":"Part 19 - Input","level":"1.7.19","depth":2,"path":"pages-ua/part-19-input.md","ref":"pages-ua/part-19-input.md","articles":[]},"previous":{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","ref":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","mtime":"2025-08-21T10:37:21.772Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 18 - \"FOR 800 YEARS HAVE I TRAINED JEDI!\", The FORCE That IS Input...","level":"1.7.18","depth":2,"next":{"title":"Part 19 - Input","level":"1.7.19","depth":2,"path":"pages-ua/part-19-input.md","ref":"pages-ua/part-19-input.md","articles":[]},"previous":{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","ref":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-18-for-800-years-have-i-trained-jedi!-the-force-that-is-input.md","mtime":"2025-08-21T11:42:51.321Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2822,21 +2822,21 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="part-13---сегмент-даних">part 13 - сегмент даних</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-підручник" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-підручник</a></p>
-<p>Сегмент даних виділяє пам'ять на купі в пам'яті, а не на стеку, оскільки вони є not локальні змінні, які вони відомі протягом усього бінарного.&nbsp;</p>
+<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Сегмент даних виділяє пам'ять на купі в пам'яті, а не на стеку, оскільки вони не є локальними змінними, які вони відомі протягом усього бінарного.&nbsp;</p>
 <p>Розміри даних такі:</p>
-<p>1) байт -&nbsp;we використовує позначення DB, яке, очевидно, є 1 байтом or 8 біт.</p>
-<p>2) Слово - ми використовуємо dw and Це довжина 2 байти.</p>
-<p>3) Подвійне слово - ми використовуємо DD для призначення and, вони мають 4 байти.</p>
+<p>1) байт -&nbsp; Ми використовуємо позначення БД, що, очевидно, є 1 байт або 8 біт.</p>
+<p>2) Слово - ми використовуємо DW, і це 2 байти в довжину.</p>
+<p>3) Подвійне слово - ми використовуємо DD для призначення, і вони мають 4 байти.</p>
 <p>4) Квадратне слово - ми використовуємо DQ, який триває 8 байт.</p>
 <p>5) Слово XMM - ми використовуємо XMMWord, який триває 16 байт.</p>
 <p>6) Ymm Word - ми використовуємо Ymmword, який триває 32 байти.</p>
 <p>Є регістри математики SSE, які є окремими від процесора, які містять наступне:</p>
-<p>1) Real4 - Це єдиний or, що ви б подумали як про плаваючі точки, оскільки це 4 байти.</p>
+<p>1) Real4 - Це єдиний або те, що ви б вважали, як числа плаваючої точки, оскільки це 4 байти.</p>
 <p>2) Real8 - Це подвійна плаваюча точка, оскільки це 8 байт довжиною.</p>
-<p>Нарешті, є масиви, які можуть бути поодинокими багатовимірними масивами or, де можна виділити проти DB, DW, DD, DQ, XMMWORD or YMMWORD.</p>
-<p>Ми побачимо це в коді, коли ми отримаємо більше вдосконалених у серії, однак її критично важливо, щоб ви розуміли, що змінні в межах функції є локальним and, що переходять до стека, оскільки вони виконують not впродовж програми.&nbsp;THESTES gloverbles, які є частиною сегмента not, що є частиною сегмента DTAUK111 купа.</p>
-<p>Стек - локальні vars - зростає в пам'яті, тому вони починаються з високої адреси пам'яті and вирощують вниз.&nbsp; heap - глобальні vars - зростає з нижньої адреси пам'яті and вгору.&nbsp;</p>
+<p>Нарешті, є масиви, які можуть бути поодинокими або багатовимірними масивами, де можна виділити проти DB, DW, DD, DQ, XMMWord або Ymmword.</p>
+<p>Ми побачимо це в коді, коли ми отримаємо більше вдосконалених у серії, проте це критично, щоб ви розуміли, що змінні в межах функції є локальними і перейшли до стека, оскільки вони не тривають протягом усієї програми.&nbsp;</p>
+<p>Стек - локальні VARS - зростає в пам'яті, тому вони починаються з високої адреси пам'яті та вирощують.&nbsp; Купа - глобальні vars - виростає з нижньої адреси пам'яті і вирощується.&nbsp;</p>
 <p>Якщо у вас є питання, будь ласка, задайте їх у коментарях, оскільки це критично, ви знижуєте цю концепцію, коли ми починаємо будувати нашу основну операційну систему.</p>
 <p>Наступного тижня ми занурюємось у SHL! Залишайтеся в курсі!</p>
 
@@ -2882,7 +2882,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 13 - The Data Segment","level":"1.5.13","depth":2,"next":{"title":"Part 14 - SHL Instruction","level":"1.5.14","depth":2,"path":"pages-ua/part-14-shl-instruction.md","ref":"pages-ua/part-14-shl-instruction.md","articles":[]},"previous":{"title":"Part 12 - Load Effective Address","level":"1.5.12","depth":2,"path":"pages-ua/part-12-load-effective-address.md","ref":"pages-ua/part-12-load-effective-address.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-13-the-data-segment.md","mtime":"2025-08-21T10:37:21.771Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 13 - The Data Segment","level":"1.5.13","depth":2,"next":{"title":"Part 14 - SHL Instruction","level":"1.5.14","depth":2,"path":"pages-ua/part-14-shl-instruction.md","ref":"pages-ua/part-14-shl-instruction.md","articles":[]},"previous":{"title":"Part 12 - Load Effective Address","level":"1.5.12","depth":2,"path":"pages-ua/part-12-load-effective-address.md","ref":"pages-ua/part-12-load-effective-address.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-13-the-data-segment.md","mtime":"2025-08-21T11:42:51.320Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

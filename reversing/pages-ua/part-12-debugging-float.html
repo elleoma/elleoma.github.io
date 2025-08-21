@@ -2843,7 +2843,7 @@ int main()&nbsp;
 }
 </pre>
 
-<p>Давайте розберемося в нашому налагоджувач.</p>
+<p>Давайте розберемося в нашому налагоджувачі.</p>
 <pre spellcheck="false">radare2 -w arm -b 16 0x05_float.elf
 </pre>
 
@@ -2851,11 +2851,11 @@ int main()&nbsp;
 <pre spellcheck="false">aaaa
 </pre>
 
-<p>Давайте прагнемо main.</p>
+<p>Давайте прагнемо до головного.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Перейдемо у візуальний режим, typingnbsp<strong>v</strong>&nbsp;and thennbsp<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого налагоджувач виду.</p>
+<p>Давайте перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp;and then&nbsp;<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого виду налагоджувача.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1618059343816.jpg"></img></div>
 
 <p>Ми бачимо специфікатор формату в <em> \ [0x0000033c ] .</em></p>
@@ -2868,9 +2868,9 @@ int main()&nbsp;
 0x00004000 = 9.32830524e-09
 </pre>
 
-<p>Зробіть not, що поплавок є неточним, оскільки ця машина x64. Важливо побачити значення <em>0x00004000</em>. Потім ви запитуєте себе, ей, це not <em>40.5</em>! Яка угода?</p>
+<p>Не хвилюйтеся, що поплавок є неточним, оскільки ця машина x64. Важливо побачити значення <em>0x00004000</em>. Потім ви запитуєте себе, ей, це не <em>40.5</em>! Яка угода?</p>
 <p>Гаразд ...</p>
-<p>Pico робить not, має власний математичний копроцесор, тому він обробляє поплавці and парні за допомогою програмного забезпечення. Тому <em>0x00004000</em> буде представленням <em>40.5</em> десяткового.</p>
+<p>У Pico немає власного математичного копроцесора, тому він обробляє поплавці та парні за допомогою програмного забезпечення. Тому <em>0x00004000</em> буде представленням <em>40.5</em> десяткового.</p>
 <p>Отже, якщо значення було <em>40.4</em>, наприклад, це було б <em>0x00003333</em>. Навпаки <em>40.6</em> буде <em>0x00004ccc</em>.</p>
 <p>Погляньте на наступну таблицю, яка допоможе проілюструвати суть.</p>
 <pre spellcheck="false">0x3ff00000 = 1.000000
@@ -2884,7 +2884,7 @@ etc...
 </pre>
 
 <p>Зрештою, значення цих 4 байт (32-біт) визначатимуть значення поплавця.</p>
-<p>На нашому наступному уроці ми будемо hack float and продемонструвати цю логіку.</p>
+<p>На нашому наступному уроці ми зламаємо поплавок і продемонструємо цю логіку.</p>
 
                                 
                                 </section>
@@ -2928,7 +2928,7 @@ etc...
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 12 - Debugging float","level":"1.7.12","depth":2,"next":{"title":"Part 13 - Hacking float","level":"1.7.13","depth":2,"path":"pages-ua/part-13-hacking-float.md","ref":"pages-ua/part-13-hacking-float.md","articles":[]},"previous":{"title":"Part 11 - float","level":"1.7.11","depth":2,"path":"pages-ua/part-11-float.md","ref":"pages-ua/part-11-float.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-12-debugging-float.md","mtime":"2025-08-21T10:37:21.770Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 12 - Debugging float","level":"1.7.12","depth":2,"next":{"title":"Part 13 - Hacking float","level":"1.7.13","depth":2,"path":"pages-ua/part-13-hacking-float.md","ref":"pages-ua/part-13-hacking-float.md","articles":[]},"previous":{"title":"Part 11 - float","level":"1.7.11","depth":2,"path":"pages-ua/part-11-float.md","ref":"pages-ua/part-11-float.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-12-debugging-float.md","mtime":"2025-08-21T11:42:51.319Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

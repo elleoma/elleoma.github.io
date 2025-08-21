@@ -2822,15 +2822,15 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="part-5---char">part 5 - char</h2>
-<p>Сьогодні ми розпочнемо наше висвітлення типів даних С. Ми почнемо з Чар. ЧАР - це найменший адресний блок машини, яка може містити базовий набір символів. Це цілий тип and може бути або може бути підписаним or без підписання.</p>
-<p>Давайте зробимо новий DIR <strong>0x03 \ _char</strong> and add наші <strong>cmakelists.txt</strong> file в ньому.</p>
+<p>Сьогодні ми розпочнемо наше висвітлення типів даних С. Ми почнемо з Чар. ЧАР - це найменший адресний блок машини, яка може містити базовий набір символів. Це цілий тип і може бути або може бути підписаний, або без підписання.</p>
+<p>Давайте зробимо новий DIR <strong>0x03 \ _char</strong> і додамо наших <strong>cmakelists.txt</strong> file в ньому.</p>
 <pre spellcheck="false">cmake_minimum_required(VERSION 3.13)
 
 include(pico_sdk_import.cmake)
 
 project(test_project C CXX ASM)
-встановити(CMAKE_C_STANDARD 11)&nbsp;
-встановити(CMAKE_CXX_STANDARD 17)&nbsp;
+set(CMAKE_C_STANDARD 11)&nbsp;
+set(CMAKE_CXX_STANDARD 17)&nbsp;
 pico_sdk_init()
 
 add_executable(0x03_char
@@ -2844,11 +2844,11 @@ pico_add_extra_outputs(0x03_char)
 target_link_libraries(0x03_char pico_stdlib)
 </pre>
 
-<p>Далі нам потрібно скопіювати the&nbsp;<strong>pico \ _sdk \ _import.cmake</strong>&nbsp;file із зовнішньої папки в the&nbsp;<strong>pico-sdk</strong>&nbsp;Installation to to The&nbsp;<strong>0x03 \ _char</strong>&nbsp;project.</p>
+<p>Далі нам потрібно скопіювати the&nbsp;<strong>pico \ _sdk \ _import.cmake</strong>&nbsp;file із зовнішньої папки в the&nbsp;<strong>pico-sdk</strong>&nbsp;Installation to the&nbsp;<strong>0x03 \ _char</strong>&nbsp;project.</p>
 <pre spellcheck="false">cp ../pico-sdk/external/pico_sdk_import.cmake .
 </pre>
 
-<p>Давайте створимо наш C file <strong>0X03 \ _Char.C</strong> and Roll ...</p>
+<p>Давайте створимо наш C file <strong>0x03 \ _Char.c</strong> і Roll ...</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include "pico/stdlib.h"
 
@@ -2870,8 +2870,14 @@ int main()&nbsp;
 </pre>
 
 <p>Нарешті ми готові до будівництва.</p>
-<p>nbsp</p>
-<p>Потім просто скопіюйте the&nbsp; <strong>. Uf2</strong>&nbsp;file на привід.</p>
+<pre spellcheck="false">mkdir build
+cd build
+export PICO_SDK_PATH=../../pico-sdk
+cmake ..
+make
+</pre>
+
+<p>Потім просто скопіюйте the&nbsp; <strong>. Uf2</strong>&nbsp;file.</p>
 <pre spellcheck="false">cp 0x03_char.uf2 /Volumes/RPI-RP2
 </pre>
 
@@ -2879,7 +2885,7 @@ int main()&nbsp;
 <pre spellcheck="false">ls /dev/tty.
 </pre>
 
-<p>Натисніть вкладку, щоб знайти привід and, а потім у моєму випадку я буду use&nbsp;<strong>screen</strong>&nbsp;to connect.</p>
+<p>Натисніть вкладку, щоб знайти накопичувач, а потім у моєму випадку я буду використовуватикси9plh22zuk8<strong>screen</strong>&nbsp;to connect.</p>
 <pre spellcheck="false">screen /dev/tty.usbmodem0000000000001
 </pre>
 
@@ -2936,7 +2942,7 @@ x
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 5 - char","level":"1.7.5","depth":2,"next":{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"path":"pages-ua/part-6-debugging-char.md","ref":"pages-ua/part-6-debugging-char.md","articles":[]},"previous":{"title":"Part 4 - Hacking Hello World","level":"1.7.4","depth":2,"path":"pages-ua/part-4-hacking-hello-world.md","ref":"pages-ua/part-4-hacking-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-5-char.md","mtime":"2025-08-21T10:37:21.777Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 5 - char","level":"1.7.5","depth":2,"next":{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"path":"pages-ua/part-6-debugging-char.md","ref":"pages-ua/part-6-debugging-char.md","articles":[]},"previous":{"title":"Part 4 - Hacking Hello World","level":"1.7.4","depth":2,"path":"pages-ua/part-4-hacking-hello-world.md","ref":"pages-ua/part-4-hacking-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-5-char.md","mtime":"2025-08-21T11:42:51.326Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

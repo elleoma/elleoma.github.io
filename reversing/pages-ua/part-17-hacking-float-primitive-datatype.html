@@ -2821,18 +2821,18 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-17---hacking-float-примітивний-тип-даних">part 17 - Hacking float примітивний тип даних</h2>
+                                <h2 id="part-17---хакерський-поплавковий-примітивний-тип-даних">part 17 - хакерський поплавковий примітивний тип даних</h2>
 <p>Для повного змісту всіх уроків, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
-<p>Сьогодні ми hack float з останнього уроку.</p>
+<p>Сьогодні ми зламаємо поплавок з останнього уроку.</p>
 <p>Перший оновіть наш вихідний код radare2.</p>
 <pre spellcheck="false">cd radare2
 git pull
 sys/user.sh
 </pre>
 
-<p>Якщо ви зробили not, дотримуйтесь інструкцій раніше, вам доведеться створити radare2 з джерела, щоб це працювало, коли вони рідко оновлюють випуски.</p>
+<p>Якщо ви не дотримувались інструкцій раніше, вам доведеться створити radare2 з джерела, щоб це працювало, коли вони рідко оновлюють випуски.</p>
 <p><a href="https://github.com/radareorg/radare2" target="_blank">https://github.com/radareorg/radare2</a></p>
-<p>Якщо ви робите not репо, клонуйте його and, дотримуйтесь наведених вище інструкцій.</p>
+<p>Якщо у вас немає репо, клонуйте його та дотримуйтесь вказівок вище.</p>
 <p>Давайте розберемо radare2 в режимі запису.</p>
 <pre spellcheck="false">radare2 -w ./0x05_asm64_float_primitive_datatype
 </pre>
@@ -2841,11 +2841,11 @@ sys/user.sh
 <pre spellcheck="false">aaa
 </pre>
 
-<p>Прагнути до main.</p>
+<p>Прагнути до головного.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Переглянути disassembly.</p>
+<p>Переглянути демонстрацію.</p>
 <pre spellcheck="false">v
 </pre>
 
@@ -2854,14 +2854,14 @@ sys/user.sh
 
 </pre>
 
-<p>Нам потрібно hack тут дві інструкції. Давайте розглянемо дві дуже конкретні інструкції.</p>
+<p>Нам тут потрібно зламати дві інструкції. Давайте розглянемо дві дуже конкретні інструкції.</p>
 <pre spellcheck="false">movz w0, 0x999a
 movk w0, 0x4121, lsl 16
 </pre>
 
 <p>Згадайте з минулого тижня, що в кінцевому підсумку W0 збирається утримувати <em>0x4121999a</em>, оскільки <em>lsl</em> переміщує укуси у зворотному порядку.</p>
-<p>В даний час це призведе до плавання <em>10.1</em>, як ми бачили на попередніх уроках. Важливо, щоб ви розуміли, що в числах з плаваючою комою є <em>mantissa</em>, що в нашому випадку <em>10</em> and <em>exponent</em>, що є <em>1</em>, до якого вони розділені A<em> .</em>, що пов'язує їх разом.</p>
-<p>Тому, щоб отримати <em>10.2</em>, нам потрібно було б написати збірку and оновити ці інструкції.</p>
+<p>В даний час це призведе до плавання <em>10.1</em>, як ми бачили на попередніх уроках. Важливо, щоб ви розуміли, що в числах з плаваючою комою є <em>mantissa</em>, що в нашому випадку є <em>10</em> і <em>exponent</em>, що є <em>1</em>, до якого вони розділені a<em> .</em>, що їх пов'язує разом.</p>
+<p>Тому, щоб отримати <em>10.2</em>, нам потрібно буде записати збірку та оновити ці інструкції.</p>
 <pre spellcheck="false">[0x000009b4]&gt; wa movz w0, 0x3333 @0x000009bc
 [0x000009b4]&gt; wa movk w0, 0x4123, lsl 16 @0x000009c0
 q
@@ -2955,7 +2955,7 @@ hit breakpoint at: 0x55931439c8
 (238248) Process exited with status=0x0
 </pre>
 
-<p>Ви можете почати бачити шаблони тут. Знайдіть час AND насправді спробуйте їх, щоб ви краще зрозуміли, як ці значення в кінцевому підсумку потрапляють до реєстру S0!</p>
+<p>Ви можете почати бачити шаблони тут. Знайдіть час і фактично спробуйте їх, щоб ви краще зрозуміли, як ці цінності в кінцевому підсумку потрапляють до реєстру S0!</p>
 <p>Наступний урок ми обговоримо парні.</p>
 
                                 
@@ -3000,7 +3000,7 @@ hit breakpoint at: 0x55931439c8
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 17 - Hacking Float Primitive Datatype","level":"1.6.17","depth":2,"next":{"title":"Part 18 - Double Primitive Datatype","level":"1.6.18","depth":2,"path":"pages-ua/part-18-double-primitive-datatype.md","ref":"pages-ua/part-18-double-primitive-datatype.md","articles":[]},"previous":{"title":"Part 16 - Debugging Float Primitive Datatype","level":"1.6.16","depth":2,"path":"pages-ua/part-16-debugging-float-primitive-datatype.md","ref":"pages-ua/part-16-debugging-float-primitive-datatype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-17-hacking-float-primitive-datatype.md","mtime":"2025-08-21T10:37:21.772Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 17 - Hacking Float Primitive Datatype","level":"1.6.17","depth":2,"next":{"title":"Part 18 - Double Primitive Datatype","level":"1.6.18","depth":2,"path":"pages-ua/part-18-double-primitive-datatype.md","ref":"pages-ua/part-18-double-primitive-datatype.md","articles":[]},"previous":{"title":"Part 16 - Debugging Float Primitive Datatype","level":"1.6.16","depth":2,"path":"pages-ua/part-16-debugging-float-primitive-datatype.md","ref":"pages-ua/part-16-debugging-float-primitive-datatype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-17-hacking-float-primitive-datatype.md","mtime":"2025-08-21T11:42:51.321Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

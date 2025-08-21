@@ -2821,9 +2821,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-2---hello-world">part 2 - Hello World</h2>
+                                <h2 id="part-2---привіт-світ">part 2 - Привіт світ</h2>
 <p>Сьогодні ми будемо висвітлювати основну установку для створення власних проектів на Raspberry Pi Pico.</p>
-<p>Всередині нашої папки <strong>pico</strong> дозволяє створити <strong>0x02 \ _pico \ _hello \ _world</strong> папка поряд з <strong>pico-sdk</strong> and <strong>pico-example</strong> папки.</p>
+<p>Всередині нашої папки <strong>pico</strong> дозволяє створити <strong>0x02 \ _pico \ _hello \ _world</strong> папку поряд із <strong>pico-sdk</strong> та <strong>pico-example</strong> папки.</p>
 <pre spellcheck="false">mkdir 0x02_pico_hello_world
 cd 0x02_pico_hello_world
 </pre>
@@ -2832,7 +2832,7 @@ cd 0x02_pico_hello_world
 <pre spellcheck="false">vim 0x02_hello_world.c
 </pre>
 
-<p>Давайте add наступне.</p>
+<p>Додамо наступне.</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include "pico/stdlib.h"
 
@@ -2851,11 +2851,11 @@ int main()&nbsp;
 }
 </pre>
 
-<p>Ми спочатку обробляємо логіку, щоб ініціювати всі стандартні вхідні and вихід.</p>
+<p>Спочатку ми обробляємо логіку, щоб ініціювати всі стандартні вхідні та вихідні.</p>
 <pre spellcheck="false">&nbsp; &nbsp; stdio_init_all();
 </pre>
 
-<p>Нарешті, ми друкуємо <em> "Hello world!" </em> Кожні 1 секунди до стандартного виходу в нескінченній петлі.</p>
+<p>Нарешті ми друкуємо <em> "Привіт світ!" </em> Кожні секунди до стандартного виходу в нескінченній петлі.</p>
 <pre spellcheck="false">&nbsp; &nbsp; while(1)&nbsp;
 &nbsp; &nbsp; {
 &nbsp; &nbsp;   printf("Hello world!\n");
@@ -2864,18 +2864,18 @@ int main()&nbsp;
 &nbsp; &nbsp; }
 </pre>
 
-<p>Тоді ми після успіху <em>Return 0</em>, щоб вказати на успіх, оскільки наша функція <em>Main</em> - це int. Це not технічно необхідна, але хороша практика.</p>
+<p>Тоді ми після успіху <em>RETURN 0</em>, щоб вказати на успіх, оскільки наша функція <em>Main</em> - це int. Це технічно не потрібно, а хороша практика.</p>
 <pre spellcheck="false">    return 0;
 </pre>
 
-<p>Робота з <strong>cmake</strong> значно допомагає в процесі побудови для наших проектів. Спочатку нам потрібно зробити <strong>cmakelist.txt</strong> file.</p>
+<p>Робота з <strong>cmake</strong> значно допомагає в процесі побудови для наших проектів. Спочатку нам потрібно зробити <strong>cmakelists.txt</strong> file.</p>
 <pre spellcheck="false">cmake_minimum_required(VERSION 3.13)
 
 include(pico_sdk_import.cmake)
 
 project(test_project C CXX ASM)
-встановити(CMAKE_C_STANDARD 11)
-встановити(CMAKE_CXX_STANDARD 17)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 pico_sdk_init()
 
 add_executable(0x02_hello_world
@@ -2889,7 +2889,7 @@ pico_add_extra_outputs(0x02_hello_world)
 target_link_libraries(0x02_hello_world pico_stdlib)
 </pre>
 
-<p>Далі нам потрібно скопіювати <strong>pico \ _sdk \ _import.cmake</strong> file із зовнішньої папки у встановленні <strong>pico-sdk</strong> у <strong>0x02 \ _hello \ _world</strong> poper Poper.</p>
+<p>Далі нам потрібно скопіювати <strong>pico \ _sdk \ _import.cmake</strong> file із зовнішньої папки у встановленні <strong>pico-sdk</strong> до <strong>0x02 \ _hello \ _world</strong> проект.</p>
 <pre spellcheck="false">cp ../pico-sdk/external/pico_sdk_import.cmake .
 </pre>
 
@@ -2901,11 +2901,11 @@ cmake ..
 make
 </pre>
 
-<p>Це створить ряд файлів and тих, на яких ми будемо зосереджуватися, - це <strong>. Elf</strong> file, коли справа доходить до налагодження and hacking, що є повним виводом програми, можливо, включаючи інформацію про налагодження and this <em>__</em>. Програмний код and Дані у формі UF2, яку ви можете перетягувати-and-Drop на плату RP2040, коли він встановлений як USB-накопичувач.</p>
-<p>Я знайшов час, щоб підключити кнопку скидання на PICO, щоб я робив not, щоб тримати відпустку в USB and, натискаючи на завантаження кожного разу, коли мені потрібно повторно розгортати, так ось схема такого.</p>
+<p>Це створить ряд файлів, а ті, на які ми будемо зосереджуватися,-це <strong>. Elf</strong> file, коли мова йде про налагодження та хакерство, що є повним результатом програми, можливо, включаючи інформацію про налагодження та <strong>. Uf2</strong> file, який є програмним кодом та даними у формі uf2, що ви можете перетягнути.</p>
+<p>Я знайшов час, щоб підключити кнопку скидання на PICO, щоб мені не довелося продовжувати відключення в USB і натискаючи на завантаження кожного разу, коли мені потрібно повторно розгортати, щоб ось схема такої.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1616317867358.jpg"></img></div>
 
-<p>Щоб натиснути флеш натиснути зовнішню кнопку and, поки вона ще натиснута, натисніть Bootse на платі, а потім відпустіть Bootsel and, нарешті, відпустіть зовнішню кнопку.</p>
+<p>Щоб натиснути флеш натиснути зовнішню кнопку, і поки вона ще натиснута, натисніть Bootse на платі, а потім відпустіть завантаження і, нарешті, відпустіть зовнішню кнопку.</p>
 <p>Потім просто скопіюйте <strong>. UF2</strong> file на привід.</p>
 <pre spellcheck="false">cp 0x02_hello_world.uf2 /Volumes/RPI-RP2
 </pre>
@@ -2914,11 +2914,11 @@ make
 <pre spellcheck="false">ls /dev/tty.
 </pre>
 
-<p>Натисніть вкладку, щоб знайти привід and, тоді в моєму випадку я буду використовувати <strong>screen</strong> для підключення.</p>
+<p>Натисніть вкладку, щоб знайти накопичувач, а потім у моєму випадку я буду використовувати <strong>screen</strong> для підключення.</p>
 <pre spellcheck="false">screen /dev/tty.usbmodem0000000000001
 </pre>
 
-<p>Ура! Ви повинні побачити: "Hello world!" до стандартного виходу щосекунди.</p>
+<p>Ура! Ви повинні бачити: "Привіт світ!" до стандартного виходу щосекунди.</p>
 <p>На нашому наступному уроці ми будемо налагодити <strong>. Elf</strong> бінарний у <strong>radare2</strong>.</p>
 
                                 
@@ -2963,7 +2963,7 @@ make
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 2 - Hello World","level":"1.7.2","depth":2,"next":{"title":"Part 3 - Debugging Hello World","level":"1.7.3","depth":2,"path":"pages-ua/part-3-debugging-hello-world.md","ref":"pages-ua/part-3-debugging-hello-world.md","articles":[]},"previous":{"title":"Part 1 - The Why, The How...","level":"1.7.1","depth":2,"path":"pages-ua/part-1-the-why-the-how.md","ref":"pages-ua/part-1-the-why-the-how.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-2-hello-world.md","mtime":"2025-08-21T10:37:21.773Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 2 - Hello World","level":"1.7.2","depth":2,"next":{"title":"Part 3 - Debugging Hello World","level":"1.7.3","depth":2,"path":"pages-ua/part-3-debugging-hello-world.md","ref":"pages-ua/part-3-debugging-hello-world.md","articles":[]},"previous":{"title":"Part 1 - The Why, The How...","level":"1.7.1","depth":2,"path":"pages-ua/part-1-the-why-the-how.md","ref":"pages-ua/part-1-the-why-the-how.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-2-hello-world.md","mtime":"2025-08-21T11:42:51.322Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

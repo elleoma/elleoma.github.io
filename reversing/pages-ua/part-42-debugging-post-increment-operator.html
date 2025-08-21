@@ -2822,7 +2822,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="part-42-налагодження-оператора-після-інвентації">PART 42-Налагодження оператора після інвентації</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-підручник" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-підручник</a></p>
+<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки він дасть короткий короткий урок на додаток до тем, які він висвітлює.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
 <p>Давайте переглянемо наш код.</p>
 <pre spellcheck="false">#include &lt;iostream&gt;
 
@@ -2836,7 +2836,7 @@ int main(void) {
 }
 </pre>
 
-<p>We create a variable <strong>myNumber = 16</strong> to which we create another variable <strong>myNewNumber</strong> which post-increments the value of <strong>myNumber</strong>.&nbsp;We see that when we виконувати our код it shows <strong>16</strong> as the value of <strong>myNewNumber</strong> and <strong>17</strong> as the value of <strong>myNumber</strong> as <strong>myNewNumber</strong> Чи збільшується not, оскільки лише <strong>mynumber</strong> збільшується, оскільки він є пост -оператором.</p>
+<p>Ми створюємо змінну <strong>mynumber = 16</strong>, на яку ми створюємо ще одну змінну <strong>mynewnumber</strong>, що після інкрементів значення <strong>mynumber </strong>. &nbsp;we бачимо, що коли ми виконуємо наш код, він показує <strong>16</strong> як цінність <strong>mynewnumber</strong> і <strong>17</strong> як цінність <strong>mynumber</strong> as <strong>mmynumbumbumbumbumbumbumbumbumbrum </strong>, як не ґрунтується як <strong>mynumber</strong> as <strong>mmynumbumbumbumbumbumbumbumbumbumbumbumbru</strong>, як не ґрунтується <strong>s </strong>mynumber__ збільшується, оскільки це пост -оператор.</p>
 <p>Коли ми після запровадження значення змінної збільшується після призначення її іншій змінній.&nbsp; для прикладу <strong>mynumber</strong> <strong>16</strong>, тому він збільшується після того, як його призначають <strong>mynewnumbum</strong>, тому ми отримуємо <strong>17</strong>.</p>
 <p>Давайте налагоджуємо.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1528458112325.jpg"></img></div>
@@ -2844,13 +2844,13 @@ int main(void) {
 <p>Давайте розірвемося на <strong> *main+28 </strong> і продовжуємо.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1528458131421.jpg"></img></div>
 
-<p>Як ми бачимо значення в <strong>r3 </strong>is 16 and Значення в <strong>r2 </strong>is 17. Ми можемо бачити, що вони завантажені з пам'яті в регістри в <strong> *main+12</strong> безпосередньо <strong> -mov</strong> and <strong> *xyz9plh20 \ 24. add 1 в </strong>r3<strong> and, а потім поставте це значення в </strong>r2__.</p>
+<p>Як ми бачимо значення в <strong>R3 </strong>ен 16 і значення в <strong>R2 </strong>ен 17. Ми можемо бачити, що, як вони завантажені з пам'яті в регістри в <strong> *основному+12</strong> безпосередньо за допомогою <strong>mov</strong> інструкції та <strong> *основного+24</strong>, ми додаємо 1 в <strong>r3</strong>, а потім вкладаємо це значення в <strong>r2</strong>.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1528458142344.jpg"></img></div>
 
 <p>По мірі продовження ми можемо побачити функцію <strong>cout </strong>c ++ під назвою, яка переливає значення до терміналу (стандартний вихід), як очікувалося.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1528458154804.jpg"></img></div>
 
-<p>На наступному тижні ми зануримось у оператор після інвентації Hacking.</p>
+<p>Наступного тижня ми занурюємось у хакерський оператор після інвентації.</p>
 
                                 
                                 </section>
@@ -2894,7 +2894,7 @@ int main(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 42 – Debugging Post-Increment Operator","level":"1.4.42","depth":2,"next":{"title":"Part 43 – Hacking Post-Increment Operator","level":"1.4.43","depth":2,"path":"pages-ua/part-43-hacking-post-increment-operator.md","ref":"pages-ua/part-43-hacking-post-increment-operator.md","articles":[]},"previous":{"title":"Part 41 – Post-Increment Operator","level":"1.4.41","depth":2,"path":"pages-ua/part-41-post-increment-operator.md","ref":"pages-ua/part-41-post-increment-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-42-debugging-post-increment-operator.md","mtime":"2025-08-21T10:37:21.777Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 42 – Debugging Post-Increment Operator","level":"1.4.42","depth":2,"next":{"title":"Part 43 – Hacking Post-Increment Operator","level":"1.4.43","depth":2,"path":"pages-ua/part-43-hacking-post-increment-operator.md","ref":"pages-ua/part-43-hacking-post-increment-operator.md","articles":[]},"previous":{"title":"Part 41 – Post-Increment Operator","level":"1.4.41","depth":2,"path":"pages-ua/part-41-post-increment-operator.md","ref":"pages-ua/part-41-post-increment-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-42-debugging-post-increment-operator.md","mtime":"2025-08-21T11:42:51.326Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

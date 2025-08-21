@@ -2821,8 +2821,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-16---hacking-подвійний">part 16 - Hacking подвійний</h2>
-<p>Давайте переглянемо,</p>
+                                <h2 id="part-16---хакерський-подвійний">part 16 - хакерський подвійний</h2>
+<p>Давайте переглянемо, що випливає, що випливає, що випливає</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include "pico/stdlib.h"
 
@@ -2843,7 +2843,7 @@ int main()&nbsp;
 }
 </pre>
 
-<p>Давайте розберемося в нашому налагоджувач.</p>
+<p>Давайте розберемося в нашому налагоджувачі.</p>
 <pre spellcheck="false">radare2 -w arm -b 16 0x06_double.elf
 </pre>
 
@@ -2851,11 +2851,11 @@ int main()&nbsp;
 <pre spellcheck="false">aaaa
 </pre>
 
-<p>Давайте прагнемо main.</p>
+<p>Давайте прагнемо до головного.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Перейдемо у візуальний режим, typingnbsp<strong>v</strong>&nbsp;and thenxyz9plh5cuk8<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого налагоджувач виду.</p>
+<p>Перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp; і then&nbsp;<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого виду налагоджувача.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1620377345934.jpg"></img></div>
 
 <p>Наш мікроконтролер - це маленька ендіанська архітектура, як ми говорили раніше, тому, якщо ми збираємось змінити наше 40.5555555560000000 на 1,0, нам потрібно поставити це значення у зворотному порядку байтів, тому ...</p>
@@ -2870,12 +2870,14 @@ int main()&nbsp;
 <pre spellcheck="false">wx 0x0000f03f @ 0x00000344
 </pre>
 
-<p>Все, що нам потрібно зробити зараз, це exit and перетворити ur&nbsp; <strong>. elf&nbsp;</strong>to&nbsp; <strong>. Uf2</strong>!</p>
+<p>Все, що нам потрібно зробити зараз, - це вийти та перетворити Ur&nbsp; <strong>. elf&nbsp;</strong>to&nbsp; <strong>. Uf2</strong>!</p>
 <pre spellcheck="false">./elf2uf2/elf2uf2 0x06_double.elf 0x06_double.uf2
 </pre>
 
-<p>Підключіть Pico and, переконайтеся, що ви тримаєте завантаження or, використовуйте налаштування, яку я надав у частині 2.</p>
-<p>nbsp</p>
+<p>Підключіть PICO і переконайтеся, що ви тримаєте завантаження або використовуєте налаштування, яку я надав у частині 2.</p>
+<pre spellcheck="false">cp 0x06_double.uf2 /Volumes/RPI-RP2
+</pre>
+
 <p>Давайте екранимо це!</p>
 <pre spellcheck="false">screen /dev/tty.usbmodem0000000000001
 </pre>
@@ -2943,7 +2945,7 @@ int main()&nbsp;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 16 - Hacking double","level":"1.7.16","depth":2,"next":{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","ref":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","articles":[]},"previous":{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"path":"pages-ua/part-15-debugging-double.md","ref":"pages-ua/part-15-debugging-double.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-16-hacking-double.md","mtime":"2025-08-21T10:37:21.771Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 16 - Hacking double","level":"1.7.16","depth":2,"next":{"title":"Part 17 - \"ABSOLUTE POWER CORRUPTS ABSOLUTELY!\", The Tragic Tale Of Input...","level":"1.7.17","depth":2,"path":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","ref":"pages-ua/part-17-absolute-power-corrupts-absolutely!-the-tragic-tale-of-input.md","articles":[]},"previous":{"title":"Part 15 - Debugging double","level":"1.7.15","depth":2,"path":"pages-ua/part-15-debugging-double.md","ref":"pages-ua/part-15-debugging-double.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-16-hacking-double.md","mtime":"2025-08-21T11:42:51.321Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

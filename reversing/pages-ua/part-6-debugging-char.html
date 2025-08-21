@@ -2851,14 +2851,14 @@ int main()&nbsp;
 <pre spellcheck="false">aaaa
 </pre>
 
-<p>Давайте прагнемо main.</p>
+<p>Давайте прагнемо до головного.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp;and thennbsp<strong>p</strong>nbsptwice, щоб дістатися до хорошого налагоджувач виду.</p>
+<p>Давайте перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp;and then&nbsp;<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого виду налагоджувача.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1616704139039.jpg"></img></div>
 
-<p>Ми починаємо з встановлення нашого значення повернення main.</p>
+<p>Ми починаємо з налаштування нашого основного значення повернення.</p>
 <pre spellcheck="false">push {r4, lr}
 </pre>
 
@@ -2885,16 +2885,16 @@ int main()&nbsp;
 <pre spellcheck="false">movs r0, r4&nbsp;
 </pre>
 
-<p>Потім ми розгалужуємось довго до обгортки printf and call it.</p>
+<p>Потім ми розгалужуємось довго до обгортки printf та call it.</p>
 <pre spellcheck="false">bl sym.__wrap_printf
 
 </pre>
 
-<p>Потім ми переміщуємо 250 десятків or 0xfa hex в <em>r0</em>.</p>
+<p>Потім ми переміщуємо 250 десяткових або 0xfa HEX в <em>R0</em>.</p>
 <pre spellcheck="false">movs r0, 0xfa
 </pre>
 
-<p>Потім ми переміщуємо 250 десяткових знаків, що знаємо, коли логічний зсув двічі буде 1000 десяткових знаків or 0xfa HEX в <em>R0</em>.</p>
+<p>Потім ми переміщуємо 250 десятків, що знаємо, коли логічний зсув двічі буде 1000 десяткових або 0xfa HEX у <em>R0</em>.</p>
 <pre spellcheck="false">lsls r0, r0, 2
 </pre>
 
@@ -2906,7 +2906,7 @@ int main()&nbsp;
 <pre spellcheck="false">b 0x328
 </pre>
 
-<p>На нашому наступному уроці ми будемо hack тип даних char.</p>
+<p>На нашому наступному уроці ми зламаємо тип даних CHAR.</p>
 
                                 
                                 </section>
@@ -2950,7 +2950,7 @@ int main()&nbsp;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"next":{"title":"Part 7 - Hacking char","level":"1.7.7","depth":2,"path":"pages-ua/part-7-hacking-char.md","ref":"pages-ua/part-7-hacking-char.md","articles":[]},"previous":{"title":"Part 5 - char","level":"1.7.5","depth":2,"path":"pages-ua/part-5-char.md","ref":"pages-ua/part-5-char.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-6-debugging-char.md","mtime":"2025-08-21T10:37:21.777Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"next":{"title":"Part 7 - Hacking char","level":"1.7.7","depth":2,"path":"pages-ua/part-7-hacking-char.md","ref":"pages-ua/part-7-hacking-char.md","articles":[]},"previous":{"title":"Part 5 - char","level":"1.7.5","depth":2,"path":"pages-ua/part-5-char.md","ref":"pages-ua/part-5-char.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-6-debugging-char.md","mtime":"2025-08-21T11:42:51.327Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

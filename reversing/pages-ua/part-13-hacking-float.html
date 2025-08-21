@@ -2821,8 +2821,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="part-13---hacking-float">part 13 - Hacking float</h2>
-<p>Давайте розглянемо наш приклад.&nbsp;<strong>0x05 \ _float.c</strong>&nbsp;as.</p>
+                                <h2 id="part-13---хакерський-поплавок">part 13 - хакерський поплавок</h2>
+<p>Давайте розглянемо наш приклад.&nbsp;<strong>__0x05 \ _float.c</strong>&nbsp;as.</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include "pico/stdlib.h"
 
@@ -2843,7 +2843,7 @@ int main()&nbsp;
 }
 </pre>
 
-<p>Давайте розберемося в нашому налагоджувач.</p>
+<p>Давайте розберемося в нашому налагоджувачі.</p>
 <pre spellcheck="false">radare2 -w arm -b 16 0x05_float.elf
 </pre>
 
@@ -2851,9 +2851,11 @@ int main()&nbsp;
 <pre spellcheck="false">aaaa
 </pre>
 
-<p>Давайте прагнемо main.</p>
-<p>nbsp</p>
-<p>Перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp;and then&nbsp;<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого налагоджувач виду.</p>
+<p>Давайте прагнемо до головного.</p>
+<pre spellcheck="false">s main
+</pre>
+
+<p>Давайте перейдемо у візуальний режим, typing&nbsp;<strong>v</strong>&nbsp; і then&nbsp;<strong>p</strong>&nbsp;twice, щоб дістатися до хорошого виду налагоджувача.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1618389543453.jpg"></img></div>
 
 <p>Float - at&nbsp; <em> \ [0x00000340 ] </em>.</p>
@@ -2861,7 +2863,7 @@ int main()&nbsp;
 0x00004000 = 9.32830524e-09
 </pre>
 
-<p>Як ми обговорювали на останньому уроці, зробіть not, що поплавок є неточним, оскільки ця машина x64. Що важливо побачити, що це valuenbsp<em>0x00004000</em>.</p>
+<p>Як ми обговорювали на останньому уроці, не хвилюйтеся, що поплавок є неточним, оскільки ця машина x64. Що важливо побачити, що це value&nbsp;<em>0x00004000</em>.</p>
 <p>На нашому останньому уроці ми також пояснили те, як Піко обробляє плавання. Давайте розглянемо деякі основи.</p>
 <pre spellcheck="false">0x3ff00000 = 1.000000
 0x3ff00001 = 1.000001
@@ -2873,8 +2875,8 @@ int main()&nbsp;
 etc...
 </pre>
 
-<p>Давайте hack до 1.000000 наступним чином.</p>
-<p>Наш мікроконтролер - це маленька ендіанська архітектура, тому, якщо ми збираємось змінити наше 40,5 до 1,0, нам потрібно поставити це значення у зворотному порядку байтів, тому ...</p>
+<p>Давайте зламаємо до 1.000000 наступним чином.</p>
+<p>Наш мікроконтролер - це маленька ендіанська архітектура, тому, якщо ми збираємось змінити наше 40,5 до 1,0, нам потрібно поставити це значення у зворотному порядку байтів ...</p>
 <pre spellcheck="false">0x3ff00000
 </pre>
 
@@ -2886,11 +2888,11 @@ etc...
 <pre spellcheck="false">wx 0x0000f03f @ 0x00000340
 </pre>
 
-<p>Все, що нам потрібно зробити зараз, це exit and перетворити ur&nbsp; <strong>. elf&nbsp;</strong>to&nbsp; <strong>. Uf2</strong>!</p>
+<p>Все, що ми маємо зробити зараз, - це вихід і перетворити Un&nbsp; <strong>. elf&nbsp;</strong>to&nbsp; <strong>. Uf2</strong>!</p>
 <pre spellcheck="false">./elf2uf2/elf2uf2 0x05_float.elf 0x05_float.uf2
 </pre>
 
-<p>Підключіть Pico and, переконайтеся, що ви тримаєте завантажувальний or, використовуйте налаштування, яку я надав у частині 2.</p>
+<p>Підключіть PICO і переконайтеся, що ви тримаєте завантаження або використовуєте налаштування, яку я надав у частині 2.</p>
 <pre spellcheck="false">cp 0x05_float.uf2 /Volumes/RPI-RP2
 </pre>
 
@@ -2913,7 +2915,7 @@ etc...
 1.000000
 </pre>
 
-<p>Тут ми зламали значення до 1.000000 and, ми дозволили зберегти 1 секунду.</p>
+<p>Тут ми зламали значення до 1.000000, і ми дозволили 1 секунду спати.</p>
 <p>На нашому наступному уроці ми обговоримо подвійний тип даних.</p>
 
                                 
@@ -2958,7 +2960,7 @@ etc...
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 13 - Hacking float","level":"1.7.13","depth":2,"next":{"title":"Part 14 - double","level":"1.7.14","depth":2,"path":"pages-ua/part-14-double.md","ref":"pages-ua/part-14-double.md","articles":[]},"previous":{"title":"Part 12 - Debugging float","level":"1.7.12","depth":2,"path":"pages-ua/part-12-debugging-float.md","ref":"pages-ua/part-12-debugging-float.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-13-hacking-float.md","mtime":"2025-08-21T10:37:21.771Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T10:37:30.706Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 13 - Hacking float","level":"1.7.13","depth":2,"next":{"title":"Part 14 - double","level":"1.7.14","depth":2,"path":"pages-ua/part-14-double.md","ref":"pages-ua/part-14-double.md","articles":[]},"previous":{"title":"Part 12 - Debugging float","level":"1.7.12","depth":2,"path":"pages-ua/part-12-debugging-float.md","ref":"pages-ua/part-12-debugging-float.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-13-hacking-float.md","mtime":"2025-08-21T11:42:51.320Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T11:43:00.391Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
