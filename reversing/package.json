@@ -1,0 +1,25 @@
+{
+  "devDependencies": {
+    "honkit": "^6.0.3"
+  },
+  "name": "reversing-ukrainian",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "honkit build",
+    "serve": "honkit serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elleoma/reversing-ukrainian.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/elleoma/reversing-ukrainian/issues"
+  },
+  "homepage": "https://github.com/elleoma/reversing-ukrainian#readme"
+}

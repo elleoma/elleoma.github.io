@@ -1,0 +1,403 @@
+#!/bin/bash
+
+# setup_ukrainian_gitbook.sh
+# Complete setup script for Ukrainian HonKit translation
+
+set -e
+
+echo "🇺🇦 Ukrainian HonKit Translation Setup"
+echo "======================================"
+
+# Check if we're in the right directory
+if [ ! -f "book.json" ] && [ ! -f "README.md" ]; then
+    echo "❌ Error: This doesn't appear to be a HonKit directory"
+    echo "Please run this script in the root of your forked HonKit repository"
+    exit 1
+fi
+
+echo "📁 Setting up directory structure..."
+
+# Create backup directory
+mkdir -p backups
+mkdir -p scripts
+mkdir -p translation_assets
+
+echo "🐍 Installing Python dependencies..."
+# pip3 install --user deep-translator beautifulsoup4 python-frontmatter gitpython requests
+
+echo "📝 Creating configuration files..."
+
+# Create book.json for Ukrainian
+cat > book.json << 'EOF'
+{
+  "title": "Зворотна інженерія для всіх!",
+  "description": "Комплексний посібник з зворотної інженерії українською мовою",
+  "author": "Переклад українською - @elleoma",
+  "language": "uk",
+  "direction": "ltr",
+  "plugins": [
+    "fontsettings",
+    "-lunr",
+    "-highlight"
+  ],
+  "pluginsConfig": {
+    "fontsettings": {
+      "theme": "white",
+      "family": "sans",
+      "size": 2
+    }
+  },
+  "pdf": {
+    "fontSize": 12,
+    "fontFamily": "DejaVu Sans",
+    "paperSize": "a4",
+    "margin": {
+      "right": 62,
+      "left": 62,
+      "top": 36,
+      "bottom": 36
+    }
+  },
+  "variables": {
+    "version": "1.0",
+    "language": "Українська"
+  }
+}
+EOF
+
+# Create GitHub Actions workflow
+mkdir -p .github/workflows
+cat > .github/workflows/build-and-deploy.yml << 'EOF'
+name: Build and Deploy HonKit Book
+
+on:
+  push:
+    branches: [ ukrainian-translation, main ]
+  pull_request:
+    branches: [ ukrainian-translation ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install HonKit
+      run: |
+        npm install honkit --save-dev
+        npx honkit --version
+
+    - name: Install HonKit plugins
+      run: |
+        npx honkit install
+
+    - name: Build HonKit Book
+      run: |
+        npx honkit build . _book
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/ukrainian-translation'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_book
+        publish_branch: gh-pages
+        # cname: your-domain.com  # Uncomment if using custom domain
+EOF
+
+# Create quality assurance checklist
+cat > translation_assets/qa_checklist.md << 'EOF'
+# Quality Assurance Checklist for Ukrainian Translation
+
+## Pre-Translation Setup
+- [ ] Repository forked and cloned
+- [ ] Translation branch created (`ukrainian-translation`)
+- [ ] Backup of original files created
+- [ ] Translation script configured and tested
+- [ ] Ukrainian terminology glossary prepared
+
+## Translation Quality
+- [ ] Technical terms consistently translated or preserved
+- [ ] Assembly instructions remain in English
+- [ ] Register names (eax, ebx, etc.) preserved
+- [ ] Tool names preserved (gdb, radare2, etc.)
+- [ ] Code blocks untouched
+- [ ] URLs and links working
+- [ ] Ukrainian grammar correct
+- [ ] Natural language flow
+- [ ] Cultural context appropriate
+
+## Technical Accuracy
+- [ ] Code examples still functional
+- [ ] Command line examples correct
+- [ ] File paths and extensions preserved
+- [ ] Hexadecimal values unchanged
+- [ ] Memory addresses preserved
+- [ ] Mathematical formulas correct
+
+## Formatting and Structure
+- [ ] Markdown formatting preserved
+- [ ] Headers properly structured
+- [ ] Lists and bullets correct
+- [ ] Tables properly formatted
+- [ ] Images display correctly
+- [ ] Code syntax highlighting works
+- [ ] Cross-references functional
+
+## HonKit Specific
+- [ ] SUMMARY.md updated with Ukrainian titles
+- [ ] book.json configured for Ukrainian
+- [ ] Navigation menu works
+- [ ] Search functionality works
+- [ ] PDF generation works
+- [ ] Mobile view acceptable
+
+## Content Review by Chapter
+- [ ] Introduction and overview
+- [ ] Basic concepts
+- [ ] Assembly language fundamentals
+- [ ] Debugging techniques
+- [ ] Static analysis methods
+- [ ] Dynamic analysis methods
+- [ ] Malware analysis
+- [ ] Advanced techniques
+- [ ] Tools and utilities
+- [ ] Practical exercises
+
+## Community and Publishing
+- [ ] README.md updated with Ukrainian description
+- [ ] Contributing guidelines in Ukrainian
+- [ ] License information preserved
+- [ ] GitHub Pages deployment working
+- [ ] Community feedback incorporated
+- [ ] Final proofreading completed
+
+## Post-Publication
+- [ ] Links shared in Ukrainian tech communities
+- [ ] Universities and schools notified
+- [ ] Feedback collection system set up
+- [ ] Update mechanism for upstream changes
+- [ ] Version control tags applied
+EOF
+
+# Create Ukrainian terminology glossary
+cat > translation_assets/terminology_glossary.md << 'EOF'
+# Ukrainian Technical Terminology Glossary
+
+## Core Reverse Engineering Terms
+| English | Ukrainian | Notes |
+|---------|-----------|-------|
+| Reverse Engineering | Зворотна інженерія | |
+| Assembly Language | Мова асемблера | |
+| Machine Code | Машинний код | |
+| Debugging | Налагодження | |
+| Disassembly | Дизасемблювання | |
+| Decompilation | Декомпіляція | |
+| Binary Analysis | Аналіз бінарних файлів | |
+| Static Analysis | Статичний аналіз | |
+| Dynamic Analysis | Динамічний аналіз | |
+| Malware Analysis | Аналіз шкідливого ПЗ | |
+
+## Preserved English Terms
+These terms should remain in English with Ukrainian explanations:
+
+### Assembly Instructions
+- mov, push, pop, jmp, call, ret, add, sub, etc.
+
+### Registers
+- eax, ebx, ecx, edx, esi, edi, esp, ebp
+- rax, rbx, rcx, rdx, rsi, rdi, rsp, rbp
+- r8-r15 (x64 registers)
+
+### Tools
+- gdb, radare2, IDA Pro, Ghidra, objdump, etc.
+
+### Architectures
+- x86, x64, ARM, ARM64, etc.
+
+### File Formats
+- ELF, PE, COFF, etc.
+
+## Translation Guidelines
+1. Technical accuracy over literal translation
+2. Consistent terminology throughout
+3. Preserve code and command examples
+4. Use established Ukrainian IT terminology where available
+5. Create new terms only when necessary
+6. Maintain international compatibility for tools and commands
+EOF
+
+# Create contribution guidelines
+cat > translation_assets/CONTRIBUTING_UA.md << 'EOF'
+# Внесок у переклад
+
+Дякуємо за інтерес до покращення українського перекладу!
+
+## Як допомогти
+
+1. **Знайшли помилку?** Створіть issue з описом проблеми
+2. **Хочете покращити переклад?** Створіть pull request
+3. **Маєте пропозицію?** Відкрийте discussion
+
+## Правила перекладу
+
+### Технічні терміни
+- Інструкції асемблера залишаємо англійською (mov, push, pop, etc.)
+- Назви регістрів зберігаємо (eax, ebx, etc.)
+- Назви інструментів не перекладаємо (gdb, radare2, etc.)
+- Архітектури залишаємо англійською (x86, x64, ARM)
+
+### Українська мова
+- Використовуємо сучасну українську термінологію IT
+- Дотримуємося правопису за українським правописом
+- Уникаємо кальок з російської мови
+- Зберігаємо природність мови
+
+### Форматування
+- Зберігаємо всі блоки коду без змін
+- Не змінюємо посилання та URL
+- Зберігаємо розмітку Markdown
+- Перевіряємо роботу посилань
+
+## Процес внеску
+
+1. Fork репозиторію
+2. Створіть гілку для вашого внеску
+3. Внесіть зміни
+4. Перевірте якість перекладу
+5. Створіть pull request
+
+## Контакти
+
+Якщо маєте питання, створіть issue або напишіть мейнтейнеру.
+EOF
+
+# Create update script for syncing with upstream
+cat > scripts/update_from_upstream.sh << 'EOF'
+#!/bin/bash
+
+# Script to sync with upstream and translate new content
+
+echo "🔄 Syncing with upstream repository..."
+
+# Fetch upstream changes
+git fetch upstream
+
+# Check what's new
+echo "📋 New commits in upstream:"
+git log HEAD..upstream/main --oneline
+
+# Merge upstream changes
+git merge upstream/main
+
+echo "🔍 Looking for new or modified markdown files..."
+
+# Find files modified in the last merge
+NEW_FILES=$(git diff --name-only HEAD~1 HEAD | grep '\.md$' || true)
+
+if [ ! -z "$NEW_FILES" ]; then
+    echo "📝 Found new/modified files to translate:"
+    echo "$NEW_FILES"
+    
+    echo "🤖 Running translation on new content..."
+    python3 scripts/translate_gitbook.py --only $NEW_FILES
+    
+    echo "✅ Translation completed for new content"
+    echo "👀 Please review the changes and commit them"
+else
+    echo "✅ No new markdown files to translate"
+fi
+EOF
+
+chmod +x scripts/update_from_upstream.sh
+
+# Create pre-commit hook for quality checks
+mkdir -p .git/hooks
+cat > .git/hooks/pre-commit << 'EOF'
+#!/bin/bash
+
+# Pre-commit hook to check translation quality
+
+echo "🔍 Running translation quality checks..."
+
+# Check for untranslated English headings in Ukrainian files
+ENGLISH_HEADINGS=$(git diff --cached --name-only | grep '\.md$' | xargs grep -n "^# [A-Z]" || true)
+
+if [ ! -z "$ENGLISH_HEADINGS" ]; then
+    echo "⚠️  Warning: Found possible untranslated English headings:"
+    echo "$ENGLISH_HEADINGS"
+    echo "Please review these headings before committing"
+fi
+
+# Check for broken code blocks
+BROKEN_CODE_BLOCKS=$(git diff --cached --name-only | grep '\.md$' | xargs grep -c "```" | grep -v ":2$\|:4$\|:6$\|:8$" || true)
+
+if [ ! -z "$BROKEN_CODE_BLOCKS" ]; then
+    echo "❌ Error: Found files with unmatched code block markers:"
+    echo "$BROKEN_CODE_BLOCKS"
+    echo "Please fix code blocks before committing"
+    exit 1
+fi
+
+echo "✅ Quality checks passed"
+EOF
+
+chmod +x .git/hooks/pre-commit
+
+echo "📚 Creating sample translation workflow..."
+
+# Create workflow example
+cat > scripts/translation_workflow_example.sh << 'EOF'
+#!/bin/bash
+
+# Example workflow for translating the HonKit
+
+echo "🇺🇦 Ukrainian HonKit Translation Workflow"
+echo "=========================================="
+
+# Step 1: Backup original files
+echo "1️⃣ Creating backups..."
+find . -name "*.md" -exec cp {} backups/ \;
+
+# Step 2: Translate specific chapters first (for testing)
+echo "2️⃣ Translating introduction..."
+python3 translate_gitbook.py --only "README.md"
+
+# Step 3: Translate main content
+echo "3️⃣ Translating main content..."
+python3 translate_gitbook.py --skip "node_modules" ".git" "_book"
+
+# Step 4: Review and build
+echo "4️⃣ Building HonKit..."
+gitbook build
+
+# Step 5: Commit changes
+echo "5️⃣ Ready to commit!"
+echo "Review the changes and run: git add . && git commit -m 'Add Ukrainian translation'"
+EOF
+
+chmod +x scripts/translation_workflow_example.sh
+
+echo "✅ Setup completed!"
+echo ""
+echo "📋 Next steps:"
+echo "1. Update the GitHub repository URL in book.json"
+echo "2. Review and customize the translation terminology"
+echo "3. Run the translation script: python3 translate_gitbook.py"
+echo "4. Review translated content"
+echo "5. Test HonKit build: gitbook serve"
+echo "6. Commit and push your changes"
+echo ""
+echo "🔗 Useful commands:"
+echo "   python3 translate_gitbook.py --help    # See all options"
+echo "   gitbook serve                          # Test locally"
+echo "   ./scripts/update_from_upstream.sh      # Sync with original"
+echo ""
+echo "Good luck with your Ukrainian translation! 🇺🇦"
