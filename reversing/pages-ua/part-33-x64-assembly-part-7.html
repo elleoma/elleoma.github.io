@@ -2822,30 +2822,34 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="частина-33---x64-збірка-part-7">Частина 33 - x64 Збірка [Part 7]</h2>
-<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
 <p>Давайте знову переглянемо наш код джерела.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853169947.jpg"></img></div>
 
 <p>Давайте скомпілюємо...</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853185424.jpg"></img></div>
 
-<p>Як ми вже бачили раніше, він створює нашу стрічку.</p>
+<p>Як ми вже бачили раніше, це створює нашу стрічку.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853213341.jpg"></img></div>
 
-<p>Ми відлагоджуємо і бачимо, як стрічка переміщується в <strong>0x6000d8</strong> і потім в <strong>RSI</strong>.</p>
+<p>Ми відлагоджували і бачили, як стрічка переміщується в <strong>0x6000d8</strong> і потім в <strong>RSI</strong>.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853259407.jpg"></img></div>
 
-<p>Щоб підтвердити, можна побачити стрічку на згаданій адресі. АТУТУ ДЛЯ НЕКОТОРИЙ ВІДВІДКУ :)...</p>
-<p></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853296959.jpg"></img>&lt;/XyZ9PlH10ZuK8&gt;<p></p>
+<p>Щоб підтвердити, ми можемо побачити стрічку на згаданій адресі. АТТЕНЦІЯ ДЛЯ КРАСНОГО!:)...</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853296959.jpg"></img></div>
+
 <p>У цьому місці ми демонструємо, що маємо можливість просто хакнути і переозначити стрічку в пам'яті. Ми просто встановлюємо довжину байта char і встановлюємо нову стрічку.</p>
-<p><xyz9plh11zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853373225.jpg"></img>&lt;/XyZ9PlH12ZuK8&gt;</xyz9plh11zuk8></p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853373225.jpg"></img></div>
+
 <p>Як ми бачимо, ми успішно змінили стрічку в пам'яті.</p>
-<p><xyz9plh13zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853413835.jpg"></img>&lt;/XyZ9PlH14ZuK8&gt;</xyz9plh13zuk8></p>
-<p>Ми продовжуємо і проходимо через бінарний файл і бачимо, що наш хак продовжується через <strong>RSI</strong>.</p>
-<p><xyz9plh15zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853461475.jpg"></img>&lt;/XyZ9PlH16ZuK8&gt;</xyz9plh15zuk8></p>
-<p>Нарешті ми бачимо, коли ми запускаємо бінарний файл, ми успішно хакнули його роботу. Це дуже простий приклад, однак він демонструє силу справжньої розуміння збірки на цьому рівні. Інструменти відлагоджувачі GUI також надасть цю функціональність, однак мені подобається використовувати командні інструменти, щоб вони можна було використовувати в кожному середовищі.</p>
-<p>Мета цих інструментів — ПОНЯТИ, як це робиться, і що шукати, коли ви професійно відлагоджуєте в реальному часі. Вам потрібно зрозуміти, як атакувальник може змінювати пам'ять і інструкції and/or. Нам потрібні більше професійних RE's, щоб допомогти захистити інфраструктури по всьому світу і надіямо, що ці уроки мотивують вас до кар'єри в такій галузі.</p>
-</div>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853413835.jpg"></img></div>
+
+<p>Ми продовжили і пройшли через бінарний файл і побачили, що наш хак продовжується через <strong>RSI</strong>.</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1553853461475.jpg"></img></div>
+
+<p>Нарешті, коли ми запустили бінарний файл, ми побачили, що успішно хакнули його роботу. Це дуже простий приклад, але він показує силу справжнього розуміння збірки на цьому рівні. Інструменти GUI-відладчика також забезпечуватимуть цю функціональність, але я люблю використовувати командні інструменти, щоб вони можна було використовувати в кожному середовищі.</p>
+<p>Мета цих інструментів - зрозуміти, як це робиться, і що шукати, коли ви професійно відтворюєте в реальному часі. Вам потрібно зрозуміти, як атакувальник може змінювати пам'ять і інструкції. Нам потрібні більше професійних RE's, щоб допомогти захистити інфраструктури по всьому світу, і надіяється, що ці уроки мотивують вас до кар'єри в такому напрямку.</p>
+
                                 
                                 </section>
                             
@@ -2888,7 +2892,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 33 - x64 Assembly [Part 7]","level":"1.5.33","depth":2,"next":{"title":"Part 34 - x64 C++ 1 Code [Part 1]","level":"1.5.34","depth":2,"path":"pages-ua/part-34-x64-c++-1-code-part-1.md","ref":"pages-ua/part-34-x64-c++-1-code-part-1.md","articles":[]},"previous":{"title":"Part 32 - x64 Assembly [Part 6]","level":"1.5.32","depth":2,"path":"pages-ua/part-32-x64-assembly-part-6.md","ref":"pages-ua/part-32-x64-assembly-part-6.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-33-x64-assembly-part-7.md","mtime":"2025-08-21T18:12:34.006Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 33 - x64 Assembly [Part 7]","level":"1.5.33","depth":2,"next":{"title":"Part 34 - x64 C++ 1 Code [Part 1]","level":"1.5.34","depth":2,"path":"pages-ua/part-34-x64-c++-1-code-part-1.md","ref":"pages-ua/part-34-x64-c++-1-code-part-1.md","articles":[]},"previous":{"title":"Part 32 - x64 Assembly [Part 6]","level":"1.5.32","depth":2,"path":"pages-ua/part-32-x64-assembly-part-6.md","ref":"pages-ua/part-32-x64-assembly-part-6.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-33-x64-assembly-part-7.md","mtime":"2025-08-22T10:12:19.497Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

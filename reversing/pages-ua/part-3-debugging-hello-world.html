@@ -2821,105 +2821,30 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>Частина 3 - Дебагування "Hello World"</p>
-<p>Сьогодні ми візьмемося за дебагування нашого дуже простого програми "Hello world!".</p>
+                                <p>Частина 3 - Дебагування Hello World</p>
+<p>Сьогодні ми потрапимо до дебагування нашого дуже простого програми "Hello world!".</p>
 <p>Давайте переглянемо наш код.</p>
-<pre spellcheck="false">#include &lt;stdio.h&gt;
-#include "pico/stdlib.h"
-
-int main()&nbsp;
-{    
-&nbsp; stdio_init_all();
-
-&nbsp; while(1)&nbsp;
-&nbsp; {
-&nbsp;   printf("Hello world!\n");
-
-&nbsp; &nbsp; sleep_ms(1000);
-&nbsp; }
-
-  return 0;
-}
-</pre>
-
-<p>Будь ласка, переконайтеся, що збудували Radare2 з джерела. До кожного уроку, БУДЬ ЛАСКА, виконайте наступні дії.</p>
-<pre spellcheck="false">git pull
-radare2 sys/install.XyZ9PlH21ZuK8
-</pre>
-
-<p>Ви можете перевірити, чи версія є актуальною.</p>
-<pre spellcheck="false">radare2 -v
-
-</pre>
-
-<p>У моїй ситуації, як і у вас.</p>
-<pre spellcheck="false">radare2 5.2.0-git 25988 @ darwin-x86-64 git.5.1.1
-commit: 510ddab0e523bed173b3954e5f61abf395812f7d build: 2021-03-21__05:40:51
-</pre>
-
-<p>Тепер поверніться до нашого проекту репозиторію. Давайте запустимо наш дебагер.</p>
-<pre spellcheck="false">radare2 -w arm -b 16 0x02_hello_world.XyZ9PlH16ZuK8
-</pre>
-
+<p>Певні дії необхідно виконувати перед кожним уроком.</p>
+<p>Перевірте, чи ваша версія програми відповідає останній.</p>
+<p>У моїй ситуації воно буде відрізнятися від вашої.</p>
+<p>Тепер поверніться до нашого проекту. Давайте запустимо наш дебагер.</p>
 <p>Давайте зробимо аналіз автоматично.</p>
-<pre spellcheck="false">aaaa
-</pre>
-
 <p>Давайте спробуємо потрапити до головної частини програми.</p>
-<pre spellcheck="false">s main
-</pre>
-
 <p>Давайте перейдемо до візуального режиму, натиснувши <strong>V</strong> і потім <strong>p</strong> двічі, щоб потрапити до хорошого режиму дебагування.</p>
-<p><xyz9plh12zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1616343654275.jpg"></img>&lt;/XyZ9PlH13ZuK8&gt;</xyz9plh12zuk8></p>
 <p>Давайте розіб'ємо цю дуже просту програму.</p>
-<pre spellcheck="false">push {r4, lr}
-</pre>
-
-<p>Ми просто встановлюємо аргументи своєї функції, де ми відправляємо значення <em>r4</em> і <em>lr</em> (регистр зв'язку) на стік.</p>
-<p>Далі ми здійснюємо перехід до <em>sym.stdio_init_all</em> функції, яка ініціалізує стандартний вхід і вихід.</p>
-<pre spellcheck="false">XyZ9PlH18ZuK8 sym.stdio_init_all
-</pre>
-
+<p>Ми просто встановлюємо аргументи нашої функції, де ми відправляємо значення <em>r4</em> і <em>lr</em> (регистр зв'язку) на стік.</p>
+<p>Далі ми здійснюємо перехід до функції <em>sym.stdi</em> (ініціалізує стандартний вхід і вихід).</p>
 <p>Далі ми завантажуємо значення в місці <em>0x00000338</em> в регистр <em>r4</em>. Це місце, де знаходиться рядок <strong>"Hello world!"</strong>.</p>
-<pre spellcheck="false">ldr r4, [0x00000338]
-</pre>
-
-<p>Щоб підтвердити це, ми можемо виконати наступні дії, натиснувши : всередині поточного візуального режиму і потім натиснувши наступні команди.</p>
-<pre spellcheck="false">:&gt; psz @ [0x00000338]
-Hello world!
-:&gt; psz @ 0x00004cf8
-Hello world!
-</pre>
-
-<p>Як ви можете побачити, значення всередині <em>0x00000338</em> є тим же значенням, що і в місці <em>0x0004cf8</em>.</p>
+<p>Щоб підтвердити це, можна виконати наступні дії, натиснувши: всередині поточного візуального режиму і потім натиснувши наступні команди.</p>
+<p>Як ви можете побачити, значення всередині <em>0x00000338</em> є тим же, що і значення в місці <em>0x0004cf8</em>.</p>
 <p>Далі ми переміщаємо і встановлюємо флаги (тобто <em>s</em> в <em>movs</em>) вміст <em>r4</em> в <em>r0</em>.</p>
-<pre spellcheck="false">movs r0, r4
-</pre>
-
-<p>Далі ми здійснюємо перехід до функції puts-обгортки. Дебагер перетворив нашу <em>printf</em> функцію в нашому коді на цю обгорткову функцію.</p>
-<pre spellcheck="false">XyZ9PlH19ZuK8 sym.__wrap_puts
-</pre>
-
-<p>Далі ми здійснюємо <em>movs</em> 250 десятичне, 0xfa шістнадцятне, яке є 1/4 нашим 1000 мілісекундним сповільненням в <em>r0</em>.</p>
-<pre spellcheck="false">movs r0, 0xfa
-</pre>
-
-<p>Далі ми логічно зміщуємо ліворуч, 2, і встановлюємо флаги. Це, звичайно, збільшує наше значення 250 на 2 і знову на 2, що робить 250 десятичне 1000 десятичне, яке є нашим мілісекундним затримкою і встановлює це значення 1000 десятичного в <em>r0</em>.</p>
-<pre spellcheck="false">lsls r0, r0, 2
-</pre>
-
-<p>Якщо ви незнайомі з інструкціями ARM 32-ї збірки, будь ласка, зверніться до цієї чудової таблиці, наданої Keil.</p>
-<p><a href="https://developer.XyZ9PlH10ZuK8.com/documentation/ddi0210/c/Introduction/Instruction-set-summary/XyZ9PlH11ZuK8-instruction-summary?lang=en" target="_blank">https://developer.XyZ9PlH10ZuK8.com/documentation/ddi0210/c/Introduction/Instruction-set-summary/XyZ9PlH11ZuK8-instruction-summary?lang=en</a></p>
+<p>Далі ми здійснюємо перехід до обгортки puts. Дебагер перетворив нашу функцію <em>printf</em> в нашому коді на цю обгорткову функцію.</p>
+<p>Далі ми здійснюємо <em>movs</em> 250 (десяткове), 0xfa (шестнадцяткове), яке є 1/4 нашим 1000 мілісекундним сповільненням в <em>r0</em>.</p>
+<p>Далі логічно зміщуємо вліво на 2 і встановлюємо флаги. Це, звичайно, збільшує наше значення 250 на 2 і знову на 2, що робить 250 на 1000, яке є нашим мілісекундним затримкою, і розміщує це значення 1000 в <em>r0</em>.</p>
+<p>Якщо ви незнайомі з ARM інструкціями 32-розрядної збірки, зверніться до цієї чудової таблиці, яку надала Keil.</p>
 <p>Далі ми здійснюємо перехід до нашої функції <em>sleep_ms</em>.</p>
-<pre spellcheck="false">XyZ9PlH20ZuK8 sym.sleep_ms
-</pre>
-
-<p>Далі ми здійснюємо перехід безумовно назад до <em>0x328</em>, яке є нашою циклічною стрічкою.</p>
-<pre spellcheck="false">b 0x328
-</pre>
-
-<p>Ви також можете побачити графічний режим, натиснувши <strong>V</strong> знову в поточному вікні.</p>
-<p><xyz9plh14zuk8 class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1616345144033.jpg"></img>&lt;/XyZ9PlH15ZuK8&gt;</xyz9plh14zuk8></p>
+<p>Далі ми здійснюємо умовний перехід до <em>0x328</em>, яке є нашою циклічною конструкцією.</p>
+<p>Також ви можете побачити графічний режим, натиснувши <strong>V</strong> знову в поточному вікні.</p>
 <p>Це чудовий спосіб слідкувати за більш складним кодом. Я хотів показати вам це, оскільки ви зможете використовувати це далі, коли виконуватимете більші аналіз.</p>
 <p>У наступному урокі ми змінимо нашу просту програму і перетворимо її знову на <strong>.uf2</strong> і знову перезавантажимо на Pico.</p>
 
@@ -2965,7 +2890,7 @@ Hello world!
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 3 - Debugging Hello World","level":"1.7.3","depth":2,"next":{"title":"Part 4 - Hacking Hello World","level":"1.7.4","depth":2,"path":"pages-ua/part-4-hacking-hello-world.md","ref":"pages-ua/part-4-hacking-hello-world.md","articles":[]},"previous":{"title":"Part 2 - Hello World","level":"1.7.2","depth":2,"path":"pages-ua/part-2-hello-world.md","ref":"pages-ua/part-2-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-3-debugging-hello-world.md","mtime":"2025-08-21T18:12:34.005Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 3 - Debugging Hello World","level":"1.7.3","depth":2,"next":{"title":"Part 4 - Hacking Hello World","level":"1.7.4","depth":2,"path":"pages-ua/part-4-hacking-hello-world.md","ref":"pages-ua/part-4-hacking-hello-world.md","articles":[]},"previous":{"title":"Part 2 - Hello World","level":"1.7.2","depth":2,"path":"pages-ua/part-2-hello-world.md","ref":"pages-ua/part-2-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-3-debugging-hello-world.md","mtime":"2025-08-22T10:12:19.496Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

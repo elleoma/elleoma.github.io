@@ -2821,27 +2821,27 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>Частина 24 - Хакінг ASM 1 [Moving Немедленна Дані]</p>
-<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+                                <h2 id="частина-24---хакінг-asm-1-moving-immediate-data">Частина 24 - Хакінг ASM 1 [Moving Immediate Data]</h2>
+<p>Для повного змісту змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
 <p>Давайте почнемо завантажувати бінарний файл у GDB.</p>
-<p>Для завантаження у GDB натисніть:</p>
+<p>Для завантаження у GDB наберіть:</p>
 <p><strong>gdb -q moving_immediate_data</strong></p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520534645555.jpg"></img></div>
 
 <p>Давайте спочатку встановимо зупинку на початку, натиснувши <strong>b _start</strong>.</p>
 <p>Далі ми можемо запустити програму, натиснувши <strong>r</strong>.</p>
-<p>Аби почати розбірку, ми просто натиснемо <strong>disas</strong>.</p>
-<p>Ми написали <strong>nop</strong>, тобто ніякої операції або <strong>0x90</strong> з точки зору OPCODE для належної відладки, яка належно зупинилася. Це добра практика при створенні програми-асемблера.</p>
+<p>Для початку розбору програми ми просто наберемо <strong>disas</strong>.</p>
+<p>Ми написали <strong>nop</strong>, тобто ніякої операції або <strong>0x90</strong> з точки зору OPCODE для належних цілей відладки, які зупинка належно потрапила. Це добра практика при створенні програм на мові ассемблера.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520241969888.jpg"></img></div>
 
-<p>Давайте трохи розіграємося! У цей момент давайте <strong>si</strong> раз і зробимо <strong>i r</strong>, щоб побачити, що <strong>0x64</strong> насправді було переміщено у <strong>EAX</strong>.</p>
+<p>Давайте трохи розігріємося! У цей момент давайте <strong>si</strong> раз і зробимо <strong>i r</strong> щоб побачити, що <strong>0x64</strong> справді було переміщено у <strong>EAX</strong>.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520148350561.jpg"></img></div>
 
-<p>Ми бачимо, що <strong>EAX</strong> має значення <strong>0x64</strong> або <strong>100</strong> у десятковому вигляді. Давайте ХАКНЕМ цей значення тепер, встановивши <strong>EAX</strong> на щось подібне до <strong>0x66</strong> шляхом натискання <strong>set $eax = 0x66</strong>.</p>
-<p><xyz9plh10zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520194300522.jpg"></img>&lt;/XyZ9PlH11ZuK8&gt;</xyz9plh10zuk8></p>
-<p>БАМ! Там ми йдемо! Ви бачите УЛЬТИМАТИВну силу асемблера! Ми тільки змінили значення з <strong>0x64</strong> на <strong>0x66</strong> або <strong>100</strong> на <strong>102</strong> у десятковому вигляді. Це дуже простий приклад, але ви бачите, коли ви навчитеся володіти цією інформацією, ви отримаєте більшу владу над комп'ютером. З кожною програмою, яку ми створюємо, ми зробимо дуже простий урок, подібний цьому, де ми захопимо хоча б одну частину коду, щоб не тільки побачити, як програма створюється і відлагоджується, але і як ми можемо змінювати її на свій розсуд.</p>
-<p>Я чекаю побачити вас усіх наступної тижня, коли ми вийдемо на створення нашої другої програми-асемблера!</p>
-<p>Частина 24 - Хакінг ASM 2 XyZ9PlH20ZuK8!</p>
+<p>Ми бачимо, що <strong>EAX</strong> має значення <strong>0x64</strong> або <strong>100</strong> у десятковому вигляді. Давайте тепер ХАКНЕМ цей значення, встановивши <strong>EAX</strong> до чогось, наприклад <strong>0x66</strong> шляхом натискання <strong>set $eax = 0x66</strong>.</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520194300522.jpg"></img></div>
+
+<p>БАМ! І ось воно! Ви бачите УЛЬТИМАТИВну силу ассемблера! Ми тільки змінили значення з <strong>0x64</strong> на <strong>0x66</strong> або <strong>100</strong> на <strong>102</strong> у десятковому вигляді. Це дуже простий приклад, але ви вже бачите, коли ви навчитеся володіти цією інформацією, ви отримаєте більшу владу над комп'ютером. З кожною програмою, яку ми створюємо, ми зробимо дуже простий урок, подібний цьому, де ми захопимо хоча б одну частину коду, щоб не тільки побачити, як програма створюється і відлагоджується, але і як ми можемо змінювати її на свій розсуд.</p>
+<p>Я чекаю на побачення з вами наступної тижня, коли ми розпочнемо створювати нашу другу програму на мові ассемблера!</p>
 
                                 
                                 </section>
@@ -2885,7 +2885,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 24 - ASM Hacking 1 [Moving Immediate Data]","level":"1.2.24","depth":2,"next":{"title":"Part 25 - ASM Program 2 [Moving Data Between Registers]","level":"1.2.25","depth":2,"path":"pages-ua/part-25-asm-program-2-moving-data-between-registers.md","ref":"pages-ua/part-25-asm-program-2-moving-data-between-registers.md","articles":[]},"previous":{"title":"Part 23 - ASM Debugging 1 [Moving Immediate Data]","level":"1.2.23","depth":2,"path":"pages-ua/part-23-asm-debugging-1-moving-immediate-data.md","ref":"pages-ua/part-23-asm-debugging-1-moving-immediate-data.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-24-asm-hacking-1-moving-immediate-data.md","mtime":"2025-08-21T18:12:34.004Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 24 - ASM Hacking 1 [Moving Immediate Data]","level":"1.2.24","depth":2,"next":{"title":"Part 25 - ASM Program 2 [Moving Data Between Registers]","level":"1.2.25","depth":2,"path":"pages-ua/part-25-asm-program-2-moving-data-between-registers.md","ref":"pages-ua/part-25-asm-program-2-moving-data-between-registers.md","articles":[]},"previous":{"title":"Part 23 - ASM Debugging 1 [Moving Immediate Data]","level":"1.2.23","depth":2,"path":"pages-ua/part-23-asm-debugging-1-moving-immediate-data.md","ref":"pages-ua/part-23-asm-debugging-1-moving-immediate-data.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-24-asm-hacking-1-moving-immediate-data.md","mtime":"2025-08-22T10:12:19.495Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

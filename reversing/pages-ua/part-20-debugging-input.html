@@ -2834,13 +2834,13 @@
 #define BACKSPACE 0x08
 #define DEL 0x7f
 
-void input_proc(char type, char* p_usb_char, char* p_usb_string, const XyZ9PlH14ZuK8* p_USB_STRING_SIZE)
+void input_proc(char type, char* p_usb_char, char* p_usb_string, const int* p_USB_STRING_SIZE)
 {
 &nbsp; *p_usb_char = '\0';
 &nbsp; *p_usb_char = getchar_timeout_us(0);
 &nbsp; if(*p_usb_char == BACKSPACE || *p_usb_char == DEL)
 &nbsp; {
-&nbsp; &nbsp; if(p_usb_string[0] != '\0')
+&nbsp; &nbsp; if(p_usb_string[0]!= '\0')
 &nbsp; &nbsp; {
 &nbsp; &nbsp; &nbsp; printf("\b");
 &nbsp; &nbsp; &nbsp; printf(" ");
@@ -2926,11 +2926,11 @@ void print_proc(char* p_usb_char, char* p_usb_string)
 #include "print.h"
 #include "input.h"
 
-XyZ9PlH15ZuK8 main()
+int main()
 {
 &nbsp; stdio_init_all();
 
-&nbsp; const XyZ9PlH16ZuK8 USB_STRING_SIZE = 100;
+&nbsp; const int USB_STRING_SIZE = 100;
 &nbsp; char usb_char;
 &nbsp; usb_char = '\0';
 &nbsp; char usb_string[USB_STRING_SIZE];
@@ -2947,41 +2947,48 @@ XyZ9PlH15ZuK8 main()
 </pre>
 
 <p>Давайте запустимо наш дебагер.</p>
-<pre spellcheck="false">radare2 -w XyZ9PlH17ZuK8 -b 16 main.XyZ9PlH32ZuK8
+<pre spellcheck="false">radare2 -w arm -b 16 main.elf
 </pre>
 
 <p>Давайте зробимо аналіз автоматично.</p>
 <pre spellcheck="false">aaaa
 </pre>
 
-<p>Давайте спробуємо потрапити до головної частини програми.</p>
+<p>Давайте перейдемо до головної частини програми.</p>
 <pre spellcheck="false">s main
 </pre>
 
 <p>Давайте перейдемо до візуального режиму, натиснувши <strong>V</strong> і потім <strong>p</strong> двічі, щоб потрапити до хорошого режиму дебагування.</p>
 <p>Спочатку ми переглядаємо <em>main</em>.</p>
-<p><xyz9plh18zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622836839312.jpg"></img>&lt;/XyZ9PlH19ZuK8&gt;</xyz9plh18zuk8></p>
-<p>Ми бачимо наш <em>stdio_init_all</em> call, який встановлює IO, і бачимо <em>0x64</em> в <em>r3</em>, який є нашим кроком 100 десятичним, щоб встановити <em>USB_STRING_SIZE </em>, і встановлюємо наш <em>usb_char</em> значення і ініціалізуємо його <em>0</em> і, нарешті, <em>usb_string</em> і ініціалізуємо його <em>0</em>.</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622836839312.jpg"></img></div>
+
+<p>Ми бачимо наш <em>stdio_init_all</em> call, який встановлює IO, і бачимо <em>0x64</em> в <em>r3</em>, який є нашим кроком 100 десятичним, щоб встановити <em>USB_STRING_SIZE, і встановлюємо наш _usb_char</em> значення і ініціалізуємо його до <em>0</em>, а потім <em>usb_string</em> і ініціалізуємо його до <em>0</em>.</p>
 <p>Давайте переглянемо нашу функцію <em>print_proc</em>.</p>
-<p><xyz9plh20zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837104639.jpg"></img>&lt;/XyZ9PlH21ZuK8&gt;</xyz9plh20zuk8></p>
-<p>Спочатку ми перевіримо, чи наш вказівник на usb_char або <em>p_usb_char</em> рівний клавіші <em>RETURN</em> або <em>0xd</em> і якщо так, то здійснюємо стрибок.</p>
-<p>Далі ми ітеруємося по <em>p_usb_string</em>, поки не досягнемо кінця рядка, і потім викликаємо нашу функцію <em>printf </em>як ми бачимо тут, це обгортка навколо функції c printf.</p>
-<p>Нарешті, ми <em>flush_input</em>.</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837104639.jpg"></img></div>
+
+<p>Спочатку ми перевіримо, чи наш вказівник на usb_char або <em>p_usb_char</em> рівний клавіші <em>RETURN</em> або <em>0xd</em>, і якщо так, то здійснюємо перехід.</p>
+<p>Далі ми ітеруємося по <em>p_usb_string</em>, поки не досягнемо кінця рядка, і потім call нашу функцію _printf, яка, як ми бачимо тут, є обгорткою навколо функції c printf.</p>
+<p>Нарешті, ми <em>flush_input</em>..</p>
 <p>Наша функція <em>input_proc</em> трохи складніша.</p>
-<p><xyz9plh22zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837449377.jpg"></img>&lt;/XyZ9PlH23ZuK8&gt;</xyz9plh22zuk8></p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837449377.jpg"></img></div>
+
 <p>У цьому випадку ми використовуємо функцію g<em>etchar_timeout_us</em> і обробляємо клавіші <em>BACKSPACE</em> і <em>DELETE</em>.</p>
-<p><xyz9plh24zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837675957.jpg"></img>&lt;/XyZ9PlH25ZuK8&gt;</xyz9plh24zuk8></p>
-<p>Далі ми викликаємо нашу функцію <em>putchar </em>обгортку навколо <em>0</em> і <em>9</em> і перевіряємо <em>strlen</em> і належним чином будуємо наш рядок з <em>strncat</em>.</p>
-<p><xyz9plh26zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837760991.jpg"></img>&lt;/XyZ9PlH27ZuK8&gt;</xyz9plh26zuk8></p>
-<p>Далі ми належним чином обробляємо нашу логіку <em>PERIOD</em> щоб забезпечити, що тільки один <em>PERIOD </em>введений, оскільки десяткова частина не може обробляти 2 періоди.</p>
-<p><xyz9plh28zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837842045.jpg"></img>&lt;/XyZ9PlH29ZuK8&gt;</xyz9plh28zuk8></p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837675957.jpg"></img></div>
+
+<p>Далі ми call нашу функцію <em>putchar</em> проти <em>0</em> і <em>9</em> і перевіряємо <em>strlen</em> і належним чином будуємо наш рядок з <em>strncat</em>.</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837760991.jpg"></img></div>
+
+<p>Далі ми належним чином обробляємо нашу логіку <em>PERIOD</em> щоб забезпечити, що тільки один <em>PERIOD</em> вводиться, оскільки десяткова частина не може обробляти 2 періоди.</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837842045.jpg"></img></div>
+
 <p>Далі ми належним чином обробляємо наш цикл.</p>
 <p>Нарешті, ми маємо нашу функцію <em>flush_input</em>.</p>
-<p><xyz9plh30zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837919869.jpg"></img>&lt;/XyZ9PlH31ZuK8&gt;</xyz9plh30zuk8></p>
-<p>У цьому випадку ми просто очищаємо буфер вхідних даних, встановлюючи <em>p_usb_string</em> на null-значення.</p>
-<p>Це була більша сесія дебагування, тому будь ласка, візьміть свій час і порівняйте збірку з джерелом, щоб глибше зрозуміти кожен абзац, як я його тут описую.</p>
-<p>Це закінчує нашу початкову навчальну подорож. У цій подорожі ми здійснили 197 кроків разом через кілька різних архітектур. Тепер ваш черга взяти цю навчальну матеріал на практику і зробити щось велике!</p>
-<p>Цей книга буде вашою посилкою, коли ви зустрінете виклики, але немає нічого, чого ви не зможете досягти!</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1622837919869.jpg"></img></div>
+
+<p>У цьому випадку ми просто очищаємо буфер вхідних даних, встановлюючи <em>p_usb_string</em> на нульовий символ.</p>
+<p>Це була більша сесія дебагування, тому будь ласка, візьміть свій час і порівняйте збірку з джерелом, щоб глибше зрозуміти кожен абзац, який я тут описую.</p>
+<p>Це закінчує нашу початкову навчальну подорож. У цій подорожі ми здійснили 197 кроків разом через кілька різних архітектур. Тепер ваш чергова черга взяти цю навчальну матеріал на практику і зробити великі речі!</p>
+<p>Цей книга буде вашою посилкою, коли ви зустрінете виклики, але нічого не зупинить вас!</p>
 
                                 
                                 </section>
@@ -3021,7 +3028,7 @@ XyZ9PlH15ZuK8 main()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 20 - Debugging Input","level":"1.7.20","depth":2,"previous":{"title":"Part 19 - Input","level":"1.7.19","depth":2,"path":"pages-ua/part-19-input.md","ref":"pages-ua/part-19-input.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-20-debugging-input.md","mtime":"2025-08-21T18:12:34.003Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 20 - Debugging Input","level":"1.7.20","depth":2,"previous":{"title":"Part 19 - Input","level":"1.7.19","depth":2,"path":"pages-ua/part-19-input.md","ref":"pages-ua/part-19-input.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-20-debugging-input.md","mtime":"2025-08-22T10:12:19.495Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2821,22 +2821,24 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="частина-9-x86-базова-архітектура">Частина 9: x86 Базова Архітектура</h2>
-<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Комп'ютерна програма просто таблиця машинних інструкцій, збережених у пам'яті, до якої бінарні числа, які складають програму, є унікальними лише тим, як процесор працює з ними.</p>
-<p>Базова архітектура складається з процесора, пам'яті та I/O пристроїв, які є вхідними пристроївами, які всі з'єднані системним шинами, як детально нижче.</p>
-<p><xyz9plh4zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520249055678.jpg"></img>&lt;/XyZ9PlH5ZuK8&gt;</xyz9plh4zuk8></p>
-<p>Процесор складається з 4 частин, які є:</p>
-<p>1) Єдиниця управління - отримує та розшифровує інструкції з процесора та потім зберігає та отримує їх з пам'яті.</p>
-<p>2) Єдиниця виконання - де відбувається виконання отримання та отримання інструкцій.</p>
-<p>3) Реєстри - внутрішні місця пам'яті процесора, використовувані як тимчасове зберігання даних.</p>
-<p>4) Прапори - вказують на події, коли відбувається виконання.</p>
-<p><xyz9plh6zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520178351635.jpg"></img>&lt;/XyZ9PlH7ZuK8&gt;</xyz9plh6zuk8></p>
-<p>Ми обговоримо 32-бітові x86, тому тому 32-бітовий процесор спочатку отримує подвійний словник (4 байти або 32-біти довжини) з певної адреси в пам'яті та читає з пам'яті та завантажує в процесор. У цей момент процесор дивиться на бінарний шаблон бітів всередині подвійного слова та починає виконувати процедуру, яку вказує на виконання отриманий машинний інструкція.</p>
-<p>Після виконання інструкції процесор переходить до пам'яті та отримує наступну машинну інструкцію в послідовності. Процесор має реєстр, який ми обговоримо реєстри в майбутньому урокі, називається EIP або вказівник інструкції, який містить адресу наступної інструкції, яку потрібно отримати з пам'яті та виконувати.</p>
-<p>Ми вже бачимо, що якщо ми контролюємо потік виконання EIP, ми можемо змінити програму на те, чого вона не була призначена робити. Це популярна техніка, на якій працюють віруси.</p>
-<p>Весь процес отримання та виконання зв'язаний зі системним годинником, який є осцилятором, який випромінює квадратні імпульси на точних інтервалах.</p>
-<p>У нашому наступному урокі ми глибше вивчимо IA-32 Архітектуру з обговоренням Загальних-цільових реєстрів.</p>
+                                <h2 id="частина-9-базова-архітектура-x86">Частина 9: Базова Архітектура x86</h2>
+<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Комп'ютерна програма — це просто таблиця машинних інструкцій, що зберігається в пам'яті, в якій двійкові числа, що складають програму, є унікальними лише в тому сенсі, як з ними працює центральний процесор.</p>
+<p>Основна архітектура складається з центрального процесора, пам'яті та пристроїв введення-виведення, які з'єднані між собою системною шиною, як описано нижче.</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520249055678.jpg"></img></div>
+
+<p>Процесор складається з 4 частин, а саме:</p>
+<p>1) Блок управління - отримує та декодує інструкції з процесора, а потім зберігає та витягує їх з пам'яті.</p>
+<p>2) Блок виконання - місце, де відбувається виконання команд отримання та витягання інструкцій.</p>
+<p>3) Регістри - внутрішні комірки пам'яті процесора, що використовуються для тимчасового зберігання даних.</p>
+<p>4) Прапорці - вказують на події, що відбуваються під час виконання.</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520178351635.jpg"></img></div>
+
+<p>Ми будемо обговорювати 32-бітну архітектуру x86, тому 32-бітний процесор спочатку витягує подвійне слово (довжиною 4 байти або 32 біти) з певної адреси в пам'яті, яке зчитується з пам'яті та завантажується в процесор. На цьому етапі процесор аналізує двійковий шаблон бітів у подвійному слові та починає виконувати процедуру, яку йому вказує витягнута машинна інструкція.</p>
+<p>Після завершення виконання інструкції процесор переходить до пам'яті і витягує наступну машинну інструкцію послідовно. Процесор має регістр, про який ми поговоримо в наступному уроці, який називається EIP або покажчик інструкції, що містить адресу наступної інструкції, яка буде витягнута з пам'яті і потім виконана.</p>
+<p>Ми відразу бачимо, що якщо ми контролюємо потік EIP, ми можемо змінити програму, щоб вона виконувала дії, які НЕ були передбачені. Це популярна техніка, на якій базується робота шкідливого програмного забезпечення.</p>
+<p>Весь процес вилучення та виконання пов'язаний із системним годинником, який є генератором, що випромінює імпульси прямокутної форми з точними інтервалами.</p>
+<p>У наступній частині ми глибше зануримося в архітектуру IA-32, обговоривши регістри загального призначення.</p>
 
                                 
                                 </section>
@@ -2880,7 +2882,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 9: x86 Basic Architecture","level":"1.2.9","depth":2,"next":{"title":"Part 10: General-purpose Registers","level":"1.2.10","depth":2,"path":"pages-ua/part-10-general-purpose-registers.md","ref":"pages-ua/part-10-general-purpose-registers.md","articles":[]},"previous":{"title":"Part 8 - Bytes, Words, Double Words, etc...","level":"1.2.8","depth":2,"path":"pages-ua/part-8-bytes-words-double-words-etc.md","ref":"pages-ua/part-8-bytes-words-double-words-etc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-9-x86-basic-architecture.md","mtime":"2025-08-21T18:12:34.009Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 9: x86 Basic Architecture","level":"1.2.9","depth":2,"next":{"title":"Part 10: General-purpose Registers","level":"1.2.10","depth":2,"path":"pages-ua/part-10-general-purpose-registers.md","ref":"pages-ua/part-10-general-purpose-registers.md","articles":[]},"previous":{"title":"Part 8 - Bytes, Words, Double Words, etc...","level":"1.2.8","depth":2,"path":"pages-ua/part-8-bytes-words-double-words-etc.md","ref":"pages-ua/part-8-bytes-words-double-words-etc.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-9-x86-basic-architecture.md","mtime":"2025-08-22T10:12:19.500Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

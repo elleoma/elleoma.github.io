@@ -2822,24 +2822,23 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="частина-8---загальна-архітектура">Частина 8 - Загальна архітектура</h2>
-<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Архітектура x64 є розширенням, сумісним з попередньою версією, платформи x86. Вона забезпечує режим спадковості 32-біт, який ідентичний x86, та новий режим 64-біт.  Ви можете переглянути мої попередні уроки x86, якщо бажаєте отримати більше інформації прямо тут на LinkedIn.</p>
-<p>Термін "x64" включає як AMD 64, так і Intel64. Інструкції подібні.</p>
-<p>x64 розширює 8 загальних регістрів x86 до 64-біт, та додає 8 нових регістрів 64-біт. Регістри 64-біт мають імена, починаючи з "<strong>r</strong>", тому наприклад, розширення 64-біт регістру <strong>eax</strong> називається <strong>rax</strong>. Нові регістри називаються <strong>r8</strong> до <strong>r15</strong>.</p>
-<p>Нижні 32 біта, 16 біта та 8 біта кожного регістру безпосередньо адресуються в операндах. Це включає регістр, наприклад <strong>esi</strong>, нижні 8 біта якого раніше не були адресовані. Нижче вказаний таблиця вказує імена мови зборки для нижніх частин регістрів 64-біт.</p>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені.</p>
+<p>Архітектура XMDXx64 є розширенням, сумісним з попередньою версією, платформи XMDXx86. Вона забезпечує режим спадковості 32-біт, який ідентичний XMDXx86, і новий режим 64-біт.</p>
+<p>Термін "XMDXx64" включає як AMD 64, так і Intel64. Інструкції подібні.</p>
+<p>XMDXx64 розширює XMDXx86 8 загальних регістрів до 64-біт, і додає 8 нових регістрів 64-біт. Регістри 64-біт мають імена, починаючи з "<strong>r</strong>", тому наприклад, розширення 64-біт <strong>eax</strong> називається <strong>rax</strong>. Нові регістри називаються <strong>r8</strong> до <strong>r15</strong>.</p>
+<p>Нижні 32 біта, 16 біта і 8 біта кожного регістру безпосередньо адресуються в операндах. Це включає регістр, наприклад <strong>esi</strong>, нижні 8 біта якого раніше не були адресовані. Нижче вказаний таблиця вказує імена регістрів для нижніх частин регістрів 64-біт.</p>
 <p>Нижче вказана таблиця розбиває кожну різницю в бітах.</p>
-<p></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1538735142722.jpg"></img>&lt;/XyZ9PlH10ZuK8&gt;<p></p>
-<p>Операції, які виводять дані в 32-бітний підрегістр, автоматично розширюються до всього регістру 64-біт. Операції, які виводять дані в підрегістри 8-біт або 16-біт, <em>не</em> розширюються (це сумісне поведіннє x86).</p>
-<p>Високі 8 біта регістрів <strong>ax</strong>, <strong>bx</strong>, <strong>cx</strong>, та <strong>dx</strong> ще можна адресувати як <strong>ah</strong>, <strong>bh</strong>, <strong>ch</strong>, <strong>dh</strong>, але не можна використовувати з усіма типами операндів.</p>
-<p>Покажчик інструкцій, <strong>eip</strong>, та регістр <strong>flags</strong> розширені до 64 біта (<strong>rip</strong> та <strong>rflags</strong>, відповідно).</p>
-<p>Процесор x64 також забезпечує кілька наборів регістрів з плаваючою точкою:</p>
+<p>Операції, які виводять дані в 32-бітний підрегістр, автоматично розширюються до всього регістру 64-біт. Операції, які виводять дані в підрегістри 8-біт або 16-біт, не розширюються (це сумісне XMDXx86 поведіння).</p>
+<p>Високі 8 біта <strong>ax</strong>, <strong>bx</strong>, <strong>cx</strong>, і <strong>dx</strong> ще можна адресувати як <strong>ah</strong>, <strong>bh</strong>, <strong>ch</strong>, <strong>dh</strong>, але не можна використовувати з усіма типами операндів.</p>
+<p>Показник інструкції, <strong>eip</strong>, і регістр <strong>flags</strong> розширені до 64 біта (<strong>rip</strong> і <strong>rflags</strong>, відповідно).</p>
+<p>Процесор XMDXx64 також забезпечує кілька наборів регістрів з плаваючою точкою:</p>
 <ul>
 <li>Вісім регістрів 80-біт x87.</li>
 <li>Вісім регістрів 64-біт MMX. (Ці регістри перекривають регістри x87.)</li>
 <li>Оригінальний набір вісім регістрів 128-біт SSE збільшений до шістнадцяти.</li>
 </ul>
 <p>Наступна неділя ми вийдемо на тему конвенцій виклику! Залишайтесь на нашій сторінці!</p>
-</div>
+
                                 
                                 </section>
                             
@@ -2882,7 +2881,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 8 - General Architecture","level":"1.5.8","depth":2,"next":{"title":"Part 9 - Calling Conventions","level":"1.5.9","depth":2,"path":"pages-ua/part-9-calling-conventions.md","ref":"pages-ua/part-9-calling-conventions.md","articles":[]},"previous":{"title":"Part 7 - Word Lengths","level":"1.5.7","depth":2,"path":"pages-ua/part-7-word-lengths.md","ref":"pages-ua/part-7-word-lengths.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-8-general-architecture.md","mtime":"2025-08-21T18:12:34.008Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 8 - General Architecture","level":"1.5.8","depth":2,"next":{"title":"Part 9 - Calling Conventions","level":"1.5.9","depth":2,"path":"pages-ua/part-9-calling-conventions.md","ref":"pages-ua/part-9-calling-conventions.md","articles":[]},"previous":{"title":"Part 7 - Word Lengths","level":"1.5.7","depth":2,"path":"pages-ua/part-7-word-lengths.md","ref":"pages-ua/part-7-word-lengths.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-8-general-architecture.md","mtime":"2025-08-22T10:12:19.500Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

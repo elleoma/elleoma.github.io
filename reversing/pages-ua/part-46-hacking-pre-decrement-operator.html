@@ -2822,44 +2822,20 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="частина-46-–-хакінг-попередньо-декрементного-оператора">Частина 46 – Хакінг попередньо-декрементного оператора</h2>
-<p>Для повного змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Для повного змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті.</p>
 <p>Давайте знову розглянемо наш код.</p>
-<pre spellcheck="false">#include &lt;iostream&gt;
-
-int main(void) {
-&nbsp;&nbsp; &nbsp;int myNumber = 16;
-&nbsp;&nbsp; &nbsp;int myNewNumber = --myNumber;
-
-&nbsp;&nbsp; &nbsp;std::cout &lt;&lt; myNewNumber &lt;&lt; std::endl;
-    std::cout &lt;&lt; myNumber &lt;&lt; std::endl;
-
-&nbsp;&nbsp; &nbsp;return 0;
-}
-</pre>
-
-<p>Пам'ятаємо, коли ми компілюємо, отримуємо 15.</p>
+<p>Ми пам'ятаємо, коли ми компілюємо, отримуємо 15.</p>
 <p>Давайте відлагодимо.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1530875391750.jpg"></img></div>
-
 <p>Давайте розб'ємо.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1530875474311.jpg"></img></div>
-
 <p>Давайте переглянемо вміст <strong>r3 </strong>і хакнемо його.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1530875492398.jpg"></img></div>
-
-<p>Тепер, продовжуючи, бачимо, що він не зміг успішно хакнути, чому це?</p>
-<p></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1530875528881.jpg"></img>&lt;/XyZ9PlH10ZuK8&gt;<p></p>
+<p>Тепер, продовжуючи, ми бачимо, що він не успішно хакнув, чому це?</p>
 <p>Ми знову запускаємо бінарник і розбиваємо і бачимо значення тут в <strong>r1 </strong>держить <strong>15</strong>.</p>
-<p><xyz9plh11zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1530875553276.jpg"></img>&lt;/XyZ9PlH12ZuK8&gt;</xyz9plh11zuk8></p>
-<p>Поки продовжується, бачимо 15, який ми не хочемо.</p>
-<p><xyz9plh13zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1530875636786.jpg"></img>&lt;/XyZ9PlH14ZuK8&gt;</xyz9plh13zuk8></p>
-<p>Тепер знову розбиваємо і друкуємо значення.</p>
-<p><xyz9plh15zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1530875661356.jpg"></img>&lt;/XyZ9PlH16ZuK8&gt;</xyz9plh15zuk8></p>
+<p>Після цього ми продовжуємо бачити 15, який ми не хочемо.</p>
+<p>Давайте знову зупинимося і виведемо значення.</p>
 <p>Цього разу ми встановлюємо <strong>r1</strong> і бачимо, що ми успішно хакнули!</p>
-<p><xyz9plh17zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1530875673374.jpg"></img>&lt;/XyZ9PlH18ZuK8&gt;</xyz9plh17zuk8></p>
-<p>Це ваш перший досвід з глибоким розбіром регістрів і баченням, де вони зберігаються, і як це може впливати на результат. Вдієте час і виконайте це самостійно, щоб мати міцну основу цього.</p>
-<p>Наступна неділя ми вийдемо на оператор після-декрементний.</p>
-</div>
+<p>Це ваш перший досвід справжнього розбірки регістрів і бачення, де речі зберігаються, і як це може вплинути на результат. Вийдіть час і виконайте це самостійно, щоб справді мати міцну базу цього.</p>
+<p>Наступна неділя ми вийдемо в оператор після-декремента.</p>
+
                                 
                                 </section>
                             
@@ -2902,7 +2878,7 @@ int main(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 46 – Hacking Pre-Decrement Operator","level":"1.4.46","depth":2,"next":{"title":"Part 47 – Post-Decrement Operator","level":"1.4.47","depth":2,"path":"pages-ua/part-47-post-decrement-operator.md","ref":"pages-ua/part-47-post-decrement-operator.md","articles":[]},"previous":{"title":"Part 45 – Debugging Pre-Decrement Operator","level":"1.4.45","depth":2,"path":"pages-ua/part-45-debugging-pre-decrement-operator.md","ref":"pages-ua/part-45-debugging-pre-decrement-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-46-hacking-pre-decrement-operator.md","mtime":"2025-08-21T18:12:34.007Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 46 – Hacking Pre-Decrement Operator","level":"1.4.46","depth":2,"next":{"title":"Part 47 – Post-Decrement Operator","level":"1.4.47","depth":2,"path":"pages-ua/part-47-post-decrement-operator.md","ref":"pages-ua/part-47-post-decrement-operator.md","articles":[]},"previous":{"title":"Part 45 – Debugging Pre-Decrement Operator","level":"1.4.45","depth":2,"path":"pages-ua/part-45-debugging-pre-decrement-operator.md","ref":"pages-ua/part-45-debugging-pre-decrement-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-46-hacking-pre-decrement-operator.md","mtime":"2025-08-22T10:12:19.499Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

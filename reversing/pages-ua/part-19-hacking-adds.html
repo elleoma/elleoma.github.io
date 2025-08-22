@@ -2822,15 +2822,11 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="частина-19-–-хакінг-adds">Частина 19 – Хакінг ADDS</h2>
-<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті.</p>
 <p>Давайте знову переглянемо наш код:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520215587042.jpg"></img></div>
-
 <p>Ми знову <strong>додаємо</strong> <strong>100</strong> десятичне в <strong>r1</strong>, <strong>4,294,967,295</strong> в <strong>r2</strong>. Потім ми <strong>додаємо r1</strong> і <strong>r2</strong> і розміщуємо в <strong>r0.</strong></p>
 <p>Давайте відлагодимо:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520594576879.jpg"></img></div>
-
-<p>Ми знову бачимо <strong>adds </strong>, які встановлюють флаги в CPSR. Нам потрібно пам'ятати, коли ми відлагоджували в GDB, значення CPSR було в шістнадцятковому вигляді. Для того, щоб побачити, які флаги встановлені, нам потрібно перетворити шістнадцятковий на бінарний. Це зробить сенс, коли ми почнемо відлагоджувати і хакувати цей приклад у майбутніх уроках.</p>
+<p>Ми знову бачимо <strong>adds </strong>, які встановлюють флаги в CPSR. Нам потрібно пам'ятати, коли ми відлагоджується в GDB, значення CPSR знаходиться в шістнадцятковому вигляді. Для того, щоб побачити, які флаги встановлені, нам потрібно перетворити шістнадцятковий на бінарний. Це зробить сенс, коли ми почнемо відлагоджувати і хакувати цей приклад у майбутніх уроках.</p>
 <p>Нам потрібно пам'ятати, що біти 31, 20, 29 і 28 в CPSR вказують наступне:</p>
 <p><strong>Біт 31 - N = Позитивний Флаг</strong></p>
 <p><strong>Біт 30 - Z = Нульовий Флаг</strong></p>
@@ -2841,31 +2837,25 @@
 <p><strong>Позитивний Флаг НЕ встановлений</strong></p>
 <p><strong>Нульовий Флаг НЕ встановлений</strong></p>
 <p><strong>Флаг переносу НЕ встановлений</strong></p>
-<p><strong>Флаг переповнення встановлений </strong></p>
-<p>Давайте візьмемо погляд, якщо крокнути знову:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520149286284.jpg"></img></div>
-
-<p>Ми бачимо <strong>4294967295 десятичне</strong> або <strong>0xffffffff </strong>в <strong>r2</strong>. Ми знаємо, якщо крокнути знову, ми викликатимемо зміну CPSR від 0001 до 0010, що означає:</p>
+<p><strong>Флаг переповнення встановлений</strong></p>
+<p>Давайте візьмемо погляд, якщо крокати знову:</p>
+<p>Ми бачимо <strong>4294967295 десятичне</strong> або <strong>0xffffffff </strong>в <strong>r2</strong>. Ми знаємо, якщо крокати знову, ми викликатимемо зміну CPSR від 0001 до 0010, що означає:</p>
 <p>Значення в бінарному вигляді <strong>0010</strong> біта 31, 30, 29 і 28 (<strong>NZCV</strong>) означало б:</p>
 <p><strong>Позитивний Флаг НЕ встановлений</strong></p>
 <p><strong>Нульовий Флаг НЕ встановлений</strong></p>
 <p><strong>Флаг переносу встановлений</strong></p>
 <p><strong>Флаг переповнення НЕ встановлений</strong></p>
 <p>Ця дія встановлює флаг переносу. Однак давайте хакнемо:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520147275008.jpg"></img></div>
-
-<p>Ми хакнули <strong>r2</strong> і змінили значення на <strong>1 десятичне </strong>і <strong>0x1 шістнадцятковий</strong>. ДОТИМ ми знаємо раніше, ніж <strong>CPSR </strong>ішов до <strong>0010</strong> останнє, але тепер, що ми хакнули цей, давайте побачимо, що відбувається з <strong>CPSR</strong> коли крокнути.</p>
-<p></p><div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520211562604.jpg"></img>&lt;/XyZ9PlH10ZuK8&gt;<p></p>
-<p>БАМ! Ми хакнули його і побачили <strong>r0 </strong>є <strong>101</strong> і тому не викликали флаг переносу і зберегли <strong>CPSR</strong> в <strong>0x10 шістнадцятковий</strong>, що означає <strong>0001 бінарний</strong>, що означає:</p>
+<p>Ми хакнули <strong>r2</strong> і змінили значення на <strong>1 десятичне </strong>і <strong>XMDX0x1</strong> шістнадцятковий<strong>. ДОТИМ ми знаємо раніше, ніж </strong>CPSR <strong>ішов до </strong>0010<strong> останнього разу, але тепер, що ми хакнули цей, давайте побачимо, що відбувається з </strong>CPSR__ коли крокаємо.</p>
+<p>БАМ! Ми хакнули його і побачили <strong>r0 </strong>є <strong>101</strong> і тому не викликав флаг переносу і зберіг <strong>CPSR</strong> в <strong>XMDX0x10</strong> шістнадцятковий <strong>що означає </strong>0001 бінарний __що означає:</p>
 <p>Отже, якщо значення в бінарному вигляді було <strong>0001</strong> біта 31, 30, 29 і 28 (<strong>NZCV</strong>) це означало б:</p>
 <p><strong>Позитивний Флаг НЕ встановлений</strong></p>
 <p><strong>Нульовий Флаг НЕ встановлений</strong></p>
 <p><strong>Флаг переносу НЕ встановлений</strong></p>
-<p><strong>Флаг переповнення встановлений </strong></p>
-<p>Це дуже важливо, щоб ви зрозуміли цей урок у повному його складі. Якщо ні, будь ласка, перегляньте останні два тижні уроки.</p>
-<p>Наступного тижня ми вийдемо на ADC.</p>
-<p>Окрім цього, мені здається, що цей текст дуже довгий і містить багато технічної інформації. Якщо ви бажаєте, я можу спробувати скоротити його або зробити його більш зрозумілим для українськомовного читача</p>
-</div>
+<p><strong>Флаг переповнення встановлений</strong></p>
+<p>Важливо, щоб ви зрозуміли цей урок у повному його складі. Якщо ні, будь ласка, перегляньте останні два тижні уроки.</p>
+<p>Наступного тижня ми вийдемо на ADC</p>
+
                                 
                                 </section>
                             
@@ -2908,7 +2898,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 19 – Hacking ADDS","level":"1.3.19","depth":2,"next":{"title":"Part 20 – ADC","level":"1.3.20","depth":2,"path":"pages-ua/part-20-adc.md","ref":"pages-ua/part-20-adc.md","articles":[]},"previous":{"title":"Part 18 – Debugging ADDS","level":"1.3.18","depth":2,"path":"pages-ua/part-18-debugging-adds.md","ref":"pages-ua/part-18-debugging-adds.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-19-hacking-adds.md","mtime":"2025-08-21T18:12:34.003Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 19 – Hacking ADDS","level":"1.3.19","depth":2,"next":{"title":"Part 20 – ADC","level":"1.3.20","depth":2,"path":"pages-ua/part-20-adc.md","ref":"pages-ua/part-20-adc.md","articles":[]},"previous":{"title":"Part 18 – Debugging ADDS","level":"1.3.18","depth":2,"path":"pages-ua/part-18-debugging-adds.md","ref":"pages-ua/part-18-debugging-adds.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-19-hacking-adds.md","mtime":"2025-08-22T10:12:19.494Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

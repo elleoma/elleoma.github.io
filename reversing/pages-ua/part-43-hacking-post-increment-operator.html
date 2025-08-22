@@ -2821,38 +2821,20 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="частина-43-–-хакінг-пост-інкрементного-оператора">Частина 43 – Хакінг пост-інкрементного оператора</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+                                <p>Частина 43 – Хакінг пост-інкрементного оператора</p>
+<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті.</p>
 <p>Давайте знову розглянемо наш код.</p>
-<pre spellcheck="false">#include &lt;iostream&gt;
-
-int main(void) {
-&nbsp;&nbsp; &nbsp;int myNumber = 16;
-&nbsp;&nbsp; &nbsp;int myNewNumber = ++myNumber;
-
-&nbsp;&nbsp; &nbsp;std::cout &lt;&lt; myNewNumber &lt;&lt; std::endl;
-
-&nbsp;&nbsp; &nbsp;return 0;
-}
-</pre>
-
 <p>Ми створюємо змінну <strong>myNumber = 16</strong> до якої створюємо ще одну змінну <strong>myNewNumber</strong> яка пост-інкрементує значення змінної <strong>myNumber</strong>. Ми бачимо, що коли ми виконуватимемо наш код, воно показуватиме <strong>16</strong> як значення змінної <strong>myNewNumber</strong> і <strong>17</strong> як значення змінної <strong>myNumber</strong> оскільки <strong>myNewNumber</strong> не збільшується, оскільки тільки <strong>myNumber</strong> збільшується, оскільки це пост-оператор.</p>
-<p>Коли ми пост-інкрементуємо значення змінної, воно збільшується після призначення йому іншої змінної. Наприклад, <strong>myNumber</strong> має значення <strong>16</strong>, тому воно збільшується після призначення йому змінної <strong>myNewNumber</strong>, тому ми отримуємо <strong>17</strong>.</p>
+<p>Пост-інкрементування значення змінної збільшує її після призначення їй іншої змінної. Наприклад, <strong>myNumber</strong> має значення <strong>16</strong>, тому воно збільшується після призначення йому змінної <strong>myNewNumber</strong>, тому отримує значення <strong>17</strong>.</p>
 <p>Давайте відлагодимо.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1529062708632.jpg"></img></div>
-
-<p>Давайте зупинимося на <strong>*main+28</strong>&nbsp;and continue.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1529062741325.jpg"></img></div>
-
-<p>Як ми бачимо, значення в <strong>r3</strong> є <strong>16</strong>, а значення в <strong>r2</strong> є <strong>17</strong>. Ми бачимо, що вони завантажені з пам'яті в регістр в <strong>*main+12</strong>&nbsp;directly за допомогою інструкції <strong>mov</strong> і <strong>*main+24</strong>&nbsp;we add <strong>1</strong> в <strong>r3</strong> і потім підставляє це значення в <strong>r2</strong>.</p>
+<p>Давайте зупинимося на <strong>XMDX*main+28</strong>&nbsp;and__.</p>
+<p>Давайте продовжимо.</p>
+<p>Як ми бачимо, значення в <strong>r3</strong> є <strong>16</strong>, а значення в <strong>r2</strong> є <strong>17</strong>. Ми бачимо, що вони завантажені з пам'яті в регістр <strong>XMDX*main+12</strong>&nbsp;directly<strong> за допомогою інструкції </strong>mov<strong> і </strong>XMDX*main+24<strong>&nbsp;we</strong> додає <strong>1</strong> до <strong>r3</strong> і потім кладе це значення в <strong>r2</strong>.</p>
 <p>Давайте хакнемо цю дитину!</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1529062819877.jpg"></img></div>
-
 <p>Ми знаємо, що тепер ми можемо встановити значення <strong>r3</strong> на своє бажання!</p>
-<p></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1529062853544.jpg"></img>&lt;/XyZ9PlH10ZuK8&gt;<p></p>
-<p>Потім ми бачимо, що функція <strong>cout</strong> мови C++ відображає на екран наш новий хакований значення!</p>
+<p>Як ми продовжимо, ми побачимо, що функція <strong>cout</strong> мови C++ виводить на екран наші змінені значення!</p>
 <p>Наступна неділя ми вийдемо на тему пре-декрементного оператора.</p>
-</div>
+
                                 
                                 </section>
                             
@@ -2895,7 +2877,7 @@ int main(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 43 – Hacking Post-Increment Operator","level":"1.4.43","depth":2,"next":{"title":"Part 44 – Pre-Decrement Operator","level":"1.4.44","depth":2,"path":"pages-ua/part-44-pre-decrement-operator.md","ref":"pages-ua/part-44-pre-decrement-operator.md","articles":[]},"previous":{"title":"Part 42 – Debugging Post-Increment Operator","level":"1.4.42","depth":2,"path":"pages-ua/part-42-debugging-post-increment-operator.md","ref":"pages-ua/part-42-debugging-post-increment-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-43-hacking-post-increment-operator.md","mtime":"2025-08-21T18:12:34.007Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 43 – Hacking Post-Increment Operator","level":"1.4.43","depth":2,"next":{"title":"Part 44 – Pre-Decrement Operator","level":"1.4.44","depth":2,"path":"pages-ua/part-44-pre-decrement-operator.md","ref":"pages-ua/part-44-pre-decrement-operator.md","articles":[]},"previous":{"title":"Part 42 – Debugging Post-Increment Operator","level":"1.4.42","depth":2,"path":"pages-ua/part-42-debugging-post-increment-operator.md","ref":"pages-ua/part-42-debugging-post-increment-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-43-hacking-post-increment-operator.md","mtime":"2025-08-22T10:12:19.499Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

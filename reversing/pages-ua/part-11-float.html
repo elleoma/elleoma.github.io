@@ -2827,7 +2827,7 @@
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include "pico/stdlib.h"
 
-XyZ9PlH4ZuK8 main()&nbsp;
+int main()&nbsp;
 {
 &nbsp; stdio_init_all();
 
@@ -2835,7 +2835,7 @@ XyZ9PlH4ZuK8 main()&nbsp;
 &nbsp; {
 &nbsp; &nbsp; float x = 40.5;
 
-&nbsp; &nbsp; XyZ9PlH0ZuK8("%f\n", x);&nbsp;
+&nbsp; &nbsp; printf("%f\n", x);&nbsp;
 
 &nbsp; &nbsp; sleep_ms(1000);
 &nbsp; }
@@ -2844,16 +2844,15 @@ XyZ9PlH4ZuK8 main()&nbsp;
 }
 </pre>
 
-<p>Дуже просто ми призначаємо плавання <em>40.5</em> в <em>x</em> і друкуємо його з форматним модифікатором <em>%f</em> і потім спимося на <em>1</em> секунду.</p>
-<p>Давайте створимо нову папку&nbsp;<strong>0x05_float</strong>&nbsp;and додамо нашу&nbsp;<strong>CMakeLists.txt</strong>&nbsp;file в неї.</p>
+<p>Дуже просто ми призначаємо плавання <em>40.5</em> в <em>x</em> і друкуємо його з форматним модифікатором <em>%f </em>і потім спимося на <em>1</em> секунду.</p>
+<p>Давайте створимо новий каталог&nbsp;<strong>0x05_float</strong>&nbsp;and додамо нашу&nbsp;<strong>CMakeLists.txt</strong>&nbsp;file в ньому.</p>
 <pre spellcheck="false">cmake_minimum_required(VERSION 3.13)
 
 include(pico_sdk_import.cmake)
 
 project(test_project C CXX ASM)
 set(CMAKE_C_STANDARD 11)&nbsp;
-set(CMAKE_CXX_STANDARD 17)&nbsp;
-pico_sdk_init()
+set(CMAKE_CXX_STANDARD 17)&nbsp; pico_sdk_init()
 
 add_executable(0x05_float
 &nbsp; 0x05_float.c
@@ -2866,23 +2865,23 @@ pico_add_extra_outputs(0x05_float)
 target_link_libraries(0x05_float pico_stdlib)
 </pre>
 
-<p>Далі нам потрібно скопіювати&nbsp;<strong>pico_sdk_import.cmake</strong>&nbsp;file з зовнішньої папки в папці&nbsp;<strong>pico-sdk</strong> встановлення в папку&nbsp;<strong>0x05_float</strong>&nbsp;project.</p>
-<pre spellcheck="false">cp ../pico-sdk/external/pico_sdk_import.cmake .
+<p>Наступне, нам потрібно скопіювати&nbsp;<strong>pico_sdk_import.cmake</strong>&nbsp;file з зовнішнього каталогу в інсталяцію&nbsp;<strong>pico-sdk</strong> в каталог&nbsp;<strong>0x05_float</strong>&nbsp;project.</p>
+<pre spellcheck="false">cp../pico-sdk/external/pico_sdk_import.cmake.
 </pre>
 
-<p>Нарешті ми готові до будівництва.</p>
+<p>Нарешті, ми готові до будівництва.</p>
 <pre spellcheck="false">mkdir build
 cd build
 export PICO_SDK_PATH=../../pico-sdk
-cmake ..
+cmake..
 make
 </pre>
 
-<p>Далі просто скопіюйте&nbsp;<strong>.uf2</strong>&nbsp;file в диск.</p>
+<p>Тоді просто скопіюйте&nbsp;<strong>.uf2</strong>&nbsp;file в диск.</p>
 <pre spellcheck="false">cp 0x05_float.uf2 /Volumes/RPI-RP2
 </pre>
 
-<p>Далі нам потрібно знайти зовнішній диск, щоб ви могли виконати наступні дії.</p>
+<p>Тоді нам потрібно знайти зовнішній диск, щоб ви могли виконати наступні дії.</p>
 <pre spellcheck="false">ls /dev/tty.
 </pre>
 
@@ -2916,7 +2915,7 @@ make
 40.500000
 </pre>
 
-<p>У наступному урокі ми навчимося відлагоджувати.</p>
+<p>У наступній лекції ми навчимося відлагоджувати.</p>
 
                                 
                                 </section>
@@ -2960,7 +2959,7 @@ make
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 11 - float","level":"1.7.11","depth":2,"next":{"title":"Part 12 - Debugging float","level":"1.7.12","depth":2,"path":"pages-ua/part-12-debugging-float.md","ref":"pages-ua/part-12-debugging-float.md","articles":[]},"previous":{"title":"Part 10 - Hacking int","level":"1.7.10","depth":2,"path":"pages-ua/part-10-hacking-int.md","ref":"pages-ua/part-10-hacking-int.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-11-float.md","mtime":"2025-08-21T18:12:34.000Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 11 - float","level":"1.7.11","depth":2,"next":{"title":"Part 12 - Debugging float","level":"1.7.12","depth":2,"path":"pages-ua/part-12-debugging-float.md","ref":"pages-ua/part-12-debugging-float.md","articles":[]},"previous":{"title":"Part 10 - Hacking int","level":"1.7.10","depth":2,"path":"pages-ua/part-10-hacking-int.md","ref":"pages-ua/part-10-hacking-int.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-11-float.md","mtime":"2025-08-22T10:12:19.492Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

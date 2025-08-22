@@ -2822,84 +2822,66 @@
                                 <section class="normal markdown-section">
                                 
                                 <p>Частина 5 - char</p>
-<p>Сьогодні ми почнемо своє висвітлення даних типу C. Почнемо з char. Char є найменшим адресованим одиницею машини, яка може містити базовий набір символів. Це ціле тип і може бути підписаним або несписаним.</p>
-<p>Давайте створимо новий каталог <strong>0x03_char</strong> і додамо наш <strong>CMakeLists.txt</strong> file в нього.</p>
-<pre spellcheck="false">cmake_minimum_required(VERSION 3.13)
-
-include(pico_sdk_import.cmake)
-
-project(test_project C CXX ASM)
+<p>Сьогодні ми почнемо нашу обробку даних типу C. Почнемо з char. Char є найменшим адресованим одиницею машини, яка може містити базовий набір символів. Це ціле число і може бути підписаним або несписаним.</p>
+<p>Давайте створимо новий каталог <strong>0x03_char__</strong> і додамо наш <strong>CMakeLists.txt</strong> <strong>file</strong> в нього.</p>
+<p>__</p><pre spellcheck="false">cmake_minimum_required(VERSION 3.13)<p></p>
+<p>include(pico_sdk_import.cmake)</p>
+<p>project(test_project C CXX ASM)
 set(CMAKE_C_STANDARD 11)&nbsp;
-set(CMAKE_CXX_STANDARD 17)&nbsp;
-pico_sdk_init()
-
-add_executable(0x03_char
+set(CMAKE_CXX_STANDARD 17)&nbsp; pico_sdk_init()</p>
+<p>add_executable(0x03_char
 &nbsp; 0x03_char.c
-)
-
-pico_enable_stdio_usb(0x03_char 1)
-
-pico_add_extra_outputs(0x03_char)
-
-target_link_libraries(0x03_char pico_stdlib)
-</pre>
-
-<p>Далі нам потрібно скопіювати <strong>pico_sdk_import.cmake</strong>&nbsp;file з зовнішнього каталогу в <strong>pico-sdk</strong> встановлення в каталог <strong>0x03_char</strong>&nbsp;project.</p>
-<pre spellcheck="false">cp ../pico-sdk/external/pico_sdk_import.cmake .
-</pre>
-
-<p>Давайте створимо наш C file <strong>0x03_char.c</strong> і продовжимо...</p>
-<pre spellcheck="false">#include &lt;stdio.h&gt;
-#include "pico/stdlib.h"
-
-XyZ9PlH5ZuK8 main()&nbsp;
+)</p>
+<p>pico_enable_stdio_usb(0x03_char 1)</p>
+<p>pico_add_extra_outputs(0x03_char)</p>
+<p>target<em>link<em>libraries(0x03_char pico_stdlib)
+&lt;/pre&gt;</em></em></p>
+<p>Далі нам потрібно скопіювати <strong>pic</strong> <strong>o_sdk_import.cmake</strong>&nbsp;file<strong> з зовнішнього каталогу в </strong>pico-sdk<strong> встановлення в каталог </strong>0x03_char<strong>&nbsp;project</strong>.</p>
+<p><strong><pre spellcheck="false">cp../pico-sdk/external/pico_sdk_import.cmake.
+</pre></strong></p>
+<p>Давайте створимо наш C <strong>file</strong> <strong>0x03_char.c__</strong> і продовжимо...</p>
+<p>__</p><pre spellcheck="false">#include &lt;stdio.h&gt;<p></p>
+<h1 id="include-picostdlibh">include "pico/stdlib.h"</h1>
+<p>int main()&nbsp;
 {
-&nbsp; stdio_init_all();
-
-&nbsp; while(1)&nbsp;
+&nbsp; stdio_init_all();</p>
+<p>&nbsp; while(1)&nbsp;
 &nbsp; {
 &nbsp; &nbsp; char x = 'x';
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-&nbsp; &nbsp; XyZ9PlH0ZuK8("%c\n", x);
-
-&nbsp; &nbsp; sleep_ms(1000);
+&nbsp; &nbsp; printf("%c\n", x);</p>
+<p>&nbsp; &nbsp; sleep<em>ms(1000);
 &nbsp; }
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 &nbsp; return 0;
 }
-</pre>
-
-<p>Нарешті ми готові до будівництва.</p>
-<pre spellcheck="false">mkdir build
+&lt;/pre&gt;_</em></p>
+<p>Нарешті, ми готові до будівництва.</p>
+<p><strong><pre spellcheck="false">mkdir build
 cd build
 export PICO_SDK_PATH=../../pico-sdk
-cmake ..
+cmake..
 make
-</pre>
-
-<p>Далі просто скопіюйте <em>.uf2_</em> file в диск.</p>
-<pre spellcheck="false">cp 0x03_char.uf2 /Volumes/RPI-RP2
-</pre>
-
+</pre></strong></p>
+<p>Далі просто скопіюйте <strong>__.uf2</strong> <strong>file</strong> в диск.</p>
+<p><strong><pre spellcheck="false">cp 0x03_char.uf2 /Volumes/RPI-RP2
+</pre></strong></p>
 <p>Далі нам потрібно знайти зовнішній диск, щоб ви могли виконати наступні дії.</p>
-<pre spellcheck="false">ls /dev/tty.
-</pre>
-
-<p>Натисніть табуляцію, щоб знайти диск, а потім у моїх випадках я використовую <strong>screen</strong> для підключення.</p>
-<pre spellcheck="false">screen /dev/tty.usbmodem0000000000001
-</pre>
-
-<p>Ви повинні побачити "х" друкується кожну секунду.</p>
-<pre spellcheck="false">x
+<p><strong><pre spellcheck="false">ls /dev/tty.
+</pre></strong></p>
+<p>Натисніть tab, щоб знайти диск, а потім у моїй ситуації я використовую <strong>screen</strong> для підключення.</p>
+<p><strong><pre spellcheck="false">screen /dev/tty.usbmodem0000000000001
+</pre></strong></p>
+<p>Ви повинні побачити "x", яке друкується кожну секунду.</p>
+<p><strong><pre spellcheck="false">x
 x
 x
 x
 x
 x
-</pre>
-
+</pre></strong></p>
 <p>У наступному урокі ми навчимося відлагоджувати char.</p>
-
+</pre></pre>
                                 
                                 </section>
                             
@@ -2942,7 +2924,7 @@ x
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 5 - char","level":"1.7.5","depth":2,"next":{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"path":"pages-ua/part-6-debugging-char.md","ref":"pages-ua/part-6-debugging-char.md","articles":[]},"previous":{"title":"Part 4 - Hacking Hello World","level":"1.7.4","depth":2,"path":"pages-ua/part-4-hacking-hello-world.md","ref":"pages-ua/part-4-hacking-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-5-char.md","mtime":"2025-08-21T18:12:34.008Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 5 - char","level":"1.7.5","depth":2,"next":{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"path":"pages-ua/part-6-debugging-char.md","ref":"pages-ua/part-6-debugging-char.md","articles":[]},"previous":{"title":"Part 4 - Hacking Hello World","level":"1.7.4","depth":2,"path":"pages-ua/part-4-hacking-hello-world.md","ref":"pages-ua/part-4-hacking-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-5-char.md","mtime":"2025-08-22T10:12:19.499Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

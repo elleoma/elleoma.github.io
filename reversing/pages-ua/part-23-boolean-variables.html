@@ -2822,41 +2822,25 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="частина-23-–-булеві-змінні">Частина 23 – Булеві змінні</h2>
-<p>Для повного змісту змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Наступний етап нашої подорожі – булеві змінні. Назва походить від великого Джорджа Буля, від якого всі сучасні комп'ютерні науки походять.</p>
+<p>Для повного змісту змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені.</p>
+<p>Наступний етап нашої подорожі – булеві змінні. Ім'я походить від великого Джорджа Буля, від якого всі сучасні комп'ютерні науки походять.</p>
 <p>На найнижчому рівні значення може бути either 0 або 1, хибне або правдиве, + &lt; 5 вольт або +5 вольт тощо.</p>
-<p>Давайте розглянемо наш код.</p>
-<pre spellcheck="false">#include &lt;iostream&gt;
-
-&nbsp;
-
-XyZ9PlH0ZuK8 main(void) {
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bool isHacked = false;
-
-&nbsp;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; std::cout &lt;&lt; isHacked &lt;&lt; std::endl;
-
-&nbsp;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;
-
+<p>Давайте вивчіть наш код.</p>
+<pre><code>int main() {
+  bool isHacked = false;
+  return 0;
 }
-</pre>
-
-<p><xyz9plh1zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520192758105.jpg"></img>&lt;/XyZ9PlH2ZuK8&gt;</xyz9plh1zuk8></p>
-<p>Щоб скомпільувати цей код, ми просто набираємо:</p>
-<pre spellcheck="false">g++ example4.cpp -o example4
-
-./example4
-</pre>
-
-<p><xyz9plh3zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520196655358.jpg"></img>&lt;/XyZ9PlH4ZuK8&gt;</xyz9plh3zuk8></p>
-<p>УСПІШНО! Ми бачимо <strong>0</strong> виведено на стандартний вивід або термінал!</p>
-<p>Давайте розіб'ємо:</p>
-<p>Ми створюємо булеву змінну під назвою <strong>isHacked </strong>, до якої призначаємо значення <strong>false</strong> або <strong>0</strong>. Коли ми запускаємо бінарний файл, ми явно бачимо значення <strong>0</strong>, яке успішно було виведено на стандартний вивід.</p>
-<p>Наступного тижня ми вийдемо на тему Дебагування булевих змінних.</p>
+</code></pre><pre><code>int main() {
+  bool isHacked = false;
+  return 0;
+}
+</code></pre><p>Щоб скомпільувати цей код, ми просто набираємо:</p>
+<pre><code>gcc -o boolean boolean.c
+</code></pre><p><code>./boolean</code></p>
+<p>УСПІШНО! Ми бачимо <strong>0</strong> виведений на стандартний вивід або термінал!</p>
+<p>Давайте розберемо це:</p>
+<p>Ми створюємо булеву змінну під назвою <strong>isHacked </strong>, до якої ми присвоюємо значення <strong>false</strong> або <strong>0</strong>. Коли ми запускаємо бінарник, ми явно бачимо значення <strong>0</strong>, яке успішно було виведено на стандартний вивід.</p>
+<p>Наступного тижня ми вийдемо на глибину відлагодження булевих змінних.</p>
 
                                 
                                 </section>
@@ -2900,7 +2884,7 @@ XyZ9PlH0ZuK8 main(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 23 – Boolean Variables","level":"1.4.23","depth":2,"next":{"title":"Part 24 – Debugging Boolean Variables","level":"1.4.24","depth":2,"path":"pages-ua/part-24-debugging-boolean-variables.md","ref":"pages-ua/part-24-debugging-boolean-variables.md","articles":[]},"previous":{"title":"Part 22 – Hacking Character Variables","level":"1.4.22","depth":2,"path":"pages-ua/part-22-hacking-character-variables.md","ref":"pages-ua/part-22-hacking-character-variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-23-boolean-variables.md","mtime":"2025-08-21T18:12:34.004Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 23 – Boolean Variables","level":"1.4.23","depth":2,"next":{"title":"Part 24 – Debugging Boolean Variables","level":"1.4.24","depth":2,"path":"pages-ua/part-24-debugging-boolean-variables.md","ref":"pages-ua/part-24-debugging-boolean-variables.md","articles":[]},"previous":{"title":"Part 22 – Hacking Character Variables","level":"1.4.22","depth":2,"path":"pages-ua/part-22-hacking-character-variables.md","ref":"pages-ua/part-22-hacking-character-variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-23-boolean-variables.md","mtime":"2025-08-22T10:12:19.495Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

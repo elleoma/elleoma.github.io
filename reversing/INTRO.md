@@ -1,5 +1,5 @@
 <h1 align="center">
-    Reverse Engineering For Everyone!
+    Зворотна розробка для всіх!
 </h1>
 
 <h4 align="center">
@@ -22,36 +22,43 @@
 </p>
 
 <h3>
-    Wait, what's reverse engineering?
+    Зачекайте, що таке зворотна розробка?
 </h3>
 <p>
-    Wikipedia defines it as:
+    Вікіпедія визначає це поняття так:
     <blockquote>
-        Reverse engineering, also called backwards engineering or back engineering, is the process by which an artificial object is deconstructed to reveal its designs, architecture, code, or to extract knowledge from the object. It is similar to scientific research, the only difference being that scientific research is conducted into a natural phenomenon.
+        Дослідження деякого пристрою чи програми з метою розуміння принципів роботи досліджуваного об'єкта. Найчастіше використовується з метою створення об'єкта, за функціональністю аналогічного досліджуваному але без точного копіювання його функцій.
     </blockquote>
-    Whew, that was quite a mouthful, wasn't it? Well, it is one of the main reasons why this tutorial set exists. To make reverse engineering
+    Уф, це було досить складно, чи не так? Ну, це одна з головних причин, чому існує цей набір посібників. Щоб зробити реверс-інжиніринг
     <i>
-        as simple as possible.
+        якомога простішим.
     </i>
 </p>
 <p align="center">
     <img src="cover.png"  />
 </p>
 <p>
-    This comprehensive set of reverse engineering tutorials covers x86, x64 as well as 32-bit ARM and 64-bit architectures. If you're a newbie looking to learn reversing, or just someone looking to revise on some concepts, you're at the right place. As a beginner, these tutorials will carry you from nothing upto the mid-basics of reverse engineering, a skill that everyone within the realm of cyber-security should possess. If you're here just to refresh some concepts, you can conveniently use the side bar to take a look at the sections that has been covered so far.
+    Цей вичерпний набір підручників з реверс-інжинірингу охоплює архітектури x86, x64, а також 32-бітну ARM і 64-бітну архітектури. Якщо ви новачок, який хоче навчитися реверс-інжинірингу, або просто хочете повторити деякі поняття, ви потрапили в потрібне місце. Ці підручники допоможуть початківцям пройти шлях від нуля до середнього рівня знань з реверсної інженерії — навички, якою повинен володіти кожен, хто працює в сфері кібербезпеки. Якщо ви тут лише для того, щоб освіжити деякі поняття, ви можете скористатися бічною панеллю, щоб переглянути розділи, які вже були розглянуті.
 </p>
 <p>
-    You can get the entire tutorial set in PDF or MOBI format. All these ebook versions will get updated automatically as new tutorials will be added. 
+    Ви можете отримати повний набір підручників у форматі PDF або MOBI. Всі ці версії електронних книг будуть автоматично оновлюватися по мірі додавання нових посібників.
 </p>
 <p>
-    Download here: [ <a href="reversing-for-everyone.pdf">PDF</a> | <a href="reversing-for-everyone.mobi">MOBI</a> ]
+    Завантажити можна тут: [ <a href="reversing-for-everyone.pdf">PDF</a> | <a href="reversing-for-everyone.mobi">MOBI</a> ]
 </p>
 <br>
 <p align="center">
     <sub>
-        Gitbook crafted with ♡ by
+        HonKit crafted with ♡ by
         <a href="https://twitter.com/0xInfection">
             @0xInfection
         </a>
     </sub>
+    <sub>
+        Переклад зроблено з ♡ від
+        <a href="https://elleoma.github.io/">
+            @elleoma
+        </a>
+    </sub>
 </p>
+

@@ -2821,18 +2821,18 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>Частина 7 - Дебагування базової програми I/O</p>
-<p>Для повного змісту змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
-<p>Сьогодні ми візьмемося за дебагування нашої дуже базової програми перевірки вхідних даних з попереднього заняття.</p>
+                                <h2 id="частина-7---дебагування-базової-програми-io">Частина 7 - Дебагування базової програми I/O</h2>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
+<p>Сьогодні ми будемо дебагувати нашу дуже базову програму перевірки входу з попереднього заняття.</p>
 <p>Для початку відкрийте нашу бінарну файл Radare2.</p>
-<pre spellcheck="false">XyZ9PlH1ZuK8 ./0x02_asm_64_basicio
+<pre spellcheck="false">radare2./0x02_asm_64_basicio
 </pre>
 
-<p>Давайте скористаємося функцією автоматичної аналізу Radare2.</p>
+<p>Давайте скористаємося Radare2 функцією автоматичної аналізу.</p>
 <pre spellcheck="false">aaa
 </pre>
 
-<p>Наступним кроком буде запуск програми в режимі дебагування, щоб вона відображала на диску вихідний машинний код в робочий процес.</p>
+<p>Наступним логічним кроком буде запуск програми в режимі дебагування, щоб вона відображала на диску вихідний машинний код в робочий процес.</p>
 <pre spellcheck="false">ood
 </pre>
 
@@ -2844,27 +2844,27 @@
 <pre spellcheck="false">v
 </pre>
 
-<p>Нотатки щодо декількох речей ми бачимо <em>0x5566be00cc</em> вихід <em>"Enter Age: "</em> і в <em>0x5566be017c</em> call до <em>istream</em> , який буде захоплювати значення з <em>stdin</em> , до якої ми ідентифікуємо умову невдачі в 0x5566be01d0, де ми знаходимо <em>"Dude be real!"</em> і бачимо результати належної перевірки вхідних даних починаючи з <em>0x5566be0218 </em>, де ми кажемо <em>"You are "</em> і потім бачимо call до потоку виводу в <em>0x5566be0238</em> і потім продовження рядка перевірки вхідних даних в <em>0x5566be0244</em> , де ми кажемо <em>" років, здається, все добре!"</em>.</p>
-<p>Наступним кроком буде вивчення бінарного файлу візуальним графом.</p>
+<p>Нотатки щодо декількох речей ми бачимо <em>0x5566be00cc</em> вивід <em>"Enter Age: "</em> і на <em>0x5566be017c</em> call до <em>istream</em> який буде захоплювати значення з <em>stdin</em> до якого ми ідентифікуємо умову невдачі на 0x5566be01d0 де ми знаходимо <em>"Dude be real!"</em> і бачимо результати належної перевірки входу починаючи з <em>0x5566be0218 </em>де ми кажемо <em>"You are "</em> і потім бачимо call до виходу в потік на <em>0x5566be0238</em> і потім продовження перевірки входу на <em>0x5566be0244</em> де ми кажемо <em>" років, здається, все добре!"</em>.</p>
+<p>Наступним кроком буде перегляд бінарного файлу візуальним графом.</p>
 <pre spellcheck="false">q
 VV
 ppppp
 </pre>
 
-<p>Це наш візуальний граф, розширений. Ми бачимо, як програма рухається від функції до функції. Ви помітите рядки, такі як [ol] або [ok] і ви можете буквально ввести наступне:</p>
+<p>Це наш розширений візуальний граф. Ми бачимо, як програма рухається від функції до функції. Ви помітите рядки тегів, такі як [ol] або [ok] і ви можете буквально ввести наступне:</p>
 <pre spellcheck="false">p
 ol
 </pre>
 
 <p>Тепер ми знаходимся всередині цієї функції.</p>
-<p>Далі, щоб повернутися до головної програми.</p>
+<p>Затем поверніться до головної програми.</p>
 <pre spellcheck="false">qq
 s main
 VV
 </pre>
 
-<p>Це візуальний граф, розширений, який ми можемо використовувати для огляду навколо за допомогою клавіші стрілки.</p>
-<p>Давайте встановимо зупинку на <em>0x5566be00c4</em> , де ми <em>bne 0x5566be0214</em> , яка є місцем, де ми бачимо успішний шлях нашої бінарної програми.</p>
+<p>Це візуальний граф, який ми можемо використовувати для перегляду навколо за допомогою стрілок клавіатури.</p>
+<p>Давайте встановимо зупинку на <em>0x5566be00c4</em> де ми <em>bne 0x5566be0214</em> яке є місцем успішної програми нашої бінарної програми.</p>
 <pre spellcheck="false">[0x5566be0194]&gt; db 0x5566be00c4
 [0x5566be0194]&gt; dc
 hit breakpoint at: 0x5566be00c4
@@ -2875,8 +2875,8 @@ Your are 33 years old, seems legit!
 (2215) Process exited with status=0x0
 </pre>
 
-<p>Як ви бачите, ми здійснили цикл і ввели правильну перевірку вхідних даних і змогли отримати успішний результат.</p>
-<p>У наступному урокі ми зможемо змінити перевірку вхідних даних.</p>
+<p>Як ви бачите, ми здійснили цикл і ввели правильну перевірку входу і змогли отримати успішний результат.</p>
+<p>У наступному занятті ми навчимося хакувати перевірку входу.</p>
 
                                 
                                 </section>
@@ -2920,7 +2920,7 @@ Your are 33 years old, seems legit!
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 7 - Debugging Basic I/O","level":"1.6.7","depth":2,"next":{"title":"Part 8 - Hacking Basic I/O","level":"1.6.8","depth":2,"path":"pages-ua/part-8-hacking-basic-io.md","ref":"pages-ua/part-8-hacking-basic-io.md","articles":[]},"previous":{"title":"Part 6 - Basic I/O","level":"1.6.6","depth":2,"path":"pages-ua/part-6-basic-io.md","ref":"pages-ua/part-6-basic-io.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-7-debugging-basic-io.md","mtime":"2025-08-21T18:12:34.008Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 7 - Debugging Basic I/O","level":"1.6.7","depth":2,"next":{"title":"Part 8 - Hacking Basic I/O","level":"1.6.8","depth":2,"path":"pages-ua/part-8-hacking-basic-io.md","ref":"pages-ua/part-8-hacking-basic-io.md","articles":[]},"previous":{"title":"Part 6 - Basic I/O","level":"1.6.6","depth":2,"path":"pages-ua/part-6-basic-io.md","ref":"pages-ua/part-6-basic-io.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-7-debugging-basic-io.md","mtime":"2025-08-22T10:12:19.499Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

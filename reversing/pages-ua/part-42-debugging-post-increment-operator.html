@@ -2822,35 +2822,16 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="частина-42-–-дебагування-оператора-після-інкременту">Частина 42 – Дебагування оператора після інкременту</h2>
-<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Давайте знову переглянемо свій код.</p>
-<pre spellcheck="false">#include &lt;iostream&gt;
-
-int main(void) {
-&nbsp;&nbsp; &nbsp;int myNumber = 16;
-&nbsp;&nbsp; &nbsp;int myNewNumber = ++myNumber;
-
-&nbsp;&nbsp; &nbsp;std::cout &lt;&lt; myNewNumber &lt;&lt; std::endl;
-
-&nbsp;&nbsp; &nbsp;return 0;
-}
-</pre>
-
-<p>Ми створюємо змінну <strong>myNumber = 16</strong> до якої створюємо ще одну змінну <strong>myNewNumber</strong> яка після інкременту збільшує значення <strong>myNumber</strong>.  Ми бачимо, що коли ми виконуватимемо свій код, воно показуватиме <strong>16</strong> як значення <strong>myNewNumber</strong> і <strong>17</strong> як значення <strong>myNumber</strong> як <strong>myNewNumber</strong> не збільшується, оскільки тільки <strong>myNumber</strong> збільшується, оскільки це після оператор.</p>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті.</p>
+<p>Давайте знову розглянемо наш код.</p>
+<p>Ми створюємо змінну <strong>myNumber = 16</strong> до якої створюємо ще одну змінну <strong>myNewNumber</strong> яка після інкременту збільшує значення <strong>myNumber</strong>.  Ми бачимо, що коли ми виконуватимемо наш код, воно показуватиме <strong>16</strong> як значення <strong>myNewNumber</strong> і <strong>17</strong> як значення <strong>myNumber</strong> як <strong>myNewNumber</strong> не збільшується, оскільки тільки <strong>myNumber</strong> збільшується, оскільки це після оператор.</p>
 <p>Коли ми після інкременту збільшувємо значення змінної, воно збільшується після призначення йому іншої змінної.  Наприклад, <strong>myNumber</strong> є <strong>16</strong>, тому воно збільшується після призначення йому <strong>myNewNumber</strong>, тому ми отримуємо <strong>17</strong>.</p>
 <p>Давайте дебагуємо.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1528458112325.jpg"></img></div>
-
-<p>Давайте зупинимося на <strong>*XyZ9PlH17ZuK8 </strong>і продовжимо.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1528458131421.jpg"></img></div>
-
-<p>Як ми бачимо, значення в <strong>r3 </strong>є 16 і значення в <strong>r2 </strong>є 17.  Ми бачимо, що вони завантажені з пам'яті в регістр в <strong>*main+12</strong> прямо за допомогою інструкції <strong>mov</strong> і <strong>*main+24</strong> ми додаємо 1 в <strong>r3</strong> і потім кладемо це значення в <strong>r2</strong>.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1528458142344.jpg"></img></div>
-
-<p>Далі ми продовжимо і побачимо, що <strong>cout </strong>c++ функція викликана, яка відображає значення в термінал (стандартний вивід) як очікується.</p>
-<p></p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1528458154804.jpg"></img>&lt;/XyZ9PlH10ZuK8&gt;<p></p>
+<p>Давайте зупинимося на <strong>XMDX*main+28</strong> і продовжимо.</p>
+<p>Як ми бачимо, значення в <strong>r3</strong> є 16, а значення в <strong>r2</strong> є 17.  Ми бачимо, що вони завантажені з пам'яті в регістр <strong>XMDX*main+12__</strong> прямо за допомогою інструкції <strong>mov</strong> і <strong>XMDX*main+24__</strong> ми додаємо 1 в <strong>r3</strong> і потім кладемо це значення в <strong>r2</strong>.</p>
+<p>Як ми продовжимо, ми побачимо, що функція <strong>cout</strong> c++ викликана, яка відображає значення в термінал (стандартний вивід) як очікується.</p>
 <p>Наступна неділя ми вийдемо на хакінг оператора після інкременту.</p>
-</div>
+
                                 
                                 </section>
                             
@@ -2893,7 +2874,7 @@ int main(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 42 – Debugging Post-Increment Operator","level":"1.4.42","depth":2,"next":{"title":"Part 43 – Hacking Post-Increment Operator","level":"1.4.43","depth":2,"path":"pages-ua/part-43-hacking-post-increment-operator.md","ref":"pages-ua/part-43-hacking-post-increment-operator.md","articles":[]},"previous":{"title":"Part 41 – Post-Increment Operator","level":"1.4.41","depth":2,"path":"pages-ua/part-41-post-increment-operator.md","ref":"pages-ua/part-41-post-increment-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-42-debugging-post-increment-operator.md","mtime":"2025-08-21T18:12:34.007Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 42 – Debugging Post-Increment Operator","level":"1.4.42","depth":2,"next":{"title":"Part 43 – Hacking Post-Increment Operator","level":"1.4.43","depth":2,"path":"pages-ua/part-43-hacking-post-increment-operator.md","ref":"pages-ua/part-43-hacking-post-increment-operator.md","articles":[]},"previous":{"title":"Part 41 – Post-Increment Operator","level":"1.4.41","depth":2,"path":"pages-ua/part-41-post-increment-operator.md","ref":"pages-ua/part-41-post-increment-operator.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-42-debugging-post-increment-operator.md","mtime":"2025-08-22T10:12:19.499Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2822,30 +2822,30 @@
                                 <section class="normal markdown-section">
                                 
                                 <p>Частина 17 - Хакінг примітивної типової даних типу float</p>
-<p>Для повного змісту змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
+<p>Для повного змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/hacking\_c-\_arm64" target="_blank">https://github.com/mytechnotalent/hacking\_c-\_arm64</a></p>
 <p>Сьогодні ми хакуємо float з попереднього уроку.</p>
 <p>Спочатку оновіть наш radare2 джерельний код.</p>
-<pre spellcheck="false">cd XyZ9PlH1ZuK8
+<pre spellcheck="false">cd radare2
 git pull
-sys/user.XyZ9PlH7ZuK8
+sys/user.sh
 </pre>
 
-<p>Якщо ви раніше не дотримувалися інструкцій, необхідно побудувати radare2 з джерела, щоб це працювало, оскільки вони рідко оновлюють випуски.</p>
+<p>Якщо ви раніше не дотримувалися інструкцій, необхідно побудувати radare2 з джерела, оскільки вони рідко оновлюють випуски.</p>
 <p><a href="https://github.com/radareorg/radare2" target="_blank">https://github.com/radareorg/radare2</a></p>
 <p>Якщо ви не маєте репозиторію, клоніруйте його і дотримуйтесь інструкцій вище.</p>
 <p>Давайте запустимо radare2 у режимі запису.</p>
-<pre spellcheck="false">XyZ9PlH5ZuK8 -w ./0x05_asm64_float_primitive_datatype
+<pre spellcheck="false">radare2 -w./0x05_asm64_float_primitive_datatype
 </pre>
 
 <p>Давайте зробимо аналіз автоматично.</p>
 <pre spellcheck="false">aaa
 </pre>
 
-<p>Пошук головної частини.</p>
+<p>Перейдіть до головної частини.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Переглянути розборку.</p>
+<p>Перегляньте розборку.</p>
 <pre spellcheck="false">v
 </pre>
 
@@ -2854,13 +2854,13 @@ sys/user.XyZ9PlH7ZuK8
 
 </pre>
 
-<p>Нам потрібно змінити дві інструкції тут. Давайте розглянемо дві дуже спеціальні інструкції.</p>
+<p>Нам потрібно змінити дві інструкції. Давайте розглянемо дві дуже спеціальні інструкції.</p>
 <pre spellcheck="false">movz w0, 0x999a
 movk w0, 0x4121, lsl 16
 </pre>
 
-<p>Пам'ятайте з попередньої неділі, що в кінцевому підсумку w0 буде зберігати <em>0x4121999a</em> як <em>lsl</em> переміщає біти в зворотньому порядку байтів.</p>
-<p>Зараз це буде давати float <em>10.1</em> , як ми бачили раніше в попередніх лекціях. Важливо розуміти, що в чиселах з плаваючою комою є <em>мантисса</em> , яка в нашому випадку <em>10</em> і <em>висота</em> яка є <em>1</em> , до якої вони відокремлені ._ яка поєднує їх разом.</p>
+<p>Пам'ятайте з попереднього тижня, що в кінцевому підсумку w0 буде зберігати <em>0x4121999a</em> як <em>lsl</em> переміщає біти в зворотньому порядку байтів.</p>
+<p>Зараз це буде давати float <em>10.1</em> як ми бачили раніше в попередніх уроках. Важливо розуміти, що в чиселах з плаваючою комою є <em>мантисса</em> яка в нашому випадку <em>10</em> і <em>висота</em> яка <em>1</em> до якої вони розділені._ яка поєднує їх разом.</p>
 <p>Отже, щоб отримати <em>10.2</em> нам потрібно буде написати збірку і оновити ці інструкції.</p>
 <pre spellcheck="false">[0x000009b4]&gt; wa movz w0, 0x3333 @0x000009bc
 [0x000009b4]&gt; wa movk w0, 0x4123, lsl 16 @0x000009c0
@@ -2869,85 +2869,75 @@ q
 </pre>
 
 <p>Тепер запустіть бінарник!</p>
-<pre spellcheck="false">kali@kali:~/Documents/0x05_float_primitive_datatype$ ./0x05_float_primitive_datatype
+<pre spellcheck="false">kali@kali:~/Documents/0x05_float_primitive_datatype$./0x05_float_primitive_datatype
 10.2
 </pre>
 
-<p>Я бажаю, щоб ви взяли близько на погляд деякі приклади, які я створив для вас, щоб ви могли зрозуміти, як різні значення призводять до різних результатів. Увага! Результати будуть різними, оскільки адреси будуть різними, тому ваш ASLR буде мати різні значення.</p>
-<pre spellcheck="false">[0x555e6c29c4]&gt; dr w0 = 0x4122999a
-0x4121999a -&gt;0x4122999a
+<p>Я бажаю, щоб ви взяли близько на погляд деякі приклади, які я створив для вас, щоб ви могли зрозуміти, як різні значення призводять до різних результатів. Увага! Результати будуть різними, оскільки ці результати будуть активним сесією відлагодження, тому адреси будуть різними, тому ваш ASLR буде мати різні значення.</p>
+<pre spellcheck="false">[0x555e6c29c4]&gt; dr w0 = 0x4122999a 0x4121999a -&gt;0x4122999a
 [0x555e6c29c4]&gt; dc
 hit breakpoint at: 0x555e6c29c8
 [0x555e6c29c8]&gt; dc
 10.1625
 (238252) Process exited with status=0x0
 
-[0x556215e9c4]&gt; dr w0 = 0x41235555
-0x4121999a -&gt;0x41235555
+[0x556215e9c4]&gt; dr w0 = 0x41235555 0x4121999a -&gt;0x41235555
 [0x556215e9c4]&gt; dc
 hit breakpoint at: 0x556215e9c8
 [0x556215e9c8]&gt; dc
 10.2083
 (238258) Process exited with status=0x0
 
-[0x558216c9c4]&gt; dr w0 = 0x4123599a
-0x4121999a -&gt;0x4123599a
+[0x558216c9c4]&gt; dr w0 = 0x4123599a 0x4121999a -&gt;0x4123599a
 [0x558216c9c4]&gt; dc
 hit breakpoint at: 0x558216c9c8
 [0x558216c9c8]&gt; dc
 10.2094
 (238257) Process exited with status=0x0
 
-[0x55868a79c4]&gt; dr w0 = 0x4123999a
-0x4121999a -&gt;0x4123999a
+[0x55868a79c4]&gt; dr w0 = 0x4123999a 0x4121999a -&gt;0x4123999a
 [0x55868a79c4]&gt; dc
 hit breakpoint at: 0x55868a79c8
 [0x55868a79c8]&gt; dc
 10.225
 (238253) Process exited with status=0x0
 
-[0x55826479c4]&gt; dr w0 = 0x41233333
-0x4121999a -&gt;0x41233333
+[0x55826479c4]&gt; dr w0 = 0x41233333 0x4121999a -&gt;0x41233333
 [0x55826479c4]&gt; dc
 hit breakpoint at: 0x55826479c8
 [0x55826479c8]&gt; dc
 10.2
 (238259) Process exited with status=0x0
 
-[0x55716ab9c4]&gt; dr w0 = 0x4125999a
-0x4121999a -&gt;0x4125999a
+[0x55716ab9c4]&gt; dr w0 = 0x4125999a 0x4121999a -&gt;0x4125999a
 [0x55716ab9c4]&gt; dc
 hit breakpoint at: 0x55716ab9c8
 [0x55716ab9c8]&gt; dc
 10.35
 (238250) Process exited with status=0x0
 
-[0x55880169c4]&gt; dr w0 = 0x412f999f
-0x4121999a -&gt;0x412f999f
+[0x55880169c4]&gt; dr w0 = 0x412f999f 0x4121999a -&gt;0x412f999f
 [0x55880169c4]&gt; dc
 hit breakpoint at: 0x55880169c8
 [0x55880169c8]&gt; dc
 10.975
 (238245) Process exited with status=0x0
 
-[0x559130d9c4]&gt; dr w0 = 0x412ff99e
-0x4121999a -&gt;0x412ff99e
+[0x559130d9c4]&gt; dr w0 = 0x412ff99e 0x4121999a -&gt;0x412ff99e
 [0x559130d9c4]&gt; dc
 hit breakpoint at: 0x559130d9c8
 [0x559130d9c8]&gt; dc
 10.9984
 (238246) Process exited with status=0x0
 
-[0x557b1b39c4]&gt; dr w0 = 0x412fff9e
-0x4121999a -&gt;0x412fff9e
+[0x557b1b39c4]&gt; dr w0 = 0x412fff9e 0x4121999a -&gt;0x412fff9e
 [0x557b1b39c4]&gt; dc
 hit breakpoint at: 0x557b1b39c8
 [0x557b1b39c8]&gt; dc
 10.9999
 (238247) Process exited with status=0x0
 
-[0x55931439c4]&gt; dr w0 = 0x412ffffe
-0x4121999a -&gt;0x412ffffe
+[0x55931439c4]&gt; dr w0 = 0x412ffffe 0x4121999a -&gt;0x412ffffe
 [0x55931439c4]&gt; dc
 hit breakpoint at: 0x55931439c8
 [0x55931439c8]&gt; dc
@@ -2955,8 +2945,8 @@ hit breakpoint at: 0x55931439c8
 (238248) Process exited with status=0x0
 </pre>
 
-<p>Ви вже починаєте бачити шаблони тут. ВИДЕЛІТЬСЯ ВРЕМЯ І ДОСТАТИСЬ ДО ТАКИХ ЗНАЧЕНЬ, щоб краще зрозуміти, як ці значення в кінцевому підсумку потрапляють в регістр s0!</p>
-<p>У наступному урокі ми обговоримо подвійні числа.</p>
+<p>Ви починаєте бачити шаблони тут. ВИДЕЛІТЬСЯ ПОВІДОМЛЕННЯ ІСТИННО ВИПРОБУВАТИ ЦІ ВИРОБИТИ, щоб краще зрозуміти, як ці значення в кінцевому підсумку потрапляють в регістр s0!</p>
+<p>У наступному уроці ми обговоримо подвійні числа.</p>
 
                                 
                                 </section>
@@ -3000,7 +2990,7 @@ hit breakpoint at: 0x55931439c8
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 17 - Hacking Float Primitive Datatype","level":"1.6.17","depth":2,"next":{"title":"Part 18 - Double Primitive Datatype","level":"1.6.18","depth":2,"path":"pages-ua/part-18-double-primitive-datatype.md","ref":"pages-ua/part-18-double-primitive-datatype.md","articles":[]},"previous":{"title":"Part 16 - Debugging Float Primitive Datatype","level":"1.6.16","depth":2,"path":"pages-ua/part-16-debugging-float-primitive-datatype.md","ref":"pages-ua/part-16-debugging-float-primitive-datatype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-17-hacking-float-primitive-datatype.md","mtime":"2025-08-21T18:12:34.002Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 17 - Hacking Float Primitive Datatype","level":"1.6.17","depth":2,"next":{"title":"Part 18 - Double Primitive Datatype","level":"1.6.18","depth":2,"path":"pages-ua/part-18-double-primitive-datatype.md","ref":"pages-ua/part-18-double-primitive-datatype.md","articles":[]},"previous":{"title":"Part 16 - Debugging Float Primitive Datatype","level":"1.6.16","depth":2,"path":"pages-ua/part-16-debugging-float-primitive-datatype.md","ref":"pages-ua/part-16-debugging-float-primitive-datatype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-17-hacking-float-primitive-datatype.md","mtime":"2025-08-22T10:12:19.494Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

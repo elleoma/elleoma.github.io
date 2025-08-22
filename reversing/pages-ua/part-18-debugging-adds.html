@@ -2822,40 +2822,33 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="частина-18-–-дебагування-adds">Частина 18 – Дебагування ADDS</h2>
-<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Для повного змісту змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті.</p>
 <p>Давайте знову переглянемо свій код:</p>
-<p><xyz9plh1zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520230639459.jpg"></img>&lt;/XyZ9PlH2ZuK8&gt;</xyz9plh1zuk8></p>
 <p>Ми знову <strong>додаємо</strong> <strong>100</strong> десятичне в <strong>r1</strong>, <strong>4,294,967,295</strong> в <strong>r2</strong>. Потім ми <strong>додаємо r1</strong> і <strong>r2</strong> і розміщуємо в <strong>r0.</strong></p>
 <p>Давайте дебагуємо:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520149414710.jpg"></img></div>
-
-<p>Ми знову бачимо <strong>adds </strong>, які встановлюють флаги в CPSR. Нам потрібно пам'ятати, коли ми дебагуємо в GDB, значення CPSR знаходиться в шістнадцятковому вигляді. Для того, щоб побачити, які флаги встановлені, нам потрібно перетворити шістнадцятковий на бінарний. Це зробить сенс, коли ми почнемо дебагувати і хакувати цей приклад у майбутніх уроках.</p>
+<p>Ми знову бачимо <strong>додаємо</strong>, яке встановлює флаги в CPSR. Нам потрібно пам'ятати, коли ми дебагуємо в GDB, значення CPSR знаходиться в шістнадцятковому вигляді. Для того, щоб побачити, які флаги встановлені, нам потрібно перетворити шістнадцятковий на бінарний. Це зробить сенс, коли ми почнемо дебагувати і хакувати цей приклад у майбутніх уроках.</p>
 <p>Нам потрібно пам'ятати, що біти 31, 20, 29 і 28 в CPSR вказують наступне:</p>
 <p><strong>Біт 31 - N = Позитивний Флаг</strong></p>
 <p><strong>Біт 30 - Z = Нульовий Флаг</strong></p>
 <p><strong>Біт 29 - C = Флаг переносу</strong></p>
 <p><strong>Біт 28 - V = Флаг переповнення</strong></p>
-<p>Ми бачимо <strong>CPSR</strong> в <strong>10 шістнадцятковому</strong>. <strong>10 шістнадцятковий</strong> в бінарному вигляді <strong>00010000</strong>.</p>
+<p>Ми бачимо <strong>CPSR</strong> в <strong>10 шістнадцятковий</strong>. <strong>10 шістнадцятковий</strong> в бінарному вигляді <strong>00010000</strong>.</p>
 <p>Отже, якщо значення в бінарному вигляді було <strong>00010000</strong> біта 31, 30, 29 і 28 (<strong>NZCV</strong>) це означало б:</p>
 <p><strong>Позитивний Флаг НЕ встановлений</strong></p>
 <p><strong>Нульовий Флаг НЕ встановлений</strong></p>
 <p><strong>Флаг переносу НЕ встановлений</strong></p>
-<p><strong>Флаг переповнення встановлений </strong></p>
+<p><strong>Флаг переповнення встановлений</strong></p>
 <p>У коді вище нічого не встановлює <strong>Флаг переповнення</strong>, але в його природньому стані після виконання цього бінарного він встановлений.</p>
 <p>Давайте пройдемося по програмі:</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520609481159.jpg"></img></div>
-
-<p>Ми бачимо <strong>64 шістнадцятковий</strong> або <strong>100 десятичний </strong>введений в <strong>r1</strong> як очікувалося. Ні зміни в <strong>CPSR</strong>. Давайте крок за кроком.</p>
-<div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520042941149.jpg"></img></div>
-
-<p>Ми бачимо додавання, яке відбувається вище, і помічаємо, що значення в <strong>r0 </strong>є <strong>99 десятичним</strong> після того, як <strong>100 десятичне</strong> і <strong>4294967295 десятичне</strong> були додані разом. Як це можливо? Відповідь дуже проста, ми переповнили 32-бітний регістр <strong>r0</strong> від цієї операції додавання.</p>
+<p>Ми бачимо <strong>64 шістнадцятковий</strong> або <strong>100 десятичний</strong> переміщений в <strong>r1</strong> як очікувалося. Ні зміни в <strong>CPSR</strong>. Давайте крок за кроком.</p>
+<p>Ми бачимо додавання, яке відбувається вище, і помічаємо значення в <strong>r0 </strong>є <strong>99 десятичний</strong> після <strong>100 десятичний</strong> і <strong>4294967295 десятичний</strong> були додані разом. Як це можливо? Відповідь дуже проста, ми переповнили 32-бітний регістр <strong>r0</strong> від цієї операції додавання.</p>
 <p>Якщо ми розглянемо <strong>CPSR</strong> ми тепер бачимо <strong>20000010 шістнадцятковий</strong> або <strong>0010 0000 0000 0000 0000 0000 0001 0000 бінарний</strong>. Ми повинні тільки звернути увагу на найбільш значущі біти, які є <strong>0010</strong>:</p>
 <p>Значення в бінарному вигляді <strong>0010</strong> біта 31, 30, 29 і 28 (<strong>NZCV</strong>) означало б:</p>
 <p><strong>Позитивний Флаг НЕ встановлений</strong></p>
 <p><strong>Нульовий Флаг НЕ встановлений</strong></p>
 <p><strong>Флаг переносу встановлений</strong></p>
 <p><strong>Флаг переповнення НЕ встановлений</strong></p>
-<p>Ми бачимо, що <strong>Флаг переносу</strong> був встановлений, а <strong>Флаг переповнення </strong>не був встановлений. Чому це?</p>
+<p>Ми бачимо, що <strong>Флаг переносу</strong> був встановлений, а <strong>Флаг переповнення</strong> не був встановлений. Чому це?</p>
 <p><strong>Флаг переносу</strong> встановлюється тоді, коли дві <strong>непризнані числа</strong> були додані, і результат більший за регістр, де він зберігається. Ми працюємо з 32-бітним регістром. Також ми працюємо з непризнаними числами, тому <strong>CF</strong> встановлений, а <strong>OF</strong> не був встановлений, оскільки <strong>OF</strong> флаг стосується <strong>знакових чисел</strong>.</p>
 <p>Наступного тижня ми вийдемо на тему Хакування ADDS.</p>
 
@@ -2901,7 +2894,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 18 – Debugging ADDS","level":"1.3.18","depth":2,"next":{"title":"Part 19 – Hacking ADDS","level":"1.3.19","depth":2,"path":"pages-ua/part-19-hacking-adds.md","ref":"pages-ua/part-19-hacking-adds.md","articles":[]},"previous":{"title":"Part 17 - ADDS","level":"1.3.17","depth":2,"path":"pages-ua/part-17-adds.md","ref":"pages-ua/part-17-adds.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-18-debugging-adds.md","mtime":"2025-08-21T18:12:34.002Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 18 – Debugging ADDS","level":"1.3.18","depth":2,"next":{"title":"Part 19 – Hacking ADDS","level":"1.3.19","depth":2,"path":"pages-ua/part-19-hacking-adds.md","ref":"pages-ua/part-19-hacking-adds.md","articles":[]},"previous":{"title":"Part 17 - ADDS","level":"1.3.17","depth":2,"path":"pages-ua/part-17-adds.md","ref":"pages-ua/part-17-adds.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-18-debugging-adds.md","mtime":"2025-08-22T10:12:19.494Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

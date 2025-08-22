@@ -2822,24 +2822,27 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="частина-30---хакінг-asm-3-moving-дані-між-памяттю-та-реєстрами">Частина 30 - Хакінг ASM 3 [Moving Дані між пам'яттю та реєстрами]</h2>
-<p>Для повного змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Для повного змісту змісту всіх уроків, будь ласка, натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті.&nbsp;<a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
 <p>Хай хакаємо!&nbsp;</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520588657073.jpg"></img></div>
 
-<p>Уточнюючи, ми перемістимо значення внутрішнього константного цілого числа 10 десятичне в ECX, як раніше.</p>
+<p>У конкретному випадку ми перемістимо значення внутрішнього константного цілого числа 10 у десятичній системі числення в ECX, як раніше.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520171419386.jpg"></img></div>
 
-<p>Ми відкриваємо GDB у тихому режимі та зупиняємося на _start та виконуємо команди вище.&nbsp;</p>
-<p><xyz9plh10zuk8 class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520145740732.jpg"></img>&lt;/XyZ9PlH11ZuK8&gt;</xyz9plh10zuk8></p>
-<p>Як бачимо, коли ми виводимо інформацію про реєстри, значення ECX становить 0. Хай зробимо si та ще одне si.&nbsp;</p>
-<p><xyz9plh12zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520198737146.jpg"></img>&lt;/XyZ9PlH13ZuK8&gt;</xyz9plh12zuk8></p>
-<p>Як бачите, значення ECX становить 10 десятичне або 0xa в шістнадцятковій системі числення, як раніше. Тепер давайте хакнемо це значення в щось інше.</p>
+<p>Ми відкриваємо GDB у тихому режимі та зупиняємося на _start та виконуємо команди, вказані вище.&nbsp;</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520145740732.jpg"></img></div>
+
+<p>Як ми бачимо, коли ми виводимо інформацію про реєстри, значення ECX дорівнює 0. Хай ми зробимо si та ще одне si.&nbsp;</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520198737146.jpg"></img></div>
+
+<p>Як ви бачите, значення ECX дорівнює 10 у десятичній системі числення або 0xa у шістнадцятковій системі числення, як і раніше в попередньому урокі. Тепер давайте хакнемо це значення в щось інше.</p>
 <p>Хай <strong>set $ecx = 1337 </strong>і зробимо i r.</p>
-<p><xyz9plh14zuk8 class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520588657130.jpg"></img>&lt;/XyZ9PlH15ZuK8&gt;</xyz9plh14zuk8></p>
-<p>Як ви можете побачити, ми змінили значення ECX на 0x539 в шістнадцятковій системі числення або 1337 десятичне.</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-middle"><img src="../imgs/1520588657130.jpg"></img></div>
+
+<p>Як ви можете побачити, ми змінили значення ECX на 0x539 у шістнадцятковій системі числення або 1337 у десятичній системі числення.</p>
 <p>Як я вже зазначав протягом цієї серії. Кожен з цих уроків дуже мініатюрний приклад, щоб ви отримали міцну пам'ять про те, як хакнути різноманітні ситуації, щоб у кінцевому підсумку мати повну майстерність управління процесором.</p>
-<p>Я чекаю побачити всіх вас наступної тижня, коли ми підемо до створення нашого четвертого програми збірки!</p>
-<p>Очікуйте мене наступної тижня, коли ми підемо до створення нашого четвертого програми збірки!</p>
+<p>Я чекаю на всіх вас наступної тижня, коли ми розпочнемо створювати наш четвертий програмний збірник з мови збірки!</p>
+<p>Очікуйте мене наступної тижня!</p>
 
                                 
                                 </section>
@@ -2883,7 +2886,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 30 - ASM Hacking 3 [Moving Data Between Memory And Registers]","level":"1.2.30","depth":2,"next":{"title":"Part 31 - ASM Program 4 [Moving Data Between Registers And Memory]","level":"1.2.31","depth":2,"path":"pages-ua/part-31-asm-program-4-moving-data-between-registers-and-memory.md","ref":"pages-ua/part-31-asm-program-4-moving-data-between-registers-and-memory.md","articles":[]},"previous":{"title":"Part 29 - ASM Debugging 3 [Moving Data Between Memory And Registers]","level":"1.2.29","depth":2,"path":"pages-ua/part-29-asm-debugging-3-moving-data-between-memory-and-registers.md","ref":"pages-ua/part-29-asm-debugging-3-moving-data-between-memory-and-registers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-30-asm-hacking-3-moving-data-between-memory-and-registers.md","mtime":"2025-08-21T18:12:34.005Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 30 - ASM Hacking 3 [Moving Data Between Memory And Registers]","level":"1.2.30","depth":2,"next":{"title":"Part 31 - ASM Program 4 [Moving Data Between Registers And Memory]","level":"1.2.31","depth":2,"path":"pages-ua/part-31-asm-program-4-moving-data-between-registers-and-memory.md","ref":"pages-ua/part-31-asm-program-4-moving-data-between-registers-and-memory.md","articles":[]},"previous":{"title":"Part 29 - ASM Debugging 3 [Moving Data Between Memory And Registers]","level":"1.2.29","depth":2,"path":"pages-ua/part-29-asm-debugging-3-moving-data-between-memory-and-registers.md","ref":"pages-ua/part-29-asm-debugging-3-moving-data-between-memory-and-registers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-30-asm-hacking-3-moving-data-between-memory-and-registers.md","mtime":"2025-08-22T10:12:19.497Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

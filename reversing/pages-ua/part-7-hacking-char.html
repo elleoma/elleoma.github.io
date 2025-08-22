@@ -2821,7 +2821,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="частина-7---хакінг-char">Частина 7 - Хакінг char</h2>
+                                <p>Частина 7 - Хакінг char</p>
 <p>Сьогодні ми хакуємо простий програму char.</p>
 <p>Давайте переглянемо наш код.</p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
@@ -2852,31 +2852,31 @@ int main()&nbsp;
 <pre spellcheck="false">aaaa
 </pre>
 
-<p>Давайте підійдемо до головної частини програми.</p>
+<p>Давайте перейдемо до головної частини програми.</p>
 <pre spellcheck="false">s main
 </pre>
 
-<p>Давайте перейдемо в візуальний режим, натиснувши <strong>V</strong> і потім <strong>p</strong> двічі, щоб потрапити в добре видиму дебагерську панель.</p>
+<p>Давайте перейдемо в візуальний режим, натиснувши <strong>V</strong> і потім <strong>p</strong> двічі, щоб потрапити в добрий дебагерський вигляд.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1616750858178.jpg"></img></div>
 
-<p>У нашому останньому урокі ми розібрали кожну лінію. У цьому випадку ми явно зацікавлені в хакінгу значення 0x78 і зміни цього значення на будь-яке інше. Давайте спробуємо 0x79. Цей простий хак перетворить символ <em>'x'</em> на <em>'y'</em>.</p>
+<p>У нашому останньому урокі ми розбили кожну лінію. Тут ми явно зацікавлені в хакінгу значення 0x78 і зміни цього значення на щось інше. Давайте спробуємо 0x79. Цей простий хак перетворить символ <em>'x'</em> на <em>'y'</em>.</p>
 <pre spellcheck="false">:&gt; wa movs r1, 0x79 @ 0x00000328
 Written 2 byte(s) (movs r1, 0x79) = wx 7921
 </pre>
 
 <p>Давайте перевіримо зміну.</p>
 <pre spellcheck="false">:&gt; pd 1 @ 0x00000328
-│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ; CODE XREF from main @ 0x338
-│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0x00000328&nbsp; &nbsp; &nbsp; 7921 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; movs r1, 0x79 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ; 'y' ; arg1
+│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;; CODE XREF from main @ 0x338
+│ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0x00000328&nbsp; &nbsp; &nbsp; 7921 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; movs r1, 0x79 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;; 'y'; arg1
 </pre>
 
-<p>У цьому випадку наш дебагер навіть повідомляє нам, що воно насправді <em>'y'</em>, а також ми переміщаємо значення hex ascii в 0x79 в <em>r1</em>.</p>
+<p>У цьому випадку наш дебагер навіть повідомляє нам, що воно насправді <em>'y'</em>, а тепер ми переміщаємо значення hex ascii в 0x79 в <em>r1</em>.</p>
 <p>Давайте також хакнемо час очікування на 2000 мс або 2 секунди.</p>
 <pre spellcheck="false">:&gt; wa lsls r0, r0, 3 @ 0x00000332
 Written 2 byte(s) (lsls r0, r0, 3) = wx c000
 </pre>
 
-<p>У цьому випадку ми просто логічно зміщуємо вліво 3 рази, тобто 250 х 2 = 500, 500 х 2 = 1000, 1000 х 2 = 2000.</p>
+<p>У цьому випадку ми просто логічно зміщуємо значення вліво 3 рази, тобто 250 х 2 = 500, 500 х 2 = 1000, 1000 х 2 = 2000.</p>
 <p>Давайте перевіримо.</p>
 <pre spellcheck="false">:&gt; pd 1 @ 0x00000332
 │ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0x00000332&nbsp; &nbsp; &nbsp; c000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; lsls r0, r0, 3
@@ -2886,11 +2886,11 @@ Written 2 byte(s) (lsls r0, r0, 3) = wx c000
 <pre spellcheck="false">./elf2uf2/elf2uf2 0x03_char.elf 0x03_char.uf2
 </pre>
 
-<p>Вставте Pico і переконайтеся, що натискаєте BOOTSEL або використовуйте налаштування, які я надав у частині 2.</p>
+<p>Вставте Піко і переконайтеся, що ви натискаєте кнопку BOOTSEL або використовуйте налаштування, які я надав у частині 2.</p>
 <pre spellcheck="false">cp 0x03_char.uf2 /Volumes/RPI-RP2
 </pre>
 
-<p>Давайте його відобразимо!</p>
+<p>Давайте його побачимо!</p>
 <pre spellcheck="false">screen /dev/tty.usbmodem0000000000001
 </pre>
 
@@ -2904,7 +2904,7 @@ y
 </pre>
 
 <p>Ми бачимо 'y' виводиться кожні 2 секунди!</p>
-<p>У нашому наступному урокі ми обговоримо тип даних int.</p>
+<p>У нашому наступному урокі ми розберемося з типом даних int.</p>
 
                                 
                                 </section>
@@ -2948,7 +2948,7 @@ y
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 7 - Hacking char","level":"1.7.7","depth":2,"next":{"title":"Part 8 - int","level":"1.7.8","depth":2,"path":"pages-ua/part-8-int.md","ref":"pages-ua/part-8-int.md","articles":[]},"previous":{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"path":"pages-ua/part-6-debugging-char.md","ref":"pages-ua/part-6-debugging-char.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-7-hacking-char.md","mtime":"2025-08-21T18:12:34.008Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 7 - Hacking char","level":"1.7.7","depth":2,"next":{"title":"Part 8 - int","level":"1.7.8","depth":2,"path":"pages-ua/part-8-int.md","ref":"pages-ua/part-8-int.md","articles":[]},"previous":{"title":"Part 6 - Debugging char","level":"1.7.6","depth":2,"path":"pages-ua/part-6-debugging-char.md","ref":"pages-ua/part-6-debugging-char.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-7-hacking-char.md","mtime":"2025-08-22T10:12:19.500Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

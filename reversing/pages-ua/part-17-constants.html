@@ -2822,44 +2822,34 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="частина-17---константи">Частина 17 - Константи</h2>
-<p>Для повного змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть обговорені. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Дотепер ми створили, відлагодили та змінили простий рядок ехо в стандартній консолі. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Нам потрібно розширити цей приклад шляхом додавання константи.</p>
-<p>Константа в C++ — це значення, яке не змінюватиметься протягом виконання програми (якщо не змінено). <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Використовується така, що ви маєте оголошення раніше в коді, щоб якщо майбутня архітектура програми коли-небудь зміниться, ви могли змінити константу в одному місці, а не змінювати код у всьому кодовому базі.</p>
-<p>Стандартна практика кодування констант у великих літерах, щоб коли ви побачите її посилання в коді, ви знали, що значення є константою.</p>
-<p>Нам потрібно розпочати наш другий програму в C++, яка називається програмою «Константа». <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Давайте глибше вивчитимемо кожну лінію крок за кроком і побачимо, як ця мова працює. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Ми збережемо цей приклад в файлі <strong>example2.cpp</strong> і збережемо його на нашому пристрої.</p>
-<pre spellcheck="false">#include &lt;iostream&gt;
+<p>Для повного змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
+<p>Дотепер ми створили, відлагодили та змінили простий рядок ехо в стандартній консолі. call ми розширимо цей приклад шляхом додавання константи.</p>
+<p>Константа в C++ — це значення, яке не змінюватиметься протягом виконання програми (якщо не змінено). </p><pre spellcheck="false">#include &lt;iostream&gt;
 &nbsp;
-XyZ9PlH1ZuK8 main(void) {
+int main(void) {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cons tint YEAR = 2017;
 &nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; std::cout &lt;&lt; YEAR &lt;&lt; std::endl;
 &nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;
 }
-</pre>
-
-<p><xyz9plh2zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520149852856.jpg"></img>&lt;/XyZ9PlH3ZuK8&gt;</xyz9plh2zuk8></p>
-<p>Аби скомпільувати цей код, ми просто натиснемо:</p>
-<pre spellcheck="false">g++ example2.cpp -o example2
-</pre>
-
-<p>Далі ми просто натиснемо:</p>
+</pre> використовується так, щоб ви мали оголошення раніше в коді, щоб якщо майбутня архітектура програми коли-небудь зміниться, ви могли переозначити константу в одному місці, а не змінювати код у всьому кодовому базі.<p></p>
+<p>Це стандартна практика кодування наших констант у великих літерах, щоб коли ви побачите її посилання в коді, ви знали, що значення є константою.</p>
+<p>Ми починаємо з нашого другого програми в C++, яка називається програмою «Константа». </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520149852856.jpg"></img></div> давайте підійдемо до кожного рядка крок за кроком і побачимо, як ця мова працює. <pre spellcheck="false">g++ example2.cpp -o example2
+</pre> ми збережемо цей <strong>example2.cpp</strong> і збережемо його на нашому пристрої.<p></p>
+<p>Для компіляції цього ми просто натискаємо:</p>
 <pre spellcheck="false">./example2
 </pre>
 
+<p>Ми просто потім натискаємо:</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520148263310.jpg"></img></div>
 
-<p>УСПІШНО! <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Ми бачимо «<strong>2017</strong>» виведене в стандартний вивід або консолі!</p>
+<p>УСПІШНО! <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a> ми бачимо «<strong>2017</strong>» виведене на стандартний вивід або консоль!</p>
 <p>Давайте розберемо це:</p>
-<p>Ми використовуємо ключове слово <strong>const </strong>, щоб вказати, що це константа, якій ми присвоюємо ціле значення 2017.</p>
-<p>Далі ми використовуємо функцію <strong>cout </strong>, щоб вивести його в стандартний вивід або консолі, і додаємо нову лінію з допомогою функції <strong>endl</strong>.</p>
-<p>Так! <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Наступна неділя ми глибше вивчитимемо Відлагодження Констант.</p>
+<p>Ми використовуємо ключове слово <strong>const </strong>, щоб вказати константу, якій ми присвоюємо ціле значення 2017.</p>
+<p>Ми потім використовуємо функцію <strong>cout </strong>, щоб вивести його на стандартний вивід або консоль, і додаємо нову лінію з допомогою функції <strong>endl</strong>.</p>
+<p>Так! </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520149852856.jpg"></img></div> дуже просто.<p></p>
+<p>Наступна неділя ми підійдемо до Відлагодження Констант.</p>
 
                                 
                                 </section>
@@ -2903,7 +2893,7 @@ XyZ9PlH1ZuK8 main(void) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 17 - Constants","level":"1.4.17","depth":2,"next":{"title":"Part 18 – Debugging Constants","level":"1.4.18","depth":2,"path":"pages-ua/part-18-debugging-constants.md","ref":"pages-ua/part-18-debugging-constants.md","articles":[]},"previous":{"title":"Part 16 - Hacking Hello World","level":"1.4.16","depth":2,"path":"pages-ua/part-16-hacking-hello-world.md","ref":"pages-ua/part-16-hacking-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-17-constants.md","mtime":"2025-08-21T18:12:34.002Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 17 - Constants","level":"1.4.17","depth":2,"next":{"title":"Part 18 – Debugging Constants","level":"1.4.18","depth":2,"path":"pages-ua/part-18-debugging-constants.md","ref":"pages-ua/part-18-debugging-constants.md","articles":[]},"previous":{"title":"Part 16 - Hacking Hello World","level":"1.4.16","depth":2,"path":"pages-ua/part-16-hacking-hello-world.md","ref":"pages-ua/part-16-hacking-hello-world.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-17-constants.md","mtime":"2025-08-22T10:12:19.493Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

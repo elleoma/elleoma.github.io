@@ -2821,7 +2821,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>Частина 9 - Дебагування int</p>
+                                <h2 id="частина-9---дебагування-int">Частина 9 - Дебагування int</h2>
 <p>Сьогодні ми візьмемося за дебагування нашого дуже простого програми int. Давайте переглянемо код.</p>
 <p><strong>0x04_int.c</strong></p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
@@ -2845,10 +2845,10 @@ int main()&nbsp;
 </pre>
 
 <p>Давайте запустимо наш дебагер.</p>
-<pre spellcheck="false">radare2 -w XyZ9PlH11ZuK8 -b 16 0x04_int.XyZ9PlH14ZuK8
+<pre spellcheck="false">radare2 -w arm -b 16 0x04_int.elf
 </pre>
 
-<p>Давайте зробимо аналіз автоматично.</p>
+<p>Давайте зробимо автоматичну аналітику.</p>
 <pre spellcheck="false">aaaa
 </pre>
 
@@ -2857,16 +2857,17 @@ int main()&nbsp;
 </pre>
 
 <p>Давайте перейдемо в візуальний режим, натиснувши <strong>V</strong> і потім <strong>p</strong> двічі, щоб потрапити до хорошого дебагерського перегляду.</p>
-<p><xyz9plh12zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1617350497179.jpg"></img>&lt;/XyZ9PlH13ZuK8&gt;</xyz9plh12zuk8></p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1617350497179.jpg"></img></div>
+
 <p>Ми починаємо встановлювати значення повернення головної частини програми.</p>
 <pre spellcheck="false">push {r4, lr}
 </pre>
 
-<p>Ми викликаємо стандартну ініціалізацію I/O.</p>
-<pre spellcheck="false">XyZ9PlH15ZuK8 sym.stdio_init_all
+<p>Ми викликаємо стандартну I/O ініціалізацію.</p>
+<pre spellcheck="false">bl sym.stdio_init_all
 </pre>
 
-<p>Далі ми завантажуємо формат модифікатор %d у <em>r4</em>.</p>
+<p>Далі ми завантажуємо форматний модифікатор %d у <em>r4</em>.</p>
 <pre spellcheck="false">ldr r4, [0x0000033c]
 </pre>
 
@@ -2875,12 +2876,12 @@ int main()&nbsp;
 %d
 </pre>
 
-<p>Далі ми завантажуємо наш int <em>'40'</em> у <em>r1</em>, який є <em>0x28</em> у вигляді шістнадцяткового числа.</p>
+<p>Далі ми завантажуємо int значення '<em>40'</em> у <em>r1</em>, яке є <em>0x28</em> у шістнадцятковій системі числення.</p>
 <pre spellcheck="false">movs r1, 0x28
 </pre>
 
 <p>Ми можемо перевірити це.</p>
-<pre spellcheck="false">:&gt; ? 0x28
+<pre spellcheck="false">:&gt;? 0x28
 int32 &nbsp; 40
 uint32&nbsp; 40
 hex &nbsp; &nbsp; 0x28
@@ -2895,32 +2896,32 @@ binary&nbsp; 0b00101000
 ternary 0t1111
 </pre>
 
-<p>Далі ми переміщаємо формат модифікатор у <em>r0</em>.</p>
+<p>Далі ми переміщаємо форматний модифікатор у <em>r0</em>.</p>
 <pre spellcheck="false">movs r0, r4&nbsp;
 </pre>
 
-<p>Далі ми здійснюємо стрибок на довгу відстань до обгортки printf і викликаємо її.</p>
-<pre spellcheck="false">XyZ9PlH16ZuK8 sym.__wrap_printf
+<p>Далі ми здійснюємо довгий стрибок до printf обгортки і викликаємо її.</p>
+<pre spellcheck="false">bl sym.__wrap_printf
 
 </pre>
 
-<p>Далі ми переміщаємо 250 у вигляді десятичного числа або 0xfa у вигляді шістнадцятного числа у <em>r0</em>.</p>
+<p>Далі ми переміщаємо 250 у десятковій системі числення або 0xfa у шістнадцятковій системі числення у <em>r0</em>.</p>
 <pre spellcheck="false">movs r0, 0xfa
 </pre>
 
-<p>Далі ми переміщаємо 250 у вигляді десятичного числа, яке ми знаємо, що після двох логічних зміщень вліво буде 1,000 у вигляді десятичного числа або 0xfa у вигляді шістнадцятного числа у <em>r0</em>.</p>
+<p>Далі ми переміщаємо 250 у десятковій системі числення, яке ми знаємо, що після двох логічних зміщень вліво буде 1,000 у десятковій системі числення або 0xfa у шістнадцятковій системі числення у <em>r0</em>.</p>
 <pre spellcheck="false">lsls r0, r0, 2
 </pre>
 
 <p>Далі ми викликаємо функцію sleep_ms.</p>
-<pre spellcheck="false">XyZ9PlH17ZuK8 sym.sleep_ms
+<pre spellcheck="false">bl sym.sleep_ms
 </pre>
 
-<p>Далі ми продовжимо цикл while нескінченно.</p>
+<p>Далі ми продовжуємо цикл while до нескінченності.</p>
 <pre spellcheck="false">b 0x328
 </pre>
 
-<p>У наступному урокі ми навчимося хакувати цю дуже просту бінарну програму.</p>
+<p>У наступному урокі ми навчимося хакувати цей дуже простий байнері.</p>
 
                                 
                                 </section>
@@ -2964,7 +2965,7 @@ ternary 0t1111
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 9 - Debugging int","level":"1.7.9","depth":2,"next":{"title":"Part 10 - Hacking int","level":"1.7.10","depth":2,"path":"pages-ua/part-10-hacking-int.md","ref":"pages-ua/part-10-hacking-int.md","articles":[]},"previous":{"title":"Part 8 - int","level":"1.7.8","depth":2,"path":"pages-ua/part-8-int.md","ref":"pages-ua/part-8-int.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-9-debugging-int.md","mtime":"2025-08-21T18:12:34.009Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 9 - Debugging int","level":"1.7.9","depth":2,"next":{"title":"Part 10 - Hacking int","level":"1.7.10","depth":2,"path":"pages-ua/part-10-hacking-int.md","ref":"pages-ua/part-10-hacking-int.md","articles":[]},"previous":{"title":"Part 8 - int","level":"1.7.8","depth":2,"path":"pages-ua/part-8-int.md","ref":"pages-ua/part-8-int.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-9-debugging-int.md","mtime":"2025-08-22T10:12:19.500Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

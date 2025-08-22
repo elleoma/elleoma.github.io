@@ -2823,34 +2823,59 @@
                                 
                                 <h2 id="частина-20-–-перемінні-характерів">Частина 20 – Перемінні Характерів</h2>
 <p>Для повного змісту всіх уроків натисніть нижче, оскільки це надасть вам короткий зміст кожного уроку, а також теми, які будуть розглянуті. <a href="https://github.com/mytechnotalent/Reverse-Engineering-Tutorial" target="_blank">https://github.com/mytechnotalent/Reverse-Engineering-Tutorial</a></p>
-<p>Наступний етап нашої подорожі – це змінні характерів. strings, з яким ми вже працювали, відрізняється тим, що тільки один байт даних займає один символ.</p>
-<p>Увага! Коли ми працюємо з будь-якими даними символів, ми працюємо з буквально двома шістнадцятковими цифрами, які є шістнадцятковим кодом ASCII, який представляє справжній символ, який ми бачимо на своїх відповідно терміналі.</p>
+<p>Наступний етап нашої подорожі – це змінні характерів. strings, яких ми вже розглядали раніше, змінна характеру займає лише один байт даних.</p>
+<p>Увага! Коли ми працюємо з будь-якою інформацією характерів, ми працюємо з буквально двома шістнадцятковими цифрами, які є шістнадцятковим кодом ASCII, який представляє справжній символ, який ми бачимо на своїх термінальних пристроях.</p>
 <p>Пам'ятайте, кожна шістнадцяткова цифра має довжину 4 біта. </p><pre spellcheck="false">#include &lt;iostream&gt;<p></p>
 <p>&nbsp;</p>
-<p>XyZ9PlH2ZuK8 main(void) {</p>
+<p>int main(void) {</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char yes_no = ‘n’;</p>
 <p>&nbsp;</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; std::cout &lt;&lt; yes_no &lt;&lt; std::endl;</p>
 <p>&nbsp;</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</p>
 <p>}
-&lt;/pre&gt; два шістнадцяткові цифри мають довжину 8 біта або 1 байт.</p>
-<p>У підсумку кожен символ перекладається в шістнадцятковий код ASCII, який розуміє процесор. <xyz9plh3zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520190636660.jpg"></img>&lt;/XyZ9PlH4ZuK8&gt; значення <strong>n</strong> становить <strong>0x6e</strong> шістнадцятковий або <strong>110</strong> десятковий. <xyz9plh5zuk8 class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520211586776.jpg"></img>&lt;/XyZ9PlH6ZuK8&gt; ви можете переглянути будь-яку таблицю ASCII, щоб побачити, звідки ми отримали цей значення. /example3 це буде дуже корисно на наступному уроку.</xyz9plh5zuk8></xyz9plh3zuk8></p>
-<p>Ми починаємо з нашим третім програмою в C++, яка називається програмою «Перемінна Характерів». call давайте підійдемо до кожного рядка крок за кроком і побачимо, як працює цей мову. XyZ9PlH12ZuK8 ми використовуватимемо приклад example3.cpp і збережемо його на нашому пристрої.</p>
-<p>XyZ9PlH13ZuK8</p>
-<p>XyZ9PlH14ZuK8</p>
+&lt;/pre&gt;, тому дві шістнадцяткові цифри мають довжину 8 біта або 1 байт. </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520190636660.jpg"></img></div><p></p>
+<p>У підсумку кожен символ перекладається в шістнадцятковий код ASCII, який розуміє процесор. call значення <strong>n</strong> становить <strong>0x6e</strong> шістнадцятковий або <strong>110</strong> десятковий. </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520211586776.jpg"></img></div> ви можете переглянути будь-яку таблицю ASCII, щоб побачити, звідки ми отримали цей значення. /example3 це буде дуже корисно на наступному уроку.<p></p>
+<p>Ми починаємо з нашою третьою програмою на C++, яка називається програмою змінної характеру. </p><pre spellcheck="false">#include &lt;iostream&gt;<p></p>
+<p>&nbsp;</p>
+<p>int main(void) {</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char yes_no = ‘n’;</p>
+<p>&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; std::cout &lt;&lt; yes_no &lt;&lt; std::endl;</p>
+<p>&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</p>
+<p>}
+&lt;/pre&gt; Давайте увійдемо в неї і розіб'ємо кожну рядок крок за кроком, щоб побачити, як ця мова працює. </p><div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520190636660.jpg"></img></div> ми використовуватимемо приклад example3.cpp і збережемо його на нашому пристрої.<p></p>
 <p>Для компіляції цього ми просто набираємо:</p>
 <p>g++ example3.cpp -o example3</p>
-<p>Далі ми просто набираємо:</p>
-<p>.XyZ9PlH15ZuK8</p>
-<p>XyZ9PlH16ZuK8</p>
-<p>УСПІШНО! XyZ9PlH17ZuK8 ми бачимо «<strong>n</strong>» надруковано в стандартному виході або терміналі!</p>
+<p>Далі ми просто набираємо:./example3</p>
+<div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1520211586776.jpg"></img></div>
+
+<p>Успіх! </p><pre spellcheck="false">#include &lt;iostream&gt;<p></p>
+<p>&nbsp;</p>
+<p>int main(void) {</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char yes_no = ‘n’;</p>
+<p>&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; std::cout &lt;&lt; yes_no &lt;&lt; std::endl;</p>
+<p>&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</p>
+<p>}
+&lt;/pre&gt; ми бачимо «<strong>n</strong>» надруковано в стандартному виході або терміналі!</p>
 <p>Давайте розберемо це:</p>
-<p>Ми використовуємо ключове слово <strong>char </strong>, щоб вказати на змінну характерів, якій ми присвоюємо значення <strong>n</strong>.</p>
-<p>Далі ми використовуємо функцію <strong>cout </strong>, щоб надрукувати його в стандартний вивід або терміналі, і додаємо нову строку з допомогою функції <strong>endl</strong>.</p>
-<p>Так! XyZ9PlH18ZuK8 дуже просто.</p>
-<p>Наступного тижня ми підійдемо до Дебагування Перемінних Характерів.</p>
-</pre>
+<p>Ми використовуємо ключове слово <strong>char </strong>, щоб вказати змінну характеру, якій ми присвоюємо значення <strong>n</strong>.</p>
+<p>Далі ми використовуємо функцію <strong>cout </strong>, щоб надрукувати його в стандартний вивід або термінал, і додати нову строку з допомогою функції <strong>endl</strong>.</p>
+<p>Так! </p><pre spellcheck="false">#include &lt;iostream&gt;<p></p>
+<p>&nbsp;</p>
+<p>int main(void) {</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char yes_no = ‘n’;</p>
+<p>&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; std::cout &lt;&lt; yes_no &lt;&lt; std::endl;</p>
+<p>&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</p>
+<p>}
+&lt;/pre&gt; дуже просто.</p>
+<p>Наступного тижня ми увійдемо в Розробку Змінних Характерів.</p>
+</pre></pre></pre></pre>
                                 
                                 </section>
                             
@@ -2893,7 +2918,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 20 – Character Variables","level":"1.4.20","depth":2,"next":{"title":"Part 21 – Debugging Character Variables","level":"1.4.21","depth":2,"path":"pages-ua/part-21-debugging-character-variables.md","ref":"pages-ua/part-21-debugging-character-variables.md","articles":[]},"previous":{"title":"Part 19 – Hacking Constants","level":"1.4.19","depth":2,"path":"pages-ua/part-19-hacking-constants.md","ref":"pages-ua/part-19-hacking-constants.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-20-character-variables.md","mtime":"2025-08-21T18:12:34.003Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 20 – Character Variables","level":"1.4.20","depth":2,"next":{"title":"Part 21 – Debugging Character Variables","level":"1.4.21","depth":2,"path":"pages-ua/part-21-debugging-character-variables.md","ref":"pages-ua/part-21-debugging-character-variables.md","articles":[]},"previous":{"title":"Part 19 – Hacking Constants","level":"1.4.19","depth":2,"path":"pages-ua/part-19-hacking-constants.md","ref":"pages-ua/part-19-hacking-constants.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-20-character-variables.md","mtime":"2025-08-22T10:12:19.495Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

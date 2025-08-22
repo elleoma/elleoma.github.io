@@ -2822,7 +2822,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="частина-10---хакінг-int">Частина 10 - Хакінг int</h2>
-<p>Сьогодні ми хакуємо наш простий int програму. Давайте переглянемо код.</p>
+<p>Сьогодні ми хакуємо нашу просту int програму. Давайте переглянемо код.</p>
 <p><strong>0x04_int.c</strong></p>
 <pre spellcheck="false">#include &lt;stdio.h&gt;
 #include "pico/stdlib.h"
@@ -2845,7 +2845,7 @@ int main()&nbsp;
 </pre>
 
 <p>Давайте запустимо наш дебагер.</p>
-<pre spellcheck="false">radare2 -w arm -b 16 0x04_int.XyZ9PlH10ZuK8
+<pre spellcheck="false">radare2 -w arm -b 16 0x04_int.elf
 </pre>
 
 <p>Давайте зробимо аналіз автоматично.</p>
@@ -2859,13 +2859,13 @@ int main()&nbsp;
 <p>Давайте перейдемо в візуальний режим, натиснувши <strong>V</strong> і потім <strong>p</strong> двічі, щоб потрапити до хорошого дебагерського перегляду.</p>
 <div class="slate-resizable-image-embed slate-image-embed__resize-full-width"><img src="../imgs/1617616216893.jpg"></img></div>
 
-<p>Ми почнемо з хакування int значення, яке ми знаємо, що воно дорівнює <em>40</em> у десятичній системі числення або <em>28</em> у шістнадцятковій системі числення.</p>
+<p>Ми почнемо з зміни int значення, яке ми знаємо, що воно дорівнює <em>40</em> у десятичній системі числення або <em>28</em> у шістнадцятковій системі числення.</p>
 <pre spellcheck="false">:&gt; wa movs r1, 0x30 @ 0x00000328
 Written 2 byte(s) (movs r1, 0x30) = wx 3021
 </pre>
 
-<p>У цьому місці ми бачимо <em>0x30</em>, який дорівнює <em>48</em> у десятичній системі числення.</p>
-<pre spellcheck="false">:&gt; ? 0x30
+<p>У цьому місці ми бачимо, що <em>0x30</em> дорівнює <em>48</em> у десятичній системі числення.</p>
+<pre spellcheck="false">:&gt;? 0x30
 int32 &nbsp; 48
 uint32&nbsp; 48
 hex &nbsp; &nbsp; 0x30
@@ -2880,8 +2880,8 @@ binary&nbsp; 0b00110000
 ternary 0t1210
 </pre>
 
-<p>Також ми бачимо, що <em>0xfa</em>, яке ми знаємо, що воно дорівнює <em>250</em> у десятичній системі числення, є нашою 1/4 мілісекундною затримкою, яка при зміщенні вліво двічі, збільшується і стає <em>1000</em> у десятичній системі числення для затримки на 1 секунду.</p>
-<pre spellcheck="false">:&gt; ? 0xfa
+<p>Також ми бачимо, що <em>0xfa</em>, яке ми знаємо, що воно дорівнює <em>250</em> у десятичній системі числення, є нашим 1/4 мілісекундним затримкою, яка при зміщенні вліво двічі, збільшується і стає <em>1000</em> у десятичній системі числення для затримки на 1 секунду.</p>
+<pre spellcheck="false">:&gt;? 0xfa
 int32 &nbsp; 250
 uint32&nbsp; 250
 hex &nbsp; &nbsp; 0xfa
@@ -2896,13 +2896,13 @@ binary&nbsp; 0b11111010
 ternary 0t100021
 </pre>
 
-<p>Давайте хакнемо його на <em>50</em> у десятичній системі числення.</p>
+<p>Давайте змінимо його на <em>50</em> у десятичній системі числення.</p>
 <pre spellcheck="false">:&gt; wa movs r0, 0x32 @ 0x00000330
 Written 2 byte(s) (movs r0, 0x32) = wx 3220
 </pre>
 
 <p>Ми бачимо, що воно насправді дорівнює <em>50</em> у десятичній системі числення.</p>
-<pre spellcheck="false">:&gt; ? 0x32
+<pre spellcheck="false">:&gt;? 0x32
 int32 &nbsp; 50
 uint32&nbsp; 50
 hex &nbsp; &nbsp; 0x32
@@ -2917,24 +2917,24 @@ binary&nbsp; 0b00110010
 ternary 0t1212
 </pre>
 
-<p>Давайте також змішаємо його лише вліво один раз, щоб воно перетворилося на <em>100</em> при зміщенні вліво лише один раз.</p>
+<p>Давайте також змішаємо його лише вліво один раз, щоб воно перетворилося на <em>100</em> у десятичній системі числення після зміщення лише вліво один раз.</p>
 <pre spellcheck="false">:&gt; wa lsls r0, r0, 1 @ 0x00000332
 Written 2 byte(s) (lsls r0, r0, 1) = wx 4000
 </pre>
 
-<p>Тепер у нас залишається тільки вийти і перетворити нашу <strong>.elf</strong> на <strong>.uf2</strong>!</p>
-<pre spellcheck="false">./elf2uf2/elf2uf2 0x04_int.XyZ9PlH12ZuK8 0x04_int.uf2
+<p>Тепер у нас залишається лише вийти і перетворити нашу <strong>.elf</strong> на <strong>.uf2</strong>!</p>
+<pre spellcheck="false">./elf2uf2/elf2uf2 0x04_int.elf 0x04_int.uf2
 </pre>
 
 <p>Вставте Піко і переконайтеся, що ви натискаєте кнопку BOOTSEL або використовуєте налаштування, які я надав у частині 2.</p>
 <pre spellcheck="false">cp 0x04_int.uf2 /Volumes/RPI-RP2
 </pre>
 
-<p>Давайте його відобразимо!</p>
+<p>Давайте побачимо його!</p>
 <pre spellcheck="false">screen /dev/tty.usbmodem0000000000001
 </pre>
 
-<p>АХА, так!</p>
+<p>АХА!</p>
 <pre spellcheck="false">48
 48
 48
@@ -2957,8 +2957,8 @@ Written 2 byte(s) (lsls r0, r0, 1) = wx 4000
 48
 </pre>
 
-<p>У цьому місці ми бачимо, що ми його хакнули на <em>48</em> у десятичній системі числення, і воно друкує кожні 100 мілісекунд!</p>
-<p>У наступній лекції ми будуть займатися плаваючими точками та особливим чином, яким Піко обробляє їх, оскільки воно не має співпроцесора.</p>
+<p>У цьому місці ми бачимо, що ми змінили його на <em>48</em> у десятичній системі числення, і воно друкує кожні 100 мілісекунд!</p>
+<p>У наступній лекції ми розберемося з плаваючими точками і особливим чином, яким Піко обробляє їх, оскільки воно не має співпроцесора.</p>
 
                                 
                                 </section>
@@ -3002,7 +3002,7 @@ Written 2 byte(s) (lsls r0, r0, 1) = wx 4000
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Part 10 - Hacking int","level":"1.7.10","depth":2,"next":{"title":"Part 11 - float","level":"1.7.11","depth":2,"path":"pages-ua/part-11-float.md","ref":"pages-ua/part-11-float.md","articles":[]},"previous":{"title":"Part 9 - Debugging int","level":"1.7.9","depth":2,"path":"pages-ua/part-9-debugging-int.md","ref":"pages-ua/part-9-debugging-int.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-10-hacking-int.md","mtime":"2025-08-21T18:12:34.000Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-21T18:12:43.173Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Part 10 - Hacking int","level":"1.7.10","depth":2,"next":{"title":"Part 11 - float","level":"1.7.11","depth":2,"path":"pages-ua/part-11-float.md","ref":"pages-ua/part-11-float.md","articles":[]},"previous":{"title":"Part 9 - Debugging int","level":"1.7.9","depth":2,"path":"pages-ua/part-9-debugging-int.md","ref":"pages-ua/part-9-debugging-int.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","-lunr","-highlight"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"fontsettings":{"theme":"white","family":"sans","size":2},"search":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Переклад українською - @elleoma","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"DejaVu Sans","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":36,"bottom":36},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"version":"1.0","language":"Українська"},"title":"Зворотна інженерія для всіх!","language":"uk","gitbook":"*","description":"Комплексний посібник з зворотної інженерії українською мовою","direction":"ltr"},"file":{"path":"pages-ua/part-10-hacking-int.md","mtime":"2025-08-22T10:12:19.492Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-08-22T10:12:28.976Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
