@@ -25,40 +25,22 @@
 
       <main>
         <section class="markdown-container">
-          <img src="../pfp.jpg" class="align-to-right" alt="elleoma" width="200" />
-          <p>I’m a Ukrainian student and a unix/linux & open-source enthusiast, trying to get into cybersecurity, gain
-            some practical skills.</p>
+          <img src="pfp.jpg" class="align-to-right" alt="elleoma" width="200" />
+          <p>I’m a Ukrainian student and a unix/linux &amp; open-source enthusiast</p>
+          <p>Specialized in Cybersecurity, Penetration Testing, Red-Teaming, Bug-Bounty hunting</p>
 
           <h2>My skills are:</h2>
           <ul>
             <li>Cybersecurity</li>
             <li>Penetration testing</li>
-            <li>Low-level programming: C, Rust, Assembly (RISC-V, x86-64), C++, Zig</li>
+            <li>Low-level programming: C/C++, Assembly (RISC-V, x86-64, ARM), </li>
+            <li>Malware analysis/development</li>
+            <li>Reverse engineering (IDA, Ghidra, Binary Ninja)</li>
             <li>Self-hosting</li>
-            <li>Malware developmnet</li>
-            <li>Reverse engineering (IDA, Ghidra, NinjaBinary)</li>
-            <li>A little bit of 3D</li>
-            <li>A little bit of game development</li>
+            <li>DevOps</li>
+            <li>A little bit of 3D (Blender)</li>
+            <li>A little bit of game development (Unity, UE5)</li>
           </ul>
-
-          <hr />
-
-          <h2>Some projects I have</h2>
-          <h2><a class="post-title" href="https://github.com/elleoma/facinus" target="_blank">Facinus</a></h2>
-          <p>Since our college switched from Windows to Ubuntu, I had a cool idea to remotely control my classroom PCs.
-          </p>
-          <p>I discovered <a href="https://gsocket.io/" target="_blank">gsocket.io</a> and started developing a tool that deploys a local web admin panel to
-            collect logs from connected clients.</p>
-          <p>I used an Ubuntu VM in QEMU and Bash scripted everything with some help of AI.</p>
-
-          <h3>OS-in-1000-lines</h3>
-          <p><a class="post-title" href="https://github.com/elleoma/os-in-1000-lines" target="_blank">OS Repo</a></h2>
-          <p>My implementation of <a href="https://operating-system-in-1000-lines.vercel.app/en">Operating System in 1000 lines</a> by <a href="https://www.shuwasystem.co.jp/author/a269003.html">Shinya Yanagita.</a></p>
-          <p>A small operating system written from scratch for RISC-V CPU architecture.</p>
-          <p>This project will have basic context switching, paging, user mode, a command-line shell, a disk device driver, and file read/write operations in C.</p>
-          <p>And also I'll try to add some more functionality to it.</p>
-          <p>Right now I'm still working on basic stuff before implementing something new.</p>
-          <p>I'm still learning C and Assembly, the RISC-V instruction set is new to me.</p>
 
           <hr />
 
@@ -67,14 +49,56 @@
             dual-booted next to Windows, learning through trial and error.</p>
           <p>Eventually I spent more time on Linux, moved to KDE, configured everything myself, riced my terminal. Later
             switched to Arch and Hyprland.</p>
-          <p>I still have lots to learn, and I’d love to document all the tools and techniques I come across.</p>
+          <p>Have experience with web penetration testing as well as Red Teaming in general</p>
+          <p>Know and use in practice many different tools/tecniques for tests, favorite ones: </p>
+
+            <ul>
+                <li>Reconnaissance: ffuf, subfinder, httpx</li>
+                <li>Web pentest: Burp Suite (OWASP ZAP), dalfom, curl, intersect, manual scripting (with python)</li>
+                <li>Lateral movement: impacket (windows), linpeas.sh (linux), bloodhound, netcat, chisel and maany-many more.</li>
+                <li>Reverse engineering &amp; Binary exploitation: mainly Ghidra, IDA Pro, strace, strings, gdb etc.</li>
+                <li>Persistence: gsocket, segfault (thc.org), process hiding etc.</li>
+            </ul>
+          
+          <p>There's still big room to improve since there's insane amount of different fields to explore and that's what I'm trying to do.</p>
 
           <h3>HackTheBox</h3>
           <h4><a class="post-title" href="https://app.hackthebox.com/profile/1915061" target="_blank">My HTB profile</a></h4>
-          <p>HTB gave me that initial hands-on boost I needed. As of right now I’ve solved more than 50 boxes (3 of them
-            “Insane”: DarkCorp, Mist, and MassGarden).</p>
+          <p>HTB gave me that initial hands-on boost I needed. As of right now I’ve solved more than 50 boxes (4 of them
+            “Insane”: DarkCorp, Mist, MassGarden and Cobblestone).</p>
+          <p>I like to solve different challeneges there, especially reverse engineering, web and pwn.</p>
           <p>Even though I sometimes rely on writeups and walkthroughs, I learn a lot from the infrastructure behind
             each box.</p>
+
+          <hr />
+
+          <h2>Some projects I have</h2>
+
+          <h3>Facinus</h3>
+
+          <a class="post-title" href="https://github.com/elleoma/facinus" target="_blank">Repo</a>
+          <p>Since our college switched from Windows to Ubuntu, I had a cool idea to remotely control my classroom PCs.
+          </p>
+          <p>I discovered <a href="https://gsocket.io/" target="_blank">gsocket.io</a> and started developing a tool that deploys a local web admin panel to
+            collect logs from connected clients.</p>
+          <p>I used an Ubuntu VM in QEMU and Bash scripted everything with some help of AI.</p>
+
+          <h3>OS-in-1000-lines</h3>
+          <p><a class="post-title" href="https://github.com/elleoma/os-in-1000-lines" target="_blank">Repo</a>
+          <p>My implementation of <a href="https://operating-system-in-1000-lines.vercel.app/en">Operating System in 1000 lines</a> by <a href="https://www.shuwasystem.co.jp/author/a269003.html">Shinya Yanagita.</a></p>
+          <p>A small operating system written from scratch for RISC-V CPU architecture.</p>
+          <p>This project will have basic context switching, paging, user mode, a command-line shell, a disk device driver, and file read/write operations in C.</p>
+          <p>And also I'll try to add some more functionality to it.</p>
+          <p>Right now I'm still working on basic stuff before implementing something new.</p>
+          <p>I'm still learning C and Assembly, the RISC-V instruction set is new to me.</p>
+
+          <h3>Reverse engineering book translation</h3> 
+          <p><a class="post-title" href="https://github.com/elleoma/reversing-ukrainian/tree/ukrainian-translation" target="_blank">Repo</a>
+          <p><a class="post-title" href="https://elleoma.github.io/reversing/" target="_blank">Book translation</a>
+          <p>This is a book from <a href="https://twitter.com/mytechnotalent" target="_blank">@mytechnotalent</a> (English version <a href="https://0xinfection.github.io/reversing " target="_blank">here</a>) that I decided would be cool to translate in Ukrainian with automated python script and LLM hosted locally</p>
+          <p>I generally moved from outdated gitbook to honkit for publishing this as an E-book, created a python script for
+            parsing markdown files and translating using LTEngine and Llama LLM (8b params) hosted locally.</p>
+          <p>I was also able to make an automatic push to my github pages on each update</p>
 
           <hr />
 
@@ -82,14 +106,15 @@
           <p>Bug bounty is fascinating — legally hacking in-scope apps and possibly earning money.</p>
           <p>But as a beginner, it’s tough. Recon is time-consuming, and rewards don’t always justify the effort unless
             you're really skilled.</p>
-          <p>I’ve tried a few programs but haven't found any serious vulnerabilities yet. I plan to shift my focus
-            toward learning specific attack techniques and improving my skills first.</p>
+          <p>But there is a big amount of knowledge I'm gainining, when exploring all the different aprroaches these companies use to secure themselves.
+            It doesn't always bring financial benefits, but it always provides practical experience working with real targets.</p>
+          <p>I like to compare bug-bounty to a chess game: you have several 'openings' but with each step you open more available steps to play around.</p>
 
           <hr />
 
           <p dir="auto">
             <a target="_blank" rel="noopener noreferrer nofollow" href="https://elleoma.github.io/self-host.png">
-              <img src="../self-host.png" alt="My self-hosting setup" style="width: 280px;" class="align-to-right">
+              <img src="self-host.png" alt="My self-hosting setup" style="width: 280px;" class="align-to-right">
             </a>
           </p>
           <h2>Self-hosting</h2>
