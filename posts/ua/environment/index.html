@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>elleoma@logs ~ > ls</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <base href="/">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="/posts/styles-blog.css">
+</head>
+
+<body>
+  <div class="scroll-container">
+    <div class="center-window">
+      <header>
+        <h1>elleoma@logs ~ > ls</h1>
+          <nav>
+            <a href="/index.html">./home</a>
+            <a href="/projects.html">./projects</a>
+            <a href="/about.html">./about</a>
+            <a href="/blog.html">./blog</a>
+            <a href="/contact.html">./contact</a>
+          </nav>
+      </header>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+      <div id="content" class="markdown-container"></div>
+
+      <script type="module">
+        fetch('./posts/ua/environment/report.md')
+          .then(res => res.text())
+          .then(md => {
+            const html = marked.parse(md);
+            document.getElementById('content').innerHTML =
+              html.replace(/src="imgs\//g, 'src="./posts/en/environment/imgs/');
+
+            document.querySelectorAll('pre code').forEach(block => {
+              hljs.highlightElement(block);
+            });
+          });
+      </script>
+
+      <footer>
+        <p><code>made with love ❤️</code></p>
+      </footer>
+    </div>
+  </div>
+</body>
+
+</html>
