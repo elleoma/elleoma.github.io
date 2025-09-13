@@ -483,7 +483,7 @@ root-bash-5.2# cd /root
 root-bash-5.2# whoami
 root
 root-bash-5.2# cat root.txt
-9eb852891e2a5a9bcca6604932c09ffa
+********************************
 root-bash-5.2#
 ```
 
