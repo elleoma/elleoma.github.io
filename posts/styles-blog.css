@@ -6,6 +6,24 @@
   --link: #83a598; /* Gruvbox blue */
   --accent: #d79921; /* Gruvbox yellow */
   --muted: #a89984; /* Gruvbox light gray */
+  font-size: 16px;
+}
+
+.scale-root {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  :root {
+    font-size: 14px;
+  }
+  .scroll-container {
+    padding: 1.25rem 0.75rem;
+  }
+  .terminal-container { width: 95%; }
 }
 
 html, body {
@@ -14,10 +32,10 @@ html, body {
   height: auto;
   min-height: 100vh;
   overflow-y: auto;
-  font-size: 16px;
   font-family: 'Fira Code', monospace;
   background: var(--bg);
   color: var(--fg);
+  line-height: 1.6;
 }
 
 body {
@@ -38,20 +56,34 @@ pre code {
   display: block;
   background: #1d2021; /* darker than --bg for contrast */
   color: #ebdbb2;
-  padding: 1rem;
+  padding: 1.1rem;
   border: 2px dashed var(--border);
+  border-color: var(--accent);
   border-radius: 6px;
   font-size: 0.9rem;
-  line-height: 1.4;
+  line-height: 1.6;
   overflow-x: auto;
 }
 
 code {
   background: var(--panel);
-  padding: 0.1em 0.3em;
+  padding: 0.2em 0.4em;
   border-radius: 2px;
   font-size: 0.95em;
   color: var(--accent);
+}
+
+header h1,
+.post-title,
+.markdown-container p,
+.markdown-container h1,
+.markdown-container h2,
+.markdown-container h3,
+.markdown-container h4,
+.markdown-container h5,
+.markdown-container h6 {
+  margin-top: 0.6rem;
+  margin-bottom: 0.9rem;
 }
 
 .post-title {
@@ -159,8 +191,9 @@ nav a:hover {
   padding-left: 0;
 }
 
-.post-list li {
-  margin: 0.5em 0;
+.post-list li,
+.markdown-container li {
+  margin-bottom: 0.6rem;
 }
 
 .post-date {
@@ -261,6 +294,20 @@ nav a:hover {
   position: relative;
   z-index: 3;
   overflow-x: auto;
+}
+
+pre code.terminal-ascii {
+  display: block;
+  background: #1d2021;
+  color: #ebdbb2;
+  padding: 1rem;
+  border: none;
+  box-shadow: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  text-shadow: none;
+  font-weight: normal;
 }
 
 /* .terminal-body::after { */
