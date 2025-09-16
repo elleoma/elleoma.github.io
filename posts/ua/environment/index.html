@@ -7,7 +7,6 @@
   <title>elleoma@logs ~ > ls</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <base href="/">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <link rel="stylesheet" href="/posts/styles-blog.css">
 </head>
 
@@ -32,12 +31,12 @@
       <div id="content" class="markdown-container"></div>
 
       <script type="module">
-        fetch('./posts/ua/environment/report.md')
+        fetch('https://raw.githubusercontent.com/elleoma/Writeups/refs/heads/main/HTB/environment/ua.md')
           .then(res => res.text())
           .then(md => {
             const html = marked.parse(md);
             document.getElementById('content').innerHTML =
-              html.replace(/src="imgs\//g, 'src="./posts/en/environment/imgs/');
+              html.replace(/src="imgs\//g, 'src="https://raw.githubusercontent.com/elleoma/Writeups/refs/heads/main/HTB/environment/imgs/');
 
             document.querySelectorAll('pre code').forEach(block => {
               hljs.highlightElement(block);
