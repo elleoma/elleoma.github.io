@@ -46,30 +46,30 @@
           <hr />
 
           <h2>Cybersecurity</h2>
-          <p>I’ve been into cybersecurity for about 2 years now. I started with the normie setup — Kali Linux
-            dual-booted next to Windows, learning through trial and error.</p>
-          <p>Eventually I spent more time on Linux, moved to KDE, configured everything myself, riced my terminal. Later
-            switched to Arch and Hyprland.</p>
-          <p>Have experience with web penetration testing as well as Red Teaming in general</p>
+          <p>I’ve been into cybersecurity for about ~2.5 years now.</p>
+          <p>Familiar with such frameworks: SOC 2, ISO 27001, OWASP top 10, HIPAA, PCI DSS, GDPR, NIST CSF.</p>
+          <p>Have basic understanding of OWASP ASVS (security standard for web apps) and OWASP WSTG (testing guide).</p>
+          <p>Have hands-on experience with web Penetration Testing, Unix/Windows systems exploitation.</p>
+          <p>Wrote my own writeups on CTFs: <a href="https://elleoma.github.io/posts/en/environment/">Environment machine on HTB</a>.</p>
+          <p>Have some experience with writing security audits/reports for non-technical audience.</p> 
           <p>Know and use in practice many different tools/techniques for tests, favorite ones: </p>
 
             <ul>
-                <li>Reconnaissance: ffuf, subfinder, httpx</li>
-                <li>Web pentest: Burp Suite (OWASP ZAP), dalfom, curl, intersect, manual scripting (with python)</li>
-                <li>Lateral movement: impacket (windows), linpeas.sh (linux), bloodhound, netcat, chisel and many more.</li>
-                <li>Reverse engineering &amp; Binary exploitation: mainly Ghidra, IDA Pro, strace, strings, gdb etc.</li>
+                <li>Reconnaissance: amass, ffuf, subfinder, httpx, dnsx, gobuster, dirsearch etc.</li>
+                <li>Web pentest: Burp Suite, Caido, OWASP ZAP, ffuf, curl, intersect, manual scripting (with python/bash)</li>
+                <li>Lateral movement: Impacket (Windows), linPEAS (Linux), BloodHound, netcat, chisel, built-in windows/linux tools.</li>
+                <li>Reverse engineering &amp; Binary exploitation: mainly Ghidra, radare2, gdb, IDA Pro, strace, strings etc.</li>
                 <li>Persistence: gsocket, segfault (thc.org), process hiding etc.</li>
             </ul>
           
-          <p>There's still big room to improve since there's insane amount of different fields to explore and that's what I'm trying to do.</p>
+          <p>There's still big room to improve since there's insane amount of different fields to explore in cybersecurity and that's what I'm trying to do.</p>
 
           <h3>HackTheBox</h3>
           <h4><a class="post-title" href="https://app.hackthebox.com/profile/1915061" target="_blank">My HTB profile</a></h4>
-          <p>HTB gave me that initial hands-on boost I needed. As of right now I’ve solved more than 50 boxes (4 of them
+          <p>As of right now I’ve solved more than 50 boxes (4 of them
             “Insane”: DarkCorp, Mist, MassGarden and Cobblestone).</p>
+          <p>Recently started to write my own writeups on different <a target="_blank" href="https://elleoma.github.io/blog.html">boxes and challenges.</a></p>
           <p>I like to solve different challenges there, especially reverse engineering, web and pwn.</p>
-          <p>Even though I sometimes rely on writeups and walkthroughs, I learn a lot from the infrastructure behind
-            each box.</p>
 
           <hr />
 
@@ -82,11 +82,11 @@
           </p>
           <p>I discovered <a href="https://gsocket.io/" target="_blank">gsocket.io</a> and started developing a tool that deploys a local web admin panel to
             collect logs from connected clients.</p>
-          <p>I used an Ubuntu VM in QEMU and Bash scripted everything with some help of AI.</p>
+          <p>I used an Ubuntu VM in QEMU and Bash scripted everything.</p>
 
           <h3>OS-in-1000-lines</h3>
           <p><a class="post-title" href="https://github.com/elleoma/os-in-1000-lines" target="_blank">Repo</a>
-          <p>My implementation of <a href="https://operating-system-in-1000-lines.vercel.app/en">Operating System in 1000 lines</a> by <a href="https://www.shuwasystem.co.jp/author/a269003.html">Shinya Yanagita.</a></p>
+          <p>My implementation of <a href="https://operating-system-in-1000-lines.vercel.app/en">Operating System in 1000 lines</a> by <a href="https://seiya.me/">Seiya Nuta.</a></p>
           <p>A small operating system written from scratch for RISC-V CPU architecture.</p>
           <p>This project will have basic context switching, paging, user mode, a command-line shell, a disk device driver, and file read/write operations in C.</p>
           <p>And also I'll try to add some more functionality to it.</p>
@@ -96,7 +96,7 @@
           <h3>Reverse engineering book translation</h3> 
           <p><a class="post-title" href="https://github.com/elleoma/reversing-ukrainian/tree/ukrainian-translation" target="_blank">Repo</a>
           <p><a class="post-title" href="https://elleoma.github.io/reversing/" target="_blank">Book translation</a>
-          <p>This is a book from <a href="https://twitter.com/mytechnotalent" target="_blank">@mytechnotalent</a> (English version <a href="https://0xinfection.github.io/reversing " target="_blank">here</a>) that I decided would be cool to translate in Ukrainian with automated python script and LLM hosted locally</p>
+          <p>This is a book from <a href="https://twitter.com/mytechnotalent" target="_blank">@mytechnotalent</a> (English version <a href="https://0xinfection.github.io/reversing " target="_blank">here</a>) that I decided would be cool to translate in Ukrainian with <strong>python script</strong> and LLM hosted locally</p>
           <p>I generally moved from outdated gitbook to honkit for publishing this as an E-book, created a python script for
             parsing markdown files and translating using LTEngine and Llama LLM (8b params) hosted locally.</p>
           <p>I was also able to make an automatic push to my github pages on each update</p>
@@ -105,7 +105,7 @@
 
           <h2>Bug bounty</h2>
           <p>Bug bounty is fascinating — legally hacking in-scope apps and possibly earning money.</p>
-          <p>But as a beginner, it’s tough. Recon is time-consuming, and rewards don’t always justify the effort unless
+          <p>But it's a hard 'entry point' for beginners. Whole process can be very time-consuming sometimes, and rewards don’t always justify the effort unless
             you're really skilled.</p>
           <p>But there is a big amount of knowledge I'm gaining, when exploring all the different approaches these companies use to secure themselves.
             It doesn't always bring financial benefits, but it always provides practical experience working with real targets.</p>
@@ -115,7 +115,7 @@
 
           <p dir="auto">
             <a target="_blank" rel="noopener noreferrer nofollow" href="https://elleoma.github.io/self-host.png">
-              <img src="https://elleoma.github.io/self-host.png" alt="My self-hosting setup" style="width: 220px;" class="align-to-right">
+              <img src="https://elleoma.github.io/self-host.png" alt="My self-hosting setup" style="width: 300px;" class="align-to-right">
             </a>
           </p>
           <h2>Self-hosting</h2>
